@@ -14,10 +14,9 @@ yxc的课程
 洛谷700+
 
 ### Training List(比赛记录)
+CSP2019-J
 
-#### CSP2019-J
-
-#### USACO December 2019 Contest
+USACO December 2019 Contest
 
 ### 专题总结
 
