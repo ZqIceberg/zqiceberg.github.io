@@ -82,7 +82,7 @@ int main()
 
 
 #### 递归实现组合型枚举
-```
+```cpp
 #include <iostream>
 #include <cstdio>
 #include <vector>
@@ -105,7 +105,7 @@ void dfs(int x)
 
         return ;
     }
-        //选x
+    //选x
     chosen.push_back(x);
     dfs(x + 1);
     chosen.pop_back();
@@ -128,10 +128,9 @@ int main()
     
     return 0;
 }
-
 ```
 
-```
+```cpp
 #include <iostream>
 #include <cstdio>
 
@@ -167,7 +166,7 @@ int main()
 ```
 
 #### 递归实现排列型枚举
-```
+```cpp
 #include <iostream>
 #include <cstdio>
 #include <fstream>
@@ -202,8 +201,8 @@ void dfs(int k)
 
 int main()
 {
-    freopen("meiju03.in", "r", stdin);
-    freopen("meiju03.out", "w", stdout);
+    //freopen("meiju03.in", "r", stdin);
+    //freopen("meiju03.out", "w", stdout);
 
     cin >> n;
     
@@ -214,7 +213,7 @@ int main()
 
 ```
 
-```
+```cpp
 #include <iostream>
 #include <cstdio>
 
@@ -257,7 +256,7 @@ int main()
 
 ```
 
-```
+```cpp
 #include <iostream>
 #include <cstdio>
 #include <vector>
