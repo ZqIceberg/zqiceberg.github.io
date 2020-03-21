@@ -829,6 +829,131 @@ int main()
     return 0;
 }
 
+```
+
+#### 自然数的拆分
+
+```cpp
+/一本通书上例题，给出的std，a[10001] = {1}这么写好坑啊
+//刚学的，以为是数组全部初始化成1，其实只是需要a[0]=1
+//我太弱了..
+
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+
+using namespace std;
+
+const int N = 20;
+
+int a[N];
+int n;
+
+void dfs(int left, int u)
+{
+    if (left == 0)
+    {
+        cout << n << '=';
+
+        for (int i = 1; i < u - 1; i++) cout << a[i] << '+';
+        cout << a[u - 1] << endl;
+
+        return ;
+    }
+
+    int t = a[u - 1]; //不能小于前一个拆分的数
+
+    for (int i = t; i <= left; i++)
+    {
+        if (i < n)
+        {
+            a[u] = i;
+            left -= i;
+
+            dfs(left, u + 1);
+
+            left += i;
+        }
+    }
+}
+
+
+int main()
+{
+    cin >> n;
+
+    a[0] = 1;
+    dfs(n, 1); //剩余要拆分的数为n，从下标1开始
+
+    return 0;
+}
 
 ```
 
+这题面，并没有给n的取值范围，用vector<>
+```
+//一本通这题竟然没给n的取值范围..我日
+//无力吐槽，例题用数组做的，数组拍多大合适啊
+//ybt上，评测环境还没有vector头文件，用万能头才编译过的
+
+//当测试n=1000的时候，笔记本cpu就会开始炸
+//输出到文件里，文件要几百MB，而且几十秒也没结束
+
+//ybt上的测试点，最多需要8ms，测试点的n不会大，可能是一个两位数
+
+//那你例题拍1万的数组，是咋回事啊。。真敢拍啊
+
+#include <iostream>
+#include <vector>
+#include <cstdio>
+//#include <bits/stdc++.h>
+#include <fstream>
+
+using namespace std;
+
+vector<int> A;
+int n;
+
+void dfs(int left)
+{   
+    if (left == 0)   //left = 0在上一层循环的时候，是被push_back进去的
+    {   
+        cout << n << '=';
+        
+        vector<int>::iterator iter;
+        for (iter = A.begin() + 1; iter < A.end() - 1; iter++)
+            cout << *iter << '+';
+        
+        cout << *iter << endl;
+        
+        return ;
+    }
+    
+    vector<int>::iterator iter = A.end() - 1;
+    for (int i = *iter; i <= left; i++)
+        if (i < n)
+        {
+            A.push_back(i);
+            left -= i;
+
+            dfs(left);
+
+            A.pop_back();
+            left += i;
+        }
+}
+
+int main()
+{
+    //freopen("chai03.in", "r", stdin);
+    //freopen("chai03.out", "w", stdout);
+
+    cin >> n;
+
+    A.push_back(1);  //把1先push进去，占位，防止SE，也是要拆分出来的数要大于等于1
+    dfs(n);  //当前要拆分的数为n；
+
+    return 0;
+}
+
+```
