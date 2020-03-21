@@ -331,6 +331,40 @@ int main()
 ```cpp
 #include <iostream>
 #include <cstdio>
+#include <vector>
+
+using namespace std;
+
+vector<int> A;
+//vector<vector<int> > ANS;
+int n, m;
+
+void dfs(int x)  //当前选择的数是x
+{
+    if (A.size() > m || A.size() + (n - x + 1) < m) return ;  //lyd大神的指引
+
+    if (x == n + 1)
+    {
+        for(int i = 0; i < A.size(); i++)
+            printf("%3d", A[i]);
+        puts("");
+
+        return ;
+    }
+
+    //选x
+    A.push_back(x);
+    dfs(x + 1);
+    A.pop_back();
+
+    //不选x
+    dfs(x + 1);
+}
+```
+
+```cpp
+#include <iostream>
+#include <cstdio>
 
 using namespace std;
 
