@@ -575,3 +575,260 @@ int main()
 }
 
 ```
+
+#### P1706 全排列问题
+```cpp
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+const int N = 10;
+
+int q[N], st[N];
+int n;
+
+void dfs(int x)
+{
+    if (x == n + 1)
+    {
+        for (int i = 1; i <= n; i++) printf("%5d", q[i]);
+        puts("");
+
+        return ;
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        if (!st[i])
+        {
+            q[x] = i;
+            st[i] = 1;
+
+            dfs(x + 1);
+
+            st[i] = 0;
+        }
+    }
+}
+
+int main()
+{
+    cin >> n;
+
+    dfs(1);
+
+    return 0;
+}
+
+```
+
+
+
+#### T114580 奥数题
+`算法：枚举`
+```cpp
+#include<iostream>
+using namespace std;
+int main()
+{
+    int a,b,c,d,e,f,g,h,i,total=0;
+    //第一个数 
+    for(a=1;a<=9;a++)
+    for(b=1;b<=9;b++)
+    for(c=1;c<=9;c++)
+    //第二个数
+    for(d=1;d<=9;d++)
+    for(e=1;e<=9;e++)
+    for(f=1;f<=9;f++)
+    //第三个数
+    for(g=1;g<=9;g++)
+    for(h=1;h<=9;h++)
+    for(i=1;i<=9;i++)
+    {
+        if(a!=b && a!=c && a!=d && a!=e && a!=f && a!=g && a!=h && a!=i
+                &&b!=c && b!=d && b!=e && b!=f && b!=g && b!=h && b!=i
+                        && c!=d && c!=e && c!=f && c!=g && c!=h && c!=i
+                                &&d!=e && d!=f && d!=g && d!=h && d!=i
+                                        && e!=f && e!=g && e!=h && e!=i
+                                                && f!=g && f!=h && f!=i
+                                                        && g!=h && g!=i
+                                                                && h!=i
+                                && a*100+b*10+c+d*100+e*10+f==g*100+h*10+i )
+        {
+            total++;
+            printf("%d%d%d+%d%d%d=%d%d%d\n",a,b,c,d,e,f,g,h,i);
+        }
+    }
+    printf("%d",total/2);
+
+    return 0;
+}
+
+```
+
+提示：173+286=469 ，286 + 173=469 是同一组合
+```cpp
+#include <cstdio>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int a[100],book[100],n=9;
+int c[1000];
+int ans;
+
+void dfs(int step){
+    int i;
+    if(step==n+1)
+    {
+        if((a[1]*100+a[2]*10+a[3]+a[4]*100+a[5]*10+a[6])==(a[7]*100+a[8]*10+a[9]))
+        {
+            c[a[1]*100+a[2]*10+a[3]]=1;
+            if(c[a[4]*100+a[5]*10+a[6]]==0)
+            {
+                printf("%d + %d = %d\n",a[1]*100+a[2]*10+a[3],a[4]*100+a[5]*10+a[6],a[7]*100+a[8]*10+a[9]);
+                ans++;
+            }
+        }
+        return ;
+    }
+   
+    for(int i=1;i<=n;++i){
+        if(book[i]==0){
+            a[step]=i;
+            book[i]=1;
+   
+            dfs(step+1);
+            book[i]=0;
+        }
+    }
+    return ;
+}
+
+int main()
+{
+    dfs(1);
+
+    cout << endl << ans << endl;
+    return 0;
+}
+
+```
+#### T114582 素数环
+```cpp
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+const int N = 8;
+
+int path[10];
+bool st[10];
+int sum;
+
+bool check(int a, int b)
+{   
+    int x = a + b;
+    
+    if (x < 2) return false; 
+    for (int i = 2; i <= x / i; i++)
+        if (x % i == 0) return false;
+    
+    return true;
+}
+
+void dfs(int u)
+{
+    if (u == N + 1)
+    {
+        if (check(path[N], path[1]))
+        {
+            for (int i = 1; i <= N; i++) printf("%d ", path[i]);
+            puts("");
+            
+            sum++;
+        }   
+    }
+
+    for (int i = 1; i <= N; i++)
+        if (u == 1 || (!st[i] && check(i, path[u - 1]))) //第一个数，或者和前一个找到的数之和是素数
+        {
+            st[i] = true;
+            path[u] = i;
+
+            dfs(u + 1);
+
+            st[i] = false;
+        }
+}
+
+int main()
+{
+    dfs(1);
+    cout << sum << endl;
+
+    return 0;
+}
+```
+
+`next_permutation` 香香香
+```cpp
+#include <iostream>
+#include <cstdio>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+
+const int N = 8;
+
+int a[] = {1, 2, 3, 4, 5, 6, 7, 8};
+int sum;
+
+bool check(int a, int b)
+{   
+    int x = a + b;
+    if (x < 2) return false; 
+    for (int i = 2; i <= x / i; i++)
+        if (x % i == 0) return false;
+    
+    return true;
+}
+
+int main()
+{
+    int T = 1;
+    for (int i = 1; i <= N; i++) T *= i;
+
+    while (T--)
+    {   
+        next_permutation(a, a + N);
+
+        bool flag = true;;
+        for (int i = 0; i < N; i++)
+            if (!check(a[(i - 1 + N) % N], a[i]))
+            {   
+                flag = false;
+                break;
+            }
+
+        if (flag)
+        {
+            for (int i = 0; i < N; i++) printf("%d ", a[i]);
+            puts("");
+
+            sum++;
+        }      
+    }
+   
+    printf("%d\n", sum);
+
+    return 0;
+}
+
+
+```
+
