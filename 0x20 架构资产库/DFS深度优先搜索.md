@@ -831,6 +831,73 @@ int main()
 
 ```
 
+#### UVA524 素数环 Prime Ring Problem
+原题数据卡格式
+```
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+#include <fstream>
+
+using namespace std;
+
+const int N = 20;
+
+int n;
+int idx;
+int path[N];
+bool st[N];
+
+bool check(int a, int b)
+{   
+    int x = a + b;
+    if (x < 2) return false; 
+    for (int i = 2; i <= x / i; i++)
+        if (x % i == 0) return false;
+    
+    return true;
+}
+
+void dfs(int u)
+{   
+    if (u == n + 1 && check(path[n], 1))
+    {   
+        for (int i = 1; i < n; i++) printf("%d ", path[i]);
+        printf("%d\n", path[n]);
+    }
+    
+    for (int i = 2; i <= n; i++)
+        if (!st[i] && check(path[u - 1], i))
+        {   
+            st[i] = true;
+            path[u] = i;
+
+            dfs(u + 1);
+
+            st[i] = false;
+        }
+}
+
+int main()
+{
+    while (cin >> n)
+    {
+        if (idx) puts("");
+        printf("Case %d:\n", ++idx);
+
+        memset(path, 0, sizeof path);
+        path[1] = 1;  //第一个数就是1不动，这样环就不会转了
+
+        memset(st, 0, sizeof st);
+
+        dfs(2); //从第2个数开始搜索
+    }
+
+    return 0;
+}
+```
+
+
 #### 自然数的拆分
 
 ```cpp
@@ -891,7 +958,9 @@ int main()
 ```
 
 这题面，并没有给n的取值范围，用vector<>
-```
+比如，上面的写法，当输入n为20的时候，就会有问题了
+
+```cpp
 //一本通这题竟然没给n的取值范围..我日
 //无力吐槽，例题用数组做的，数组拍多大合适啊
 //ybt上，评测环境还没有vector头文件，用万能头才编译过的
@@ -957,3 +1026,130 @@ int main()
 }
 
 ```
+
+#### P2089 烤鸡
+`枚举`
+```cpp
+#include<iostream>
+using namespace std;
+int zuoliao[10000][11];
+int ans;
+
+int main()
+{
+	int n;
+	cin>>n;
+	if(n>33)
+	{
+		cout<<"0";
+		return 0;
+	}
+	
+	for(int i1=1;i1<=3;i1++)
+		for(int i2=1;i2<=3;i2++)
+			for(int i3=1;i3<=3;i3++)
+	for(int i4=1;i4<=3;i4++)
+		for(int i5=1;i5<=3;i5++)
+			for(int i6=1;i6<=3;i6++)
+	for(int i7=1;i7<=3;i7++)
+		for(int i8=1;i8<=3;i8++)
+			for(int i9=1;i9<=3;i9++)
+				for(int i10=1;i10<=3;i10++)
+				{
+					if(n==i1+i2+i3+i4+i5+i6+i7+i8+i9+i10)
+					{
+						ans++;
+						zuoliao[ans][1]=i1;
+						zuoliao[ans][2]=i2;
+						zuoliao[ans][3]=i3;
+						zuoliao[ans][4]=i4;
+						zuoliao[ans][5]=i5;
+						zuoliao[ans][6]=i6;
+						zuoliao[ans][7]=i7;
+						zuoliao[ans][8]=i8;
+						zuoliao[ans][9]=i9;
+						zuoliao[ans][10]=i10;
+					}
+				}
+	
+	if(0==ans)
+		cout<<ans;
+	else
+	{
+		cout<<ans<<endl;
+		for(int i=1;i<=ans;i++)
+		{
+			for(int j=1;j<=10;j++)
+				cout<<zuoliao[i][j]<<" ";
+			cout<<endl;
+		}
+	}
+	
+	return 0;
+}
+
+```
+
+`DFS`
+```cpp
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+
+using namespace std;
+
+int a[15]; //用来临时存方案
+int g[10000][15];  //用来存方案
+int ans;   //方案数，判断是否输出0的问题
+int n;
+
+void dfs(int u, int s)
+{
+    if (u > 10)
+    {
+        if (s == n)  //输出合法方案
+        {
+            ans++;
+            for (int i = 1; i <= 10; i++) g[ans][i] = a[i];
+        }
+
+        return ;
+    }
+
+    for (int i = 1; i <= 3; i++)
+    {
+        if (s + i > n) break;
+
+        a[u] = i;
+        dfs(u + 1, s + i);  //搜索下一个调料，当前美味程度+i
+        //a[u] = 0;    //可写可不写
+    }
+}
+
+int main()
+{
+    cin >> n;
+
+    if (n > 30) {cout << 0 << endl; return 0;}
+
+    dfs(1, 0);  //从第1个调料开始，当前美味程度为0
+
+    if (ans == 0) cout << 0 << endl;
+    else
+    {
+        cout << ans << endl;
+        for (int i = 1; i <= ans; i++)
+        {
+            for (int j = 1; j <= 10; j++)
+                cout << g[i][j] << ' ';
+            puts("");
+        }
+    }
+
+    return 0;
+}
+
+
+```
+
+
