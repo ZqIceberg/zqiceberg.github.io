@@ -1,0 +1,310 @@
+#### T126438 约数 (divisor)
+```cpp
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int x;
+    cin >> x;
+
+    bool flag = false;
+    for (int i = 2; i <= x / i; i ++)
+        if (x % i == 0)
+        {
+            cout << x / i << endl;
+            flag = true;
+
+            break;
+        }
+
+    if (!flag) cout << 1 << endl;
+
+    return 0;
+}
+```
+
+#### T126439 阶乘(factorial)
+```cpp
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+int fact01(int n)
+{
+    //5和任意偶数相乘就会产生0，而偶数的个数远比5的个数多，所以每增加5 结尾就会增加一个零
+    //每次加 5 到了 5 的次方时，会出现增加多个 0 的现象。也就是5*5*...和多个偶数相乘就会产生多个零
+    //有5，5*5, 5*5*5的个数
+    int sum = 0;
+    while (n)
+    {
+        n /= 5;
+        sum += n;
+    }
+
+    return sum;
+}
+
+int fact02(int n)
+{   
+    //当n>50的时候，就会出现5，可以和偶数凑成0
+    //如果n<10，是不会凑成0的，最小凑出0的数是10
+    n /= 10;  
+    int sum = n;
+    
+    //除以10之后，就是砍掉了最后一位，然后就变成了前n-1位组成的数当中，有5，5*5, 5*5*5的个数
+    while (n)
+    {   
+        n /= 5;
+        sum += n;
+    }
+   
+    return sum;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    //n的阶乘
+    cout << fact01(n) << ' ';
+
+    //n的双阶乘
+    if (n % 2)
+        cout << 0 << endl;
+    else
+        cout << fact02(n) << endl;
+
+    return 0;
+}
+```
+
+#### T126440 序列 (sequence)
+```cpp
+//0分程序
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+string s;
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    for (int i = 1; i <= n; i++)
+    {   
+        char c;
+        cin >> c;
+        
+        s += c;
+        reverse(s.begin(), s.end());
+    }
+    
+    cout << s << endl;
+
+    return 0;
+}
+```
+
+```cpp
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+const int N = 1e8 + 10;
+
+int a[N];
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    for (int i = 1; i <= n; i++)
+        scanf("%d", &a[i]);
+
+    for (int i = n; i > 0; i -= 2)
+        printf("%d ", a[i]);
+
+    //1234 4213
+    //12345 53124
+    for (int i = n % 2 + 1; i <= n; i += 2)
+        printf("%d ", a[i]);
+    puts("");
+
+    return 0;
+}
+```
+
+#### T126443 糖果(candy)
+```cpp
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+const int N = 1e7 + 10;
+
+int minn = 27; //一个区间内，最多26个英文字母不重复
+string s;
+int st[N];
+
+int main()
+{
+    cin >> s;
+
+    bool flag = false;
+    int start = 0;
+    for (int i = 0, len = s.size(); i < len; i++)
+    {
+        int u = s[i] - 'A';
+        st[u]++;
+   
+        if (st[u] > 1)
+        {
+            //这个区间内找到重复的字母
+            flag = true;
+
+            for (int j = start; j < i; j++)
+            {
+                if (s[j] == s[i]) //发现重复的字母
+                {
+                    int t = i - j;
+                    minn = min(minn, t);
+   
+                    start = j + 1; //下次再校验重复的时候，从j的下一位开始找
+                    break;
+                }
+            }
+        }
+
+        st[u] = 1; //恢复成1
+    }
+
+    if (!flag)
+        puts("-1");
+    else
+        cout << minn << endl;
+
+    return 0;
+}
+```
+
+#### T126444 迷宫 (maze)
+```cpp
+#include <iostream>
+using namespace std;
+
+const int N = 205;
+// 4 directions: right, left, down, up
+const int dx[4] = {0, 0, 1, -1};
+const int dy[4] = {1, -1, 0, 0};
+int n, m, ans;
+char a[N][N];
+bool vis[N][N];
+
+void dfs(int x, int y)
+{
+    for(int dir = 0; dir < 4; dir++)
+    {
+        int nextX = x + dx[dir];
+        int nextY = y + dy[dir];
+        if(!vis[nextX][nextY] && nextX >= 1 && nextX <= n && nextY >= 1 && nextY <= m && (a[nextX][nextY] == '.' || a[nextX][nextY] == '*'))
+        {
+            vis[nextX][nextY] = true;
+            if(a[nextX][nextY] == '*')
+            {
+                ans++;
+            }
+
+            dfs(nextX, nextY);
+        }
+    }
+}
+
+int main()
+{
+    int startX, startY;
+    cin >> n >> m; // n rows m columns
+    int row, col;
+    for(row = 1; row <= n; row++)
+    {
+        for(col = 1; col <= m; col++)
+        {
+            cin >> a[row][col];
+            if('S' == a[row][col])
+            {
+                startX = row;
+                startY = col;
+            }
+        }
+    }
+
+    vis[startX][startY] = true;
+
+    dfs(startX, startY);
+
+    cout << ans << endl;
+
+    return 0;
+}
+```
+
+#### T126445 盒子（box）
+```cpp
+#include <iostream>
+#include <vector>
+#include <cstdio>
+#include <algorithm>
+
+using namespace std;
+
+const int N = 5e5 + 10;
+
+vector<int> h[N];
+int q[N];
+int len;
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    for (int i = 0; i < n; i++) scanf("%d", &q[i]);
+    sort(q, q + n);
+
+    h[len].push_back(q[0]);
+    len++;
+    for (int i = 1; i < n; i++)
+    {
+        bool flag = false;
+        for (int j = 0; j < len; j++)
+        {
+            if (q[i] >= h[j].size())
+            {
+                h[j].push_back(q[i]); //插入当前堆里面
+                flag = true;
+
+                break;                   
+            }
+        }
+
+        if (!flag) //新开一个堆
+        {
+            h[len].push_back(q[i]);
+            len++;
+        }
+    }
+
+    cout << len << endl;
+
+    return 0;
+}
+```
