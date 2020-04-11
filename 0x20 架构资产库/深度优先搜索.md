@@ -1,907 +1,1207 @@
-!(https://cdn.luogu.com.cn/upload/image_hosting/vtkueesx.png)
+    复习，递推与递归的宏观描述
+    以已知的“问题边界”为起点，向“原问题”正向推导的扩展方式就是递推
+    以“原问题”为起点尝试群钊把状态共建缩小到已知的“问题边界”的路线，再通过该路线反向回溯的遍历方式就是递归
 
-#### T122175 递归方法求1..n的和
-```cpp
-#include <iostream>
-#include <fstream>
+    - 问题边界
+    - 求解子问题
+    - 回溯恢复现场
 
-using namespace std;
+    1. 缩小问题状态的规模，寻找“原问题”与“问题边界”之间的变换路线，并向正在探索的路线上迈出一步【自身调用自身】
+    2. 尝试求解规模缩小以后的问题，可能成功，也可能失败
+    3. 如果成功，代表找到了规模缩小后的问题的答案，那么讲答案扩展到当前当前问题。如果失败，重新回到当前问题【回溯时恢复现场】，程序可能会继续寻找当前问题的其他变化路线，直到最终确定当前问题无解。
 
-int dfs(int x)
-{
-    if (x == 1) return 1;
-
-    return dfs(x - 1) + x;
-}
-
-int main()
-{
-    int n;
-    cin >> n;
-
-    cout << dfs(n) << endl;
-
-    return 0;
-}
-```
-
-
-#### T122173 爬楼梯
-```cpp
-#include <iostream>
-#include <fstream>
-
-using namespace std;
-
-int func(int n)
-{
-    if (n == 1) return 1;
-    if (n == 2) return 2;
-
-    return func(n - 1) + func(n - 2);
-}
-
-int main()
-{
-    //freopen("louti02.in", "r", stdin);
-    //freopen("louti02.out", "w", stdout);
-
-    int n;
-    while(cin >> n)
-        cout << func(n) << endl;
-
-    return 0;
-}
-```
-
-#### T122420 递归方法求fibo
+#### 递归实现指数型枚举
+    - 求解子问题，选或不选
 
 ```cpp
-#include <iostream>
-#include <fstream>
-
-using namespace std;
-
-int fibo(int n)
-{
-    if (n == 1) return 1;
-    if (n == 0) return 0;
-
-    return fibo(n - 1) + fibo(n - 2);
-}
-
-int main()
-{
-    //freopen("fibo2.in", "r", stdin);
-    //freopen("fibo2.out", "w", stdout);
-
-    int n;
-    cin >> n;
-
-    cout << fibo(n) << endl;
-
-    return 0;
-}
-```
-
-#### T122421 汉诺塔问题1
-```cpp
+//使用vector，dfs()只有一个参数
 #include <iostream>
 #include <cstdio>
+#include <vector>
 #include <fstream>
 
 using namespace std;
 
-int step;
+int n;
+vector<int> chosen;
 
-void move(int n, char a, char c, char b)
+void dfs(int x)
 {
-    //从a柱子上，借助b的帮助，把n片移动到c上
-    if (n == 0) return;
+    if (x == n + 1)
+    {
+        for (int i = 0; i < chosen.size(); i++)
+            printf("%d ", chosen[i]);
+        puts("");
 
-    //把n-1片，借助c移动到b上，临时放一下
-    move(n - 1, a, b, c);
+        return ;
+    }
+
+    //问：先不选x， 还是先选x。会影响我们的输出顺序
+    //观察样例，我们先不选x
     
-    step++;
-    printf("第%d步，从%c号柱子，移动到%c号柱子\n", step, a, c);
+    //不选x，求解子问题
+    dfs(x + 1);
 
-    //再把n-1片，移动到c上
-    move(n - 1, b, c, a);
+    //选x，求解子问题
+    chosen.push_back(x);
+    dfs(x + 1);
+    chosen.pop_back();  //回溯还原现场
 }
 
 int main()
 {
-    //freopen("hanoi3.in", "r", stdin);
-    //freopen("hanoi3.out", "w", stdout);
-
-    int n;
     cin >> n;
 
-    move(n, 'a', 'c', 'b'); //借助b，挪动到c上
+    dfs(1);
+
+    return 0;
+}
+
+```
+
+#### 位运算
+```
+& | ^  >> <<
+```
+1. 移位运算
+    1 << n = 2^n  n << 1 = 2n   n >> 1 = n/2.0下取整
+
+2. 二进制状态压缩
+    二进制压缩，是指将一个长度为m的bool数组用一个m位二进制证书表示并存储的方法。利用位运算操作可以实现原bool数组对应下标元素的存储
+
+    取出整数n在二进制表示下的第k位， (n >> k) & 1
+    对整数n在二进制表示下的第k位赋值1, n | 1 << k
+    对整数n在二进制表示下的第k位赋值0， n & (~(1 << k))
+
+    特点：运算简便，节省程序运行的时间和空间
+
+```cpp
+//dfs()两个参数，从0开始搜，用二进制记录状态
+//第一个参数从0开始搜索，第二个参数记录状态
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+int n;
+
+void dfs(int u, int state)
+{
+    if (u == n)
+    {
+        for (int i = 0; i < n; i++)
+            if (state >> i & 1)
+                cout << i + 1 << ' ';
+        puts("");
+
+        return ;
+    }
+
+    //求解子问题
+    dfs(u + 1, state);          //不选，state初始是0，等价于dfs(u + 1, state & (~(1 << u)));
+    dfs(u + 1, state | 1 << u); //选
+}
+
+int main()
+{
+    cin >> n;
+    dfs(0, 0);
 
     return 0;
 }
 ```
 
-#### T122437 汉诺塔问题2
+
+#### 递归实现组合型枚举
+    在指数型枚举的基础上，多一个剪枝
+    从n个数中选m个数，选到m个，或者剩下的数凑不够m个就剪枝掉
 ```cpp
-//一本通原题上是要把a上的盘子，全部移动到b柱子上
 #include <iostream>
 #include <cstdio>
+#include <vector>
 #include <fstream>
 
 using namespace std;
 
-int m;
+int n, m;
+vector<int> chosen;
 
-void move(int n, char a, char b, char c)
+void dfs(int x)
 {
-    //从a移动n个盘子到c上, b杆作为过渡
-    if (n == 0) return ;
-
-    move(n - 1, a, c, b);  //把n-1个盘子，临时放在b上, c作为过渡
-
-    printf("%c->%d->%c\n", a, n, c);
-
-    move(n - 1, b, a, c);
-}
-
-int main()
-{
-    //freopen("hanoi02.in", "r", stdin);
-    //freopen("hanoi02.out", "w", stdout);
-
-    int m;
-    char a, b, c;
-
-    cin >> m >> a >> b >> c;
-
-    move(m, a, c, b); //a杆上的移动到b杆上，c作为辅助
-
-    return 0;
-}
-```
-
-
-#### T122438 汉诺塔问题3
-```cpp
-//http://www.4399.com/flash/293_1.htm
-//为了匹配这个游戏，改造代码
-//盘子的顺序反过来，大盘子在上，小盘子在下
-//从a盘，移动到c盘子上
-
-#include <iostream>
-#include <cstdio>
-#include <fstream>
-
-using namespace std;
-
-int m;
-char a, b, c;
-
-void move(int n, char a, char b, char c)
-{
-    //从a移动n个盘子到c上, b杆作为过渡
-    if (n == 0) return ;
-
-    move(n - 1, a, c, b);  //把n-1个盘子，临时放在b上, c作为过渡
-
-    //printf("---%d, %d, %d\n", n, m, m - n + 1);
-    printf("%c->%d->%c\n", a, m - n + 1, c);
-
-    move(n - 1, b, a, c);
-}
-
-int main()
-{
-    //freopen("hanoi22.in", "r", stdin);
-    //freopen("hanoi22.out", "w", stdout);
+    if (chosen.size() > m || chosen.size() + (n - x + 1) < m) return ;
     
-    cin >> m >> a >> b >> c;
+    if (x == n + 1)
+    {
+        //如何输出状态
+        for (int i = 0; i < chosen.size(); i++)
+            printf("%d ", chosen[i]);
+        puts("");
 
-    //cout << m << a << b << c << endl;
-
-    move(m, a, b, c); //b作为辅助
-
-    return 0;
-}
-```
-
-#### P1255 数楼梯
-`三种做法`
-递归 40分，大数据需要高精度
-```cpp
-#include <iostream>
-
-using namespace std;
-
-int dfs(int n)
-{
-    if (n == 1) return 1;
-    if (n == 2) return 2;
-
-    return dfs(n - 1) + dfs(n - 2);
+        return ;
+    }
+    //选x
+    chosen.push_back(x);
+    dfs(x + 1);
+    chosen.pop_back();
+    
+    //不选x
+    dfs(x + 1);
 }
 
 int main()
 {
-    int n;
-    cin >> n;
-
-    cout << dfs(n) << endl;
-
+    cin >> n >> m;
+    
+    dfs(1);
+    
     return 0;
 }
 ```
 
-拓展高精度模板
+    三个参数：1.下标，2.当前选了几个数，3.用二进制记录状态(节省空间)
 ```cpp
-//Wrong Answer. wrong answer Too short on line 1.
-//第六个测试点是0，没有讨论0的情况。还有就是这种报错的归类
+#include <iostream>
+#include <cstdio>
 
+using namespace std;
+
+int n, m;
+
+void dfs(int u, int sum, int state)
+{
+    if (sum > m || sum + n - u < m) return ;
+    
+    if (sum == m)
+    {
+        for (int i = 0; i < n; i++)
+            if (state >> i & 1)
+                cout << i + 1 << ' ';
+        puts("");
+        
+        return ;
+    }
+    
+    dfs(u + 1, sum + 1, state | 1 << u);
+    dfs(u + 1, sum, state);
+}
+
+int main()
+{
+    cin >> n >> m;
+    dfs(0, 0, 0);
+    
+    return 0;
+}
+```
+
+#### P1036 选数
+- NOIP2002
+- 组合型枚举+判断质数模板（背）
+
+```cpp
 #include <iostream>
 #include <cstdio>
 #include <vector>
 
 using namespace std;
 
-const int N = 5010;
-vector<int> q[N];
+const int N = 30;
 
-vector<int> add(vector<int> &A, vector<int> &B)
+vector<int> chosen;
+int q[N];
+int n, k;
+int res;
+
+bool is_prime(int x)
 {
-    vector<int> C;
+    //试除法判断质数模板
+    if (x < 2) return false;
+    for (int i = 2; i <= x / i; i++)
+        if (x % i == 0) return false;
 
-    for (int i = 0, t = 0; i < A.size() || i < B.size() || t; i++)
+    return true;
+}
+
+void dfs(int x)
+{
+    if (chosen.size() > k || chosen.size() + (n - x + 1) < k) return;   //剪枝，如果已经找到的个数，大于k个，或者剩下的都找来也不够k个就返回
+
+    if (x == n + 1)    //问题边界
     {
-        if (i < A.size()) t += A[i];
-        if (i < B.size()) t += B[i];
-        C.push_back(t % 10);
-        t /= 10;
+        int sum = 0;
+        for (int i = 0; i < chosen.size(); i++) sum += chosen[i];
+
+        if (is_prime(sum))
+        {
+            res++;
+            //for (int i = 0; i < idx; i++) printf("%d ", chosen[i]);
+            //puts("");
+        }
+
+        return ;
     }
-    
-    return C;
+
+    //求解子问题，不选这个数
+    dfs(x + 1);
+
+    //求解子问题，选这个数
+    chosen.push_back(q[x]);
+    dfs(x + 1);
+    chosen.pop_back();
 }
 
 int main()
-{   
-    int n; 
-    cin >> n;
+{
+    cin >> n >> k;
+    for (int i = 1; i <= n; i++) cin >> q[i];
 
-    if (n == 0) {cout << 0 << endl; return 0;}
-    if (n == 1) {cout << 1 << endl; return 0;}
-    if (n == 2) {cout << 2 << endl; return 0;}
-    
-    q[1].push_back(1);
-    q[2].push_back(2);
-    for (int i = 3; i <= n; i++)
-        q[i]  = add(q[i - 1], q[i - 2]);
-    
-    vector<int> C = q[n];
-    for (int i = C.size() - 1; i >= 0; i--) printf("%d", C[i]);
-    puts("");
+    dfs(1);  //从第一个数开始找
 
-    
+    cout << res << endl;
+
     return 0;
 }
 ```
 
-用二维数组模拟高精加法
+    三个参数：还有多少没选，已经选的多少，当前下标
 ```cpp
 #include <iostream>
 #include <cstdio>
 
 using namespace std;
 
-const int N = 5010;
+const int N = 25;
 
-int g[N][N]; //每一行代表一层的步数值，倒序存储，高精加法
-int len = 1;
+int q[N];
+int n, m;
 
-void add(int k)
+int is_prime(int x)
 {
-    for (int i = 1; i <= len; i++)
-        g[k][i] = g[k - 1][i] + g[k - 2][i];
+    if (x < 2) return 0;
 
-    for (int i = 1; i <= len; i++)
-        if (g[k][i] >= 10)  //发生进位
-        {
-            g[k][i + 1] += g[k][i] / 10;
-            g[k][i] %= 10;
-        }
-    if (g[k][len + 1]) len++;
+    for (int i = 2; i <= x / i; i++)
+        if (x % i == 0) return 0;
+   
+    return 1;
 }
 
-int main()
+int dfs(int left_choose, int already_choose, int u)
 {
-    int n;
-    cin >> n;
-
-    g[1][1] = 1, g[2][1] = 2;
-    for (int k = 3; k <= n; k++)
-        add(k);
-    
-    for (int i = len; i >= 1; i--) printf("%d", g[n][i]);
-    puts("");
-
-    return 0;
-}
-```
-
-#### T122198 分解因数
-两种做法
-```cpp
-#include <iostream>
-#include <fstream>
-
-using namespace std;
-
-int dfs(int x, int u)
-{
-    if (x == 1) return 1;
+    if (left_choose == 0) return is_prime(already_choose);
 
     int sum = 0;
-    for (int i = u; i <= x; i++)
-        if (x % i == 0)
-            sum += dfs(x / i, i);
+    for (int i = u; i <= n; i++)
+        sum += dfs(left_choose - 1, already_choose + q[i], i + 1);
 
     return sum;
 }
 
 int main()
 {
-    //freopen("yinshu2.in", "r", stdin);
-    //freopen("yinshu2.out", "w", stdout);
-
-    int n;
-    cin >> n;
-
-    while (n--)
-    {
-        int a;
-        cin >> a;
-
-        cout << dfs(a, 2) << endl; //从2开始分解因子
-    }
-
+    cin >> n >> m;
+    for (int i = 1; i <= n; i++) scanf("%d", &q[i]);
+    
+    printf("%d\n", dfs(m, 0, 1));
+    
     return 0;
-}
+}    
+
 ```
 
+#### P1157 组合的输出
+- 重点讲搜索顺序的不同
 
-
+    vector的折腾用法，用vector套vector，来记录方案，vector<vector<int> > ANS;
+    在问题边界处理的时候，存了起来，而不是直接输出（主要练习一下STL）
+    组合型枚举的过程没什么特别的，用一个vector来记录当前方案，然后把这个vector塞进ANS
+    搜索顺序：一个一个看，选或不选，存起来
+    
 ```cpp
 #include <iostream>
-  
+#include <cstdio>
+#include <vector>
+
 using namespace std;
 
-int dfs(int a, int b)
+vector<int> A;
+vector<vector<int> > ANS;
+int n, m;
+
+void dfs(int x)  //当前选择的数是x
 {
-    if (a == 1) return 1;
-    if (b == 1) return 0;
+    if (A.size() > m || A.size() + (n - x + 1) < m) return ;  //lyd大神的指引
 
-    if (a % b == 0)
-        return dfs(a / b, b) + dfs(a, b - 1);
+    if (x == n + 1)
+    {
+        ANS.push_back(A);
+        return ;
+    }
 
-    return dfs(a, b - 1);
+    //不选x
+    dfs(x + 1);
+
+    //选x
+    A.push_back(x);
+    dfs(x + 1);
+    A.pop_back();
 }
 
 int main()
 {
-    int n;
-    cin >> n;
+    cin >> n >> m;
 
-    while (n--)
+    dfs(1); //从1开始
+
+    vector<vector<int> >:: iterator iter;
+    for (iter = ANS.end() - 1; iter >= ANS.begin(); iter--)
     {
-        int a;
-        cin >> a;
-
-        cout << dfs(a, a) << endl;
+        vector<int> T = *iter;
+        for (int i = 0; i < T.size(); i++) printf("%3d", T[i]);
+        puts("");
     }
+   
+    return 0;
+}
+```
+
+    每一次搜索结果直接输出，不用存起来
+```cpp
+#include <iostream>
+#include <cstdio>
+#include <vector>
+
+using namespace std;
+
+vector<int> A;
+//vector<vector<int> > ANS;
+int n, m;
+
+void dfs(int x)  //当前选择的数是x
+{
+    if (A.size() > m || A.size() + (n - x + 1) < m) return ;  //lyd大神的指引
+
+    if (x == n + 1)
+    {
+        for(int i = 0; i < A.size(); i++)
+            printf("%3d", A[i]);
+        puts("");
+
+        return ;
+    }
+
+    //选x
+    A.push_back(x);
+    dfs(x + 1);
+    A.pop_back();
+
+    //不选x
+    dfs(x + 1);
+    
+    int main()
+    {
+    cin >> n >> m;
+
+    dfs(1); //从1开始
+
+    return 0;
+    }
+}
+```
+
+    另一种搜索方式，不是一个坑一个坑的看，是从前往后一遍一遍的看
+    就看当前这个数用没用过，用过就看下一个，没用就用一下
+    
+    前面的方法，是两个子问题，进行搜索
+    下面这个方法，是记录st状态，使用，递归自身调用自身，回溯
+```cpp
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+int a[25];
+bool st[25];
+int n, m;
+
+void dfs(int k)
+{   
+    if (k > m)
+    {   
+        for (int i = 1; i <= m; i++) printf("%3d", a[i]);
+        puts("");
+        
+        return ;
+    }
+                                                          
+/*
+    int t = a[k - 1];
+    for (int i = t; i <= n; i++)
+    {
+        if (st[i]) continue;
+
+        a[k] = i;
+        st[i] = true;
+        dfs(k + 1);
+        st[i] = false;
+    }
+*/  
+    
+    //for (int i = 1; i <= n; i++)  //先用这种方式，进行输出，看一个结果
+    
+    for (int i = a[k - 1]; i <= n; i++)
+    {   
+        if (st[i]) continue;
+        
+        a[k] = i;
+        st[i] = true;
+        
+        dfs(k + 1);
+        
+        st[i] = false;
+    }
+}
+
+int main()
+{
+    cin >> n >> m;
+
+    a[0] = 1;
+    dfs(1);
 
     return 0;
 }
 ```
 
-
-#### P1028 数的计算
-`dfs`
-递归（25分）
-记忆化搜索
-
-`前缀和`  这个后面再讲
-递推
-递推优化
-递推优化
-
-
-递归25分
+#### 递归实现排列型枚举
+    - 用数组来存储方案
+    - 用bool数组来记录状态
+    - 从1开始搜索，问题边界n+1
+    - 从0开始搜索，问题边界n
+    
 ```cpp
 #include <iostream>
+#include <cstdio>
 #include <fstream>
 
 using namespace std;
 
-int dfs(int x)
-{
-    if (x == 1) return 1;
+int order[20];
+bool chosen[20];
+int n;
 
-    int sum = 1;
-    for (int i = 1; i <= x / 2; i++)
-        sum += dfs(i);
-   
-    return sum;
+void dfs(int k)
+{
+    if (k == n + 1)
+    {
+        for (int i = 1; i <= n; i++)
+            cout << order[i] << ' ';
+        puts("");
+    }
+    
+    for (int i = 1; i <= n; i++)
+    {
+        if (chosen[i]) continue;
+        
+        order[k] = i;
+        chosen[i] = true;
+        
+        dfs(k + 1);
+        
+        chosen[i] = false;
+    }
 }
 
 int main()
-{   
-    int n; 
+{
     cin >> n;
     
-    cout << dfs(n) << endl;
+    dfs(1);
     
     return 0;
 }
+
 ```
 
-记忆化搜索
 ```cpp
-/*
-记忆化搜索
-*/
-
 #include <iostream>
-#include <cstring>
-
+#include <cstdio>
 
 using namespace std;
 
-const int N = 1010;
+int order[20];
+bool chosen[20];
+int n;
 
-int h[N];
+void dfs(int k)
+{
+    if (k == n)
+    {
+        for (int i = 0; i < n; i++)
+            cout << order[i] << ' ';
+        puts("");
+    }
+    
+    for (int i = 1; i <= n; i++)
+    {
+        if (chosen[i]) continue;
+        
+        order[k] = i;
+        chosen[i] = true;
+        
+        dfs(k + 1);
+        
+        chosen[i] = false;
+    }
+}
+
+int main()
+{
+    cin >> n;
+    
+    dfs(0);
+    
+    return 0;
+}
+
+```
+
+    - 用vector来存方案
+    - 用二进制来记录状态
+```cpp
+#include <iostream>
+#include <cstdio>
+#include <vector>
+
+using namespace std;
+
+int n;
+vector<int> path;
+
+void dfs(int u, int state)
+{
+    if (u == n)
+    {
+        vector<int>::iterator i;
+        for (i = path.begin(); i < path.end(); i++)
+            cout << *i << ' ';
+        puts("");
+    }
+    
+    for (int i = 0; i < n; i++)
+        if (!(state >> i & 1))
+        {
+            path.push_back(i + 1);   //用vector来记录方案
+            dfs(u + 1, state | 1 << i);
+            path.pop_back();
+        }
+}
+
+int main()
+{
+    cin >> n;
+    dfs(0, 0);
+    
+    return 0;
+}
+
+```
+
+    - 选练
+    - 一遍一遍的搜索顺序
+    - st数组标记是否选过
+#### P1706 全排列问题
+```cpp
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+const int N = 10;
+
+int q[N], st[N];
+int n;
 
 void dfs(int x)
 {
-    if (h[x] != -1) return ;
-
-    h[x] = 1;
-    for (int i = 1; i <= x / 2; i++)
+    if (x == n + 1)
     {
-        dfs(i);
-        h[x] += h[i];
+        for (int i = 1; i <= n; i++) printf("%5d", q[i]);
+        puts("");
+
+        return ;
     }
 
+    for (int i = 1; i <= n; i++)
+    {
+        if (!st[i])
+        {
+            q[x] = i;
+            st[i] = 1;
+
+            dfs(x + 1);
+
+            st[i] = 0;
+        }
+    }
+}
+
+int main()
+{
+    cin >> n;
+
+    dfs(1);
+
+    return 0;
+}
+
+```
+
+#### T114580 奥数题
+    
+    - 枚举，暴力枚举9位数字，最后做一次条件判断
+
+```cpp
+#include<iostream>
+using namespace std;
+int main()
+{
+    int a,b,c,d,e,f,g,h,i,total=0;
+    //第一个数 
+    for(a=1;a<=9;a++)
+    for(b=1;b<=9;b++)
+    for(c=1;c<=9;c++)
+    //第二个数
+    for(d=1;d<=9;d++)
+    for(e=1;e<=9;e++)
+    for(f=1;f<=9;f++)
+    //第三个数
+    for(g=1;g<=9;g++)
+    for(h=1;h<=9;h++)
+    for(i=1;i<=9;i++)
+    {
+        if(a!=b && a!=c && a!=d && a!=e && a!=f && a!=g && a!=h && a!=i
+                &&b!=c && b!=d && b!=e && b!=f && b!=g && b!=h && b!=i
+                        && c!=d && c!=e && c!=f && c!=g && c!=h && c!=i
+                                &&d!=e && d!=f && d!=g && d!=h && d!=i
+                                        && e!=f && e!=g && e!=h && e!=i
+                                                && f!=g && f!=h && f!=i
+                                                        && g!=h && g!=i
+                                                                && h!=i
+                                && a*100+b*10+c+d*100+e*10+f==g*100+h*10+i )
+        {
+            total++;
+            printf("%d%d%d+%d%d%d=%d%d%d\n",a,b,c,d,e,f,g,h,i);
+        }
+    }
+    printf("%d",total/2);
+
+    return 0;
+}
+
+```
+    - 选练
+    - 一遍一遍的搜索顺序
+    - 提示：173+286=469 ，286 + 173=469 是同一组合
+                     
+```cpp
+#include <cstdio>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int a[100],book[100],n=9;
+int c[1000];
+int ans;
+
+void dfs(int step){
+    int i;
+    if(step==n+1)
+    {
+        if((a[1]*100+a[2]*10+a[3]+a[4]*100+a[5]*10+a[6])==(a[7]*100+a[8]*10+a[9]))
+        {
+            c[a[1]*100+a[2]*10+a[3]]=1;  //避免重复计算
+    
+            if(c[a[4]*100+a[5]*10+a[6]]==0)
+            {
+                printf("%d + %d = %d\n",a[1]*100+a[2]*10+a[3],a[4]*100+a[5]*10+a[6],a[7]*100+a[8]*10+a[9]);
+                ans++;
+            }
+        }
+        return ;
+    }
+   
+    for(int i=1;i<=n;++i){
+        if(book[i]==0){
+            a[step]=i;
+            book[i]=1;
+   
+            dfs(step+1);
+            book[i]=0;
+        }
+    }
     return ;
 }
 
 int main()
 {
-    int n;
-    cin >> n;
+    dfs(1);
 
-    memset(h, -1, sizeof h);
-
-    dfs(n);
-
-    cout << h[n] << endl;
-
-    //for (int i = 1; i <= n; i++) cout << h[i] << ' ';
-    //puts("");
-
+    cout << endl << ans << endl;
     return 0;
 }
-```
 
-#### T122199 判断元素是否存在
+```
+                               
+#### T114582 素数环
+                               
+    - 一遍一遍的搜索顺序
+    - path[]数组保存路径，st[]数组记录状态
+    - 判断质数模板练习
+
 ```cpp
 #include <iostream>
 #include <cstdio>
-#include <fstream>
 
 using namespace std;
 
-int k, x;
+const int N = 8;
 
-bool dfs(int y)
+int path[10];
+bool st[10];
+int sum;
+
+bool check(int a, int b)
+{   
+    int x = a + b;
+    
+    if (x < 2) return false; 
+    for (int i = 2; i <= x / i; i++)
+        if (x % i == 0) return false;
+    
+    return true;
+}
+
+void dfs(int u)
 {
-    if (y > x) return false;
-    if (y == x) return true;
+    if (u == N + 1)
+    {
+        if (check(path[N], path[1]))
+        {
+            for (int i = 1; i <= N; i++) printf("%d ", path[i]);
+            puts("");
+            
+            sum++;
+        }   
+    }
 
-    if (y < x) return dfs(2 * y + 1) || dfs(3 * y + 1);
+    for (int i = 1; i <= N; i++)
+        if (u == 1 || (!st[i] && check(i, path[u - 1]))) //第一个数，或者和前一个找到的数之和是素数
+        {
+            st[i] = true;
+            path[u] = i;
+
+            dfs(u + 1);
+
+            st[i] = false;
+        }
 }
 
 int main()
 {
-    //freopen("yuansu2.in", "r", stdin);
-    //freopen("yuansu2.out", "w", stdout);
-
-    scanf("%d,%d", &k, &x);
-
-    if (dfs(k)) cout << "YES" << endl;
-    else cout << "NO" << endl;
+    dfs(1);
+    cout << sum << endl;
 
     return 0;
 }
 ```
 
-#### T122385 放苹果
+    - `next_permutation` 香香香
+    
 ```cpp
 #include <iostream>
-#include <fstream>
+#include <cstdio>
+#include <cmath>
+#include <algorithm>
 
 using namespace std;
 
-int dfs(int m, int n)
-{
-    //0个苹果，1个盘子的时候，放法只有1个
-    if (m == 0 || n == 1) return 1; 
+const int N = 8;
+
+int a[] = {1, 2, 3, 4, 5, 6, 7, 8};
+int sum;
+
+bool check(int a, int b)
+{   
+    int x = a + b;
+    if (x < 2) return false; 
+    for (int i = 2; i <= x / i; i++)
+        if (x % i == 0) return false;
     
-    //盘子比苹果多，相当于m个苹果放m个盘子
-    if (m < n) return dfs(m, m);
-    //每一个盘子都放一个 + 至少有一个盘子不放
-    if (m >= n) return dfs(m - n, n) + dfs(m, n - 1);
+    return true;
 }
 
 int main()
 {
-    //freopen("apple3.in", "r", stdin);
-    //freopen("apple3.out", "w", stdout);
-
-    int T;
-    cin >> T;
+    //T来记录阶乘
+    int T = 1;
+    for (int i = 1; i <= N; i++) T *= i;
 
     while (T--)
-    {
-        int m, n;
-        cin >> m >> n;  //m个苹果，n个盘子
-
-        cout << dfs(m, n) << endl;
-    }
-    
-    return 0;
-}
-```
-#### T122413 集合的划分
-```cpp
-//n个元素，划分成k个子集
-#include <iostream>
-#include <cstdio>
-#include <fstream>
-
-using namespace std;
-
-typedef long long LL;
-
-LL dfs(int n, int k)
-{
-    if (n < k || k == 0) return 0;
-    if (k == 1 || k == n) return 1;
-    
-    //{an}是k个子集里的一个 1...n-1,放进{1...k-1}, 少了{an}就是少了一个子集   dfs(n - 1, k - 1)
-    //{an}不是k子集里的一个，那么an与其他元素组合一个集合 1...n-1，放进{1... k}，再把an插入这k个子集里的任意一个自己里去
-
-    return dfs(n - 1, k - 1) + k * dfs(n - 1, k);
-}
-
-int main()
-{
-    //freopen("jihe2.in", "r", stdin);
-    //freopen("jihe2.out", "w", stdout);
-
-    int n, k;
-    scanf("%d%d", &n, &k);
-
-    printf("%lld\n", dfs(n, k));
-
-    return 0;
-}
-
-```
-
-
-
-#### 
-T122565 逆波兰表达式
-
-使用双指针
-
-```cpp
-#include <iostream>
-#include <cstdio>
-#include <cstring>
-#include <algorithm>
-
-using namespace std;
-
-double res;
-string s;
-
-double to_string(string s)
-{
-    //双指针算法处理，把字符串转化成小数
-    int mid = s.find('.');
-    if (mid == -1)  //读入一个整数的时候
-    {
-        double a = 0.0;
-        for (int i = 0; i < s.size(); i++) a = a * 10 + (s[i] - '0');
-
-        return a;
-    }
-
-    int ed = s.size();
-    double a = 0.0;
-    for (int i = 0; i < mid; i++) a = a * 10 + (s[i] - '0');
-    double b = 0.1;
-    for (int i = mid + 1; i < ed; i++, b *= 0.1) a = a + (s[i] - '0') * b;
-
-    return a;
-}
-
-double dfs()
-{
-    cin >> s;
-
-    if (s[0] == '+') res = dfs() + dfs();
-    else if (s[0] == '-') res = dfs() - dfs();
-    else if (s[0] == '*') res = dfs() * dfs();
-    else if (s[0] == '/') res = dfs() / dfs();
-    else res = to_string(s);
-
-    return res;
-}
-
-int main()
-{
-    printf("%f\n", dfs());
-
-    return 0;
-}
-```
-
-
-使用stringstream
-```cpp
-#include <iostream>
-#include <cstdio>
-#include <cstring>
-#include <algorithm>
-#include <sstream>
-
-using namespace std;
-
-double res;
-char s[110];
-
-double to_string(string s)
-{
-    //使用stringstream
-    //sscanf(s, "%lf", &a);
-    //cout << a << endl;
-
-    stringstream tempIO;
-    tempIO << s;
-
-    double a;
-    tempIO >> a;
-
-    return a;
-}
-
-double dfs()
-{
-    scanf("%s", s);
-
-    if (s[0] == '+') res = dfs() + dfs();
-    else if (s[0] == '-') res = dfs() - dfs();
-    else if (s[0] == '*') res = dfs() * dfs();
-    else if (s[0] == '/') res = dfs() / dfs();
-    else res = to_string(s);
-
-    return res;
-}
-
-int main()
-{
-    printf("%f\n", dfs());
-
-    return 0;
-}
-```
-
-使用sscanf
-```cpp
-#include <iostream>
-#include <cstdio>
-#include <cstring>
-#include <algorithm>
-#include <sstream>
-
-using namespace std;
-
-double res;
-char s[110];
-
-double to_string(char s[])
-{
-    //使用sscanf()
-    double a;
-    sscanf(s, "%lf", &a);
-
-    return a;
-}
-
-double dfs()
-{
-    scanf("%s", s);
-
-    if (s[0] == '+') res = dfs() + dfs();
-    else if (s[0] == '-') res = dfs() - dfs();
-    else if (s[0] == '*') res = dfs() * dfs();
-    else if (s[0] == '/') res = dfs() / dfs();
-    else res = to_string(s);
-
-    return res;
-}
-
-int main()
-{
-    printf("%f\n", dfs());
-
-    return 0;
-}
-```
-
-使用atof()
-```cpp
-#include <iostream>
-#include <cstdio>
-#include <cstring>
-#include <algorithm>
-#include <fstream>
-
-using namespace std;
-
-double res;
-char s[110];
-
-double dfs()
-{
-    scanf("%s", s);
-
-    if (s[0] == '+') res = dfs() + dfs();
-    else if (s[0] == '-') res = dfs() - dfs();
-    else if (s[0] == '*') res = dfs() * dfs();
-    else if (s[0] == '/') res = dfs() / dfs();
-    else res = atof(s);
-
-    return res;
-}
-
-int main()
-{
-    //freopen("ni2.in", "r", stdin);
-    //freopen("ni2.out", "w", stdout);
-
-    printf("%f\n", dfs());
-    
-    return 0;
-}
-```
-
-
-#### 
-T122589 扩号匹配问题
-
-用递归写
-```cpp
-#include <iostream>
-#include <cstdio>
-#include <cstring>
-#include <fstream>
-
-using namespace std;
-
-char s[110], st[110]; //原字符串，标记数组
-
-int dfs(int u)
-{
-    if (u == -1) return -1;
-
-    int t;
-    if (st[u] == '$') return u;
-    else t = dfs(u - 1); //这行如果不加return，会炸..想想盗梦空间，继续往下一层钻，下一层返回的值
-                        //或者写成return dfs(u  -1)
-    return t;
-}
-
-int main()
-{
-    //freopen("kuohao2.in", "r", stdin);
-    //freopen("kuohao2.out", "w", stdout);
-
-    while (scanf("%s", s) == 1)
-    {
-        printf("%s\n", s);
-
-        int len = strlen(s);
-        memset(st, ' ', sizeof st);
-
-        for (int i = 0; i < len; i++)
-        {   
-            if (s[i] == '(') st[i] = '$';   //不管三七二十一，先标记左括号
-            
-            if (s[i] == ')')
-            {   
-                int t = dfs(i - 1); //向前找右括号的左括号
-                
-                if (t == -1) st[i] = '?'; //没找到匹配的左括号
-                else st[t] = ' '; //找到匹配的左括号，配对成功，清除$标记
-            }   
-        } 
-
-        printf("%s\n", st);
-    }
-
-    return 0;
-}
-```
-
-用栈写
-```cpp
-#include <iostream>
-#include <cstdio>
-#include <cstring>
-
-using namespace std;
-
-const int N = 110;
-
-int stk[N], ss[N];
-int tt;
-string s;
-
-int main()
-{   
-    while (cin >> s)
     {   
-        tt = 0; 
-        int len = s.size();
-        
-        memset(stk, 0, sizeof stk);
-        memset(ss, 0, sizeof ss);
-        
-        for (int i = 0; i < len; i++)
-        {   
-            if (s[i] == '(')
-            {   
-                stk[++tt] = i;
-                ss[i] = 1;  //1代表尚未匹配的左括号
-            }
-            
-            if (s[i] == ')')
-            {   
-                ss[i] = 2; //2代表尚未匹配的右括号
-                
-                if (tt > 0)  //栈非空，就是前面还有左括号
-                {   
-                    ss[stk[tt]] = 0;  //栈里的左括号找到匹配
-                    ss[i] = 0;        //这个右括号找到匹配
-                    tt--;
-                }
-            }
-        }
-        
-        cout << s << endl;
-        for (int i = 0; i < len; i++)
-        {   
-            if (ss[i] == 0) cout << ' ';
-            if (ss[i] == 1) cout << '$';
-            if (ss[i] == 2) cout << '?';
-        }
-        puts("");
+        next_permutation(a, a + N);
 
+        bool flag = true;;
+        for (int i = 0; i < N; i++)
+            if (!check(a[(i - 1 + N) % N], a[i]))  //当前数和前一个数是否满足条件
+            {   
+                flag = false;
+                break;
+            }
+
+        if (flag)
+        {
+            for (int i = 0; i < N; i++) printf("%d ", a[i]);
+            puts("");
+
+            sum++;
+        }      
+    }
+   
+    printf("%d\n", sum);
+
+    return 0;
+}
+
+```
+
+#### UVA524 素数环 Prime Ring Problem
+#### T114625 素数环 Prime Ring Problem
+                                  
+    - 原题数据卡格式
+    - 多组测试数据
+    - 同一个环只输出一次，不要旋转输出，把第一位是1钉住，这个环就不会动了
+```
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+#include <fstream>
+
+using namespace std;
+
+const int N = 20;
+
+int n;
+int idx;
+int path[N];
+bool st[N];
+
+bool check(int a, int b)
+{   
+    int x = a + b;
+    if (x < 2) return false; 
+    for (int i = 2; i <= x / i; i++)
+        if (x % i == 0) return false;
+    
+    return true;
+}
+
+void dfs(int u)
+{   
+    if (u == n + 1 && check(path[n], 1))
+    {   
+        for (int i = 1; i < n; i++) printf("%d ", path[i]);
+        printf("%d\n", path[n]);
+    }
+    
+    for (int i = 2; i <= n; i++)
+        if (!st[i] && check(path[u - 1], i))
+        {   
+            st[i] = true;
+            path[u] = i;
+
+            dfs(u + 1);
+
+            st[i] = false;
+        }
+}
+
+int main()
+{
+    while (cin >> n)
+    {
+        if (idx) puts("");
+        printf("Case %d:\n", ++idx);
+
+        memset(path, 0, sizeof path);
+        path[1] = 1;  //第一个数就是1不动，这样环就不会转了
+
+        memset(st, 0, sizeof st);
+
+        dfs(2); //从第2个数开始搜索
     }
 
     return 0;
 }
 ```
+
+### dfs() 两个参数
+    
+#### 自然数的拆分
+    - 两个参数void dfs(int left, int u); //剩余要拆分的数为left，从下标u开始
+    - dfs(n, 1); //剩余要拆分的数为n，从下标1开始
+    - a[0] = 1，下标从1开始搜索
+    - 注意输出格式
+    
+```cpp
+/一本通书上例题，给出的std，a[10001] = {1}这么写好坑啊
+//刚学的，以为是数组全部初始化成1，其实只是需要a[0]=1
+//我太弱了..
+
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+
+using namespace std;
+
+const int N = 20;
+
+int a[N];
+int n;
+
+void dfs(int left, int u)
+{
+    if (left == 0)
+    {
+        cout << n << '=';
+
+        //输出格式技巧
+        for (int i = 1; i < u - 1; i++) cout << a[i] << '+';
+        cout << a[u - 1] << endl;   //从dfs(n, 1)开始，问题边界是u, left=0，输出的时候最后一位到下标u-1是对的
+
+        return ;
+    }
+
+    int t = a[u - 1]; //不能小于前一个拆分的数
+
+    for (int i = t; i <= left; i++)
+    {
+        if (i < n)
+        {
+            a[u] = i;
+            left -= i;
+
+            dfs(left, u + 1);
+
+            left += i;
+        }
+    }
+}
+
+
+int main()
+{
+    cin >> n;
+
+    a[0] = 1;
+    dfs(n, 1); //剩余要拆分的数为n，从下标1开始
+
+    return 0;
+}
+
+```
+
+    - 这题面，并没有给n的取值范围，标准应该用vector<>
+    - 比如，上面的写法，当输入n为20的时候，就会有问题了
+
+```cpp
+//一本通这题竟然没给n的取值范围..我日
+//无力吐槽，例题用数组做的，数组拍多大合适啊
+//ybt上，评测环境还没有vector头文件，用万能头才编译过的
+
+//当测试n=1000的时候，笔记本cpu就会开始炸
+//输出到文件里，文件要几百MB，而且几十秒也没结束
+
+//ybt上的测试点，最多需要8ms，测试点的n不会大，可能是一个两位数
+
+//那你例题拍1万的数组，是咋回事啊。。真敢拍啊
+
+#include <iostream>
+#include <vector>
+#include <cstdio>
+//#include <bits/stdc++.h>
+#include <fstream>
+
+using namespace std;
+
+vector<int> A;
+int n;
+
+void dfs(int left)
+{   
+    if (left == 0)   //left = 0在上一层循环的时候，是被push_back进去的
+    {   
+        cout << n << '=';
+        
+        vector<int>::iterator iter;
+        for (iter = A.begin() + 1; iter < A.end() - 1; iter++)
+            cout << *iter << '+';
+        
+        cout << *iter << endl;
+        
+        return ;
+    }
+    
+    vector<int>::iterator iter = A.end() - 1;
+    for (int i = *iter; i <= left; i++)
+        if (i < n)
+        {
+            A.push_back(i);
+            left -= i;
+
+            dfs(left);
+
+            A.pop_back();
+            left += i;
+        }
+}
+
+int main()
+{
+    cin >> n;
+
+    A.push_back(1);  //把1先push进去，占位，防止SE，也是要拆分出来的数要大于等于1
+    dfs(n);  //当前要拆分的数为n；
+
+    return 0;
+}
+```
+
+#### P2089 烤鸡
+    
+    - 枚举
+    
+```cpp
+#include<iostream>
+using namespace std;
+int zuoliao[10000][11];
+int ans;
+
+int main()
+{
+	int n;
+	cin>>n;
+	if(n>33)
+	{
+		cout<<"0";
+		return 0;
+	}
+	
+	for(int i1=1;i1<=3;i1++)
+		for(int i2=1;i2<=3;i2++)
+			for(int i3=1;i3<=3;i3++)
+	for(int i4=1;i4<=3;i4++)
+		for(int i5=1;i5<=3;i5++)
+			for(int i6=1;i6<=3;i6++)
+	for(int i7=1;i7<=3;i7++)
+		for(int i8=1;i8<=3;i8++)
+			for(int i9=1;i9<=3;i9++)
+				for(int i10=1;i10<=3;i10++)
+				{
+					if(n==i1+i2+i3+i4+i5+i6+i7+i8+i9+i10)
+					{
+						ans++;
+						zuoliao[ans][1]=i1;
+						zuoliao[ans][2]=i2;
+						zuoliao[ans][3]=i3;
+						zuoliao[ans][4]=i4;
+						zuoliao[ans][5]=i5;
+						zuoliao[ans][6]=i6;
+						zuoliao[ans][7]=i7;
+						zuoliao[ans][8]=i8;
+						zuoliao[ans][9]=i9;
+						zuoliao[ans][10]=i10;
+					}
+				}
+	
+	if(0==ans)
+		cout<<ans;
+	else
+	{
+		cout<<ans<<endl;
+		for(int i=1;i<=ans;i++)
+		{
+			for(int j=1;j<=10;j++)
+				cout<<zuoliao[i][j]<<" ";
+			cout<<endl;
+		}
+	}
+	
+	return 0;
+}
+
+```
+
+    - 搜索
+    - void dfs(int u, int s)， 1.下标u, 2.当前美味程度
+```cpp
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+
+using namespace std;
+
+int a[15]; //用来临时存方案
+int g[10000][15];  //用来存方案
+int ans;   //方案数，判断是否输出0的问题
+int n;
+
+void dfs(int u, int s)
+{
+    if (u > 10)
+    {
+        if (s == n)  //记录合法方案
+        {
+            ans++;
+            for (int i = 1; i <= 10; i++) g[ans][i] = a[i];
+        }
+
+        return ;
+    }
+
+    for (int i = 1; i <= 3; i++)
+    {
+        if (s + i > n) break;
+
+        a[u] = i;
+        dfs(u + 1, s + i);  //搜索下一个调料，当前美味程度+i
+        //a[u] = 0;    //可写可不写，不写也没关系，因为下一次搜索的时候会覆盖掉
+    }
+}
+
+int main()
+{
+    cin >> n;
+
+    //特判
+    if (n > 30) {cout << 0 << endl; return 0;}
+
+    dfs(1, 0);  //从第1个调料开始，当前美味程度为0
+
+    if (ans == 0) cout << 0 << endl;
+    else
+    {
+        cout << ans << endl;
+        for (int i = 1; i <= ans; i++)
+        {
+            for (int j = 1; j <= 10; j++)
+                cout << g[i][j] << ' ';
+            puts("");
+        }
+    }
+
+    return 0;
+}
+```
+
+
