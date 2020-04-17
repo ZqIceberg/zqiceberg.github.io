@@ -885,7 +885,7 @@ int main()
 - 多组测试数据
 - 同一个环只输出一次，不要旋转输出，把第一位是1钉住，这个环就不会动了
                                   
-```
+```cpp
 #include <iostream>
 #include <cstdio>
 #include <cstring>
@@ -1148,7 +1148,7 @@ int main()
 
 - 搜索
 - void dfs(int u, int s)， 1.下标u, 2.当前美味程度
-```
+```cpp
 #include <iostream>
 #include <cstdio>
 #include <cstring>
