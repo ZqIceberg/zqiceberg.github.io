@@ -65,10 +65,12 @@ int main()
 
 ```
 
-#### 位运算
+`位运算`
+
 ```
 & | ^  >> <<
 ```
+
 1. 移位运算
     1 << n = 2^n  n << 1 = 2n   n >> 1 = n/2.0下取整
 
@@ -80,6 +82,7 @@ int main()
     对整数n在二进制表示下的第k位赋值1, n | 1 << k
     对整数n在二进制表示下的第k位赋值0， n & (~(1 << k))
     特点：运算简便，节省程序运行的时间和空间
+
 
 ```cpp
 //dfs()两个参数，从0开始搜，用二进制记录状态
@@ -118,9 +121,13 @@ int main()
 ```
 
 #### AcWing93. 递归实现组合型枚举
+
 在指数型枚举的基础上，多一个剪枝
-递归：从n个数中选m个数，选够m个，或者剩下的数凑不够m个就剪枝掉。练习vector
-递归+状压：1.下标，2.当前选了几个数，3.用二进制记录状态(节省空间)
+1. 递归：从n个数中选m个数，选够m个，或者剩下的数凑不够m个就剪枝掉。练习vector
+2. 递归+状压：1.下标，2.当前选了几个数，3.用二进制记录状态(节省空间)
+
+1. 递归写法，使用vector
+
 ```cpp
 #include <iostream>
 #include <cstdio>
@@ -163,7 +170,10 @@ int main()
     return 0;
 }
 ```
+
+2. 使用二进制数表示状态的方法
 三个参数：1.下标，2.当前选了几个数，3.用二进制记录状态(节省空间)
+
 ```cpp
 #include <iostream>
 #include <cstdio>
@@ -199,10 +209,12 @@ int main()
 }
 ```
 #### P1036 选数
-NOIP2002
-求解子问题：选或不选的搜索方式
-递归：组合型枚举，选或者不选，再剪枝+判断质数模板（背）
-搜索：从头看到尾的一遍一遍的搜，用过就不选，没用过就选上，三个参数：还有多少没选，已选数字的和，当前下标
+
+NOIP2002，求解子问题：选或不选的搜索方式
+1. 递归：组合型枚举，选或者不选，再剪枝+判断质数模板（背）
+2. 搜索：从头看到尾的一遍一遍的搜，用过就不选，没用过就选上，三个参数：还有多少没选，已选数字的和，当前下标
+
+1. 递归写法
 
 ```cpp
 #include <iostream>
@@ -269,8 +281,11 @@ int main()
 }
 ```
 
+2. 搜索写法
+
 - 从头看到尾的，一条线的搜索方式
 - 三个参数：还有多少没选，已经选的多少，当前下标
+
 ```cpp
 #include <iostream>
 #include <cstdio>
@@ -316,9 +331,12 @@ int main()
 ```
 
 #### P1157 组合的输出
-重点讲搜索顺序的不同
+
+> 重点讲搜索顺序的不同
 - 一个一个看，选或不选，存起来
 - 不是一个坑一个坑的看，而是从前往后一遍一遍的看，就看当前这个数用没用过，用过就看下一个，没用就用一下
+
+1. 每次的方案都存起来
 
 vector的折腾用法，用vector套vector，来记录方案，vector<vector<int> > ANS;
 在问题边界处理的时候，存了起来，而不是直接输出（主要练习一下STL）
@@ -384,7 +402,8 @@ int main()
 }
 ```
 
-每一次搜索结果直接输出，不用存起来
+2. 每一次搜索结果，不用存起来，直接输出
+
 ```cpp
 #include <iostream>
 #include <cstdio>
@@ -428,11 +447,14 @@ void dfs(int x)  //当前选择的数是x
 }
 ```
 
-另一种搜索方式，不是一个坑一个坑的看，是从前往后一遍一遍的看
-就看当前这个数用没用过，用过就看下一个，没用就用一下
+3. 另一种搜索方式
+
+不是一个坑一个坑的看，是从前往后一遍一遍的看
+就看当前这个数用没用过，用过就看下一个，没用就用一下（其实这个就是课课通，深搜的搜索框架）
 
 前面的方法，是两个子问题，进行搜索
 下面这个方法，是记录st状态，使用，递归自身调用自身，回溯
+
 ```cpp
 #include <iostream>
 #include <cstdio>
@@ -496,11 +518,12 @@ int main()
 ```
 
 ### 课课通分书问题p473
+
 n个人n本书，每一行为这个人喜欢读书情况，0不喜欢，1喜欢
 设置一个st状态数组
 从第一个人开始搜，这一行从左到右看，这本书这人喜欢，并且没用过，那就用一下，搜索下一个人
 
-```
+```cpp
 #include <iostream>
 #include <fstream>
 #include <cstdio>
@@ -556,13 +579,13 @@ int main()
 
 ```
 
-
 #### 递归实现排列型枚举
+
 用数组来存储方案, 用bool数组来记录状态
 - 从1开始搜索，问题边界是n+1
 - 从0开始搜索，问题边界是n
 
-用vector来存方案，用二进制来记录状态
+1. 用数组来存方案，bool类型数组记录状态，从1开始搜索
     
 ```cpp
 #include <iostream>
@@ -607,7 +630,9 @@ int main()
 }
 
 ```
-从0开始dfs()
+
+2. 用数组存方案，从0开始dfs()，练习一下问题边界的不同
+
 ```cpp
 #include <iostream>
 #include <cstdio>
@@ -651,8 +676,8 @@ int main()
 
 ```
 
-- 用vector来存方案
-- 用二进制来记录状态
+3. 用vector来存方案，用二进制数来记录状态
+
 ```cpp
 #include <iostream>
 #include <cstdio>
@@ -692,176 +717,13 @@ int main()
 
 ```
 
-#### P1706 全排列问题
-一遍一遍的搜索顺序，用st数组标记是否选过
-```cpp
-#include <iostream>
-#include <cstdio>
-
-using namespace std;
-
-const int N = 10;
-
-int q[N], st[N];
-int n;
-
-void dfs(int x)
-{
-    if (x == n + 1)
-    {
-        for (int i = 1; i <= n; i++) printf("%5d", q[i]);
-        puts("");
-
-        return ;
-    }
-
-    for (int i = 1; i <= n; i++)
-    {
-        if (!st[i])
-        {
-            q[x] = i;
-            st[i] = 1;
-
-            dfs(x + 1);
-
-            st[i] = 0;
-        }
-    }
-}
-
-int main()
-{
-    cin >> n;
-
-    dfs(1);
-
-    return 0;
-}
-
-```
-
-#### T114580 奥数题
-    
-枚举，暴力枚举9位数字，最后做一次条件判断
-一遍一遍的搜索顺序
-
-
-```cpp
-#include<iostream>
-using namespace std;
-int main()
-{
-    int a,b,c,d,e,f,g,h,i,total=0;
-    //第一个数 
-    for(a=1;a<=9;a++)
-    for(b=1;b<=9;b++)
-    for(c=1;c<=9;c++)
-    //第二个数
-    for(d=1;d<=9;d++)
-    for(e=1;e<=9;e++)
-    for(f=1;f<=9;f++)
-    //第三个数
-    for(g=1;g<=9;g++)
-    for(h=1;h<=9;h++)
-    for(i=1;i<=9;i++)
-    {
-        if(a!=b && a!=c && a!=d && a!=e && a!=f && a!=g && a!=h && a!=i
-                &&b!=c && b!=d && b!=e && b!=f && b!=g && b!=h && b!=i
-                        && c!=d && c!=e && c!=f && c!=g && c!=h && c!=i
-                                &&d!=e && d!=f && d!=g && d!=h && d!=i
-                                        && e!=f && e!=g && e!=h && e!=i
-                                                && f!=g && f!=h && f!=i
-                                                        && g!=h && g!=i
-                                                                && h!=i
-                                && a*100+b*10+c+d*100+e*10+f==g*100+h*10+i )
-        {
-            total++;
-            printf("%d%d%d+%d%d%d=%d%d%d\n",a,b,c,d,e,f,g,h,i);
-        }
-    }
-    printf("%d",total/2);
-
-    return 0;
-}
-
-```
-                     
-> 选练
-- 重点讲不同的搜索顺序
-
-- 一遍一遍的搜索顺序
-- 提示：173+286=469 ，286 + 173=469 是同一组合
-                     
-```cpp
-#include <cstdio>
-#include <iostream>
-#include <fstream>
-
-using namespace std;
-
-int a[100],book[100],n=9;
-int c[1000];
-int ans;
-
-void dfs(int step){
-    int i;
-    if(step==n+1)
-    {
-        if((a[1]*100+a[2]*10+a[3]+a[4]*100+a[5]*10+a[6])==(a[7]*100+a[8]*10+a[9]))
-        {
-            c[a[1]*100+a[2]*10+a[3]]=1;  //避免重复计算
-    
-            if(c[a[4]*100+a[5]*10+a[6]]==0)
-            {
-                printf("%d + %d = %d\n",a[1]*100+a[2]*10+a[3],a[4]*100+a[5]*10+a[6],a[7]*100+a[8]*10+a[9]);
-                ans++;
-            }
-        }
-        return ;
-    }
-   
-    for(int i=1;i<=n;++i){
-        if(book[i]==0){
-            a[step]=i;
-            book[i]=1;
-   
-            dfs(step+1);
-            book[i]=0;
-        }
-    }
-    return ;
-}
-
-int main()
-{
-    dfs(1);
-
-    cout << endl << ans << endl;
-    return 0;
-}
-
-```
-
-#### 总结一下深度优先搜索的算法框架【核心奥义】
-```
-void dfs(int dep, 参数表)
-{
-    if (当前是目标状态)
-        输出解，或者做计数、评价处理
-    
-    for (int i = 1; i <= 状态的拓展可能树; i++)
-        if (第i种状态拓展可行)
-        {
-            维护自定义参数；
-            dfs(dep + 1, 参数表);
-        }
-}
-```
-                               
 #### T114582 素数环(next_permutation)
-一遍一遍的搜索顺序，path[]保存路径，st[]记录状态
-判断质数模板练习
-next_permutation，这个函数有返回值
+
+> 一本通的素数环
+
+1. 搜索
+- 一遍一遍的搜索顺序，path[]保存路径，st[]记录状态
+- 判断质数模板练习
 
 ```cpp
 #include <iostream>
@@ -920,7 +782,7 @@ int main()
 }
 ```
 
-> next_permutation 香香香
+2. next_permutation 香香香
     
 ```cpp
 #include <iostream>
@@ -976,14 +838,71 @@ int main()
 
     return 0;
 }
+```
 
+上面的这个写法，并不好，下面update一下
+next_permutation是有返回值的，当完成一个全排列返回false
+
+```cpp
+#include <iostream>
+#include <cstdio>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+
+const int N = 8;
+
+int a[] = {1, 2, 3, 4, 5, 6, 7, 8};
+int sum;
+
+bool check(int a, int b)
+{
+    int x = a + b;
+    if (x < 2) return false;
+    for (int i = 2; i <= x / i; i++)
+        if (x % i == 0) return false;
+    
+    return true;
+}
+
+int main()
+{
+    int T = 1;
+    for (int i = 1; i <= N; i++) T *= i;
+
+    while (next_permutation(a, a + N))
+    {
+        bool flag = true;;
+        for (int i = 0; i < N; i++)
+            if (!check(a[(i - 1 + N) % N], a[i]))
+            {   
+                flag = false;
+                break;
+            }
+
+        if (flag)
+        {
+            for (int i = 0; i < N; i++) printf("%d ", a[i]);
+            puts("");
+
+            sum++;
+        }       
+    }
+    
+    printf("%d\n", sum);
+    
+    return 0;
+}
 ```
 
 #### UVA524 素数环 Prime Ring Problem
 #### T114625 素数环 Prime Ring Problem
 
-同一个环只输出一次，不要旋转输出，把第一位是1钉住，这个环就不会动了。原题数据卡格式
-多组测试数据
+> UVA的素数环
+
+同一个环只输出一次，不要旋转输出，把第一位是1钉住，这个环就不会动了
+原题数据卡格式，多组测试数据
 
 ```cpp
 #include <iostream>
@@ -1049,15 +968,189 @@ int main()
 }
 ```
 
+
+
+#### P1706 全排列问题
+
+一遍一遍的搜索顺序，用st数组标记是否选过
+
+```cpp
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+const int N = 10;
+
+int q[N], st[N];
+int n;
+
+void dfs(int x)
+{
+    if (x == n + 1)
+    {
+        for (int i = 1; i <= n; i++) printf("%5d", q[i]);
+        puts("");
+
+        return ;
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        if (!st[i])
+        {
+            q[x] = i;
+            st[i] = 1;
+
+            dfs(x + 1);
+
+            st[i] = 0;
+        }
+    }
+}
+
+int main()
+{
+    cin >> n;
+
+    dfs(1);
+
+    return 0;
+}
+
+```
+
+#### T114580 奥数题
+    
+1. 枚举，暴力枚举9位数字，最后做一次条件判断
+
+```cpp
+#include<iostream>
+using namespace std;
+int main()
+{
+    int a,b,c,d,e,f,g,h,i,total=0;
+    //第一个数 
+    for(a=1;a<=9;a++)
+    for(b=1;b<=9;b++)
+    for(c=1;c<=9;c++)
+    //第二个数
+    for(d=1;d<=9;d++)
+    for(e=1;e<=9;e++)
+    for(f=1;f<=9;f++)
+    //第三个数
+    for(g=1;g<=9;g++)
+    for(h=1;h<=9;h++)
+    for(i=1;i<=9;i++)
+    {
+        if(a!=b && a!=c && a!=d && a!=e && a!=f && a!=g && a!=h && a!=i
+                &&b!=c && b!=d && b!=e && b!=f && b!=g && b!=h && b!=i
+                        && c!=d && c!=e && c!=f && c!=g && c!=h && c!=i
+                                &&d!=e && d!=f && d!=g && d!=h && d!=i
+                                        && e!=f && e!=g && e!=h && e!=i
+                                                && f!=g && f!=h && f!=i
+                                                        && g!=h && g!=i
+                                                                && h!=i
+                                && a*100+b*10+c+d*100+e*10+f==g*100+h*10+i )
+        {
+            total++;
+            printf("%d%d%d+%d%d%d=%d%d%d\n",a,b,c,d,e,f,g,h,i);
+        }
+    }
+    printf("%d",total/2);
+
+    return 0;
+}
+
+```
+                     
+2. 一遍一遍的搜索顺序
+- 重点讲不同的搜索顺序
+- 提示：173 + 286 = 469 ，286 + 173 = 469 是同一组合
+
+在去重问题上，我采用的是桶的思想
+也可以在处理问题边界的时候，输出的方案要满足前一个数小于后一个数，才输出，也可以避免重复的问题
+                     
+```cpp
+#include <cstdio>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int a[100],book[100],n=9;
+int c[1000];
+int ans;
+
+void dfs(int step){
+    int i;
+    if(step==n+1)
+    {
+        if((a[1]*100+a[2]*10+a[3]+a[4]*100+a[5]*10+a[6])==(a[7]*100+a[8]*10+a[9]))
+        {
+            c[a[1]*100+a[2]*10+a[3]]=1;  //避免重复计算
+    
+            if(c[a[4]*100+a[5]*10+a[6]]==0)
+            {
+                printf("%d + %d = %d\n",a[1]*100+a[2]*10+a[3],a[4]*100+a[5]*10+a[6],a[7]*100+a[8]*10+a[9]);
+                ans++;
+            }
+        }
+        return ;
+    }
+   
+    for(int i=1;i<=n;++i){
+        if(book[i]==0){
+            a[step]=i;
+            book[i]=1;
+   
+            dfs(step+1);
+            book[i]=0;
+        }
+    }
+    return ;
+}
+
+int main()
+{
+    dfs(1);
+
+    cout << endl << ans << endl;
+    return 0;
+}
+
+```
+
+#### 总结一下深度优先搜索的算法框架【核心奥义】
+
+这个算法框架，解释了我很久的一个疑问
+dfs里面，咋还进行枚举呢？ 原来是这个样子
+
+```cpp
+void dfs(int dep, 参数表)
+{
+    if (当前是目标状态)
+        输出解，或者做计数、评价处理
+    
+    for (int i = 1; i <= 状态的拓展可能数; i++)
+        if (第i种状态拓展可行)
+        {
+            维护自定义参数；
+            dfs(dep + 1, 参数表);
+        }
+}
+```
+                               
 ### 有两个参数的dfs()函数
 
 #### 自然数的拆分
-把一个自然数拆分成若干个自然数之和
+
+题意：把一个自然数拆分成若干个自然数之和
 void dfs(int left, int u),剩下要拆分的数，下标u。每次拆分使用的数，不能小于前一个数
 求解子问题，t等于前一个数，for(t枚举到left)，a[u] = i;left -= i;dfs(left, u + 1);
-
 题面并没有给n的取值范围，方案的存储应该使用vector<>
-----------------------------
+
+1. 一本通给出的代码
 
 两个参数void dfs(int left, int u); //剩余要拆分的数为left，从下标u开始
 fs(n, 1); //剩余要拆分的数为n，从下标1开始
@@ -1065,8 +1158,7 @@ a[0] = 1，下标从1开始搜索
 注意输出格式
     
 一本通书上例题，给出的std，a[10001] = {1}这么写好坑啊
-刚学的，以为是数组全部初始化成1，其实只是需要a[0]=1
-我太弱了..
+刚学的，以为是数组全部初始化成1，其实只是a[0]=1，我太弱了..
 
 ```cpp
 #include <iostream>
@@ -1121,19 +1213,14 @@ int main()
 }
 ```
 
+2. 使用vector<>记录方案
+
 - 这题面，并没有给n的取值范围，标准应该用vector<>
 - 比如，上面的写法，当输入n为20的时候，就会有问题了
 
-//一本通这题竟然没给n的取值范围..我日
-//无力吐槽，例题用数组做的，数组拍多大合适啊
-//ybt上，评测环境还没有vector头文件，用万能头才编译过的
-
-//当测试n=1000的时候，笔记本cpu就会开始炸
-//输出到文件里，文件要几百MB，而且几十秒也没结束
-
-//ybt上的测试点，最多需要8ms，测试点的n不会大，可能是一个两位数
-
-//那你例题拍1万的数组，是咋回事啊。。真敢拍啊
+当测试n=1000的时候，笔记本cpu就会开始炸
+输出到文件里，文件要几百MB，而且几十秒也没结束
+ybt上的测试点，最多需要8ms，测试点的n不会大，可能是一个两位数
 
 ```cpp
 #include <iostream>
@@ -1188,9 +1275,8 @@ int main()
 ```
 
 #### P2089 烤鸡
-枚举，每一位有三种选择，暴力出来，判断是否符合条件
-搜索，void dfs(int u, int s)， 1.下标u, 2.当前美味程度(第二个参数用来记录状态)
-求解子问题，for(1..3) a[u] = i; dfs(u + 1, s + i); 
+
+1. 枚举，每一位有三种选择，暴力出来，判断是否符合条件
     
 ```cpp
 #include<iostream>
@@ -1253,8 +1339,9 @@ int main()
 
 ```
 
-- 搜索
-- void dfs(int u, int s)， 1.下标u, 2.当前美味程度(第二个参数用来记录状态)
+2. 搜索，void dfs(int u, int s)， 1.下标u, 2.当前美味程度(第二个参数用来记录状态)
+求解子问题，for(1..3) a[u] = i; dfs(u + 1, s + i); 
+
 ```cpp
 #include <iostream>
 #include <cstdio>
@@ -1310,6 +1397,110 @@ int main()
             puts("");
         }
     }
+
+    return 0;
+}
+```
+
+#### 课课通体积p450
+
+就是一个选与不选的子问题，两个参数，维护选出来的体积，用桶排处理有多少种可能。太简单
+
+```cpp
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int a[25];       //n <= 20
+bool st[1010]; //20 * 50
+int n;
+int ans;
+
+void dfs(int u, int sum)
+{
+    //问题边界
+    if (u == n + 1)
+    {
+        st[sum] = true;
+        return ;
+    }
+
+    //求解子问题
+    dfs(u + 1, sum + a[u]);
+
+    dfs(u + 1, sum);
+}
+
+int main()
+{
+    cin >> n;
+    for (int i = 1; i <= n; i++) cin >> a[i];
+
+    dfs(1, 0);
+    
+    for (int i = 1; i <= 1000; i++) 
+        if (st[i]) ans++;
+
+    cout << ans << endl;
+
+    return 0;
+}
+```
+
+#### 课课通背包问题p456
+
+01背包问题，使用搜索方式，时间复杂度O(2^n)，背包问题的第一次接触
+课课通上给的代码，没有采用，不是很ok
+
+```cpp
+#include <iostream>
+#include <fstream>
+#include <cstdio>
+#include <vector>
+
+using namespace std;
+
+vector<int> ans;
+int w[110];
+int n, s;
+bool have_answer;
+
+void dfs(int u, int sum)
+{
+    //printf("---%d %d\n", u, sum);
+    if (sum > s || have_answer) return ;
+    
+    if (u == n + 1)
+    {
+        if (sum == s && !have_answer)
+        {
+            //输出方案
+            for (vector<int>::iterator it = ans.begin(); it != ans.end(); it++)
+                printf("%d ", *it);
+            puts("");
+            have_answer = true;
+        }
+
+        return ;
+    }
+
+    //求解子问题
+    ans.push_back(w[u]);
+    dfs(u + 1, sum + w[u]);
+    ans.pop_back();
+
+    dfs(u + 1, sum);
+}
+
+int main()
+{
+    cin >> n >> s;
+    for (int i = 1; i <= n; i++) cin >> w[i];
+
+    dfs(1, 0);
+
+    if (!have_answer) printf("No Answer!\n");
 
     return 0;
 }
