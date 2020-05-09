@@ -1505,3 +1505,79 @@ int main()
     return 0;
 }
 ```
+
+checker.cpp
+```cpp
+#include "testlib.h"
+#include <bits/stdc++.h>
+
+int main(int argc, char* argv[]) {
+    registerTestlibCmd(argc, argv);
+    int n = inf.readInt();
+    int s = inf.readInt();
+    int w[101];
+    for(int i = 1;i <= n;i++) w[i] = inf.readInt();
+    std::string shuchu = ans.readLine();
+    std::string str = "No Answer!";
+    if(str == shuchu)
+    {
+        std::string chengxushuchu = ouf.readLine();
+        if(str == chengxushuchu)
+        {
+            quitf(_ok, "The answer is correct.");
+        }
+        else
+        {
+            quitf(_wa,"The answer is wrong.");
+        }
+    }
+    else
+    {
+        int chengxushuchu[101];
+        int geshu = 0;
+//      for(geshu = 1;!ouf.eof();geshu++) chengxushuchu[geshu] = ouf.readInt();
+        
+        std::string textshuchu = ouf.readLine();
+        int tmp = 0;
+        for(int i = 0;i <= textshuchu.length();i++)
+        {
+            if(i == textshuchu.length() || textshuchu[i] == ' ' || textshuchu[i] == '\n')
+            {
+                if(tmp != 0) chengxushuchu[++geshu] = tmp;
+                tmp = 0;
+                continue;
+            }
+            tmp = tmp * 10 + textshuchu[i] - '0';
+        }
+        
+        std::sort(w+1,w+n+1);
+        std::sort(chengxushuchu+1,chengxushuchu+geshu+1);
+        for(int i = 1,j = 1;i <= n+1 && j <= geshu+1;i++)
+        {
+            if(j == geshu+1) break;
+            if(i == n + 1)
+            {
+                quitf(_wa,"The answer is wrong.");
+                return 0;
+            }
+            if(w[i] == chengxushuchu[j])
+            {
+                j++;
+            }
+        }
+        long long zonghe = 0;
+        for(int i = 1;i <= geshu;i++) zonghe += chengxushuchu[i];
+        if(zonghe == s)
+        {
+            quitf(_ok, "The answer is correct.");
+        }
+        else
+        {
+            quitf(_wa,"The answer is wrong.");
+        }
+    }
+    return 0;
+
+}
+
+```
