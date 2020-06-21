@@ -11,8 +11,6 @@
 *Code*
 
 ```cpp
-//订正
-
 #include <iostream>
 #include <vector>
 
@@ -61,7 +59,7 @@ int main()
 
 *Solution*
 
-这样构造偶数的情况：2 2 2 2 x（k-1个2，x是偶数），奇数的轻快：1 1 1 1 x（k-1个奇数，x是奇数）。
+这样构造偶数的情况：2 2 2 2 x（k-1个2，x是偶数），奇数的情况：1 1 1 1 x（k-1个奇数，x是奇数）。
 
 *Code*
 
