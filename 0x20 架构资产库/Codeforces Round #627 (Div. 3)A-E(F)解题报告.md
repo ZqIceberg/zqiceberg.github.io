@@ -228,15 +228,180 @@ int main()
 
 *Description*
 
-
+一个小伙子，有一个睡觉计划，要么正常睡，要么提前1小时睡，如果入睡时间在[l, r]之间，就是一次good睡眠，问最多能有几次good睡眠
 
 *Solution*
 
+This is a very standard dynamic programming problem. *1700
 
+anyway, it is not standard for me now
+
+dp的分析方法真的有很多种思考，并且调试也非常难，如果你转移方程想的不对，是很难通过调试代码调出来的。我们先这样思考一下：
+
+状态表示dp[ij]，前i次入睡，j次提前1小时入睡的所有选法，属性Max。初始状态dp[0,0] = 0
+
+状态计算，dp[ij]分为两个子集，提前睡 + 不提前睡
+
+提前睡：dp[i,j] = max(dp[i,j], dp[i-1,j-1] + check(s[i] - j));
+
+不提前睡：dp[i, j-1] = max(dp[i, j-1], dp[i-1, j-1] + check(s[i] - (j-1)));
+
+其中，int check(int x)判断x是不是好的入睡时间
 
 *Code*
 
+```cpp
+#include <bits/stdc++.h>
 
+using namespace std;
+
+const int N = 2010;
+
+int dp[N][N];
+int a[N], s[N];
+int n, h, l, r;
+
+int check(int x)
+{
+	int t = x % h;
+
+	if (t >= l && t <= r) return 1;
+	else return 0;
+}
+
+int main()
+{
+	scanf("%d%d%d%d", &n, &h, &l, &r);
+
+	for (int i = 1; i <= n; i++) scanf("%d", &a[i]);
+	for (int i = 1; i <= n; i++) s[i] = s[i - 1] + a[i];
+
+	memset(dp, -0x3f, sizeof dp);
+	dp[0][0] = 0;
+	for (int i = 1; i <= n; i ++)
+		for (int j = 1; j <= i; j++)
+		{
+			dp[i][j - 1] = max(dp[i][j - 1], dp[i - 1][j - 1] + check(s[i] - (j - 1)));
+			dp[i][j] = max(dp[i][j], dp[i - 1][j - 1] + check(s[i] - j));
+		}
+
+	int ans = 0;
+	for (int j = 0; j <= n; j++)
+		ans = max(ans, dp[n][j]);
+	
+	printf("%d\n", ans);
+
+	return 0;
+}
+```
+
+
+
+上面这个是这样转移的，从阶段i-1 转移到 阶段i，这里面我们遇到了dp[i,j-1]的式子，所以要注意边界不能是负数
+
+如果我们从阶段i转移到阶段i+1，那么我们在处理边界的时候，就简单一些，结果是一样的，给出示例代码
+
+```cpp
+#include <bits/stdc++.h>
+
+using namespace std;
+
+const int N = 2020;
+
+int dp[N][N];
+int a[N], s[N];
+int n, h, l, r;
+
+int check(int x)
+{
+	int t = x % h;
+	if (t >= l && t <= r) return 1;
+	else return 0;
+}
+
+int main()
+{
+	scanf("%d%d%d%d", &n, &h, &l, &r);
+
+	for (int i = 1; i <= n; i++) scanf("%d", &a[i]);
+
+	for (int i = 1; i <= n; i++) s[i] = s[i - 1] + a[i];
+
+	memset(dp, -1, sizeof dp);
+	
+  	dp[0][0] = 0;
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j <= i; j++)  //这里要注意只能枚举到i，否则就把后面的阶段影响了
+		{
+			dp[i + 1][j] = max(dp[i + 1][j], dp[i][j] + check(s[i + 1] - j));
+			dp[i + 1][j + 1] = max(dp[i + 1][j + 1], dp[i][j] + check(s[i + 1] - (j + 1))); //早睡1小时
+		}
+		
+	int ans = 0;
+	for (int j = 0; j <= n; j++)
+		ans = max(ans, dp[n][j]);
+
+	printf("%d\n", ans);
+
+	return 0;
+}
+```
+
+看了别人的代码，也有一些启发，还可以简单的写成
+
+```cpp
+#include <bits/stdc++.h>
+
+using namespace std;
+
+const int N = 2020;
+
+int dp[N][N];
+int a[N], s[N];
+int n, h, l, r;
+
+int check(int x)
+{
+	int t = x % h;
+	if (t >= l && t <= r) return 1;
+	else return 0;
+}
+
+int main()
+{
+	scanf("%d%d%d%d", &n, &h, &l, &r);
+
+	for (int i = 1; i <= n; i++) scanf("%d", &a[i]);
+
+	memset(dp, -1, sizeof dp);
+	
+  dp[0][0] = 0;
+	int sum = 0;
+	for (int i = 1; i <= n; i++)
+	{
+		sum += a[i];
+		for (int j = 0; j <= i; j++)
+		{
+			dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - 1]);
+			if (check(sum - j)) dp[i][j] += 1;
+		}
+	}
+
+	int ans = 0;
+	for (int j = 0; j <= n; j++)
+		ans = max(ans, dp[n][j]);
+
+	printf("%d\n", ans);
+
+	return 0;
+}
+```
+
+首先，处理前缀和的时候，随用随处理，这个倒无所谓
+
+dp[i,j] = max(dp[i-1,j], dp[i-1,j-1])，这个也比较好理解
+
+if (check(sum-j)) dp[i,j]+=1  如果第i次入睡，提前1小时满足好习惯的条件，就+=1，这样的状态转移方程更加的直观
 
 
 
