@@ -412,3 +412,83 @@ int main()
 	return 0;
 }
 ```
+
+
+
+UPD:再次学习官档后，更新一下代码，也更新一下表达逻辑
+
+“Now we can notice one important fact: in the optimal answer, the height of some cell remains unchanged.” 贪心的，在最佳答案中，至少有一个点的高度是不用变化就OK的，于是我们枚举 n*m个点，假设这个点是高度不变的点。然后用这个点倒推出a[0,0]的高度。
+
+注意对dp的初始化，要放在合适的位置上，这个地方调试了半个多小时。
+
+```cpp
+#include <bits/stdc++.h>
+
+using namespace std;
+
+typedef long long LL;
+
+const int N = 110;
+const long long INF = 1e18;
+
+int T;
+int n, m;
+LL a[N][N], dp[N][N];
+
+int main()
+{
+	scanf("%d", &T);
+
+	while (T--)
+	{
+		scanf("%d%d", &n, &m);
+
+		for (int i = 0; i < n; i++)
+			for (int j = 0; j < m; j++)
+				scanf("%lld", &a[i][j]);
+
+		LL ans = INF;
+		for (int x = 0; x < n; x++)
+			for (int y = 0; y < m; y++)
+			{
+        //这个地方，可别放错位置了
+				for (int i = 0; i < n; i++)
+					for (int j = 0; j < m; j++)
+						dp[i][j] = INF;
+
+				LL a00 = a[x][y] - x - y;
+				if (a00 > a[0][0]) continue; //倒推比a[0,0]还要高，那么从00是走不到xy的
+
+				dp[0][0] = a[0][0] - a00;
+
+				//printf("--%d %d %lld %lld\n", x, y, a00, dp[0][0]);
+
+				for (int i = 0; i < n; i++)
+					for (int j = 0; j < m; j++)
+					{
+						LL high = a00 + i + j;
+						if (high > a[i][j]) continue;  //a[i][j]无法通过增加高度变成high
+
+						if (i > 0) dp[i][j] = min(dp[i][j], dp[i - 1][j] + a[i][j] - high);
+						if (j > 0) dp[i][j] = min(dp[i][j], dp[i][j - 1] + a[i][j] - high);
+					}
+				/*
+				for (int i = 0; i < n; i++)
+				{
+					for (int j = 0; j < m; j++)
+						printf("%lld ", dp[i][j]);
+					puts("");
+				}
+				puts("");
+				*/
+
+				ans = min(ans, dp[n - 1][m - 1]);
+			}
+
+		printf("%lld\n", ans);
+	}
+
+	return 0;
+}
+```
+
