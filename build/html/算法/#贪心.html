@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>2. 贪心（greedy algorithm） &mdash; Recommonmark 0.7.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. 搜索与回溯" href="%23%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html" />
+    <link rel="prev" title="1. 递归" href="%23%E9%80%92%E5%BD%92.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Recommonmark
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="%23%E9%80%92%E5%BD%92.html">1. 递归</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. 贪心（greedy algorithm）</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">2.1. 概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">2.2. 《一本通》题目</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.2.1. 【例6.1】排队接水</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#noip2002">2.2.2. 【例6.2】均分纸牌(Noip2002)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#noip1994">2.2.3. 【例6.3】删数问题(Noip1994)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#noip1999">2.2.4. 【例6.4】拦截导弹问题(Noip1999)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">2.2.5. 【例6.5】活动选择</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">2.2.6. 【例6.6】整数区间</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#an-easy-problem">2.2.7. An Easy Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">2.2.8. 最大子矩阵</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">2.2.9. 金银岛</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">2.2.10. 装箱问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ride-to-office">2.2.11. Ride to Office</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">2.2.12. 书架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">2.2.13. 电池的寿命</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">2.2.14. 寻找平面上的极大点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">2.2.15. 最小新整数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crossing-river">2.2.16. Crossing   River</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">2.2.17. 接水问题</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">2.3. 其他题目</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#priority-queue-int">2.3.1. 哈夫曼编码问题，priority_queue<int></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">2.3.2. 国王游戏（提高组）（这个证明难）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="%23%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html">3. 搜索与回溯</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">4. 搜索与回溯</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Recommonmark</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><span class="section-number">2. </span>贪心（greedy algorithm）</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/算法/" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="greedy-algorithm">
+<h1><span class="section-number">2. </span>贪心（greedy algorithm）<a class="headerlink" href="#greedy-algorithm" title="Permalink to this headline">¶</a></h1>
+<p>=======</p>
+<div class="section" id="id1">
+<h2><span class="section-number">2.1. </span>概念<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>每一步行动总是按某种指标选取最优的操作进行，该指标只看眼前，并不考虑可能造成的影响。可想而知，并不是所有的时候贪心法都能获得最优解，所以一般使用贪心法的时候，都要确保自己能证明其正确性。</p>
+<p>常见题型：</p>
+<ol class="simple">
+<li><p>按某种顺序排序后，然后逐个取(sort，多关键字排序，重载小于符号)</p></li>
+<li><p>每次取集合中的最大/最小，更新答案（使用priority_queue<int>）</p></li>
+</ol>
+<p><strong>贪心在最优子结构的问题中尤为有效</strong>（最优子结构的意思是问题能够分解成子问题来解决，子问题的最优解能递推到最终问题的最优解。）</p>
+<p><strong>贪心与dp的区别</strong>，贪心对每个子问题的解决方案都做出选择，不能回退。dp会保存以前的运算结果，并根据以前的结果进行选择，有回退功能。有的时候，贪心并不是正确的，比如01背包问题。</p>
+<blockquote>
+<div><p>贪心问题特别像逻辑题</p>
+</div></blockquote>
+<p>贪心法证明的常见方法</p>
+<ul class="simple">
+<li><p>反证法(假设、调整、做差)</p></li>
+<li><p>A&gt;=B, A &lt;= B, 证明A=B</p></li>
+<li><p>数学归纳法</p></li>
+</ul>
+<blockquote>
+<div><p>严谨的推理，是需要训练的。考场上，不需要会证明。</p>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">2.2. </span>《一本通》题目<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3><span class="section-number">2.2.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1319">【例6.1】排队接水</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>排序类型</p>
+</div>
+<div class="section" id="noip2002">
+<h3><span class="section-number">2.2.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1320">【例6.2】均分纸牌(Noip2002)</a><a class="headerlink" href="#noip2002" title="Permalink to this headline">¶</a></h3>
+<p>按题意for一遍</p>
+</div>
+<div class="section" id="noip1994">
+<h3><span class="section-number">2.2.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1321">【例6.3】删数问题(Noip1994)</a><a class="headerlink" href="#noip1994" title="Permalink to this headline">¶</a></h3>
+<p>贪心：干掉下降子序列第一个数字。或者模拟取找</p>
+</div>
+<div class="section" id="noip1999">
+<h3><span class="section-number">2.2.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1322">【例6.4】拦截导弹问题(Noip1999)</a><a class="headerlink" href="#noip1999" title="Permalink to this headline">¶</a></h3>
+<p>LIS，下降子序列个数 和 最长上升子序列长度 对偶</p>
+</div>
+<div class="section" id="id4">
+<h3><span class="section-number">2.2.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1323">【例6.5】活动选择</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>排序类型，数轴上的问题</p>
+</div>
+<div class="section" id="id5">
+<h3><span class="section-number">2.2.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1324">【例6.6】整数区间</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>排序类型，数轴上的问题，会用到双指针方法</p>
+</div>
+<div class="section" id="an-easy-problem">
+<h3><span class="section-number">2.2.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1223">An Easy Problem</a><a class="headerlink" href="#an-easy-problem" title="Permalink to this headline">¶</a></h3>
+<p>暴力枚举，学习使用位运算</p>
+</div>
+<div class="section" id="id6">
+<h3><span class="section-number">2.2.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1224">最大子矩阵</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>纯暴力会T，学习使用二维前缀和</p>
+</div>
+<div class="section" id="id7">
+<h3><span class="section-number">2.2.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1225">金银岛</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>排序类型，去性价比最高的</p>
+</div>
+<div class="section" id="id8">
+<h3><span class="section-number">2.2.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1226">装箱问题</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>小学奥数问题，手搓模拟画图找规律.//https://blog.csdn.net/zqhf123/article/details/104254143</p>
+</div>
+<div class="section" id="ride-to-office">
+<h3><span class="section-number">2.2.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1227">Ride to Office</a><a class="headerlink" href="#ride-to-office" title="Permalink to this headline">¶</a></h3>
+<p>poj题目，题干描述有bug，误以为从0时出发。不如去看英文版</p>
+</div>
+<div class="section" id="id9">
+<h3><span class="section-number">2.2.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1228">书架</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>排序类型</p>
+</div>
+<div class="section" id="id10">
+<h3><span class="section-number">2.2.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1229">电池的寿命</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>题干描述和样例，让我误以为电池只有3小时、5小时电量。还是读题障碍</p>
+</div>
+<div class="section" id="id11">
+<h3><span class="section-number">2.2.14. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1230">寻找平面上的极大点</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>暴力枚举，n只有100，或者sort一遍后枚举</p>
+</div>
+<div class="section" id="id12">
+<h3><span class="section-number">2.2.15. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1231">最小新整数</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p>和前面删数是一个类型，换成了多组测试数据</p>
+</div>
+<div class="section" id="crossing-river">
+<h3><span class="section-number">2.2.16. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1232">Crossing   River</a><a class="headerlink" href="#crossing-river" title="Permalink to this headline">¶</a></h3>
+<p>小学奥数类型，对过河问题学习了一手</p>
+</div>
+<div class="section" id="id13">
+<h3><span class="section-number">2.2.17. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1233">接水问题</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<p>priority_queue，注意会写小根堆</p>
+</div>
+</div>
+<div class="section" id="id14">
+<h2><span class="section-number">2.3. </span>其他题目<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="priority-queue-int">
+<h3><span class="section-number">2.3.1. </span>哈夫曼编码问题，priority_queue<int><a class="headerlink" href="#priority-queue-int" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id15">
+<h3><span class="section-number">2.3.2. </span>国王游戏（提高组）（这个证明难）<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="%23%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html" class="btn btn-neutral float-right" title="3. 搜索与回溯" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%23%E9%80%92%E5%BD%92.html" class="btn btn-neutral float-left" title="1. 递归" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2015, Luca Barbato, Eric Holscher, and contributors.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

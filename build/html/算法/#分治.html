@@ -1,0 +1,414 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>分治 &mdash; Recommonmark 0.7.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Recommonmark
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="%23%E9%80%92%E5%BD%92.html">1. 递归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%23%E8%B4%AA%E5%BF%83.html">2. 贪心（greedy algorithm）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%23%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html">3. 搜索与回溯</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">4. 搜索与回溯</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Recommonmark</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>分治</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/算法/" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p>[toc]</p>
+<div class="section" id="id1">
+<h1>分治<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>概念<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>分治，将较大规模的问题分解成几个较小规模的问题。</p>
+</div></blockquote>
+<p>引入例子：猜数字游戏，从几楼扔下手机不会摔坏，查找C盘中最大的文件，黄页电话簿，翻字典。</p>
+<p>涉及到的算法有，快速排序(先找分界点再递归)，归并排序(先递归再合并)，快速幂(二进制的理解)，二分查找(有序序列中查找元素)，二分答案(check函数的模拟)，分形(找规律)，STL的使用(下标问题和避免SE)。进阶的有，三分，分数规划。</p>
+<p>其中，二分答案可以用来处理“最大的最小”或“最小的最大”问题。（记录答案的二分写法，check()函数经常写不准确的问题）</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//这个章节，模板内容更多一些，汇总一下模板</span>
+
+<span class="kt">void</span> <span class="nf">quick_sort</span><span class="p">(</span><span class="kt">int</span> <span class="n">q</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&gt;=</span> <span class="n">r</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">do</span> <span class="n">i</span> <span class="o">++</span> <span class="p">;</span> <span class="k">while</span> <span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">);</span>
+        <span class="k">do</span> <span class="n">j</span> <span class="o">--</span> <span class="p">;</span> <span class="k">while</span> <span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">)</span> <span class="n">swap</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="n">quick_sort</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">quick_sort</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="kt">int</span> <span class="n">q</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&gt;=</span> <span class="n">r</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="n">r</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">merge_sort</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">mid</span><span class="p">);</span>
+    <span class="n">merge_sort</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="n">l</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">mid</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">q</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="n">tmp</span><span class="p">[</span><span class="n">k</span> <span class="o">++</span> <span class="p">]</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="n">i</span> <span class="o">++</span> <span class="p">];</span>
+        <span class="k">else</span> <span class="n">tmp</span><span class="p">[</span><span class="n">k</span> <span class="o">++</span> <span class="p">]</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="n">j</span> <span class="o">++</span> <span class="p">];</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">mid</span><span class="p">)</span> <span class="n">tmp</span><span class="p">[</span><span class="n">k</span> <span class="o">++</span> <span class="p">]</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="n">i</span> <span class="o">++</span> <span class="p">];</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">)</span> <span class="n">tmp</span><span class="p">[</span><span class="n">k</span> <span class="o">++</span> <span class="p">]</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="n">j</span> <span class="o">++</span> <span class="p">];</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">l</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">;</span> <span class="n">i</span> <span class="o">++</span><span class="p">,</span> <span class="n">j</span> <span class="o">++</span> <span class="p">)</span> <span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">//整数二分</span>
+<span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span><span class="cm">/* ... */</span><span class="p">}</span> <span class="c1">// 检查x是否满足某种性质</span>
+
+<span class="c1">// 区间[l, r]被划分成[l, mid]和[mid + 1, r]时使用：</span>
+<span class="kt">int</span> <span class="nf">bsearch_1</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="n">r</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">check</span><span class="p">(</span><span class="n">mid</span><span class="p">))</span> <span class="n">r</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span>    <span class="c1">// check()判断mid是否满足性质</span>
+        <span class="k">else</span> <span class="n">l</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">l</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 区间[l, r]被划分成[l, mid - 1]和[mid, r]时使用：</span>
+<span class="kt">int</span> <span class="nf">bsearch_2</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="n">r</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">check</span><span class="p">(</span><span class="n">mid</span><span class="p">))</span> <span class="n">l</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span>
+        <span class="k">else</span> <span class="n">r</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">l</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="c1">//浮点数二分，还有循环50次的写法</span>
+<span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span><span class="cm">/* ... */</span><span class="p">}</span> <span class="c1">// 检查x是否满足某种性质</span>
+
+<span class="kt">double</span> <span class="nf">bsearch_3</span><span class="p">(</span><span class="kt">double</span> <span class="n">l</span><span class="p">,</span> <span class="kt">double</span> <span class="n">r</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">;</span>   <span class="c1">// eps 表示精度，取决于题目对精度的要求</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">&gt;</span> <span class="n">eps</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">check</span><span class="p">(</span><span class="n">mid</span><span class="p">))</span> <span class="n">r</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span>
+        <span class="k">else</span> <span class="n">l</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">l</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//STL</span>
+<span class="kt">int</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">lower_bound</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">a</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">upper_bound</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">a</span><span class="p">;</span>
+
+<span class="c1">//求 m^k mod p，时间复杂度 O(logk)。</span>
+<span class="kt">int</span> <span class="nf">qmi</span><span class="p">(</span><span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">%</span> <span class="n">p</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">m</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">k</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">)</span> <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="o">*</span> <span class="n">t</span> <span class="o">%</span> <span class="n">p</span><span class="p">;</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span> <span class="o">%</span> <span class="n">p</span><span class="p">;</span>
+        <span class="n">k</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>《一本通》题目<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1325">【例7.4】 循环比赛日程表</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>分形</p>
+</div>
+<div class="section" id="mod">
+<h3><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1326">【例7.5】 取余运算（mod）</a><a class="headerlink" href="#mod" title="Permalink to this headline">¶</a></h3>
+<p>快速幂</p>
+</div>
+<div class="section" id="id5">
+<h3><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1327">【例7.6】黑白棋子的移动</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>这道题目研究很长时间。找规律，写代码都花费了较长时间</p>
+</div>
+<div class="section" id="id6">
+<h3><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1328">【例7.7】光荣的梦想</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>逆序对</p>
+</div>
+<div class="section" id="id7">
+<h3><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1234">2011</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>快速幂</p>
+</div>
+<div class="section" id="k">
+<h3><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1235">输出前k大的数</a><a class="headerlink" href="#k" title="Permalink to this headline">¶</a></h3>
+<p>排序</p>
+</div>
+<div class="section" id="id8">
+<h3><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1236">区间合并</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>读懂题意后，排序，从左往右贪心</p>
+</div>
+<div class="section" id="id9">
+<h3><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1237">求排列的逆序数</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>逆序对</p>
+</div>
+<div class="section" id="id10">
+<h3><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1238">一元三次方程求解</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//check函数是f(x) * f(mid) &lt; 0， 而不是f(mid) == 0之类的</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h3><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1239">统计数字</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>不能用STL，排序一下，双指针就行了</p>
+</div>
+<div class="section" id="id12">
+<h3><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1240">查找最接近的元素</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p>数列上进行二分查找，找边界</p>
+</div>
+<div class="section" id="id13">
+<h3><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1241">二分法求函数的零点</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<p>二分答案（浮点数二分模板，写check函数）</p>
+</div>
+<div class="section" id="id14">
+<h3><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1242">网线主管</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>二分答案（整数二分模板，写check函数）</p>
+</div>
+<div class="section" id="id15">
+<h3><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1243">月度开销</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<p>二分答案，根据题意写check函数，这块经常写不好。</p>
+<p>理解一下，数轴上表示单调性的图，右侧区间都是答案。（如果月度开销小了话，就会需要超过M个预算周期，就不满足条件了）</p>
+</div>
+<div class="section" id="id16">
+<h3><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1244">和为给定数</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<p>数轴上二分查找就可以了，唯独这道题目不能用STL</p>
+</div>
+<div class="section" id="id17">
+<h3><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1245"> 不重复地输出数</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<p>直接用set<int>处理了</p>
+</div>
+<div class="section" id="id18">
+<h3><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1246">膨胀的木棍</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<p>花费了很长时间的题目，不太了解几何概念。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>	<span class="c1">//公式，弧度，角度，PII，acos(-1)=PII，弧长= 半径*弧度</span>
+	<span class="c1">//l = degree * r    圆心角弧度数 * 半径</span>
+	<span class="c1">//r * sin(degree) * 2 = d;  弦长</span>
+	<span class="c1">//so, 2 * sin(degree) * l = d * degree</span>
+
+	<span class="kt">double</span> <span class="n">L2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">N</span> <span class="o">*</span> <span class="n">C</span><span class="p">)</span> <span class="o">*</span> <span class="n">L</span><span class="p">;</span> <span class="c1">//弧长</span>
+	<span class="kt">double</span> <span class="n">l</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">acos</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">),</span> <span class="n">ans</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>  <span class="c1">//0, 180度</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">&gt;</span> <span class="n">eps</span><span class="p">){</span>
+		<span class="kt">double</span> <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">L</span> <span class="o">*</span> <span class="n">mid</span> <span class="o">+</span> <span class="n">eps</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">mid</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">L2</span><span class="p">)</span> <span class="n">l</span> <span class="o">=</span> <span class="n">mid</span><span class="p">,</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span>
+		<span class="k">else</span> <span class="n">r</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="kt">double</span> <span class="n">banjing</span> <span class="o">=</span> <span class="n">L2</span> <span class="o">/</span> <span class="n">ans</span><span class="p">;</span>
+	<span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">banjing</span> <span class="o">-</span> <span class="n">banjing</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">ans</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.3lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id19">
+<h3><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1247">河中跳房子</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<p>noip2015tg</p>
+<p>二分答案，这道题目做的时候，还是输在了写check函数上</p>
+<p>1.怎么去表达搬走石头的操作 2.求的是最长的最短距离，也就是mid左侧都是答案，注意边界的写法</p>
+<p>我做的时候，最初的时候，理解成了mid的右侧是答案，造成了很多迷惑。后来发现mid左侧是答案后，就迎刃而解了</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2015, Luca Barbato, Eric Holscher, and contributors.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

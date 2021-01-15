@@ -1,6 +1,5 @@
-[toc]
-
 # 贪心（greedy algorithm）
+=======
 
 ### 概念
 

@@ -1,13 +1,13 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="zh-CN" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>信息学奥赛普及组21天突破 &mdash; 信息学奥赛普及组21天突破 1.0 文档</title>
+  <title>信息学奥赛普及组21天突破 &mdash; 信息学奥赛普及组21天突破 0.7.1 documentation</title>
   
 
   
@@ -32,14 +32,13 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/translations.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-    <link rel="index" title="索引" href="genindex.html" />
-    <link rel="search" title="搜索" href="search.html" />
-    <link rel="next" title="#分治" href="%23%E5%88%86%E6%B2%BB.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. 高精度" href="%E7%AE%97%E6%B3%95/%E9%AB%98%E7%B2%BE%E5%BA%A6.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -61,6 +60,10 @@
 
           
             
+            
+              <div class="version">
+                0.7.1
+              </div>
             
           
 
@@ -84,9 +87,15 @@
               
             
             
-              <p class="caption"><span class="caption-text">基础算法:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="%23%E5%88%86%E6%B2%BB.html">#分治</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E9%AB%98%E7%B2%BE%E5%BA%A6.html">1. 高精度</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E9%80%92%E6%8E%A8.html">2. 递推</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E9%80%92%E5%BD%92.html">3. recursive 递归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83.html">4. greedy algorithm 贪心</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html">5. dfs and backtracking 搜索与回溯</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E5%88%86%E6%B2%BB.html">6. 分治</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">7. bfs宽度优先搜索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html">8. dp动态规划</a></li>
 </ul>
 
             
@@ -155,20 +164,56 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>信息学奥赛普及组21天突破<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1>信息学奥赛普及组21天突破<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">基础算法:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="%23%E5%88%86%E6%B2%BB.html">#分治</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E9%AB%98%E7%B2%BE%E5%BA%A6.html">1. 高精度</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E9%80%92%E6%8E%A8.html">2. 递推</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E9%80%92%E6%8E%A8.html#id2">2.1. 概念</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E9%80%92%E5%BD%92.html">3. recursive 递归</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E9%80%92%E5%BD%92.html#id1">3.1. 概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E9%80%92%E5%BD%92.html#id2">3.2. 《进阶指南》题目</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83.html">4. greedy algorithm 贪心</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83.html#id1">4.1. 概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83.html#id2">4.2. 《一本通》题目</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83.html#id14">4.3. 其他题目</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html">5. dfs and backtracking 搜索与回溯</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html#id1">5.1. 概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html#id2">5.2. 《一本通》题目</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E5%88%86%E6%B2%BB.html">6. 分治</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E5%88%86%E6%B2%BB.html#id2">6.1. 概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E5%88%86%E6%B2%BB.html#id3">6.2. 《一本通》题目</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">7. bfs宽度优先搜索</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html#id1">7.1. 概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html#id2">7.2. 《一本通》题目</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html#id11">7.3. 《517》题目</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html">8. dp动态规划</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html#c-898">8.1. C. 数塔问题, 898. 数字三角形</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html#a-acwing-895">8.2. A. 最长递增子序列, AcWing 895. 最长上升子序列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html#b-acwing-897">8.3. B. 最长公共子序列, AcWing 897. 最长公共子序列</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="永久链接至标题">¶</a></h1>
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">索引</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">模块索引</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">搜索页面</span></a></p></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </div>
 
@@ -178,14 +223,14 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="%23%E5%88%86%E6%B2%BB.html" class="btn btn-neutral float-right" title="#分治" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%E7%AE%97%E6%B3%95/%E9%AB%98%E7%B2%BE%E5%BA%A6.html" class="btn btn-neutral float-right" title="1. 高精度" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; 版权所有 2021, zqiceberg.
+        &#169; Copyright 2021, zqiceberg.
 
     </p>
   </div>

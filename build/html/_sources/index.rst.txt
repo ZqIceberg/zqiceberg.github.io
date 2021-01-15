@@ -8,12 +8,16 @@
 
 .. toctree::
    :maxdepth: 2
-   :caption: 基础算法:
+   :numbered:
 
-   #分治
-
-
-
+   算法/高精度.md
+   算法/递推.md
+   算法/递归.md
+   算法/贪心.md
+   算法/搜索与回溯.md
+   算法/分治.md
+   算法/宽度优先搜索.md
+   算法/动态规划.md
 
 Indices and tables
 ==================
