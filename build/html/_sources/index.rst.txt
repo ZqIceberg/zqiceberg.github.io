@@ -8,7 +8,6 @@ Welcome to 信息学奥赛普及组21天突破's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
 
 
