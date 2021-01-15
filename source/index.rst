@@ -3,11 +3,15 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to 信息学奥赛普及组21天突破's documentation!
+信息学奥赛普及组21天突破
 ====================================================
 
 .. toctree::
    :maxdepth: 2
+   :caption: 基础算法:
+
+   #分治
+
 
 
 
