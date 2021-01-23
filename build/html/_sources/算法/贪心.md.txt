@@ -1,6 +1,4 @@
 # greedy algorithm 贪心
-=======
-
 ### 概念
 
 每一步行动总是按某种指标选取最优的操作进行，该指标只看眼前，并不考虑可能造成的影响。可想而知，并不是所有的时候贪心法都能获得最优解，所以一般使用贪心法的时候，都要确保自己能证明其正确性。
@@ -101,6 +99,26 @@ priority_queue，注意会写小根堆
 
 ### 其他题目
 
-##### 哈夫曼编码问题，priority_queue<int>
+##### [[NOIP2004 普及组\] 火星人](https://www.luogu.com.cn/problem/P1088)
 
-##### 国王游戏（提高组）（这个证明难）
+/
+
+##### [[NOIP2007 普及组] 纪念品分组](https://www.luogu.com.cn/problem/P1094)
+
+/
+
+##### [[NOIP2008 普及组\] 排座椅](https://www.luogu.com.cn/problem/P1056)
+
+/
+
+##### [P2672 [NOIP2015 普及组] 推销员](https://www.luogu.com.cn/problem/P2672)
+
+/
+
+[P1090 [NOIP2004 提高组] 合并果子 / [USACO06NOV] Fence Repair G](https://www.luogu.com.cn/problem/P1090)
+
+/哈夫曼编码问题，`priority_queue<int>`
+
+##### [P1080 [NOIP2012 提高组] 国王游戏](https://www.luogu.com.cn/problem/P1080)
+
+##### /

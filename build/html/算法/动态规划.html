@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>8. dp动态规划 &mdash; 信息学奥赛普及组21天突破 0.7.1 documentation</title>
+  <title>11. dp动态规划 &mdash; 信息学奥赛普及组21天突破 0.7.1 documentation</title>
   
 
   
@@ -38,7 +38,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="7. bfs宽度优先搜索" href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html" /> 
+    <link rel="next" title="12. stack栈" href="%E6%A0%88.html" />
+    <link rel="prev" title="10. bfs宽度优先搜索" href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -88,19 +89,46 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html">1. 高精度</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E6%8E%A8.html">2. 递推</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E5%BD%92.html">3. recursive 递归</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E8%B4%AA%E5%BF%83.html">4. greedy algorithm 贪心</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html">5. dfs and backtracking 搜索与回溯</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%88%86%E6%B2%BB.html">6. 分治</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">7. bfs宽度优先搜索</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">8. dp动态规划</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#c-898">8.1. C. 数塔问题, 898. 数字三角形</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#a-acwing-895">8.2. A. 最长递增子序列, AcWing 895. 最长上升子序列</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#b-acwing-897">8.3. B. 最长公共子序列, AcWing 897. 最长公共子序列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.html">1. time complexity时间复杂度</a></li>
+<li class="toctree-l1"><a class="reference internal" href="STL.html">2. stl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html">3. high accuracy高精度</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%8E%92%E5%BA%8F.html">4. sortings排序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E6%8E%A8.html">5. recursion 递推</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E5%BD%92.html">6. recursive 递归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html">7. dfs and backtracking 搜索与回溯</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E8%B4%AA%E5%BF%83.html">8. greedy algorithm 贪心</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%88%86%E6%B2%BB.html">9. divide and conquer分治</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">10. bfs宽度优先搜索</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">11. dp动态规划</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">11.1. 概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">11.2. 线性dp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">11.2.1. 895. 最长上升子序列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">11.2.2. 897. 最长公共子序列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">11.2.3. 898. 数字三角形</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">11.3. 背包</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">11.3.1. 0/1背包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">11.3.2. 完全背包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">11.3.3. 多重背包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">11.3.4. 分组背包</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">11.4. 区间dp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">11.5. 树形dp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">11.5.1. 状态压缩dp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">11.5.2. 倍增优化dp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A0%88.html">12. stack栈</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%98%9F%E5%88%97.html">13. queue队列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A0%91.html">14. trees树</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA.html">15. graph图论</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%8C%E5%88%9B%E5%BB%BAcpp%E6%96%87%E4%BB%B6%E7%9A%84%E8%BF%87%E7%A8%8B.html">0x01 编辑器的使用，创建cpp文件的过程.md</a></li>
 </ul>
 
             
@@ -149,7 +177,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li><span class="section-number">8. </span>dp动态规划</li>
+      <li><span class="section-number">11. </span>dp动态规划</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -169,18 +197,74 @@
            <div itemprop="articleBody">
             
   <div class="section" id="dp">
-<h1><span class="section-number">8. </span>dp动态规划<a class="headerlink" href="#dp" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="c-898">
-<h2><span class="section-number">8.1. </span>C. 数塔问题, 898. 数字三角形<a class="headerlink" href="#c-898" title="Permalink to this headline">¶</a></h2>
-<p>acwing上的数据更丰富一些，需要对dp进行初始化成负无穷，每一行0 ~ i+1都要初始化</p>
+<h1><span class="section-number">11. </span>dp动态规划<a class="headerlink" href="#dp" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><span class="section-number">11.1. </span>概念<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>现在，同学们已经对“问题与状态空间”之间的类比有了更深入的认识。</p>
+<ul class="simple">
+<li><p>递推和递归是两种遍历状态空间的基本方法</p></li>
+<li><p>搜索算法，处理指数级别等非多项式复杂度的问题</p></li>
+<li><p>动态规划算法，针对满足特定条件的一类问题，对各状态维度进行分阶段、有顺序、无重复、决策性的遍历求解</p></li>
+</ul>
+<p><strong>动态规划</strong>，把原问题视作若干个重叠子问题的逐层递进，每个子问题的求解过程都构成一个“<strong>阶段</strong>”。在完成前一个阶段的计算后，动态规划才会执行下一阶段的计算。为了保证这些计算能够按顺序、不重复地进行，动态规划要求已经求解的子问题不受后续阶段的影响。（这个叫做“无后效性”）动态规划对状态空间的遍历，构成了一张有向无环图，遍历顺序就是该有向无环图的一个拓扑序。（有向无环图中的node，对应问题中的“<strong>状态</strong>”。图中的edge对应状态之间的“<strong>转移</strong>”，转移的选取就是动态规划中的“<strong>决策</strong>”）</p>
+<p>“<strong>最优子结构性质</strong>”，求最优解的问题时，下一阶段的最优解应该能够由前面各阶段子问题的最优解导出。在阶段计算完成时，动态规划只会在每个状态上保留与最终解集相关的部分代表信息，这些代表信息应该具有可重复的求解过程，并能够导出后续阶段的代表信息。这样一来，动态规划对状态的抽象和子问题的重叠递进才能够起到优化作用。</p>
+<p><strong>状态、阶段、决策</strong>是构成动态规划算法的三要素。</p>
+<p><strong>子问题重叠性、无后效性、最优子结构</strong>是问题能用动态规划求解的三个基本条件。</p>
+<p>动态规划算法把相同的计算过程作用于各阶段的同类子问题，就好像把一个固定的公式的格式相同的若干输入数据上运行。定义出了动态规划的计算过程，就可以编程实现了，这个计算过程被称为“<strong>状态转移方程</strong>”。</p>
+<p>如何把问题形式化为状态空间，进一步抽象出动态规划的“状态表示”和“阶段划分”，是一件考查智力而非套路的事情。对状态设计，子结构的挖掘，是核心要点。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>对于一个dp问题的描述框架：
+1.问题描述
+2.状态表示
+3.阶段划分
+4.转移方程
+5.边界
+6.目标
+</pre></div>
 </div>
-<div class="section" id="a-acwing-895">
-<h2><span class="section-number">8.2. </span>A. 最长递增子序列, AcWing 895. 最长上升子序列<a class="headerlink" href="#a-acwing-895" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">11.2. </span>线性dp<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>具有线性“阶段”划分的动态规划算法被称为线性dp，经典例题：最长上升子序列（LIS）、最长公共子序列（LCS）、数字三角形（IOI1994），这三个问题，需要计算的对象表现出明显的维度以及有序性。每个状态的求解直接构成一个阶段，这使得dp的状态表示就是阶段的表示。因此，我们只需要在每个维度上各取一个坐标值作为dp的状态，自然就可以描绘出“已求解部分”在状态空间中的轮廓特征，该轮廓的进展就是阶段的推移。每个状态的求解，显然只与之前阶段的最有解有关，这体现了“最优子结构”。接下来，按顺序依次循环每个维度，根据问题要求，递推求解，具体实现。</p>
+<div class="section" id="id3">
+<h3><span class="section-number">11.2.1. </span><a class="reference external" href="https://www.acwing.com/problem/content/897/">895. 最长上升子序列</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>*max_element(dp + 1, dp + 1 + n)  这句用法</p>
 </div>
-<div class="section" id="b-acwing-897">
-<h2><span class="section-number">8.3. </span>B. 最长公共子序列, AcWing 897. 最长公共子序列<a class="headerlink" href="#b-acwing-897" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3><span class="section-number">11.2.2. </span><a class="reference external" href="https://www.acwing.com/problem/content/899/">897. 最长公共子序列</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>在第一序列前i个字母中出现，且在第二个序列前j个字母中出现的子序列</p>
+</div>
+<div class="section" id="id5">
+<h3><span class="section-number">11.2.3. </span><a class="reference external" href="https://www.acwing.com/problem/content/900/">898. 数字三角形</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>acwing上的数据更丰富一些，需要对dp进行初始化成负无穷，每一行0 ~ i+1都要初始化</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><span class="section-number">11.3. </span>背包<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>背包是线性dp中一类重要而特殊的模型</p>
+<div class="section" id="id7">
+<h3><span class="section-number">11.3.1. </span>0/1背包<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id8">
+<h3><span class="section-number">11.3.2. </span>完全背包<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id9">
+<h3><span class="section-number">11.3.3. </span>多重背包<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id10">
+<h3><span class="section-number">11.3.4. </span>分组背包<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id11">
+<h2><span class="section-number">11.4. </span>区间dp<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id12">
+<h2><span class="section-number">11.5. </span>树形dp<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id13">
+<h3><span class="section-number">11.5.1. </span>状态压缩dp<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id14">
+<h3><span class="section-number">11.5.2. </span>倍增优化dp<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 </div>
 
@@ -190,7 +274,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html" class="btn btn-neutral float-left" title="7. bfs宽度优先搜索" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="%E6%A0%88.html" class="btn btn-neutral float-right" title="12. stack栈" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html" class="btn btn-neutral float-left" title="10. bfs宽度优先搜索" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

@@ -1,0 +1,284 @@
+# sortings排序
+
+### 概念
+
+用途：Given an array that contains *n* elements, your task is to sort the elements in increasing order.
+
+
+
+##### Bubble sort冒泡排序，$O(n^2)$
+
+冒泡排序，排序n轮，每一轮遍历一遍数组。当发现两个连续数字顺序不对时，交换他们。
+
+[动画演示](https://www.runoob.com/w3cnote/bubble-sort.html)
+
+```cpp
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n-1; j++) {
+       if (array[j] > array[j+1]) {
+           swap(array[j],array[j+1]);
+	} 
+    }
+}
+```
+
+第一轮过后，最大数字被放在了正确的位置上。k轮过后，k个最大的数字被放在了正确的位置上。n轮过后，n个数字（这个数组）被放在了正确位置上。
+
+需要注意的是，冒泡排序只交换相邻两个数字。在整个冒泡排序的过程中，进行了几次swap操作，就表示序列当中，有几个逆序对。如果，整个序列是倒序的，如果要冒泡成正序，交换次数是`1+2+3...+(n-1) = n*(n-1)/2`
+
+Hence, if a sorting algorithm can only swap consecutive elements, each swap removes at most one inversion, and the time complexity of the algorithm is at least $O(n^2)$
+
+
+
+```cpp
+//其他版本的模板
+for (int i = 0; i < n; i++) cin >> a[i];
+
+for (int i = n - 1; i > 0; i--)
+	for (int j = 0; j < i; j++)
+		if (a[j] > a[j + 1]) swap(a[j], a[j + 1]);
+
+//改进的冒泡排序，当前趟，未发生交换，就表明已经有序，直接break
+for (int i = 0; i < n; i++) cin >> a[i];
+
+for (int i = n - 1; i > 0; i--){
+	bool flag = false;
+	for (int j = 0; j < i; j++)
+		if (a[j] > a[j + 1]) swap(a[j], a[j + 1]), flag = true;
+		
+	if (!flag) break;
+}
+```
+
+
+
+##### 选择排序
+
+[动画演示](https://www.runoob.com/w3cnote/selection-sort.html)
+
+```cpp
+for (int i = 0; i < n; i++)
+	for (int j = i + 1; j < n; j++)
+		if (a[j] < a[i]) swap(a[j], a[i]);
+```
+
+
+
+##### 插入排序
+
+[动画演示](https://www.runoob.com/w3cnote/insertion-sort.html)
+
+```cpp
+for (int i = 0; i < n; i++) cin >> a[i];
+	
+	//a[0]已经排好，从1开始
+	for (int i = 1; i < n; i++){
+		int key = a[i];
+		int j = i - 1;
+		while (j >= 0 && a[j] > key){
+			a[j + 1] = a[j];
+			j--;
+		}
+
+		a[j + 1] = key;
+	}
+```
+
+
+
+##### 桶排序
+
+排序的手段，不是通过对比元素大小，而是采用其他手段实现。
+
+The algorithm creates a *bookkeeping* array, whose indices are elements of the original array. The algorithm iterates through the original array and calculates how many times each element appears in the array.
+
+Counting sort is a very efficient algorithm but it can only be used when the constant *c* is small enough, so that the array elements can be used as indices in the bookkeeping array.
+
+[动画演示](https://www.runoob.com/w3cnote/bucket-sort.html)
+
+
+
+##### 快速排序（放在分治讲解）
+
+/
+
+
+
+##### 归并排序，逆序对（放在分治讲解）
+
+/交换的时候，不再必须交换两个相邻元素
+
+
+
+##### Sorting in C++（STL）
+
+```cpp
+vector<int> v = {4,2,5,3,5,8,3};
+sort(v.begin(),v.end());
+
+sort(v.rbegin(),v.rend());
+
+int n = 7; // array size
+int a[] = {4,2,5,3,5,8,3};
+sort(a,a+n);
+
+string s = "monkey";
+sort(s.begin(), s.end());
+
+vector<pair<int,int>> v;
+v.push_back({1,5});
+v.push_back({2,3});
+v.push_back({1,2});
+sort(v.begin(), v.end());
+```
+
+
+
+##### User-defined structs自定义结构体排序
+
+```cpp
+//使用重载小于号的方法
+struct P {
+    int x, y;
+    bool operator<(const P &p) {
+       if (x != p.x) return x < p.x;
+       else return y < p.y;
+} };
+
+//使用cmp函数的方法
+bool comp(string a, string b) {
+    if (a.size() != b.size()) return a.size() < b.size();
+    return a < b;
+}
+
+sort(v.begin(), v.end(), comp);
+```
+
+
+
+##### 几种排序算法的比较：
+
+[6分钟演示15种排序算法](https://www.bilibili.com/video/BV1Ws411f7aJ?from=search&seid=2499169625775675300)，注意开音响
+
+1. 稳定性。插入、冒泡、二叉树、归并是稳定的；选择、希尔、快排、堆排是不稳定的。（有跨度的交换，会导致不稳定）
+
+2. 时间复杂度。O(n^2)，插入、冒泡、选择；O(nlogn)，快排、堆排，归并；O(n)，桶排序。（最好的情况下，插入、冒泡最快。平均情况下，快排最快。最坏情况下，堆排、归并最快）
+
+3. 辅助空间。桶排、归并，需要O(n)辅助空间。快排，需要O(logn)辅助空间，最坏需要O(n)。其他排序算法需要O(1)
+
+4. 插入、冒泡的速度较慢，但局部/整体有序的情况下，却很快，此时快速排序反而变慢，变成O(n^2)
+
+5. n较小时，对稳定性不作要求，用选择排序；稳定性有要求，用插入或冒泡排序
+
+6. 排序的数字范围是一个有限的范围，对稳定性没有要求，用桶排，主要考虑开数组不能SE
+
+7. n较大时，元素随机，对稳定性没有要求，用快速排序
+
+8. n较大时，元素有序，对稳定性没有要求，用堆排序（用priority_queue实现）
+
+9. STL的sort不是纯快排，是快排和插入的结合。
+
+
+
+这里面有一个图片总结，可以阅读，不建议背诵。[https://www.runoob.com/w3cnote/ten-sorting-algorithm.html](https://www.runoob.com/w3cnote/ten-sorting-algorithm.html)
+
+
+
+### 《一本通》题目
+
+##### [【例2.2】车厢重组](http://ybt.ssoier.cn:8088/problem_show.php?pid=1310)
+
+冒泡
+
+##### [【例2.5】求逆序对](http://ybt.ssoier.cn:8088/problem_show.php?pid=1311)
+
+归并
+
+##### [谁考了第k名](http://ybt.ssoier.cn:8088/problem_show.php?pid=1176)
+
+结构体排序
+
+##### [奇数单增序列](http://ybt.ssoier.cn:8088/problem_show.php?pid=1177)
+
+初次使用sort
+
+##### [成绩排序](http://ybt.ssoier.cn:8088/problem_show.php?pid=1178)
+
+结构体排序
+
+##### [奖学金](http://ybt.ssoier.cn:8088/problem_show.php?pid=1179)
+
+结构体排序，[NOIP2007 普及组\] 奖学金
+
+##### [分数线划定](http://ybt.ssoier.cn:8088/problem_show.php?pid=1180)
+
+结构体排序，模拟，[NOIP2009 普及组] 分数线划定
+
+##### [整数奇偶排序](http://ybt.ssoier.cn:8088/problem_show.php?pid=1181)
+
+sort，reverse
+
+##### [合影效果](http://ybt.ssoier.cn:8088/problem_show.php?pid=1182)
+
+男女分开，分别排序
+
+##### [病人排队](http://ybt.ssoier.cn:8088/problem_show.php?pid=1183)
+
+结构体排序
+
+##### [明明的随机数](http://ybt.ssoier.cn:8088/problem_show.php?pid=1184)
+
+桶排，[NOIP2006 普及组] 明明的随机数
+
+##### [单词排序](http://ybt.ssoier.cn:8088/problem_show.php?pid=1185)
+
+初次接触`map<string, int>`
+
+##### [出现次数超过一半的数](http://ybt.ssoier.cn:8088/problem_show.php?pid=1186)
+
+稍微思考一下性质
+
+##### [统计字符数](http://ybt.ssoier.cn:8088/problem_show.php?pid=1187)
+
+桶排
+
+
+
+### 其他题目
+
+##### [[NOIP2011 普及组] 瑞士轮](https://www.luogu.com.cn/problem/P1309)
+
+/
+
+##### [P1626 象棋比赛](https://www.luogu.com.cn/problem/P1626)
+
+/
+
+##### [P1716 双调序列](https://www.luogu.com.cn/problem/P1716)
+
+/
+
+##### [P3955 [NOIP2017 普及组] 图书管理员](https://www.luogu.com.cn/problem/P3955)
+
+/
+
+##### [P4432 [COCI2017-2018#2] ZigZag](https://www.luogu.com.cn/problem/P4432)
+
+/
+
+##### [P2676 [USACO07DEC]Bookshelf B](https://www.luogu.com.cn/problem/P2676)
+
+sortings + greedy
+
+##### [P4379 [USACO18OPEN]Lemonade Line S](https://www.luogu.com.cn/problem/P4379)
+
+sortings + greedy
+
+##### [P1056 [NOIP2008 普及组] 排座椅](https://www.luogu.com.cn/problem/P1056)
+
+sortings + greedy
+
+##### [P1097 [NOIP2007 提高组] 统计数字](https://www.luogu.com.cn/problem/P1097)
+
+sorting + binary search
+
