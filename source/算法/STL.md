@@ -52,7 +52,7 @@ cout << c << "\n"; // tiva
 
 
 
-##### set，集合
+##### set集合
 
 A **set** is a data structure that maintains a collection of elements. The basic operations of sets are element insertion, search and removal.The benefit of the set structure is that it maintains the order of the elements
 
@@ -79,9 +79,10 @@ for (auto x : s) {    //C++11
 }
 ```
 
-//set里面，每个元素只存一个
+
 
 ```cpp
+//set里面，每个元素只存一个
 set<int> s;
 s.insert(5);
 s.insert(5);
@@ -89,15 +90,18 @@ s.insert(5);
 cout << s.count(5) << "\n"; // 1
 ```
 
-//multiset里面，每个元素可以存多个
+
 
 ```cpp
+//multiset里面，每个元素可以存多个
 multiset<int> s;
 s.insert(5);
 s.insert(5);
 s.insert(5);
 cout << s.count(5) << "\n"; // 3
 ```
+
+
 
 ```cpp
 //把5这个元素全删了
@@ -145,7 +149,7 @@ for (auto x : m) {
 
 ##### iterator迭代器
 
-Many functions in the C++ standard library operate with iterators. An **iterator** is a variable that points to an element in a data structure.
+Many functions in the C++ standard library operate with iterators. An **iterator** is a variable that points to an element in a data structure.用iterator来写遍历，遍历不同的容器，都可以用iterator，但是只有部分容器支持下标访问，比如vector。
 
 ```cpp
 //vector的排序

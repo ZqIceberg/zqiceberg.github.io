@@ -180,7 +180,9 @@ sort(v.begin(), v.end(), comp);
 
 
 
-这里面有一个图片总结，可以阅读，不建议背诵。[https://www.runoob.com/w3cnote/ten-sorting-algorithm.html](https://www.runoob.com/w3cnote/ten-sorting-algorithm.html)
+这里面有一个图片总结，可以阅读，不建议背诵。
+
+[https://www.runoob.com/w3cnote/ten-sorting-algorithm.html](https://www.runoob.com/w3cnote/ten-sorting-algorithm.html)
 
 
 

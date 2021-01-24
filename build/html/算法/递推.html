@@ -90,7 +90,7 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.html">1. time complexity时间复杂度</a></li>
-<li class="toctree-l1"><a class="reference internal" href="STL.html">2. stl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="STL.html">2. stl标准模板库</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html">3. high accuracy高精度</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E6%8E%92%E5%BA%8F.html">4. sortings排序</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">5. recursion 递推</a><ul>
@@ -115,7 +115,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E5%BD%92.html">6. recursive 递归</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html">7. dfs and backtracking 搜索与回溯</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html">7. complete search and backtracking 搜索与回溯</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E8%B4%AA%E5%BF%83.html">8. greedy algorithm 贪心</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E5%88%86%E6%B2%BB.html">9. divide and conquer分治</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">10. bfs宽度优先搜索</a></li>
@@ -202,8 +202,9 @@
 <p>递推是程序遍历状态空间的基本方式。由已知的“问题边界”为起点向“原问题”正向推导的扩展方式就是递推。</p>
 <p>例子：询问有几个苹果，有每个人向上反馈，得到有n个苹果。</p>
 <p>例子：Fibonacci数列</p>
-<p>例子：兔子繁殖问题，把雌雄各一的一对新兔子放入养殖场中。每只雌兔在出生两个月以后，每月产雌雄各一的一对新兔子。试问，第n个月后养殖场中有多少对兔子。(集合划分，上个月就有的老兔子 + 这个月出生的新兔子)</p>
-<p>使用递推的前提，会一维数组</p>
+<p>例子：兔子繁殖问题，把雌雄各一的一对新兔子放入养殖场中。每只雌兔在出生两个月以后，每月产雌雄各一的一对新兔子。试问，第n个月后养殖场中有多少对兔子。</p>
+<p>(集合划分，上个月就有的老兔子 + 这个月出生的新兔子<code class="docutils literal notranslate"><span class="pre">f(n)</span> <span class="pre">=</span> <span class="pre">f(n</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">+</span> <span class="pre">f(n</span> <span class="pre">-</span> <span class="pre">2)</span> </code>)</p>
+<p>使用递推的前提，会一维数组，或者要会使用有限个变量，互相传递数值迭代前进的操作</p>
 </div>
 <div class="section" id="id2">
 <h2><span class="section-number">5.2. </span>《一本通》题目<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>

@@ -2,7 +2,238 @@
 
 ### 概念
 
-现在，同学们已经对“问题与状态空间”之间的类比有了更深入的认识。
+**Dynamic programming** is a technique that combines the correctness of com- plete search and the efficiency of greedy algorithms. Dynamic programming can be applied if the problem can be divided into overlapping subproblems that can be solved independently.There are two uses for dynamic programming:
+
+*  **Finding an optimal solution**: We want to find a solution that is as large as possible or as small as possible.
+
+*  **Counting the number of solutions**: We want to calculate the total num- ber of possible solutions.
+
+Understanding dynamic programming is a **milestone** in every competitive programmer’s career. While the basic idea is simple, the challenge is how to apply dynamic programming to different problems. 
+
+The dynamic programming algorithm is based on a recursive function that goes through all possibilities how to form the sum, like a brute force algorithm. However, the dynamic programming algorithm is efficient because it uses *memoization* and calculates the answer to each subproblem only once.
+
+### 再看硬币问题
+
+贪心算法的策略是每次取最大值，但并不是每一次都有效。我们下面看看，
+
+The idea in dynamic programming is to formulate the problem recursively so that the solution to the problem can be calculated from solutions to smaller subproblems. In the coin problem, a natural recursive problem is as follows: what is the smallest number of coins required to form a sum *x*?
+
+Let solve(*x*) denote the minimum number of coins required for a sum *x*. The values of the function depend on the values of the coins. For example, if coins = {1, 3, 4}, the first values of the function are as follows:
+
+```cpp
+solve(0) = 0 solve(1) = 1 solve(2) = 2 
+solve(3) = 1 solve(4) = 1 solve(5) = 2 
+solve(6) = 2 solve(7) = 2 solve(8) = 2 
+solve(9) = 3 solve(10) = 3
+```
+
+For example, solve(10) = 3, because at least 3 coins are needed to form the sum 10. The optimal solution is 3+3+4=10.
+
+因为只能取1, 3, 4，如果第一个硬币取的是1，剩余的就是solve(9)；如果第一个硬币取的是3，剩余的就是solve(7)。
+
+```cpp
+solve(x) = min(solve(x − 1) + 1, solve(x − 3) + 1,solve(x − 4) + 1)
+```
+
+The base case of the recursion is solve(0) = 0, because no coins are needed to form an empty sum. 
+
+```cpp
+solve(10) = solve(7) + 1 = solve(4) + 2 = solve(0) + 3 = 3
+```
+
+完整代码如下，但这个写法不是很高效
+
+```cpp
+int solve(int x) {
+    if (x < 0) return INF;  //INF代表一个无穷大的值
+    if (x == 0) return 0;
+    int best = INF;
+    for (auto c : coins){   //枚举可以使用的硬币 C++11的写法
+       best = min(best, solve(x-c)+1);
+    }
+    return best;
+}
+```
+
+
+
+### memoization记忆化
+
+写代码就是这样，需要不断的升级自己的technique
+
+The idea of dynamic programming is to use **memoization** to efficiently calculate values of a recursive function. This means that the values of the function are stored in an array after calculating them. For each parameter, the value of the function is calculated recursively only once, and after this, the value can be directly retrieved from the array.
+
+```cpp
+bool ready[N];
+int value[N]; 
+```
+
+where ready[*x*] indicates whether the value of solve(*x*) has been calculated, and if it is, value[*x*] contains this value. The constant *N* has been chosen so that all required values fit in the arrays.
+
+```cpp
+//下面就是加记忆化的写法
+//The time complexity of the algorithm is *O*(*nk*), where *n* is the target sum and *k* is the number of coins.
+
+int solve(int x) {
+    if (x < 0) return INF;
+    if (x == 0) return 0;
+    if (ready[x]) return value[x];
+    int best = INF;
+    for (auto c : coins) {
+       best = min(best, solve(x-c)+1);
+    }
+    value[x] = best;
+    ready[x] = true;
+    return best;
+}
+```
+
+Note that we can also *iteratively* construct the array value using a loop that simply calculates all the values of solve for parameters 0...*n*:
+
+```cpp
+//下面是循环的写法
+
+value[0] = 0;
+for (int x = 1; x <= n; x++) {
+    value[x] = INF;
+    for (auto c : coins) {
+       if (x-c >= 0) {
+           value[x] = min(value[x], value[x-c]+1);
+		} 
+    }
+}
+```
+
+**In fact, most competitive programmers prefer this implementation, because it is shorter and has lower constant factors. **(虽然dfs+记忆化是更好想的，但是更多的竞赛选手喜欢用循环的方法。)
+
+### Constructing a solution记录方案(循环,递归)
+
+dp问题当中，有很多情况，不仅让你求最值，还让你输出最值情况下的方案是什么（如果有多种方案，输出一种即可，oj会做special judge）
+
+```cpp
+//we can declare another array that indicates for each sum of money the first coin in an optimal solution:
+value[0] = 0;
+for (int x = 1; x <= n; x++) {
+    value[x] = INF;
+    for (auto c : coins) {
+       if (x-c >= 0 && value[x-c]+1 < value[x]) {
+           value[x] = value[x-c]+1;
+           first[x] = c;
+		}
+    }
+}
+
+//输出方案
+while (n > 0) {
+    cout << first[n] << "\n";
+    n -= first[n];
+}
+```
+
+```cpp
+//完整示例代码
+#include <iostream>
+
+using namespace std;
+
+int n, a[15];
+int value[15];
+int first[15];
+
+int main()
+{
+	memset(value, 0x3f, sizeof value);
+
+	cin >> n;
+	for (int i = 1; i <= n; i++) cin >> a[i];
+	
+	value[0] = 0;
+	for (int x = 1; x <= 10; x++){
+		for (int i = 1; i <= n; i++) 
+			if (x - a[i] >= 0 && value[x - a[i]] + 1 < value[x]){
+				value[x] = value[x - a[i]] + 1;
+				first[x] = a[i];
+			}
+	}
+	
+	int sum = 10;
+	while (sum > 0){
+		cout << first[sum] << ' ';
+		sum -= first[sum];
+	}
+	puts("");
+
+	return 0;
+}
+```
+
+输出方案，我们更多的，还可以用递归输出
+
+```cpp
+void print(int x)
+{
+	if (x == 0) return ;
+	printf("%d ", first[x]); //这两行的顺序，决定了先递归再输出当前，还是先输出当前，再递归
+	print(x - first[x]);
+}
+
+int main()
+{
+	//..........
+    
+	print(10);
+	puts("");
+
+	return 0;
+}
+
+```
+
+### Counting the number of solutions统计方案个数
+
+ if coins = {1, 3, 4} and *x* = 5。总共有6种方案
+
+```
+• 1+1+1+1+1 
+• 1+1+3
+• 1+3+1
+• 3+1+1 
+• 1+4
+• 4+1
+```
+
+Again, we can solve the problem recursively. Let solve(*x*) denote the number of ways we can form the sum *x*.if coins = {1, 3, 4},
+
+```cpp
+solve(x) =solve(x − 1)+ solve(x − 3)+ solve(x − 4)
+```
+
+```cpp
+//count[x]记录方案数
+//If x < 0, the value is 0, because there are no solutions. If x = 0, the value is 1, because there is only one way to form an empty sum. 
+
+count[0] = 1;
+for (int x = 1; x <= n; x++) {
+    for (auto c : coins) {
+       if (x-c >= 0) {
+           count[x] += count[x-c];
+           //count[x] %= MOD;   有的题目这个方案数很多，题目会要求随时取模   
+       }
+	} 
+}
+```
+
+
+
+***-- Now we have discussed all basic ideas of dynamic programming.***
+
+
+
+### 另一个角度，介绍动态规划
+
+下面的介绍，又是一种角度，会更加的学术。从“状态空间”入手
+
+对“问题与状态空间”之间的类比，有了更深入的认识。
 
 * 递推和递归是两种遍历状态空间的基本方法
 
@@ -34,43 +265,387 @@
 
 
 
-### 线性dp
+### 专题：线性dp
 
 具有线性“阶段”划分的动态规划算法被称为线性dp，经典例题：最长上升子序列（LIS）、最长公共子序列（LCS）、数字三角形（IOI1994），这三个问题，需要计算的对象表现出明显的维度以及有序性。每个状态的求解直接构成一个阶段，这使得dp的状态表示就是阶段的表示。因此，我们只需要在每个维度上各取一个坐标值作为dp的状态，自然就可以描绘出“已求解部分”在状态空间中的轮廓特征，该轮廓的进展就是阶段的推移。每个状态的求解，显然只与之前阶段的最有解有关，这体现了“最优子结构”。接下来，按顺序依次循环每个维度，根据问题要求，递推求解，具体实现。
 
-##### [895. 最长上升子序列](https://www.acwing.com/problem/content/897/)
+##### **Longest increasing subsequence最长上升子序列**
 
-*max_element(dp + 1, dp + 1 + n)  这句用法
+```
+index   0 1 2 3 4 5 6 7
+number  6 2 5 1 7 4 8 3
+in eyes   2 5   7   8
+```
 
-##### [897. 最长公共子序列](https://www.acwing.com/problem/content/899/)
+定义，Let length(k) denote the length of the longest increasing subsequence that ends at position k.
 
-在第一序列前i个字母中出现，且在第二个序列前j个字母中出现的子序列
+To calculate a value of length(k), we should find a position i < k for which array[i] < array[k] and length(i) is as large as possible. Then we know that length(k) = length(i) + 1, because this is an optimal way to add array[k] to a subsequence. However, if there is no such position i, then length(k) = 1, which means that the subsequence only contains array[k].
 
-##### [898. 数字三角形](https://www.acwing.com/problem/content/900/)
+```cpp
+for (int k = 0; k < n; k++) {
+    length[k] = 1;
+    for (int i = 0; i < k; i++) {
+       if (array[i] < array[k]) {
+           length[k] = max(length[k],length[i]+1);
+       }
+	} 
+}
 
-acwing上的数据更丰富一些，需要对dp进行初始化成负无穷，每一行0 ~ i+1都要初始化
+//时间复杂度是O(n^2)
+//可以用单调队列，优化成O(nlogn)
+```
+
+**练习题目，[895. 最长上升子序列](https://www.acwing.com/problem/content/897/)**
 
 
 
-### 背包
+##### **paths in a grid方格取数问题，数字三角形模型**
 
-背包是线性dp中一类重要而特殊的模型
+这类问题，是从方格的左上角，走到方格的右下角。方格中，有一些分数，每一步只能向右走，或者向下走。求怎么走，能获取的分数最大。
+
+```cpp
+Assume that the rows and columns of the grid are numbered from 1 to n, and value[y][x] equals the value of square (y,x). Let sum(y,x) denote the maximum sum on a path from the upper-left corner to square (y,x). Now sum(n,n) tells us the maximum sum from the upper-left corner to the lower-right corner. 
+
+sum(y,x)=max(sum(y,x−1),sum(y−1,x))+value[y][x]
+    
+Since the function sum has two parameters, the dynamic programming array also has two dimensions.
+    
+for (int y = 1; y <= n; y++) {
+	for (int x = 1; x <= n; x++) {
+		sum[y][x] = max(sum[y][x-1],sum[y-1][x])+value[y][x];
+	}
+}
+//时间复杂度O(n^2)
+```
+
+**练习题目 [898. 数字三角形](https://www.acwing.com/problem/content/900/)**
+
+/acwing上的数据更丰富一些，需要对dp进行初始化成负无穷，每一行0 ~ i+1都要初始化
+
+
+
+##### **背包问题**
+
+The term **knapsack** refers to problems where a set of objects is given, and subsets with some properties have to be found. Knapsack problems can often be solved using dynamic programming.
+
+In this section, we focus on the following problem: Given a list of weights [*w*1,*w*2,...,*w*n], determine all sums that can be constructed using the weights. 
+
+```cpp
+For example, if the weights are [1,3,3,5], the following sums are possible:
+
+0 1 2 3 4 5 6 7 8 9 10 11 12
+X X   X X X X X X X    X  X 
+the symbol ”X” indicates the true values（体积2和10，是无法拼成的）
+    
+To solve the problem, we focus on subproblems where we only use the first k weights to construct sums. Let possible(x, k) = true if we can construct a sum x using the first k weights, and otherwise possible(x, k) = false.
+
+possible(x,k) = possible(x − wk, k − 1) ∨ possible(x, k − 1);
+
+The formula is based on the fact that we can either use or not use the weight wk in the sum. If we use wk, the remaining task is to form the sum x−wk using the first k−1 weights, and if we do not use wk, the remaining task is to form the sum x using the first k − 1 weights.
+    
+possible(x,n) tells us whether we can con- struct a sum x using all weights.
+```
+
+
+
+```cpp
+//示范代码
+possible[0][0] = true;
+for (int k = 1; k <= n; k++) {
+    for (int x = 0; x <= W; x++) {
+       if (x-w[k] >= 0) possible[x][k] |= possible[x-w[k]][k-1];
+       possible[x][k] |= possible[x][k-1];
+	} 
+}
+
+//还可以写成一维的，trick是枚举x的时候，从大往小枚举
+possible[0] = true;
+for (int k = 1; k <= n; k++) {
+    for (int x = W; x >= 0; x--) {
+       if (possible[x]) possible[x+w[k]] = true;
+	} 
+}
+```
+
+Note that the general idea presented here can be used in many knapsack problems. For example, if we are given objects with weights and values, we can determine for each weight sum the maximum value sum of a subset.
+
+
+
+**练习题目，[2. 01背包问题](https://www.acwing.com/problem/content/2/)**，**[【例9.11】01背包问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1267)**
+
+
+
+##### **edit distance编辑距离**
+
+The **edit distance** or **Levenshtein distance**1 is the minimum number of edit- ing operations needed to transform a string into another string. 
+
+```
+• insert a character (e.g. ABC → ABCA) 
+• remove a character (e.g. ABC → AC)
+• modify a character (e.g. ABC → ADC)
+```
+
+For example, the edit distance between LOVE and MOVIE is 2, because we can first perform the operation LOVE → MOVE (modify) and then the operation MOVE → MOVIE (insert). This is the smallest possible number of operations, because it is clear that only one operation is not enough.
+
+```cpp
+Suppose that we are given a string x of length n and a string y of length m, and we want to calculate the edit distance between x and y. To solve the problem, we define a function distance(a, b) that gives the edit distance between prefixes x[0...a] and y[0...b]. Thus, using this function, the edit distance between x and y equals distance(n − 1, m − 1).
+```
+
+```cpp
+if (x[a] == x[b]) cost(a, b) = 0;
+else cost(a, b) = 1;
+
+distance(a, b) = min(distance(a, b − 1) + 1, 
+                     distance(a − 1, b) + 1,
+                     distance(a − 1, b − 1) + cost(a, b));
+```
+
+```cpp
+• distance(a, b − 1)			: insert a character at the end of x
+• distance(a − 1, b)			: remove the last character from x
+• distance(a − 1, b − 1)		: match or modify the last character of x
+    
+//distance(a-1, b)理解这个需要注意，这里可能表达的是
+//从(a, b)变成（a-1, b）
+```
+
+
+
+练习题目，[【例9.20】编辑距离](http://ybt.ssoier.cn:8088/problem_show.php?pid=1276)，[【例9.9】最长公共子序列](http://ybt.ssoier.cn:8088/problem_show.php?pid=1265)
+
+最长公共子序列问题，也是一个经典问题。和这个编辑距离，很像，但不完全一样，可以用来引申思考。
+
+
+
+### 专题：背包问题
+
+背包是线性dp中一类重要而特殊的模型。上面，我们已经初步的领略了 0/1背包问题，接下来，我们扩展一下。（参考《背包九讲》）
 
 #### 0/1背包
 
+/
+
 #### 完全背包
+
+/
 
 #### 多重背包
 
+/
+
+#### 混合三种背包问题
+
+/
+
 #### 分组背包
 
+/
+
+#### 有依赖的背包问题
+
+/
+
+### 专题：区间dp
+
+/
 
 
-### 区间dp
 
-### 树形dp
+### 《一本通》题目
 
-#### 状态压缩dp
+##### [【例9.2】数字金字塔](http://ybt.ssoier.cn:8088/problem_show.php?pid=1258)
 
-#### 倍增优化dp
+/数字三角形模型
+
+##### [【例9.3】求最长不下降序列](http://ybt.ssoier.cn:8088/problem_show.php?pid=1259)
+
+/LIS
+
+##### [【例9.4】拦截导弹(Noip1999)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1260)
+
+/LIS
+
+##### [【例9.5】城市交通路网](http://ybt.ssoier.cn:8088/problem_show.php?pid=1261)
+
+/LIS
+
+##### [【例9.6】挖地雷](http://ybt.ssoier.cn:8088/problem_show.php?pid=1262)
+
+/LIS
+
+##### [【例9.7】友好城市](http://ybt.ssoier.cn:8088/problem_show.php?pid=1263)
+
+/LIS
+
+##### [【例9.8】合唱队形](http://ybt.ssoier.cn:8088/problem_show.php?pid=1264)
+
+/LIS
+
+##### [【例9.9】最长公共子序列](http://ybt.ssoier.cn:8088/problem_show.php?pid=1265)
+
+/LCS
+
+##### [【例9.10】机器分配](http://ybt.ssoier.cn:8088/problem_show.php?pid=1266)
+
+/
+
+##### [最长上升子序列](http://ybt.ssoier.cn:8088/problem_show.php?pid=1281)
+
+/LIS
+
+##### [最大子矩阵](http://ybt.ssoier.cn:8088/problem_show.php?pid=1282)
+
+/最大子段和 + 前缀和，O(n^3)
+
+##### [登山](http://ybt.ssoier.cn:8088/problem_show.php?pid=1283)
+
+/LIS
+
+##### [摘花生](http://ybt.ssoier.cn:8088/problem_show.php?pid=1284)
+
+/数字三角形模型
+
+##### [最大上升子序列和](http://ybt.ssoier.cn:8088/problem_show.php?pid=1285)
+
+/LIS
+
+##### [怪盗基德的滑翔翼](http://ybt.ssoier.cn:8088/problem_show.php?pid=1286)
+
+/LIS
+
+##### [最低通行费](http://ybt.ssoier.cn:8088/problem_show.php?pid=1287)
+
+/LIS
+
+##### [三角形最佳路径问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1288)
+
+/数字三角形模型
+
+##### [拦截导弹](http://ybt.ssoier.cn:8088/problem_show.php?pid=1289)
+
+/LIS
+
+##### [【例9.11】01背包问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1267)
+
+/01背包
+
+##### [【例9.12】完全背包问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1268)
+
+/完全背包
+
+##### [【例9.13】庆功会](http://ybt.ssoier.cn:8088/problem_show.php?pid=1269)
+
+/多重背包
+
+##### [【例9.14】混合背包](http://ybt.ssoier.cn:8088/problem_show.php?pid=1270)
+
+/混合背包
+
+##### [【例9.15】潜水员](http://ybt.ssoier.cn:8088/problem_show.php?pid=1271)
+
+/
+
+##### [【例9.16】分组背包](http://ybt.ssoier.cn:8088/problem_show.php?pid=1272)
+
+/
+
+##### [【例9.17】货币系统](http://ybt.ssoier.cn:8088/problem_show.php?pid=1273)
+
+/
+
+##### [ 采药](http://ybt.ssoier.cn:8088/problem_show.php?pid=1290)
+
+/01背包，noip原题
+
+##### [数字组合](http://ybt.ssoier.cn:8088/problem_show.php?pid=1291)
+
+/01背包
+
+##### [宠物小精灵之收服](http://ybt.ssoier.cn:8088/problem_show.php?pid=1292)
+
+/
+
+##### [买书](http://ybt.ssoier.cn:8088/problem_show.php?pid=1293)
+
+/
+
+##### [Charm Bracelet](http://ybt.ssoier.cn:8088/problem_show.php?pid=1294)
+
+/
+
+##### [装箱问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1295)
+
+/
+
+##### [开餐馆](http://ybt.ssoier.cn:8088/problem_show.php?pid=1296)
+
+/
+
+##### [【例9.18】合并石子](http://ybt.ssoier.cn:8088/problem_show.php?pid=1274)
+
+/区间问题
+
+##### [ 【例9.19】乘积最大](http://ybt.ssoier.cn:8088/problem_show.php?pid=1275)
+
+/
+
+##### [【例9.20】编辑距离](http://ybt.ssoier.cn:8088/problem_show.php?pid=1276)
+
+/编辑距离
+
+##### [【例9.21】方格取数](http://ybt.ssoier.cn:8088/problem_show.php?pid=1277)
+
+/
+
+##### [【例9.22】复制书稿(book)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1278)
+
+/
+
+##### [【例9.23】橱窗布置(flower)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1279)
+
+/
+
+##### [【例9.24】滑雪](http://ybt.ssoier.cn:8088/problem_show.php?pid=1280)
+
+/记忆化
+
+##### [公共子序列](http://ybt.ssoier.cn:8088/problem_show.php?pid=1297)
+
+/LCS
+
+##### [计算字符串距离](http://ybt.ssoier.cn:8088/problem_show.php?pid=1298)
+
+/编辑距离
+
+##### [糖果](http://ybt.ssoier.cn:8088/problem_show.php?pid=1299)
+
+/
+
+##### [ 鸡蛋的硬度](http://ybt.ssoier.cn:8088/problem_show.php?pid=1300)
+
+/
+
+##### [ 大盗阿福](http://ybt.ssoier.cn:8088/problem_show.php?pid=1301)
+
+/
+
+##### [股票买卖](http://ybt.ssoier.cn:8088/problem_show.php?pid=1302)
+
+/
+
+##### [鸣人的影分身](http://ybt.ssoier.cn:8088/problem_show.php?pid=1303)
+
+/
+
+##### [数的划分](http://ybt.ssoier.cn:8088/problem_show.php?pid=1304)
+
+/
+
+##### [ Maximum sum](http://ybt.ssoier.cn:8088/problem_show.php?pid=1305)
+
+/
+
+##### [最长公共子上升序列](http://ybt.ssoier.cn:8088/problem_show.php?pid=1306)
+
+/LIS+LCS，非常好的题目，这个题面还要求输出方案。有O(n^4), O(n^3), O(n^2)的写法，都需要深入思考，琢磨实现。
 

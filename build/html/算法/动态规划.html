@@ -90,34 +90,89 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.html">1. time complexity时间复杂度</a></li>
-<li class="toctree-l1"><a class="reference internal" href="STL.html">2. stl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="STL.html">2. stl标准模板库</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html">3. high accuracy高精度</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E6%8E%92%E5%BA%8F.html">4. sortings排序</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E6%8E%A8.html">5. recursion 递推</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E5%BD%92.html">6. recursive 递归</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html">7. dfs and backtracking 搜索与回溯</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html">7. complete search and backtracking 搜索与回溯</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E8%B4%AA%E5%BF%83.html">8. greedy algorithm 贪心</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E5%88%86%E6%B2%BB.html">9. divide and conquer分治</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">10. bfs宽度优先搜索</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">11. dp动态规划</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">11.1. 概念</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">11.2. 线性dp</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id3">11.2.1. 895. 最长上升子序列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">11.2.2. 897. 最长公共子序列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">11.2.3. 898. 数字三角形</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">11.2. 再看硬币问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#memoization">11.3. memoization记忆化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#constructing-a-solution">11.4. Constructing a solution记录方案(循环,递归)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#counting-the-number-of-solutions">11.5. Counting the number of solutions统计方案个数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">11.6. 另一个角度，介绍动态规划</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">11.7. 专题：线性dp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#longest-increasing-subsequence">11.7.1. <strong>Longest increasing subsequence最长上升子序列</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#paths-in-a-grid">11.7.2. <strong>paths in a grid方格取数问题，数字三角形模型</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">11.7.3. <strong>背包问题</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edit-distance">11.7.4. <strong>edit distance编辑距离</strong></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">11.3. 背包</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id7">11.3.1. 0/1背包</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">11.3.2. 完全背包</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">11.3.3. 多重背包</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">11.3.4. 分组背包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">11.8. 专题：背包问题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">11.8.1. 0/1背包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">11.8.2. 完全背包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">11.8.3. 多重背包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">11.8.4. 混合三种背包问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">11.8.5. 分组背包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">11.8.6. 有依赖的背包问题</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id11">11.4. 区间dp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id12">11.5. 树形dp</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id13">11.5.1. 状态压缩dp</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">11.5.2. 倍增优化dp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">11.9. 专题：区间dp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">11.10. 《一本通》题目</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id15">11.10.1. 【例9.2】数字金字塔</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">11.10.2. 【例9.3】求最长不下降序列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#noip1999">11.10.3. 【例9.4】拦截导弹(Noip1999)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">11.10.4. 【例9.5】城市交通路网</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">11.10.5. 【例9.6】挖地雷</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">11.10.6. 【例9.7】友好城市</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">11.10.7. 【例9.8】合唱队形</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">11.10.8. 【例9.9】最长公共子序列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">11.10.9. 【例9.10】机器分配</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">11.10.10. 最长上升子序列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">11.10.11. 最大子矩阵</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">11.10.12. 登山</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">11.10.13. 摘花生</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">11.10.14. 最大上升子序列和</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">11.10.15. 怪盗基德的滑翔翼</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">11.10.16. 最低通行费</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">11.10.17. 三角形最佳路径问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id31">11.10.18. 拦截导弹</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id32">11.10.19. 【例9.11】01背包问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id33">11.10.20. 【例9.12】完全背包问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id34">11.10.21. 【例9.13】庆功会</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id35">11.10.22. 【例9.14】混合背包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id36">11.10.23. 【例9.15】潜水员</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id37">11.10.24. 【例9.16】分组背包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">11.10.25. 【例9.17】货币系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id39">11.10.26.  采药</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id40">11.10.27. 数字组合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id41">11.10.28. 宠物小精灵之收服</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id42">11.10.29. 买书</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#charm-bracelet">11.10.30. Charm Bracelet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id43">11.10.31. 装箱问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id44">11.10.32. 开餐馆</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id45">11.10.33. 【例9.18】合并石子</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id46">11.10.34.  【例9.19】乘积最大</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id47">11.10.35. 【例9.20】编辑距离</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id48">11.10.36. 【例9.21】方格取数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#book">11.10.37. 【例9.22】复制书稿(book)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flower">11.10.38. 【例9.23】橱窗布置(flower)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id49">11.10.39. 【例9.24】滑雪</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id50">11.10.40. 公共子序列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id51">11.10.41. 计算字符串距离</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id52">11.10.42. 糖果</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id53">11.10.43.  鸡蛋的硬度</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id54">11.10.44.  大盗阿福</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id55">11.10.45. 股票买卖</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id56">11.10.46. 鸣人的影分身</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id57">11.10.47. 数的划分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#maximum-sum">11.10.48.  Maximum sum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id58">11.10.49. 最长公共子上升序列</a></li>
 </ul>
 </li>
 </ul>
@@ -200,7 +255,202 @@
 <h1><span class="section-number">11. </span>dp动态规划<a class="headerlink" href="#dp" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
 <h2><span class="section-number">11.1. </span>概念<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>现在，同学们已经对“问题与状态空间”之间的类比有了更深入的认识。</p>
+<p><strong>Dynamic programming</strong> is a technique that combines the correctness of com- plete search and the efficiency of greedy algorithms. Dynamic programming can be applied if the problem can be divided into overlapping subproblems that can be solved independently.There are two uses for dynamic programming:</p>
+<ul class="simple">
+<li><p><strong>Finding an optimal solution</strong>: We want to find a solution that is as large as possible or as small as possible.</p></li>
+<li><p><strong>Counting the number of solutions</strong>: We want to calculate the total num- ber of possible solutions.</p></li>
+</ul>
+<p>Understanding dynamic programming is a <strong>milestone</strong> in every competitive programmer’s career. While the basic idea is simple, the challenge is how to apply dynamic programming to different problems.</p>
+<p>The dynamic programming algorithm is based on a recursive function that goes through all possibilities how to form the sum, like a brute force algorithm. However, the dynamic programming algorithm is efficient because it uses <em>memoization</em> and calculates the answer to each subproblem only once.</p>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">11.2. </span>再看硬币问题<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>贪心算法的策略是每次取最大值，但并不是每一次都有效。我们下面看看，</p>
+<p>The idea in dynamic programming is to formulate the problem recursively so that the solution to the problem can be calculated from solutions to smaller subproblems. In the coin problem, a natural recursive problem is as follows: what is the smallest number of coins required to form a sum <em>x</em>?</p>
+<p>Let solve(<em>x</em>) denote the minimum number of coins required for a sum <em>x</em>. The values of the function depend on the values of the coins. For example, if coins = {1, 3, 4}, the first values of the function are as follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">solve</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">solve</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">solve</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span> 
+<span class="n">solve</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">solve</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">solve</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span> 
+<span class="n">solve</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">solve</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">solve</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span> 
+<span class="n">solve</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">solve</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>For example, solve(10) = 3, because at least 3 coins are needed to form the sum 10. The optimal solution is 3+3+4=10.</p>
+<p>因为只能取1, 3, 4，如果第一个硬币取的是1，剩余的就是solve(9)；如果第一个硬币取的是3，剩余的就是solve(7)。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>solve(x) = min(solve(x − 1) + 1, solve(x − 3) + 1,solve(x − 4) + 1)
+</pre></div>
+</div>
+<p>The base case of the recursion is solve(0) = 0, because no coins are needed to form an empty sum.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">solve</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>完整代码如下，但这个写法不是很高效</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">solve</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">INF</span><span class="p">;</span>  <span class="c1">//INF代表一个无穷大的值</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">best</span> <span class="o">=</span> <span class="n">INF</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">c</span> <span class="p">:</span> <span class="n">coins</span><span class="p">){</span>   <span class="c1">//枚举可以使用的硬币 C++11的写法</span>
+       <span class="n">best</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">best</span><span class="p">,</span> <span class="n">solve</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">c</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">best</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="memoization">
+<h2><span class="section-number">11.3. </span>memoization记忆化<a class="headerlink" href="#memoization" title="Permalink to this headline">¶</a></h2>
+<p>写代码就是这样，需要不断的升级自己的technique</p>
+<p>The idea of dynamic programming is to use <strong>memoization</strong> to efficiently calculate values of a recursive function. This means that the values of the function are stored in an array after calculating them. For each parameter, the value of the function is calculated recursively only once, and after this, the value can be directly retrieved from the array.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">ready</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">value</span><span class="p">[</span><span class="n">N</span><span class="p">];</span> 
+</pre></div>
+</div>
+<p>where ready[<em>x</em>] indicates whether the value of solve(<em>x</em>) has been calculated, and if it is, value[<em>x</em>] contains this value. The constant <em>N</em> has been chosen so that all required values fit in the arrays.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//下面就是加记忆化的写法</span>
+<span class="c1">//The time complexity of the algorithm is *O*(*nk*), where *n* is the target sum and *k* is the number of coins.</span>
+
+<span class="kt">int</span> <span class="nf">solve</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">INF</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ready</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="k">return</span> <span class="n">value</span><span class="p">[</span><span class="n">x</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">best</span> <span class="o">=</span> <span class="n">INF</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">c</span> <span class="p">:</span> <span class="n">coins</span><span class="p">)</span> <span class="p">{</span>
+       <span class="n">best</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">best</span><span class="p">,</span> <span class="n">solve</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">c</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">value</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">best</span><span class="p">;</span>
+    <span class="n">ready</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">best</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that we can also <em>iteratively</em> construct the array value using a loop that simply calculates all the values of solve for parameters 0…<em>n</em>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//下面是循环的写法</span>
+
+<span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">value</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">INF</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">c</span> <span class="p">:</span> <span class="n">coins</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">c</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+           <span class="n">value</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="n">value</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="n">c</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+		<span class="p">}</span> 
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>**In fact, most competitive programmers prefer this implementation, because it is shorter and has lower constant factors. **(虽然dfs+记忆化是更好想的，但是更多的竞赛选手喜欢用循环的方法。)</p>
+</div>
+<div class="section" id="constructing-a-solution">
+<h2><span class="section-number">11.4. </span>Constructing a solution记录方案(循环,递归)<a class="headerlink" href="#constructing-a-solution" title="Permalink to this headline">¶</a></h2>
+<p>dp问题当中，有很多情况，不仅让你求最值，还让你输出最值情况下的方案是什么（如果有多种方案，输出一种即可，oj会做special judge）</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//we can declare another array that indicates for each sum of money the first coin in an optimal solution:</span>
+<span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">value</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">INF</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">c</span> <span class="p">:</span> <span class="n">coins</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">c</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">value</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="n">c</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">value</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="p">{</span>
+           <span class="n">value</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="n">c</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+           <span class="n">first</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+		<span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//输出方案</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">first</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="n">n</span> <span class="o">-=</span> <span class="n">first</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//完整示例代码</span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">15</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">value</span><span class="p">[</span><span class="mi">15</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">first</span><span class="p">[</span><span class="mi">15</span><span class="p">];</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">memset</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="mh">0x3f</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">value</span><span class="p">);</span>
+
+	<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+	
+	<span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">){</span>
+		<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> 
+			<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">value</span><span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">value</span><span class="p">[</span><span class="n">x</span><span class="p">]){</span>
+				<span class="n">value</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+				<span class="n">first</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+			<span class="p">}</span>
+	<span class="p">}</span>
+	
+	<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">sum</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span>
+		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">first</span><span class="p">[</span><span class="n">sum</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39; &#39;</span><span class="p">;</span>
+		<span class="n">sum</span> <span class="o">-=</span> <span class="n">first</span><span class="p">[</span><span class="n">sum</span><span class="p">];</span>
+	<span class="p">}</span>
+	<span class="n">puts</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>输出方案，我们更多的，还可以用递归输出</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="p">;</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span> <span class="n">first</span><span class="p">[</span><span class="n">x</span><span class="p">]);</span> <span class="c1">//这两行的顺序，决定了先递归再输出当前，还是先输出当前，再递归</span>
+	<span class="n">print</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">first</span><span class="p">[</span><span class="n">x</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="c1">//..........</span>
+    
+	<span class="n">print</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+	<span class="n">puts</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="counting-the-number-of-solutions">
+<h2><span class="section-number">11.5. </span>Counting the number of solutions统计方案个数<a class="headerlink" href="#counting-the-number-of-solutions" title="Permalink to this headline">¶</a></h2>
+<p>if coins = {1, 3, 4} and <em>x</em> = 5。总共有6种方案</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>• 1+1+1+1+1 
+• 1+1+3
+• 1+3+1
+• 3+1+1 
+• 1+4
+• 4+1
+</pre></div>
+</div>
+<p>Again, we can solve the problem recursively. Let solve(<em>x</em>) denote the number of ways we can form the sum <em>x</em>.if coins = {1, 3, 4},</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>solve(x) =solve(x − 1)+ solve(x − 3)+ solve(x − 4)
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//count[x]记录方案数</span>
+<span class="c1">//If x &lt; 0, the value is 0, because there are no solutions. If x = 0, the value is 1, because there is only one way to form an empty sum. </span>
+
+<span class="n">count</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">c</span> <span class="p">:</span> <span class="n">coins</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">c</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+           <span class="n">count</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">+=</span> <span class="n">count</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="n">c</span><span class="p">];</span>
+           <span class="c1">//count[x] %= MOD;   有的题目这个方案数很多，题目会要求随时取模   </span>
+       <span class="p">}</span>
+	<span class="p">}</span> 
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em><strong>– Now we have discussed all basic ideas of dynamic programming.</strong></em></p>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">11.6. </span>另一个角度，介绍动态规划<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>下面的介绍，又是一种角度，会更加的学术。从“状态空间”入手</p>
+<p>对“问题与状态空间”之间的类比，有了更深入的认识。</p>
 <ul class="simple">
 <li><p>递推和递归是两种遍历状态空间的基本方法</p></li>
 <li><p>搜索算法，处理指数级别等非多项式复杂度的问题</p></li>
@@ -222,48 +472,354 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id2">
-<h2><span class="section-number">11.2. </span>线性dp<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>具有线性“阶段”划分的动态规划算法被称为线性dp，经典例题：最长上升子序列（LIS）、最长公共子序列（LCS）、数字三角形（IOI1994），这三个问题，需要计算的对象表现出明显的维度以及有序性。每个状态的求解直接构成一个阶段，这使得dp的状态表示就是阶段的表示。因此，我们只需要在每个维度上各取一个坐标值作为dp的状态，自然就可以描绘出“已求解部分”在状态空间中的轮廓特征，该轮廓的进展就是阶段的推移。每个状态的求解，显然只与之前阶段的最有解有关，这体现了“最优子结构”。接下来，按顺序依次循环每个维度，根据问题要求，递推求解，具体实现。</p>
-<div class="section" id="id3">
-<h3><span class="section-number">11.2.1. </span><a class="reference external" href="https://www.acwing.com/problem/content/897/">895. 最长上升子序列</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>*max_element(dp + 1, dp + 1 + n)  这句用法</p>
-</div>
 <div class="section" id="id4">
-<h3><span class="section-number">11.2.2. </span><a class="reference external" href="https://www.acwing.com/problem/content/899/">897. 最长公共子序列</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>在第一序列前i个字母中出现，且在第二个序列前j个字母中出现的子序列</p>
+<h2><span class="section-number">11.7. </span>专题：线性dp<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>具有线性“阶段”划分的动态规划算法被称为线性dp，经典例题：最长上升子序列（LIS）、最长公共子序列（LCS）、数字三角形（IOI1994），这三个问题，需要计算的对象表现出明显的维度以及有序性。每个状态的求解直接构成一个阶段，这使得dp的状态表示就是阶段的表示。因此，我们只需要在每个维度上各取一个坐标值作为dp的状态，自然就可以描绘出“已求解部分”在状态空间中的轮廓特征，该轮廓的进展就是阶段的推移。每个状态的求解，显然只与之前阶段的最有解有关，这体现了“最优子结构”。接下来，按顺序依次循环每个维度，根据问题要求，递推求解，具体实现。</p>
+<div class="section" id="longest-increasing-subsequence">
+<h3><span class="section-number">11.7.1. </span><strong>Longest increasing subsequence最长上升子序列</strong><a class="headerlink" href="#longest-increasing-subsequence" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">index</span>   <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span>
+<span class="n">number</span>  <span class="mi">6</span> <span class="mi">2</span> <span class="mi">5</span> <span class="mi">1</span> <span class="mi">7</span> <span class="mi">4</span> <span class="mi">8</span> <span class="mi">3</span>
+<span class="ow">in</span> <span class="n">eyes</span>   <span class="mi">2</span> <span class="mi">5</span>   <span class="mi">7</span>   <span class="mi">8</span>
+</pre></div>
+</div>
+<p>定义，Let length(k) denote the length of the longest increasing subsequence that ends at position k.</p>
+<p>To calculate a value of length(k), we should find a position i &lt; k for which array[i] &lt; array[k] and length(i) is as large as possible. Then we know that length(k) = length(i) + 1, because this is an optimal way to add array[k] to a subsequence. However, if there is no such position i, then length(k) = 1, which means that the subsequence only contains array[k].</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">length</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">if</span> <span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">array</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="p">{</span>
+           <span class="n">length</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">length</span><span class="p">[</span><span class="n">k</span><span class="p">],</span><span class="n">length</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+       <span class="p">}</span>
+	<span class="p">}</span> 
+<span class="p">}</span>
+
+<span class="c1">//时间复杂度是O(n^2)</span>
+<span class="c1">//可以用单调队列，优化成O(nlogn)</span>
+</pre></div>
+</div>
+<p><strong>练习题目，<a class="reference external" href="https://www.acwing.com/problem/content/897/">895. 最长上升子序列</a></strong></p>
+</div>
+<div class="section" id="paths-in-a-grid">
+<h3><span class="section-number">11.7.2. </span><strong>paths in a grid方格取数问题，数字三角形模型</strong><a class="headerlink" href="#paths-in-a-grid" title="Permalink to this headline">¶</a></h3>
+<p>这类问题，是从方格的左上角，走到方格的右下角。方格中，有一些分数，每一步只能向右走，或者向下走。求怎么走，能获取的分数最大。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>Assume that the rows and columns of the grid are numbered from 1 to n, and value[y][x] equals the value of square (y,x). Let sum(y,x) denote the maximum sum on a path from the upper-left corner to square (y,x). Now sum(n,n) tells us the maximum sum from the upper-left corner to the lower-right corner. 
+
+sum(y,x)=max(sum(y,x−1),sum(y−1,x))+value[y][x]
+    
+Since the function sum has two parameters, the dynamic programming array also has two dimensions.
+    
+for (int y = 1; y &lt;= n; y++) {
+	for (int x = 1; x &lt;= n; x++) {
+		sum[y][x] = max(sum[y][x-1],sum[y-1][x])+value[y][x];
+	}
+}
+//时间复杂度O(n^2)
+</pre></div>
+</div>
+<p><strong>练习题目 <a class="reference external" href="https://www.acwing.com/problem/content/900/">898. 数字三角形</a></strong></p>
+<p>/acwing上的数据更丰富一些，需要对dp进行初始化成负无穷，每一行0 ~ i+1都要初始化</p>
 </div>
 <div class="section" id="id5">
-<h3><span class="section-number">11.2.3. </span><a class="reference external" href="https://www.acwing.com/problem/content/900/">898. 数字三角形</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>acwing上的数据更丰富一些，需要对dp进行初始化成负无穷，每一行0 ~ i+1都要初始化</p>
+<h3><span class="section-number">11.7.3. </span><strong>背包问题</strong><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>The term <strong>knapsack</strong> refers to problems where a set of objects is given, and subsets with some properties have to be found. Knapsack problems can often be solved using dynamic programming.</p>
+<p>In this section, we focus on the following problem: Given a list of weights [<em>w</em>1,<em>w</em>2,…,<em>w</em>n], determine all sums that can be constructed using the weights.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>For example, if the weights are [1,3,3,5], the following sums are possible:
+
+0 1 2 3 4 5 6 7 8 9 10 11 12
+X X   X X X X X X X    X  X 
+the symbol ”X” indicates the true values（体积2和10，是无法拼成的）
+    
+To solve the problem, we focus on subproblems where we only use the first k weights to construct sums. Let possible(x, k) = true if we can construct a sum x using the first k weights, and otherwise possible(x, k) = false.
+
+possible(x,k) = possible(x − wk, k − 1) ∨ possible(x, k − 1);
+
+The formula is based on the fact that we can either use or not use the weight wk in the sum. If we use wk, the remaining task is to form the sum x−wk using the first k−1 weights, and if we do not use wk, the remaining task is to form the sum x using the first k − 1 weights.
+    
+possible(x,n) tells us whether we can con- struct a sum x using all weights.
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//示范代码</span>
+<span class="n">possible</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">W</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">w</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">possible</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">|=</span> <span class="n">possible</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="n">w</span><span class="p">[</span><span class="n">k</span><span class="p">]][</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+       <span class="n">possible</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">|=</span> <span class="n">possible</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+	<span class="p">}</span> 
+<span class="p">}</span>
+
+<span class="c1">//还可以写成一维的，trick是枚举x的时候，从大往小枚举</span>
+<span class="n">possible</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">W</span><span class="p">;</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">if</span> <span class="p">(</span><span class="n">possible</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="n">possible</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+	<span class="p">}</span> 
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that the general idea presented here can be used in many knapsack problems. For example, if we are given objects with weights and values, we can determine for each weight sum the maximum value sum of a subset.</p>
+<p><strong>练习题目，<a class="reference external" href="https://www.acwing.com/problem/content/2/">2. 01背包问题</a></strong>，<strong><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1267">【例9.11】01背包问题</a></strong></p>
+</div>
+<div class="section" id="edit-distance">
+<h3><span class="section-number">11.7.4. </span><strong>edit distance编辑距离</strong><a class="headerlink" href="#edit-distance" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>edit distance</strong> or <strong>Levenshtein distance</strong>1 is the minimum number of edit- ing operations needed to transform a string into another string.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>• insert a character (e.g. ABC → ABCA) 
+• remove a character (e.g. ABC → AC)
+• modify a character (e.g. ABC → ADC)
+</pre></div>
+</div>
+<p>For example, the edit distance between LOVE and MOVIE is 2, because we can first perform the operation LOVE → MOVE (modify) and then the operation MOVE → MOVIE (insert). This is the smallest possible number of operations, because it is clear that only one operation is not enough.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>Suppose that we are given a string x of length n and a string y of length m, and we want to calculate the edit distance between x and y. To solve the problem, we define a function distance(a, b) that gives the edit distance between prefixes x[0...a] and y[0...b]. Thus, using this function, the edit distance between x and y equals distance(n − 1, m − 1).
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>if (x[a] == x[b]) cost(a, b) = 0;
+else cost(a, b) = 1;
+
+distance(a, b) = min(distance(a, b − 1) + 1, 
+                     distance(a − 1, b) + 1,
+                     distance(a − 1, b − 1) + cost(a, b));
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>• distance(a, b − 1)			: insert a character at the end of x
+• distance(a − 1, b)			: remove the last character from x
+• distance(a − 1, b − 1)		: match or modify the last character of x
+    
+//distance(a-1, b)理解这个需要注意，这里可能表达的是
+//从(a, b)变成（a-1, b）
+</pre></div>
+</div>
+<p>练习题目，<a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1276">【例9.20】编辑距离</a>，<a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1265">【例9.9】最长公共子序列</a></p>
+<p>最长公共子序列问题，也是一个经典问题。和这个编辑距离，很像，但不完全一样，可以用来引申思考。</p>
 </div>
 </div>
 <div class="section" id="id6">
-<h2><span class="section-number">11.3. </span>背包<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<p>背包是线性dp中一类重要而特殊的模型</p>
+<h2><span class="section-number">11.8. </span>专题：背包问题<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>背包是线性dp中一类重要而特殊的模型。上面，我们已经初步的领略了 0/1背包问题，接下来，我们扩展一下。（参考《背包九讲》）</p>
 <div class="section" id="id7">
-<h3><span class="section-number">11.3.1. </span>0/1背包<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.8.1. </span>0/1背包<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
 </div>
 <div class="section" id="id8">
-<h3><span class="section-number">11.3.2. </span>完全背包<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.8.2. </span>完全背包<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
 </div>
 <div class="section" id="id9">
-<h3><span class="section-number">11.3.3. </span>多重背包<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.8.3. </span>多重背包<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
 </div>
 <div class="section" id="id10">
-<h3><span class="section-number">11.3.4. </span>分组背包<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-</div>
+<h3><span class="section-number">11.8.4. </span>混合三种背包问题<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
 </div>
 <div class="section" id="id11">
-<h2><span class="section-number">11.4. </span>区间dp<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<h3><span class="section-number">11.8.5. </span>分组背包<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
 </div>
 <div class="section" id="id12">
-<h2><span class="section-number">11.5. </span>树形dp<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<h3><span class="section-number">11.8.6. </span>有依赖的背包问题<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+</div>
 <div class="section" id="id13">
-<h3><span class="section-number">11.5.1. </span>状态压缩dp<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<h2><span class="section-number">11.9. </span>专题：区间dp<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<p>/</p>
 </div>
 <div class="section" id="id14">
-<h3><span class="section-number">11.5.2. </span>倍增优化dp<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<h2><span class="section-number">11.10. </span>《一本通》题目<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id15">
+<h3><span class="section-number">11.10.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1258">【例9.2】数字金字塔</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<p>/数字三角形模型</p>
+</div>
+<div class="section" id="id16">
+<h3><span class="section-number">11.10.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1259">【例9.3】求最长不下降序列</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<p>/LIS</p>
+</div>
+<div class="section" id="noip1999">
+<h3><span class="section-number">11.10.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1260">【例9.4】拦截导弹(Noip1999)</a><a class="headerlink" href="#noip1999" title="Permalink to this headline">¶</a></h3>
+<p>/LIS</p>
+</div>
+<div class="section" id="id17">
+<h3><span class="section-number">11.10.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1261">【例9.5】城市交通路网</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<p>/LIS</p>
+</div>
+<div class="section" id="id18">
+<h3><span class="section-number">11.10.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1262">【例9.6】挖地雷</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<p>/LIS</p>
+</div>
+<div class="section" id="id19">
+<h3><span class="section-number">11.10.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1263">【例9.7】友好城市</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<p>/LIS</p>
+</div>
+<div class="section" id="id20">
+<h3><span class="section-number">11.10.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1264">【例9.8】合唱队形</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<p>/LIS</p>
+</div>
+<div class="section" id="id21">
+<h3><span class="section-number">11.10.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1265">【例9.9】最长公共子序列</a><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<p>/LCS</p>
+</div>
+<div class="section" id="id22">
+<h3><span class="section-number">11.10.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1266">【例9.10】机器分配</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="id23">
+<h3><span class="section-number">11.10.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1281">最长上升子序列</a><a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<p>/LIS</p>
+</div>
+<div class="section" id="id24">
+<h3><span class="section-number">11.10.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1282">最大子矩阵</a><a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<p>/最大子段和 + 前缀和，O(n^3)</p>
+</div>
+<div class="section" id="id25">
+<h3><span class="section-number">11.10.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1283">登山</a><a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<p>/LIS</p>
+</div>
+<div class="section" id="id26">
+<h3><span class="section-number">11.10.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1284">摘花生</a><a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<p>/数字三角形模型</p>
+</div>
+<div class="section" id="id27">
+<h3><span class="section-number">11.10.14. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1285">最大上升子序列和</a><a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<p>/LIS</p>
+</div>
+<div class="section" id="id28">
+<h3><span class="section-number">11.10.15. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1286">怪盗基德的滑翔翼</a><a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<p>/LIS</p>
+</div>
+<div class="section" id="id29">
+<h3><span class="section-number">11.10.16. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1287">最低通行费</a><a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<p>/LIS</p>
+</div>
+<div class="section" id="id30">
+<h3><span class="section-number">11.10.17. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1288">三角形最佳路径问题</a><a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<p>/数字三角形模型</p>
+</div>
+<div class="section" id="id31">
+<h3><span class="section-number">11.10.18. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1289">拦截导弹</a><a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<p>/LIS</p>
+</div>
+<div class="section" id="id32">
+<h3><span class="section-number">11.10.19. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1267">【例9.11】01背包问题</a><a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
+<p>/01背包</p>
+</div>
+<div class="section" id="id33">
+<h3><span class="section-number">11.10.20. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1268">【例9.12】完全背包问题</a><a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<p>/完全背包</p>
+</div>
+<div class="section" id="id34">
+<h3><span class="section-number">11.10.21. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1269">【例9.13】庆功会</a><a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<p>/多重背包</p>
+</div>
+<div class="section" id="id35">
+<h3><span class="section-number">11.10.22. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1270">【例9.14】混合背包</a><a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<p>/混合背包</p>
+</div>
+<div class="section" id="id36">
+<h3><span class="section-number">11.10.23. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1271">【例9.15】潜水员</a><a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="id37">
+<h3><span class="section-number">11.10.24. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1272">【例9.16】分组背包</a><a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="id38">
+<h3><span class="section-number">11.10.25. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1273">【例9.17】货币系统</a><a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="id39">
+<h3><span class="section-number">11.10.26. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1290"> 采药</a><a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
+<p>/01背包，noip原题</p>
+</div>
+<div class="section" id="id40">
+<h3><span class="section-number">11.10.27. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1291">数字组合</a><a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
+<p>/01背包</p>
+</div>
+<div class="section" id="id41">
+<h3><span class="section-number">11.10.28. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1292">宠物小精灵之收服</a><a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="id42">
+<h3><span class="section-number">11.10.29. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1293">买书</a><a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="charm-bracelet">
+<h3><span class="section-number">11.10.30. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1294">Charm Bracelet</a><a class="headerlink" href="#charm-bracelet" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="id43">
+<h3><span class="section-number">11.10.31. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1295">装箱问题</a><a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="id44">
+<h3><span class="section-number">11.10.32. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1296">开餐馆</a><a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="id45">
+<h3><span class="section-number">11.10.33. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1274">【例9.18】合并石子</a><a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
+<p>/区间问题</p>
+</div>
+<div class="section" id="id46">
+<h3><span class="section-number">11.10.34. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1275"> 【例9.19】乘积最大</a><a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="id47">
+<h3><span class="section-number">11.10.35. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1276">【例9.20】编辑距离</a><a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
+<p>/编辑距离</p>
+</div>
+<div class="section" id="id48">
+<h3><span class="section-number">11.10.36. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1277">【例9.21】方格取数</a><a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="book">
+<h3><span class="section-number">11.10.37. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1278">【例9.22】复制书稿(book)</a><a class="headerlink" href="#book" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="flower">
+<h3><span class="section-number">11.10.38. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1279">【例9.23】橱窗布置(flower)</a><a class="headerlink" href="#flower" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="id49">
+<h3><span class="section-number">11.10.39. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1280">【例9.24】滑雪</a><a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
+<p>/记忆化</p>
+</div>
+<div class="section" id="id50">
+<h3><span class="section-number">11.10.40. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1297">公共子序列</a><a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
+<p>/LCS</p>
+</div>
+<div class="section" id="id51">
+<h3><span class="section-number">11.10.41. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1298">计算字符串距离</a><a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
+<p>/编辑距离</p>
+</div>
+<div class="section" id="id52">
+<h3><span class="section-number">11.10.42. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1299">糖果</a><a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="id53">
+<h3><span class="section-number">11.10.43. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1300"> 鸡蛋的硬度</a><a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="id54">
+<h3><span class="section-number">11.10.44. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1301"> 大盗阿福</a><a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="id55">
+<h3><span class="section-number">11.10.45. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1302">股票买卖</a><a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="id56">
+<h3><span class="section-number">11.10.46. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1303">鸣人的影分身</a><a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="id57">
+<h3><span class="section-number">11.10.47. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1304">数的划分</a><a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="maximum-sum">
+<h3><span class="section-number">11.10.48. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1305"> Maximum sum</a><a class="headerlink" href="#maximum-sum" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
+</div>
+<div class="section" id="id58">
+<h3><span class="section-number">11.10.49. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1306">最长公共子上升序列</a><a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
+<p>/LIS+LCS，非常好的题目，这个题面还要求输出方案。有O(n^4), O(n^3), O(n^2)的写法，都需要深入思考，琢磨实现。</p>
 </div>
 </div>
 </div>
