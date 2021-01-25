@@ -337,6 +337,25 @@
 </pre></div>
 </div>
 <p>**In fact, most competitive programmers prefer this implementation, because it is shorter and has lower constant factors. **(虽然dfs+记忆化是更好想的，但是更多的竞赛选手喜欢用循环的方法。)</p>
+<p><strong>加记忆化的例子</strong>，<a class="reference external" href="https://blog.csdn.net/BWzhuzehao/article/details/108141420">【Luogu P5017】Noip2018-T3 摆渡车题解</a></p>
+<blockquote>
+<div><p>接下来加记忆化。其实在写记忆化搜索的时候，我个人认为加记忆化是最简单的，<strong>只要爆搜写好并且写对，加记忆化易如反掌。哪里有 return ，哪里加记忆化</strong>。最后代码如下（由于其余部分相同，这里只给出 dfs 代码）</p>
+</div></blockquote>
+<p><strong>加记忆化的例子</strong>，<a class="reference external" href="https://www.luogu.com.cn/blog/interestingLSY/memdfs-and-dp">聊聊动态规划与记忆化搜索</a>【特别经典】</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>不依赖任何 <strong>外部变量</strong></p></li>
+<li><p>答案以返回值的形式存在, 而不能以参数的形式存在(就是不能将 dfs 定义成 dfs(pos ,tleft , nowans )<em>d<strong>f</strong>s</em>(<em>p<strong>o</strong>s</em>,<em>t<strong>l</strong>e<strong>f</strong>t</em>,<em>n<strong>o</strong>w<strong>a</strong>n**s</em>), 这里面的 nowans 不符合要求).</p></li>
+<li><p>对于相同一组参数, dfs 返回值总是相同的</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ol class="simple">
+<li><p>写出这道题的暴搜程序(最好是dfs)</p></li>
+<li><p>将这个dfs改成”无需外部变量”的dfs</p></li>
+<li><p>添加记忆化数组</p></li>
+</ol>
+</div></blockquote>
 </div>
 <div class="section" id="constructing-a-solution">
 <h2><span class="section-number">11.4. </span>Constructing a solution记录方案(循环,递归)<a class="headerlink" href="#constructing-a-solution" title="Permalink to this headline">¶</a></h2>
@@ -715,7 +734,9 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 </div>
 <div class="section" id="id36">
 <h3><span class="section-number">11.10.23. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1271">【例9.15】潜水员</a><a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
-<p>/</p>
+<p>/这个题目注意一个瓶子里的氧气和氮气，不是完整的用，可以只用一部分从而满足工作需要。</p>
+<p>/<a class="reference external" href="https://www.acwing.com/solution/content/7438/">https://www.acwing.com/solution/content/7438/</a></p>
+<p>/<a class="reference external" href="https://www.acwing.com/blog/content/458/">背包问题中 体积至多是 j ，恰好是 j ，至少是 j 的初始化问题的研究</a></p>
 </div>
 <div class="section" id="id37">
 <h3><span class="section-number">11.10.24. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1272">【例9.16】分组背包</a><a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
@@ -759,7 +780,7 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 </div>
 <div class="section" id="id46">
 <h3><span class="section-number">11.10.34. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1275"> 【例9.19】乘积最大</a><a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
-<p>/</p>
+<p>/<a class="reference external" href="https://www.acwing.com/solution/content/18940/">https://www.acwing.com/solution/content/18940/</a></p>
 </div>
 <div class="section" id="id47">
 <h3><span class="section-number">11.10.35. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1276">【例9.20】编辑距离</a><a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
