@@ -27,11 +27,19 @@ event   starting time    ending time
   D            6               8
 ```
 
-![](https://i.loli.net/2021/01/25/UDuMTLwersnBG4x.png)
 
 
 
-![](../media/image-20210125101248509.png)
+
+
+
+<div align='center'>
+
+![image-20210125111846201](../media/image-20210125111846201.png)
+
+</div>
+
+
 
 ### 常见题型：
 
