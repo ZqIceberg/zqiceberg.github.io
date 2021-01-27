@@ -1,5 +1,0 @@
-> https://blog.csdn.net/luojj26/article/details/49671121
-
-高精度乘法的讲解，数组版本
-
-乘法，要注意的是进位的问题。

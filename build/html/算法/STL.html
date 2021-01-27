@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>2. stl标准模板库 &mdash; 信息学奥赛普及组21天突破 0.7.1 documentation</title>
+  <title>2. data structure(STL) &mdash; 信息学奥赛普及组算法21天突破 0.7.1 documentation</title>
   
 
   
@@ -32,6 +32,7 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -53,7 +54,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> 信息学奥赛普及组21天突破
+            <a href="../index.html" class="icon icon-home"> 信息学奥赛普及组算法21天突破
           
 
           
@@ -88,20 +89,19 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">一、普及组算法部分</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.html">1. time complexity时间复杂度</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. stl标准模板库</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">2.1. 概念</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#dynamic-arrays-vector-string">2.1.1. Dynamic arrays(vector, string)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#set">2.1.2. set集合</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#map">2.1.3. map</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#iterator">2.1.4. iterator迭代器</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#bitset">2.1.5. bitset</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#stack">2.1.6. stack栈</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#queue">2.1.7. queue队列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#priority-queue">2.1.8. priority_queue优先队列</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. data structure(STL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">2.1. 概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dynamic-arrays-vector-string">2.2. dynamic arrays(vector, string)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set">2.3. set集合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#map">2.4. map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#iterator">2.5. iterator迭代器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bitset">2.6. bitset(这个不着急完全理解)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stack">2.7. stack栈</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#queue">2.8. queue队列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#priority-queue">2.9. priority_queue优先队列（用来实现堆操作）</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html">3. high accuracy高精度</a></li>
@@ -118,8 +118,15 @@
 <li class="toctree-l1"><a class="reference internal" href="%E6%A0%91.html">14. trees树</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA.html">15. graph图论</a></li>
 </ul>
+<p class="caption"><span class="caption-text">二、计算机使用教程</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%8C%E5%88%9B%E5%BB%BAcpp%E6%96%87%E4%BB%B6%E7%9A%84%E8%BF%87%E7%A8%8B.html">0x01 编辑器的使用，创建cpp文件的过程.md</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/MacOS%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">1. MacOS环境下的操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">2. Windows环境下的操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%BB%A3%E7%A0%81%E7%BB%8F%E9%AA%8C.html">3. 代码经验</a></li>
+</ul>
+<p class="caption"><span class="caption-text">三、C++语言部分</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../C%2B%2B/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA.html">1. 输入输出</a></li>
 </ul>
 
             
@@ -135,7 +142,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">信息学奥赛普及组21天突破</a>
+          <a href="../index.html">信息学奥赛普及组算法21天突破</a>
         
       </nav>
 
@@ -168,7 +175,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li><span class="section-number">2. </span>stl标准模板库</li>
+      <li><span class="section-number">2. </span>data structure(STL)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -187,14 +194,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="stl">
-<h1><span class="section-number">2. </span>stl标准模板库<a class="headerlink" href="#stl" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="data-structure-stl">
+<h1><span class="section-number">2. </span>data structure(STL)<a class="headerlink" href="#data-structure-stl" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
 <h2><span class="section-number">2.1. </span>概念<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>STL(Standard Template Library)，C++有一个库，里面有很多好东西。是后来出现的，以前不流行，现在很流行的东西。我们学习了很多数据结构，就是那些用来存储数据的东西。在解决问题的时候，我们会选择合适的数据结构来存储这个问题的数据，是因为每个数据结构有优点和缺点。数据结构的相关操作，有一些函数是写好可以直接用的。（记住，你以后还会面临时间复杂度问题，不是所有情况都适合用STL ，但是前期STL非常香）（C++11现在在noip中还不能使用）</p>
-<p>It is a good idea to use the standard library whenever possible, because it will save a lot of time.</p>
+<p>A <strong>data structure</strong> is a way to store data in the memory of a computer. It is important to choose an appropriate data structure for a problem, because each data structure has its own advantages and disadvantages. The crucial question is: which operations are efficient in the chosen data structure?</p>
+<p>我们来介绍一下C++ standard library。STL(Standard Template Library)，C++ 有一个库，里面有很多好东西。是后来出现的，以前不流行，现在很流行的东西。我们学习了很多数据结构，就是那些用来存储数据的东西。在解决问题的时候，我们会选择合适的数据结构来存储这个问题的数据，是因为每个数据结构有优点和缺点。数据结构的相关操作，有一些函数是写好可以直接用的。（记住，你以后还会面临时间复杂度问题，不是所有情况都适合用 STL ，但是前期 STL 非常香）（C++11 现在在 noip 中还不能使用）</p>
+<p><em><strong>It is a good idea to use the standard library whenever possible, because it will save a lot of time.</strong></em></p>
+</div>
 <div class="section" id="dynamic-arrays-vector-string">
-<h3><span class="section-number">2.1.1. </span>Dynamic arrays(vector, string)<a class="headerlink" href="#dynamic-arrays-vector-string" title="Permalink to this headline">¶</a></h3>
+<h2><span class="section-number">2.2. </span>dynamic arrays(vector, string)<a class="headerlink" href="#dynamic-arrays-vector-string" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">;</span>
 <span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="c1">// [3]</span>
 <span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// [3,2]</span>
@@ -222,7 +231,8 @@
 <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>string类型也是一个动态数组，用起来很像vector，经常用的<code class="docutils literal notranslate"><span class="pre">substr(</span> <span class="pre">),</span> <span class="pre">.find(</span> <span class="pre">)</span></code></p>
+<center><p><img alt="../_images/image-20210127120543993.png" src="../_images/image-20210127120543993.png" /></p>
+</center><p>The string structure is also a dynamic array that can be used almost like a vector. string类 类型也是一个动态数组，用起来很像vector，经常用的<code class="docutils literal notranslate"><span class="pre">s.substr(pos,</span> <span class="pre">length)</span></code> <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">pos</span> <span class="pre">=</span> <span class="pre">s.find('c')</span></code>，还有<code class="docutils literal notranslate"><span class="pre">+</span></code>用来拼接两个string</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>string a = &quot;hatti&quot;;
 string b = a+a;
 cout &lt;&lt; b &lt;&lt; &quot;\n&quot;; // hattihatti
@@ -230,12 +240,22 @@ b[5] = ’v’;
 cout &lt;&lt; b &lt;&lt; &quot;\n&quot;; // hattivatti
 string c = b.substr(3,4);
 cout &lt;&lt; c &lt;&lt; &quot;\n&quot;; // tiva
+
+string c = b.substr(3);
+cout &lt;&lt; c &lt;&lt; &quot;\n&quot;; // 这个是什么呢，请实践一下
+
+int pos;
+pos = b.find(&#39;a&#39;);
+cout &lt;&lt; pos &lt;&lt; &#39;\n&#39;;  //实践一下
+	
+pos = b.find(&#39;x&#39;);
+cout &lt;&lt; pos &lt;&lt; &#39;\n&#39;;  //实践一下
 </pre></div>
 </div>
 </div>
 <div class="section" id="set">
-<h3><span class="section-number">2.1.2. </span>set集合<a class="headerlink" href="#set" title="Permalink to this headline">¶</a></h3>
-<p>A <strong>set</strong> is a data structure that maintains a collection of elements. The basic operations of sets are element insertion, search and removal.The benefit of the set structure is that it maintains the order of the elements</p>
+<h2><span class="section-number">2.3. </span>set集合<a class="headerlink" href="#set" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>set</strong> is a data structure that maintains a collection of elements. The basic operations of sets are element insertion, search and removal.The benefit of the set structure is that it maintains the order of the elements.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">s</span><span class="p">;</span>
 <span class="n">s</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
 <span class="n">s</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
@@ -250,7 +270,7 @@ cout &lt;&lt; c &lt;&lt; &quot;\n&quot;; // tiva
 </div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">};</span>
 <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span> <span class="c1">// 4</span>
-<span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">x</span> <span class="p">:</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">//C++11</span>
+<span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">x</span> <span class="p">:</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>        <span class="c1">//C++11 用法</span>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -281,8 +301,8 @@ cout &lt;&lt; c &lt;&lt; &quot;\n&quot;; // tiva
 </div>
 </div>
 <div class="section" id="map">
-<h3><span class="section-number">2.1.3. </span>map<a class="headerlink" href="#map" title="Permalink to this headline">¶</a></h3>
-<p>A <strong>map</strong> is a generalized array that consists of key-value-pairs. While the keys in an ordinary array are always the consecutive integers 0,1,…,<em>n</em>−1, where <em>n</em> is the size of the array, the keys in a map can be of any data type and they do not have to be consecutive values.</p>
+<h2><span class="section-number">2.4. </span>map<a class="headerlink" href="#map" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>map</strong> is a generalized array that consists of key-value-pairs. While the keys in an ordinary array are always the consecutive integers <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">1</span> <span class="pre">,...</span> <span class="pre">,</span> <span class="pre">n−1</span></code>, where <em>n</em> is the size of the array, the keys in a map can be of any data type and they do not have to be consecutive values.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">m</span><span class="p">;</span>
 <span class="n">m</span><span class="p">[</span><span class="s">&quot;monkey&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
 <span class="n">m</span><span class="p">[</span><span class="s">&quot;banana&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
@@ -290,18 +310,18 @@ cout &lt;&lt; c &lt;&lt; &quot;\n&quot;; // tiva
 <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">m</span><span class="p">[</span><span class="s">&quot;banana&quot;</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span> <span class="c1">// 3</span>
 </pre></div>
 </div>
-<p>If the value of a key is requested but the map does not contain it, the key is automatically added to the map with a default value. For example, in the following code, the key ”aybabtu” with value 0 is added to the map.</p>
+<p>If the value of a key is requested but the map does not contain it, the key is automatically added to the map with a default value.<strong>For example, in the following code, the key ”aybabtu” with value 0 is added to the map.</strong></p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">m</span><span class="p">;</span>
 <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">m</span><span class="p">[</span><span class="s">&quot;aybabtu&quot;</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span> <span class="c1">// 0</span>
 </pre></div>
 </div>
-<p>所以，上述这个操作，不是很好，当查询次数很多，会造成空间问题（CF现场比赛中，真实遇见…）</p>
+<p>所以，上述这个操作，不是很好，当查询次数很多，会造成空间问题（我在CF现场比赛中，真实遇见…，当时还不熟练这个操作）</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//判断是否存在，用count</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="s">&quot;aybabtu&quot;</span><span class="p">))</span> <span class="p">{</span>
     <span class="c1">// key exists</span>
 <span class="p">}</span>
 
-<span class="c1">//C++11的遍历</span>
+<span class="c1">//C++11的遍历，我们自己写，要用interator</span>
 <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">x</span> <span class="p">:</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">x</span><span class="p">.</span><span class="n">second</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 <span class="p">}</span>
@@ -309,8 +329,8 @@ cout &lt;&lt; c &lt;&lt; &quot;\n&quot;; // tiva
 </div>
 </div>
 <div class="section" id="iterator">
-<h3><span class="section-number">2.1.4. </span>iterator迭代器<a class="headerlink" href="#iterator" title="Permalink to this headline">¶</a></h3>
-<p>Many functions in the C++ standard library operate with iterators. An <strong>iterator</strong> is a variable that points to an element in a data structure.用iterator来写遍历，遍历不同的容器，都可以用iterator，但是只有部分容器支持下标访问，比如vector。</p>
+<h2><span class="section-number">2.5. </span>iterator迭代器<a class="headerlink" href="#iterator" title="Permalink to this headline">¶</a></h2>
+<p>Many functions in <strong>the C++ standard library</strong> operate with iterators. An <strong>iterator</strong> is a variable that points to an element in a data structure. 用 iterator 来写遍历，遍历不同的容器，都可以用 iterator，但是只有部分容器支持下标访问，比如 vector。</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//vector的排序</span>
 <span class="n">sort</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
 <span class="n">reverse</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
@@ -332,13 +352,13 @@ cout &lt;&lt; c &lt;&lt; &quot;\n&quot;; // tiva
 <span class="c1">//查找元素是否存在</span>
 <span class="n">it</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">it</span> <span class="o">==</span> <span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> <span class="p">{</span>
-    <span class="c1">// x is not found</span>
+<span class="c1">//x is not found</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="bitset">
-<h3><span class="section-number">2.1.5. </span>bitset<a class="headerlink" href="#bitset" title="Permalink to this headline">¶</a></h3>
+<h2><span class="section-number">2.6. </span>bitset(这个不着急完全理解)<a class="headerlink" href="#bitset" title="Permalink to this headline">¶</a></h2>
 <p>A <strong>bitset</strong> is an array whose each value is either 0 or 1. For example, the following code creates a bitset that contains 10 elements:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">10</span><span class="o">&gt;</span> <span class="n">s</span><span class="p">;</span>
 <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -349,7 +369,7 @@ cout &lt;&lt; c &lt;&lt; &quot;\n&quot;; // tiva
 <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span> <span class="c1">// 0</span>
 </pre></div>
 </div>
-<p>The benefit of using bitsets is that they require less memory than ordinary arrays, because each element in a bitset only uses one bit of memory. For example, if <em>n</em> bits are stored in an int array, 32<em>n</em> bits of memory will be used, but a corresponding bitset only requires <em>n</em> bits of memory. In addition, the values of a bitset can be efficiently manipulated using bit operators, which makes it possible to optimize algorithms using bit sets.</p>
+<p>The benefit of using bitsets is that they require less memory than ordinary arrays, because each element in a bitset only uses one bit of memory. For example, if <em>n</em> bits are stored in an int array, <em><strong>32n</strong></em> bits of memory will be used, but a corresponding bitset only requires <em>n</em> bits of memory. In addition, the values of a bitset can be efficiently manipulated <strong>using bit operators</strong>, which makes it possible to optimize algorithms using bit sets.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">10</span><span class="o">&gt;</span> <span class="n">s</span><span class="p">(</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;0010011010&quot;</span><span class="p">));</span> <span class="c1">// from right to left</span>
 <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span> <span class="c1">// 1</span>
 <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span> <span class="c1">// 0</span>
@@ -366,8 +386,8 @@ cout &lt;&lt; c &lt;&lt; &quot;\n&quot;; // tiva
 </div>
 </div>
 <div class="section" id="stack">
-<h3><span class="section-number">2.1.6. </span>stack栈<a class="headerlink" href="#stack" title="Permalink to this headline">¶</a></h3>
-<p>A <strong>stack</strong> is a data structure that provides two <em>O</em>(1) time operations: adding an element to the top, and removing an element from the top. It is only possible to access the top element of a stack.</p>
+<h2><span class="section-number">2.7. </span>stack栈<a class="headerlink" href="#stack" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>stack</strong> is a data structure that provides two <strong><em>O</em>(1)</strong> time operations: adding an element to the top, and removing an element from the top. It is only possible to access the top element of a stack.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">s</span><span class="p">;</span>
 <span class="n">s</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
 <span class="n">s</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
@@ -379,8 +399,8 @@ cout &lt;&lt; c &lt;&lt; &quot;\n&quot;; // tiva
 </div>
 </div>
 <div class="section" id="queue">
-<h3><span class="section-number">2.1.7. </span>queue队列<a class="headerlink" href="#queue" title="Permalink to this headline">¶</a></h3>
-<p>A <strong>queue</strong> also provides two <em>O</em>(1) time operations: adding an element to the end of the queue, and removing the first element in the queue. It is only possible to access the first and last element of a queue.</p>
+<h2><span class="section-number">2.8. </span>queue队列<a class="headerlink" href="#queue" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>queue</strong> also provides two <strong><em>O</em>(1)</strong> time operations: adding an element to the end of the queue, and removing the first element in the queue. It is only possible to access the first and last element of a queue.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
 <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
 <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
@@ -392,8 +412,8 @@ cout &lt;&lt; c &lt;&lt; &quot;\n&quot;; // tiva
 </div>
 </div>
 <div class="section" id="priority-queue">
-<h3><span class="section-number">2.1.8. </span>priority_queue优先队列<a class="headerlink" href="#priority-queue" title="Permalink to this headline">¶</a></h3>
-<p>A <strong>priority queue</strong> maintains a set of elements. The supported operations are insertion and, depending on the type of the queue, retrieval and removal of either the minimum or maximum element. Insertion and removal take <em>O</em>(log <em>n</em>) time, and retrieval takes <em>O</em>(1) time.</p>
+<h2><span class="section-number">2.9. </span>priority_queue优先队列（用来实现堆操作）<a class="headerlink" href="#priority-queue" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>priority queue</strong> maintains a set of elements. The supported operations are insertion and, depending on the type of the queue, retrieval and removal of either the minimum or maximum element. Insertion and removal take <strong><em>O</em>(log <em>n</em>)</strong> time, and retrieval takes <strong><em>O</em>(1)</strong> time.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">priority_queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
 <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
 <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
@@ -408,8 +428,11 @@ cout &lt;&lt; c &lt;&lt; &quot;\n&quot;; // tiva
 <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>默认是大根堆，如果要写小根堆，就是push进去<code class="docutils literal notranslate"><span class="pre">x</span></code>的时候，push成<code class="docutils literal notranslate"><span class="pre">-x</span></code>，取出使用的时候，加个负号再使用。</p>
+<p>默认是大根堆，如果要写小根堆，就是push进去<code class="docutils literal notranslate"><span class="pre">x</span></code>的时候，push成<code class="docutils literal notranslate"><span class="pre">-x</span></code>，取出使用的时候，加个负号再使用。实现大根堆，还有一个方法，如下：</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">priority_queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span><span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="n">q</span><span class="p">;</span><span class="c1">//这样就可以实现小根堆了 </span>
+</pre></div>
 </div>
+<p>参考：<a class="reference external" href="https://www.cnblogs.com/zwfymqz/p/7800654.html">https://www.cnblogs.com/zwfymqz/p/7800654.html</a>, 如何实现自定义结构体的排序</p>
 </div>
 </div>
 

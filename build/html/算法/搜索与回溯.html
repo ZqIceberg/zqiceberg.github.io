@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>7. complete search and backtracking 搜索与回溯 &mdash; 信息学奥赛普及组21天突破 0.7.1 documentation</title>
+  <title>7. complete search and backtracking 搜索与回溯 &mdash; 信息学奥赛普及组算法21天突破 0.7.1 documentation</title>
   
 
   
@@ -53,7 +53,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> 信息学奥赛普及组21天突破
+            <a href="../index.html" class="icon icon-home"> 信息学奥赛普及组算法21天突破
           
 
           
@@ -88,7 +88,8 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">一、普及组算法部分</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.html">1. time complexity时间复杂度</a></li>
 <li class="toctree-l1"><a class="reference internal" href="STL.html">2. stl标准模板库</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html">3. high accuracy高精度</a></li>
@@ -97,24 +98,26 @@
 <li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E5%BD%92.html">6. recursive 递归</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">7. complete search and backtracking 搜索与回溯</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">7.1. 概念</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">7.2. 将正整数拆分问题</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#backtracking">7.3. backtracking回溯</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">7.4. 深搜代码框架</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#memoization">7.5. memoization记忆化(进一步的)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">7.6. 《一本通》题目</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id5">7.6.1. 【例5.2】组合的输出</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">7.6.2. 【例5.3】自然数的拆分</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#letters">7.6.3. LETTERS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">7.6.4. 八皇后问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">7.6.5. 八皇后</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">7.6.6. 迷宫</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">7.6.7. 红与黑</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">7.6.8. 棋盘问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">7.6.9. 取石子游戏</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">7.6.10. 马走日</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">7.6.11. 单词接龙【难】</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">7.6.12. 分成互质组【难】</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">7.6.13. 放苹果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-subsets">7.2. Generating subsets生成子集问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-permutations">7.3. Generating permutations生成排列问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">7.4. 将正整数拆分问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#backtracking">7.5. backtracking回溯</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">7.6. 深搜代码框架</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#memoization">7.7. memoization记忆化(进一步的)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">7.8. 《一本通》题目</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">7.8.1. 【例5.2】组合的输出</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">7.8.2. 【例5.3】自然数的拆分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#letters">7.8.3. LETTERS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">7.8.4. 八皇后问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">7.8.5. 八皇后</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">7.8.6. 迷宫</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">7.8.7. 红与黑</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">7.8.8. 棋盘问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">7.8.9. 取石子游戏</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">7.8.10. 马走日</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">7.8.11. 单词接龙【难】</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">7.8.12. 分成互质组【难】</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">7.8.13. 放苹果</a></li>
 </ul>
 </li>
 </ul>
@@ -128,8 +131,15 @@
 <li class="toctree-l1"><a class="reference internal" href="%E6%A0%91.html">14. trees树</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA.html">15. graph图论</a></li>
 </ul>
+<p class="caption"><span class="caption-text">二、计算机使用教程</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%8C%E5%88%9B%E5%BB%BAcpp%E6%96%87%E4%BB%B6%E7%9A%84%E8%BF%87%E7%A8%8B.html">0x01 编辑器的使用，创建cpp文件的过程.md</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/MacOS%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">1. MacOS环境下的操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">2. Windows环境下的操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%BB%A3%E7%A0%81%E7%BB%8F%E9%AA%8C.html">3. 代码经验</a></li>
+</ul>
+<p class="caption"><span class="caption-text">三、C++语言部分</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../C%2B%2B/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA.html">1. 输入输出</a></li>
 </ul>
 
             
@@ -145,7 +155,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">信息学奥赛普及组21天突破</a>
+          <a href="../index.html">信息学奥赛普及组算法21天突破</a>
         
       </nav>
 
@@ -201,13 +211,22 @@
 <h1><span class="section-number">7. </span>complete search and backtracking 搜索与回溯<a class="headerlink" href="#complete-search-and-backtracking" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
 <h2><span class="section-number">7.1. </span>概念<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>搜索，也就是对状态空间进行枚举，通过穷尽所有的可能来找到最优解，或者统计合法解的个数。</p>
-<p><strong>Complete search</strong>，我们在学习递归的时候，就了解到了。递归枚举子集，递归枚举组合，递归枚举排列，是三个入门的问题。</p>
-<p><strong>deep first search(dfs)</strong>， 按照深度优先的顺序对“问题状态空间”进行搜索的算法。“深搜”，是一种包括遍历形式、状态记录与检索、剪枝优化等算法整体设计的统称。提前学习建图方法后，掌握在图上进行遍历，进一步把“问题空间”类比为一张图。研究dfs算法之前，要定义该过程产生的“搜索树”结构，整个深搜算法就是基于该搜索树完成的。（用递归实现的指数型枚举、排列性枚举、组合型枚举，其实就是深搜的三种最简单的形式）</p>
-<p><strong>dfs</strong>，常常指利用递归函数实现暴力枚举的算法。<strong>递归搜索</strong>，该类搜索算法的特点在于，将要搜索的目标分成若干“层”，每层基于前几层的状态进行决策，直到达到目标状态。</p>
+<p><strong>Complete search</strong> is a general method that can be used to solve almost any algorithm problem. The idea is to generate all possible solutions to the problem using brute force, and then select the best solution or count the number of solutions, depending on the problem.</p>
+<p>Complete search is a good technique if there is enough time to go through all the solutions, because the search is usually easy to implement and it always gives the correct answer. If complete search is too slow, other techniques, such as greedy algorithms or dynamic programming, may be needed.</p>
+<p>搜索，也就是对状态空间进行枚举，通过穷尽所有的可能来找到最优解，或者统计合法解的个数。<strong>Complete search</strong>，我们在学习递归的时候，就了解到了。递归枚举子集，递归枚举组合，递归枚举排列，是三个入门的问题。</p>
+<p>在讲到搜索的时候，会有几个概念，&lt;深度优先搜索、深度优先遍历&gt;，&lt;广/宽度优先搜索/、广/宽度优先遍历&gt;，遍历呢，一般是指图上的搜索。我们在学习搜索的时候，主要是指学习深度优先搜索。</p>
+<p><strong>deep first search(dfs)</strong>， 按照深度优先的顺序对“问题状态空间”进行搜索的算法。“深搜”，是一种包括遍历形式、状态记录与检索、剪枝优化等算法整体设计的统称。提前学习建图方法后，掌握在图上进行遍历，进一步把“问题空间”类比为一张图。研究dfs算法之前，要定义该过程产生的“搜索树”结构，整个深搜算法就是基于该搜索树完成的。（用递归实现的指数型枚举、排列性枚举、组合型枚举，其实就是深搜的三种最简单的形式）。<strong>dfs</strong>，常常指利用递归函数实现暴力枚举的算法。<strong>递归搜索</strong>，该类搜索算法的特点在于，将要搜索的目标分成若干“层”，每层基于前几层的状态进行决策，直到达到目标状态。</p>
+</div>
+<div class="section" id="generating-subsets">
+<h2><span class="section-number">7.2. </span>Generating subsets生成子集问题<a class="headerlink" href="#generating-subsets" title="Permalink to this headline">¶</a></h2>
+<p>这个问题我们在学习递归的时候已经学习，复习一下。</p>
+</div>
+<div class="section" id="generating-permutations">
+<h2><span class="section-number">7.3. </span>Generating permutations生成排列问题<a class="headerlink" href="#generating-permutations" title="Permalink to this headline">¶</a></h2>
+<p>这个问题我们在学习递归的时候已经学习，复习一下。</p>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">7.2. </span>将正整数拆分问题<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.4. </span>将正整数拆分问题<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p><strong>问题1</strong>：将正整数 n 分解成3个不同的正整数，如 6 = 1 + 2 + 3，排在后面的数必须大于等于前面的数，输出所有方案。</p>
 <p><strong>问题2</strong>：将正整数 n 分解成小于等于 m 个正整数之和，且排在后面的数必须大于等于前面的数，并输出所有方案。</p>
 <p>对于<strong>问题1</strong>，我们可以使用循环处理，using 3 loops</p>
@@ -243,9 +262,15 @@
 </div>
 </div>
 <div class="section" id="backtracking">
-<h2><span class="section-number">7.3. </span>backtracking回溯<a class="headerlink" href="#backtracking" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.5. </span>backtracking回溯<a class="headerlink" href="#backtracking" title="Permalink to this headline">¶</a></h2>
 <p>回溯法是一种经常被用在深度深度优先搜索（DFS）和广度优先搜索（BFS）的技巧。其本质是：走不通就回头。关键词：<strong>恢复现场</strong>。</p>
 <p>常见例题，八皇后问题（用搜索树，来表示）</p>
+<p>As an example, consider the problem of calculating the number of ways <em>n</em> queens can be placed on an <em>n</em> × <em>n</em> chessboard so that no two queens attack each other. For example, when <em>n</em> = 4, there are two possible solutions:</p>
+<center><p><img alt="../_images/image-20210125154752427.png" src="../_images/image-20210125154752427.png" /></p>
+</center><p>The problem can be solved using backtracking by placing queens to the board row by row. More precisely, exactly one queen will be placed on each row so that no queen attacks any of the queens placed before. A solution has been found when all <em>n</em> queens have been placed on the board.</p>
+<p>For example, when <em>n</em> = 4, some partial solutions generated by the backtrack- ing algorithm are as follows:</p>
+<center><p><img alt="../_images/image-20210125154859481.png" src="../_images/image-20210125154859481.png" /></p>
+</center><p>At the bottom level, the three first configurations are illegal, because the queens attack each other. However, the fourth configuration is valid and it can be extended to a complete solution by placing two more queens to the board. There is only one way to place the two remaining queens.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">search</span><span class="p">(</span><span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
 		<span class="n">count</span><span class="o">++</span><span class="p">;</span>
@@ -263,10 +288,10 @@
 <span class="n">search</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">//调用</span>
 </pre></div>
 </div>
-<p>Let <em>q</em>(<em>n</em>) denote the number of ways to place <em>n</em> queens on an <em>n</em> × <em>n</em> chessboard. The above backtracking algorithm tells us that, for example, <strong><em>q</em>(8) = 92</strong></p>
+<p>Let <em>q</em>(<em>n</em>) denote the number of ways to place <em>n</em> queens on an <em>n</em> × <em>n</em> chessboard. The above backtracking algorithm tells us that, for example, <strong><em>q</em>(8) = 92</strong>。（记忆：八皇后问题有92种方案）</p>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">7.4. </span>深搜代码框架<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.6. </span>深搜代码框架<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>int ans = 最坏情况, now;  // now为当前答案
 void dfs(传入数值) {
   if (到达目的地) ans = 从当前解与已有解中选最优;
@@ -281,10 +306,11 @@ void dfs(传入数值) {
 </div>
 </div>
 <div class="section" id="memoization">
-<h2><span class="section-number">7.5. </span>memoization记忆化(进一步的)<a class="headerlink" href="#memoization" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.7. </span>memoization记忆化(进一步的)<a class="headerlink" href="#memoization" title="Permalink to this headline">¶</a></h2>
 <p>记忆化搜索，是在学习动态规划的时候，用到的。用记忆化搜索的方式，实现dp。在这个章节，练习题目时，也请感受一下记忆化操作。</p>
-<p><strong>记忆化模板</strong></p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>int g[MAXN];  // 定义记忆化数组
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>//记忆化模板
+
+int g[MAXN];  // 定义记忆化数组
 int ans = 最坏情况, now;
 void dfs f(传入数值) {
   if (g[规模] != 无效数值) return;  // 或记录解，视情况而定
@@ -304,37 +330,37 @@ int main() {
 </div>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">7.6. </span>《一本通》题目<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.8. </span>《一本通》题目<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id5">
-<h3><span class="section-number">7.6.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1317">【例5.2】组合的输出</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1317">【例5.2】组合的输出</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>递归实现组合枚举</p>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">7.6.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1318">【例5.3】自然数的拆分</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1318">【例5.3】自然数的拆分</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>拆分成若干个小于n的自然数之和</p>
 </div>
 <div class="section" id="letters">
-<h3><span class="section-number">7.6.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1212">LETTERS</a><a class="headerlink" href="#letters" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1212">LETTERS</a><a class="headerlink" href="#letters" title="Permalink to this headline">¶</a></h3>
 <p>棋盘上dfs</p>
 </div>
 <div class="section" id="id7">
-<h3><span class="section-number">7.6.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1213">八皇后问题</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1213">八皇后问题</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>92种方案</p>
 </div>
 <div class="section" id="id8">
-<h3><span class="section-number">7.6.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1214">八皇后</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1214">八皇后</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>输出第x种方案</p>
 </div>
 <div class="section" id="id9">
-<h3><span class="section-number">7.6.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1215">迷宫</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1215">迷宫</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>棋盘上dfs，判断是否可达。注意是不用回溯</p>
 </div>
 <div class="section" id="id10">
-<h3><span class="section-number">7.6.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1216">红与黑</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1216">红与黑</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>总共能到达多少块黑色瓷砖</p>
 </div>
 <div class="section" id="id11">
-<h3><span class="section-number">7.6.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1217">棋盘问题</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1217">棋盘问题</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>棋盘形状是不规则的，只能在 # 位置上摆放。两个棋子不能同行同列，摆放k个棋子，有多少种方案。设计一个带参数的dfs函数</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>void dfs(int u, int num) 枚举到第u行，已经摆放了num个棋子
     
@@ -350,7 +376,7 @@ for (int i = u; i &lt; n; i++)
 </div>
 </div>
 <div class="section" id="id12">
-<h3><span class="section-number">7.6.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1218">取石子游戏</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1218">取石子游戏</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p>从较多的那堆里取，去较少那堆的整数倍，最后把一堆棋子取空，就是赢家。多组数据，问先手是不是赢家。</p>
 <p>a / b &gt;= 2, 先手必胜。</p>
 <p>a / b &lt; 2, 先手只有一种取法。</p>
@@ -359,7 +385,7 @@ for (int i = u; i &lt; n; i++)
 </div></blockquote>
 </div>
 <div class="section" id="id13">
-<h3><span class="section-number">7.6.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1219">马走日</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1219">马走日</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>给出起始位置，问有多少方案可以遍历到棋盘上的所有点。</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="c1">//num是已经遍历点的个数</span>
 </pre></div>
@@ -367,7 +393,7 @@ for (int i = u; i &lt; n; i++)
 <p>用数组控制8个方向的写法，判断点合法性的方法</p>
 </div>
 <div class="section" id="id14">
-<h3><span class="section-number">7.6.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1220">单词接龙</a>【难】<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1220">单词接龙</a>【难】<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <p>要拼成的单词长度尽可能的长，两个单词重合的部分就会尽可能的少。</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>if (a.substr(a.size() - k, k) == b.substr(0, k))
 用g[i][j] = k 维护两个单词之间重叠关系
@@ -390,7 +416,7 @@ dfs(s[i], i);
 </div>
 </div>
 <div class="section" id="id15">
-<h3><span class="section-number">7.6.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1221">分成互质组</a>【难】<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1221">分成互质组</a>【难】<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <p>方法一：拿着鸡蛋去往篮子里放，有合适的放或者不放，没有合适的就先开一个篮子</p>
 <p>//爆搜，每一个位置有两种操作
 //对已有的每一个组进行枚举，看能不能放进去
@@ -421,7 +447,7 @@ dfs(s[i], i);
 </div>
 </div>
 <div class="section" id="id16">
-<h3><span class="section-number">7.6.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1222">放苹果</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1222">放苹果</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <p>苹果数量大于盘子数量，第n个盘子不放dfs(m, n - 1)，每个盘子都放一个dfs(m - n, n)</p>
 <p>苹果数量小于盘子数量，问题等价于dfs(m, m)</p>
 <p>问题边界：0个苹果，1种放法。1个盘子，1种放法。</p>

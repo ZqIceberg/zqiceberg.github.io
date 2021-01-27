@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>6. recursive 递归 &mdash; 信息学奥赛普及组21天突破 0.7.1 documentation</title>
+  <title>6. recursive 递归 &mdash; 信息学奥赛普及组算法21天突破 0.7.1 documentation</title>
   
 
   
@@ -53,7 +53,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> 信息学奥赛普及组21天突破
+            <a href="../index.html" class="icon icon-home"> 信息学奥赛普及组算法21天突破
           
 
           
@@ -88,7 +88,8 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">一、普及组算法部分</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.html">1. time complexity时间复杂度</a></li>
 <li class="toctree-l1"><a class="reference internal" href="STL.html">2. stl标准模板库</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html">3. high accuracy高精度</a></li>
@@ -138,8 +139,15 @@
 <li class="toctree-l1"><a class="reference internal" href="%E6%A0%91.html">14. trees树</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA.html">15. graph图论</a></li>
 </ul>
+<p class="caption"><span class="caption-text">二、计算机使用教程</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%8C%E5%88%9B%E5%BB%BAcpp%E6%96%87%E4%BB%B6%E7%9A%84%E8%BF%87%E7%A8%8B.html">0x01 编辑器的使用，创建cpp文件的过程.md</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/MacOS%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">1. MacOS环境下的操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">2. Windows环境下的操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%BB%A3%E7%A0%81%E7%BB%8F%E9%AA%8C.html">3. 代码经验</a></li>
+</ul>
+<p class="caption"><span class="caption-text">三、C++语言部分</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../C%2B%2B/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA.html">1. 输入输出</a></li>
 </ul>
 
             
@@ -155,7 +163,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">信息学奥赛普及组21天突破</a>
+          <a href="../index.html">信息学奥赛普及组算法21天突破</a>
         
       </nav>
 
@@ -229,7 +237,6 @@
 <h3><span class="section-number">6.2.1. </span><a class="reference external" href="#">问题：生成子集</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>For example, the subsets of {0,1,2} are 􏰀, {0}, {1}, {2}, {0,1}, {0,2}, {1,2} and {0,1,2}.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//An elegant way to go through all subsets of a set is to use recursion</span>
-
 <span class="kt">void</span> <span class="nf">search</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
        <span class="c1">// process subset</span>
@@ -242,12 +249,12 @@
 <span class="p">}</span>
 
 <span class="n">search</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">//调用</span>
-
 <span class="c1">//这个就是递归枚举子集</span>
 </pre></div>
 </div>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//Each subset of a set of n elements can be represented as a sequence of n bits, which corresponds to an integer between 0...2n −1. The ones in the bit sequence indicate which elements are included in the subset.</span>
-
+<p>The following tree illustrates the function calls when <em>n</em> = 3. We can always choose either the left branch (<em>k</em> is not included in the subset) or the right branch (<em>k</em> is included in the subset).</p>
+<center><p><img alt="../_images/image-20210125152214071.png" src="../_images/image-20210125152214071.png" /></p>
+</center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//Each subset of a set of n elements can be represented as a sequence of n bits, which corresponds to an integer between 0...2n −1. The ones in the bit sequence indicate which elements are included in the subset.</span>
 <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">n</span><span class="p">);</span> <span class="n">b</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">subset</span><span class="p">;</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
@@ -296,15 +303,15 @@
 <h2><span class="section-number">6.3. </span>《进阶指南》题目<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id5">
 <h3><span class="section-number">6.3.1. </span><a class="reference external" href="https://www.acwing.com/problem/content/94/">递归实现指数型枚举</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>/</p>
+<p>/子集枚举</p>
 </div>
 <div class="section" id="id6">
 <h3><span class="section-number">6.3.2. </span><a class="reference external" href="https://www.acwing.com/problem/content/95/">递归实现组合型枚举</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>/</p>
+<p>/在子集枚举的基础上，进行剪枝</p>
 </div>
 <div class="section" id="id7">
 <h3><span class="section-number">6.3.3. </span><a class="reference external" href="https://www.acwing.com/problem/content/96/">递归实现排列型枚举</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<p>/</p>
+<p>/排列枚举</p>
 </div>
 </div>
 <div class="section" id="id8">

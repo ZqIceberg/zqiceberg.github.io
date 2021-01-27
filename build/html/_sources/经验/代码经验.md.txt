@@ -1,0 +1,44 @@
+# 代码经验
+
+### 题目文件夹的命名，文件的命名
+
+1. 创建一个文件夹workspace
+
+2. 在workspace下，每一个题目一个文件夹
+
+3. 每一个题目文件夹下，创建 新建文本文档.txt，修改文件名和文件类型为，题目英文名字.cpp
+
+
+
+例如
+
+workspace/10 - [在线测评解答教程] A+B Problem/a+b.cpp
+
+
+
+### 代码风格建议
+
+[关于代码风格，个人推荐Google C++ Style Guide](https://zhuanlan.zhihu.com/p/82613843)
+
+
+
+### 搜索引擎的使用
+
+bing国内版
+
+[https://cn.bing.com/?FORM=BEHPTB](https://cn.bing.com/?FORM=BEHPTB)
+
+bing国际版
+
+[https://cn.bing.com/?FORM=BEHPTB&ensearch=1](https://cn.bing.com/?FORM=BEHPTB&ensearch=1)
+
+baidu
+
+[https://www.baidu.com/](https://www.baidu.com/)
+
+
+
+### 键盘的正确使用
+
+[Typing practice](https://www.keybr.com)
+

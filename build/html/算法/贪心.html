@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>8. greedy algorithm 贪心 &mdash; 信息学奥赛普及组21天突破 0.7.1 documentation</title>
+  <title>8. greedy algorithm 贪心 &mdash; 信息学奥赛普及组算法21天突破 0.7.1 documentation</title>
   
 
   
@@ -53,7 +53,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> 信息学奥赛普及组21天突破
+            <a href="../index.html" class="icon icon-home"> 信息学奥赛普及组算法21天突破
           
 
           
@@ -88,7 +88,8 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">一、普及组算法部分</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.html">1. time complexity时间复杂度</a></li>
 <li class="toctree-l1"><a class="reference internal" href="STL.html">2. stl标准模板库</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html">3. high accuracy高精度</a></li>
@@ -100,34 +101,38 @@
 <li class="toctree-l2"><a class="reference internal" href="#id1">8.1. 概念</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#coin-problem">8.2. Coin problem硬币问题</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scheduling">8.3. Scheduling时间安排问题</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">8.4. 常见题型：</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">8.5. 《一本通》题目</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id4">8.5.1. 【例6.1】排队接水</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#noip2002">8.5.2. 【例6.2】均分纸牌(Noip2002)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#noip1994">8.5.3. 【例6.3】删数问题(Noip1994)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#noip1999">8.5.4. 【例6.4】拦截导弹问题(Noip1999)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">8.5.5. 【例6.5】活动选择</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">8.5.6. 【例6.6】整数区间</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#an-easy-problem">8.5.7. An Easy Problem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">8.5.8. 最大子矩阵</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">8.5.9. 金银岛</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">8.5.10. 装箱问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ride-to-office">8.5.11. Ride to Office</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">8.5.12. 书架</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">8.5.13. 电池的寿命</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">8.5.14. 寻找平面上的极大点</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">8.5.15. 最小新整数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#crossing-river">8.5.16. Crossing   River</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">8.5.17. 接水问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tasks-and-deadlines">8.4. Tasks and deadlines任务截止时间问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#minimizing-sums">8.5. Minimizing sums求最小的和</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-compression-huffman-coding">8.6. Data compression数据压缩（引出Huffman coding应用）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#huffman-coding">8.7. Huffman coding哈夫曼编码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">8.8. 常见题型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">8.9. 《一本通》题目</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">8.9.1. 【例6.1】排队接水</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#noip2002">8.9.2. 【例6.2】均分纸牌(Noip2002)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#noip1994">8.9.3. 【例6.3】删数问题(Noip1994)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#noip1999">8.9.4. 【例6.4】拦截导弹问题(Noip1999)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">8.9.5. 【例6.5】活动选择</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">8.9.6. 【例6.6】整数区间</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#an-easy-problem">8.9.7. An Easy Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">8.9.8. 最大子矩阵</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">8.9.9. 金银岛</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">8.9.10. 装箱问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ride-to-office">8.9.11. Ride to Office</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">8.9.12. 书架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">8.9.13. 电池的寿命</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">8.9.14. 寻找平面上的极大点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">8.9.15. 最小新整数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crossing-river">8.9.16. Crossing   River</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">8.9.17. 接水问题</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id15">8.6. 其他题目</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#noip2004">8.6.1. [NOIP2004 普及组] 火星人</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#noip2007">8.6.2. [NOIP2007 普及组] 纪念品分组</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#noip2008">8.6.3. [NOIP2008 普及组] 排座椅</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#p2672-noip2015">8.6.4. P2672 [NOIP2015 普及组] 推销员</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#p1080-noip2012">8.6.5. P1080 [NOIP2012 提高组] 国王游戏</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">8.6.6. /</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">8.10. 其他题目</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#noip2004">8.10.1. [NOIP2004 普及组] 火星人</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#noip2007">8.10.2. [NOIP2007 普及组] 纪念品分组</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#noip2008">8.10.3. [NOIP2008 普及组] 排座椅</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#p2672-noip2015">8.10.4. P2672 [NOIP2015 普及组] 推销员</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#p1090-noip2004-usaco06nov-fence-repair-g">8.10.5. P1090 [NOIP2004 提高组] 合并果子 / [USACO06NOV] Fence Repair G</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#p1080-noip2012">8.10.6. P1080 [NOIP2012 提高组] 国王游戏</a></li>
 </ul>
 </li>
 </ul>
@@ -140,8 +145,15 @@
 <li class="toctree-l1"><a class="reference internal" href="%E6%A0%91.html">14. trees树</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA.html">15. graph图论</a></li>
 </ul>
+<p class="caption"><span class="caption-text">二、计算机使用教程</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%8C%E5%88%9B%E5%BB%BAcpp%E6%96%87%E4%BB%B6%E7%9A%84%E8%BF%87%E7%A8%8B.html">0x01 编辑器的使用，创建cpp文件的过程.md</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/MacOS%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">1. MacOS环境下的操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">2. Windows环境下的操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%BB%A3%E7%A0%81%E7%BB%8F%E9%AA%8C.html">3. 代码经验</a></li>
+</ul>
+<p class="caption"><span class="caption-text">三、C++语言部分</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../C%2B%2B/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA.html">1. 输入输出</a></li>
 </ul>
 
             
@@ -157,7 +169,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">信息学奥赛普及组21天突破</a>
+          <a href="../index.html">信息学奥赛普及组算法21天突破</a>
         
       </nav>
 
@@ -226,17 +238,138 @@
 <div class="section" id="scheduling">
 <h2><span class="section-number">8.3. </span>Scheduling时间安排问题<a class="headerlink" href="#scheduling" title="Permalink to this headline">¶</a></h2>
 <p>Given <em>n</em> events with their starting and ending times, find a schedule that includes as many events as possible.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">event</span>   <span class="n">starting</span> <span class="n">time</span>    <span class="n">ending</span> <span class="n">time</span>
+<center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">event</span>   <span class="n">starting</span> <span class="n">time</span>    <span class="n">ending</span> <span class="n">time</span>
   <span class="n">A</span>            <span class="mi">1</span>               <span class="mi">3</span>
   <span class="n">B</span>            <span class="mi">2</span>               <span class="mi">5</span>
   <span class="n">C</span>            <span class="mi">3</span>               <span class="mi">9</span>
   <span class="n">D</span>            <span class="mi">6</span>               <span class="mi">8</span>
 </pre></div>
 </div>
-<center><p><img alt="../_images/image-20210125113804496.png" src="../_images/image-20210125113804496.png" /></p>
+</center><p><strong>算法1</strong></p>
+<p>The first idea is to select as <em>short</em> events as possible. In the example case this algorithm selects the following events:</p>
+<center><p><img alt="../_images/image-20210125172958768.png" src="../_images/image-20210125172958768.png" /></p>
+</center><p>However, selecting short events is not always a correct strategy. For example, the algorithm fails in the following case:</p>
+<center><p><img alt="../_images/image-20210125173027966.png" src="../_images/image-20210125173027966.png" /></p>
+</center><p>If we select the short event, we can only select one event. However, it would be possible to select both long events.</p>
+<p><strong>算法2</strong></p>
+<p>Another idea is to always select the next possible event that <em>begins</em> as <em>early</em> as possible. This algorithm selects the following events:</p>
+<center><p><img alt="../_images/image-20210125173127541.png" src="../_images/image-20210125173127541.png" /></p>
+</center><p>However, we can find a counterexample also for this algorithm. For example, in the following case, the algorithm only selects one event:</p>
+<center><p><img alt="../_images/image-20210125173152064.png" src="../_images/image-20210125173152064.png" /></p>
+</center><p>If we select the first event, it is not possible to select any other events. However, it would be possible to select the other two events.</p>
+<p><strong>算法3</strong></p>
+<p>The third idea is to always select the next possible event that <em>ends</em> as <em>early</em> as possible. This algorithm selects the following events:</p>
+<center><p><img alt="../_images/image-20210125173234392.png" src="../_images/image-20210125173234392.png" /></p>
+</center><p>It turns out that this algorithm <em>always</em> produces an optimal solution. <strong>The reason for this is that it is always an optimal choice to first select an event that ends as early as possible. After this, it is an optimal choice to select the next event using the same strategy, etc., until we cannot select any more events.</strong></p>
+<p>One way to argue that the algorithm works is to consider what happens if we first select an event that ends later than the event that ends as early as possible. Now, we will have at most an equal number of choices how we can select the next event.<strong>Hence, selecting an event that ends later can never yield a better solution, and the greedy algorithm is correct.</strong></p>
+</div>
+<div class="section" id="tasks-and-deadlines">
+<h2><span class="section-number">8.4. </span>Tasks and deadlines任务截止时间问题<a class="headerlink" href="#tasks-and-deadlines" title="Permalink to this headline">¶</a></h2>
+<p>Let us now consider a problem where we are given <em>n</em> tasks with durations and deadlines and our task is to choose an order to perform the tasks. For each task, we earn <em>d</em> − <em>x</em> points where <em>d</em> is the task’s deadline and <em>x</em> is the moment when we finish the task. What is the largest possible total score we can obtain?</p>
+<center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">task</span>     <span class="n">duration</span>     <span class="n">deadline</span>
+ <span class="n">A</span>          <span class="mi">4</span>             <span class="mi">2</span>
+ <span class="n">B</span>          <span class="mi">3</span>             <span class="mi">5</span>
+ <span class="n">C</span>          <span class="mi">2</span>             <span class="mi">7</span>
+ <span class="n">D</span>          <span class="mi">4</span>             <span class="mi">5</span>
+</pre></div>
+</div>
+</center><p>In this case, an optimal schedule for the tasks is as follows:</p>
+<center><p><img alt="../_images/image-20210125162735981.png" src="../_images/image-20210125162735981.png" /></p>
+</center><p>In this solution, <em>C</em> yields 5 points, <em>B</em> yields 0 points, <em>A</em> yields −7 points and <em>D</em> yields −8 points, so the total score is −10.</p>
+<p>Surprisingly, the optimal solution to the problem does not depend on the deadlines at all, but a correct greedy strategy is to simply perform the tasks <em>sorted by their durations</em> in increasing order. The reason for this is that if we ever perform two tasks one after another such that the first task takes longer than the second task, we can obtain a better solution if we swap the tasks. For example, consider the following schedule:</p>
+<center><p><img alt="../_images/image-20210125162851246.png" src="../_images/image-20210125162851246.png" /></p>
+</center><p>Here <em>a</em> &gt; <em>b</em>, so we should swap the tasks:</p>
+<center><p><img alt="../_images/image-20210125162924900.png" src="../_images/image-20210125162924900.png" /></p>
+</center><p>Now <em>X</em> gives <em>b</em> points less and <em>Y</em> gives <em>a</em> points more, so the total score increases by <em>a</em> − <em>b</em> &gt; 0. In an optimal solution, for any two consecutive tasks, it must hold that the shorter task comes before the longer task. Thus, the tasks must be performed sorted by their durations.（假设，右边边界是得分deadline，交换完之后，x得分少得了b分，y得到多了a分，a-b&gt;0，总共会得更多的分数。所以，正确）</p>
+</div>
+<div class="section" id="minimizing-sums">
+<h2><span class="section-number">8.5. </span>Minimizing sums求最小的和<a class="headerlink" href="#minimizing-sums" title="Permalink to this headline">¶</a></h2>
+<p>We next consider a problem where we are given <em>n</em> numbers <em>a</em>1,<em>a</em>2,…,<em>an</em> and our task is to find a value <em>x</em> that minimizes the sum</p>
+<center><p><img alt="../_images/image-20210125164410694.png" src="../_images/image-20210125164410694.png" /></p>
+</center><p>我们讨论一下，当 c = 1的情况，当 c = 2 的情况</p>
+<p><strong>当 c = 1的情况</strong></p>
+<center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">|</span><span class="n">a1</span> <span class="o">-</span> <span class="n">x</span><span class="o">|</span> <span class="o">+</span> <span class="o">|</span><span class="n">a2</span> <span class="o">-</span> <span class="n">x</span><span class="o">|</span> <span class="o">+</span> <span class="p">...</span> <span class="o">+</span> <span class="o">|</span><span class="n">an</span> <span class="o">-</span> <span class="n">x</span><span class="o">|</span>
+</pre></div>
+</div>
+</center><p>For example, if the numbers are [1, 2, 9, 2, 6], the best solution is to select <em>x</em> = 2 which produces the sum</p>
+<center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">|</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span><span class="o">|</span> <span class="o">+</span> <span class="o">|</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="o">|</span> <span class="o">+</span> <span class="o">|</span><span class="mi">9</span> <span class="o">-</span> <span class="mi">2</span><span class="o">|</span> <span class="o">+</span> <span class="o">|</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="o">|</span> <span class="o">+</span> <span class="o">|</span><span class="mi">6</span> <span class="o">-</span> <span class="mi">2</span><span class="o">|</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">7</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">=</span> <span class="mi">12</span>
+</pre></div>
+</div>
+</center><p>In the general case, the best choice for <em>x</em> is <strong>the <em>median</em> of the numbers</strong>, i.e., the middle number after sorting. For example, the list [1, 2, 9, 2, 6] becomes [1, 2, 2, 6, 9] after sorting, so the median is 2.</p>
+<p><strong>The median is an optimal choice</strong>, because if <em>x</em> is smaller than the median, the sum becomes smaller by increasing <em>x</em>, and if <em>x</em> is larger then the median, the sum becomes smaller by decreasing <em>x</em>. Hence, the optimal solution is that <em>x</em> is the median. If <em>n</em> is even and there are two medians, both medians and all values between them are optimal choices.</p>
+<p><strong>当 c = 2的情况</strong></p>
+<center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">a1</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">a2</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="p">...</span> <span class="o">+</span> <span class="p">(</span><span class="n">an</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span>
+</pre></div>
+</div>
+</center><p>For example, if the numbers are [1, 2, 9, 2, 6], the best solution is to select <em>x</em> = 4.</p>
+<center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">4</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">9</span> <span class="o">-</span> <span class="mi">4</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">6</span> <span class="o">-</span> <span class="mi">4</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">=</span> <span class="mi">46</span>
+</pre></div>
+</div>
+</center><p>In the general case, the best choice for <em>x</em> is the <em>average</em> of the numbers. In the example the average is (1+2+9+2+6)/5 = 4.</p>
+<center><p><img alt="../_images/image-20210125165022939.png" src="../_images/image-20210125165022939.png" /></p>
+</center><p>The last part does not depend on <em>x</em>, so we can ignore it. The remaining parts form a function <code class="docutils literal notranslate"><span class="pre">nx^2−2x</span></code> where <em>s</em>=<em>a</em>1+<em>a</em>2+···+<em>a</em>n. This is a parabola opening upwards with roots <em>x</em> = 0 and <em>x</em> = 2<em>s</em>/<em>n</em>, and the minimum value is the average of the roots <em>x</em> = <em>s</em>/<em>n</em>, i.e., the average of the numbers <em>a</em>1,<em>a</em>2,…,<em>an</em>.</p>
+</div>
+<div class="section" id="data-compression-huffman-coding">
+<h2><span class="section-number">8.6. </span>Data compression数据压缩（引出Huffman coding应用）<a class="headerlink" href="#data-compression-huffman-coding" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>binary code</strong> assigns for each character of a string a <strong>codeword</strong> that consists of bits. We can <em>compress</em> the string using the binary code by replacing each character by the corresponding codeword. For example, the following binary code assigns codewords for characters A–D:</p>
+<center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">charactor</span>      <span class="n">codeword</span>
+        <span class="n">A</span>            <span class="mo">00</span>
+        <span class="n">B</span>            <span class="mo">01</span>
+        <span class="n">C</span>            <span class="mi">10</span>
+        <span class="n">D</span>            <span class="mi">11</span>
+</pre></div>
+</div>
+</center><p>This is a <strong>constant-length</strong> code which means that the length of each codeword is the same. For example, we can compress the string AABACDACA as follows:</p>
+<center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="mo">000001001011001000</span>
+</pre></div>
+</div>
+</center><p>Using this code, the length of the compressed string is 18 bits. However, we can compress the string better if we use a <strong>variable-length</strong> code where codewords may have different lengths. Then we can give short codewords for characters that appear often and long codewords for characters that appear rarely. It turns out that an <strong>optimal</strong> code for the above string is as follows:</p>
+<center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">charactor</span>      <span class="n">codeword</span>
+        <span class="n">A</span>             <span class="mi">0</span>
+        <span class="n">B</span>           <span class="mi">110</span>
+        <span class="n">C</span>            <span class="mi">10</span>
+        <span class="n">D</span>           <span class="mi">111</span>
+</pre></div>
+</div>
+</center><p>An optimal code produces a compressed string that is as short as possible. In this case, the compressed string using the optimal code is</p>
+<center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="mo">001100101110100</span>
+</pre></div>
+</div>
+</center><p>so only 15 bits are needed instead of 18 bits. Thus, thanks to a better code it was possible to save 3 bits in the compressed string.</p>
+<p>We require that no codeword is a prefix of another codeword. For example, it is not allowed that a code would contain both codewords 10 and 1011. The reason for this is that we want to be able to generate the original string from the compressed string. If a codeword could be a prefix of another codeword, this would not always be possible. For example, the following code is <em>not</em> valid:</p>
+<center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">charactor</span>      <span class="n">codeword</span>
+        <span class="n">A</span>            <span class="mi">10</span>
+        <span class="n">B</span>            <span class="mi">11</span>
+        <span class="n">C</span>          <span class="mi">1011</span>
+        <span class="n">D</span>           <span class="mi">111</span>
+</pre></div>
+</div>
+</center><p>Using this code, it would not be possible to know if the compressed string 1011 corresponds to the string AB or the string C.</p>
+</div>
+<div class="section" id="huffman-coding">
+<h2><span class="section-number">8.7. </span>Huffman coding哈夫曼编码<a class="headerlink" href="#huffman-coding" title="Permalink to this headline">¶</a></h2>
+<p><strong>Huffman coding</strong> is a greedy algorithm that constructs an optimal code for compressing a given string. The algorithm builds a binary tree based on the frequencies of the characters in the string, and each character’s codeword can be read by following a path from the root to the corresponding node. A move to the left corresponds to bit 0, and a move to the right corresponds to bit 1.</p>
+<p>Initially, each character of the string is represented by a node whose weight is the number of times the character occurs in the string. Then at each step two nodes with minimum weights are combined by creating a new node whose weight is the sum of the weights of the original nodes. The process continues until all nodes have been combined.</p>
+<p>Next we will see how Huffman coding creates the optimal code for the string AABACDACA. Initially, there are four nodes that correspond to the characters of the string:</p>
+<center><p><img alt="../_images/image-20210125170422860.png" src="../_images/image-20210125170422860.png" /></p>
+</center><p>The node that represents character A has weight 5 because character A appears 5 times in the string. The other weights have been calculated in the same way.</p>
+<p>The first step is to combine the nodes that correspond to characters B and D, both with weight 1. The result is:</p>
+<center><p><img alt="../_images/image-20210125170455175.png" src="../_images/image-20210125170455175.png" /></p>
+</center><p>After this, the nodes with weight 2 are combined:</p>
+<center><p><img alt="../_images/image-20210125170530998.png" src="../_images/image-20210125170530998.png" /></p>
+</center><p>Finally, the two remaining nodes are combined:</p>
+<center><p><img alt="../_images/image-20210125170601964.png" src="../_images/image-20210125170601964.png" /></p>
+</center><p>Now all nodes are in the tree, so the code is ready. The following codewords can be read from the tree:</p>
+<center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">charactor</span>      <span class="n">codeword</span>
+        <span class="n">A</span>             <span class="mi">0</span>
+        <span class="n">B</span>           <span class="mi">110</span>
+        <span class="n">C</span>            <span class="mi">10</span>
+        <span class="n">D</span>           <span class="mi">111</span>
+</pre></div>
+</div>
 </center></div>
 <div class="section" id="id2">
-<h2><span class="section-number">8.4. </span>常见题型：<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.8. </span>常见题型<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>按某种顺序排序后，然后逐个取(sort，多关键字排序，重载小于符号)</p></li>
 <li><p>每次取集合中的最大/最小，更新答案（使用priority_queue<int>）</p></li>
@@ -251,101 +384,101 @@
 </ul>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">8.5. </span>《一本通》题目<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.9. </span>《一本通》题目<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id4">
-<h3><span class="section-number">8.5.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1319">【例6.1】排队接水</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>排序类型</p>
+<h3><span class="section-number">8.9.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1319">【例6.1】排队接水</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>/排序类型</p>
 </div>
 <div class="section" id="noip2002">
-<h3><span class="section-number">8.5.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1320">【例6.2】均分纸牌(Noip2002)</a><a class="headerlink" href="#noip2002" title="Permalink to this headline">¶</a></h3>
-<p>按题意for一遍</p>
+<h3><span class="section-number">8.9.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1320">【例6.2】均分纸牌(Noip2002)</a><a class="headerlink" href="#noip2002" title="Permalink to this headline">¶</a></h3>
+<p>/按题意for一遍</p>
 </div>
 <div class="section" id="noip1994">
-<h3><span class="section-number">8.5.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1321">【例6.3】删数问题(Noip1994)</a><a class="headerlink" href="#noip1994" title="Permalink to this headline">¶</a></h3>
-<p>贪心：干掉下降子序列第一个数字。或者模拟取找</p>
+<h3><span class="section-number">8.9.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1321">【例6.3】删数问题(Noip1994)</a><a class="headerlink" href="#noip1994" title="Permalink to this headline">¶</a></h3>
+<p>/贪心：干掉下降子序列第一个数字。或者模拟取找</p>
 </div>
 <div class="section" id="noip1999">
-<h3><span class="section-number">8.5.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1322">【例6.4】拦截导弹问题(Noip1999)</a><a class="headerlink" href="#noip1999" title="Permalink to this headline">¶</a></h3>
-<p>LIS，下降子序列个数 和 最长上升子序列长度 对偶</p>
+<h3><span class="section-number">8.9.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1322">【例6.4】拦截导弹问题(Noip1999)</a><a class="headerlink" href="#noip1999" title="Permalink to this headline">¶</a></h3>
+<p>/LIS，下降子序列个数 和 最长上升子序列长度 对偶</p>
 </div>
 <div class="section" id="id5">
-<h3><span class="section-number">8.5.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1323">【例6.5】活动选择</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>排序类型，数轴上的问题</p>
+<h3><span class="section-number">8.9.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1323">【例6.5】活动选择</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>/排序类型，数轴上的问题</p>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">8.5.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1324">【例6.6】整数区间</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>排序类型，数轴上的问题，会用到双指针方法</p>
+<h3><span class="section-number">8.9.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1324">【例6.6】整数区间</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>/排序类型，数轴上的问题，会用到双指针方法</p>
 </div>
 <div class="section" id="an-easy-problem">
-<h3><span class="section-number">8.5.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1223">An Easy Problem</a><a class="headerlink" href="#an-easy-problem" title="Permalink to this headline">¶</a></h3>
-<p>暴力枚举，学习使用位运算</p>
+<h3><span class="section-number">8.9.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1223">An Easy Problem</a><a class="headerlink" href="#an-easy-problem" title="Permalink to this headline">¶</a></h3>
+<p>/暴力枚举，学习使用位运算</p>
 </div>
 <div class="section" id="id7">
-<h3><span class="section-number">8.5.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1224">最大子矩阵</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<p>纯暴力会T，学习使用二维前缀和</p>
+<h3><span class="section-number">8.9.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1224">最大子矩阵</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>/纯暴力会T，学习使用二维前缀和</p>
 </div>
 <div class="section" id="id8">
-<h3><span class="section-number">8.5.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1225">金银岛</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<p>排序类型，去性价比最高的</p>
+<h3><span class="section-number">8.9.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1225">金银岛</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>/排序类型，去性价比最高的</p>
 </div>
 <div class="section" id="id9">
-<h3><span class="section-number">8.5.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1226">装箱问题</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<p>小学奥数问题，手搓模拟画图找规律.//https://blog.csdn.net/zqhf123/article/details/104254143</p>
+<h3><span class="section-number">8.9.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1226">装箱问题</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>/小学奥数问题，手搓模拟画图找规律.//https://blog.csdn.net/zqhf123/article/details/104254143</p>
 </div>
 <div class="section" id="ride-to-office">
-<h3><span class="section-number">8.5.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1227">Ride to Office</a><a class="headerlink" href="#ride-to-office" title="Permalink to this headline">¶</a></h3>
-<p>poj题目，题干描述有bug，误以为从0时出发。不如去看英文版</p>
+<h3><span class="section-number">8.9.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1227">Ride to Office</a><a class="headerlink" href="#ride-to-office" title="Permalink to this headline">¶</a></h3>
+<p>/poj题目，题干描述有bug，误以为从0时出发。不如去看英文版</p>
 </div>
 <div class="section" id="id10">
-<h3><span class="section-number">8.5.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1228">书架</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<p>排序类型</p>
+<h3><span class="section-number">8.9.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1228">书架</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>/排序类型</p>
 </div>
 <div class="section" id="id11">
-<h3><span class="section-number">8.5.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1229">电池的寿命</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<p>题干描述和样例，让我误以为电池只有3小时、5小时电量。还是读题障碍</p>
+<h3><span class="section-number">8.9.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1229">电池的寿命</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>/题干描述和样例，让我误以为电池只有3小时、5小时电量。还是读题障碍</p>
 </div>
 <div class="section" id="id12">
-<h3><span class="section-number">8.5.14. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1230">寻找平面上的极大点</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
-<p>暴力枚举，n只有100，或者sort一遍后枚举</p>
+<h3><span class="section-number">8.9.14. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1230">寻找平面上的极大点</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p>/暴力枚举，n只有100，或者sort一遍后枚举</p>
 </div>
 <div class="section" id="id13">
-<h3><span class="section-number">8.5.15. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1231">最小新整数</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
-<p>和前面删数是一个类型，换成了多组测试数据</p>
+<h3><span class="section-number">8.9.15. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1231">最小新整数</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<p>/和前面删数是一个类型，换成了多组测试数据</p>
 </div>
 <div class="section" id="crossing-river">
-<h3><span class="section-number">8.5.16. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1232">Crossing   River</a><a class="headerlink" href="#crossing-river" title="Permalink to this headline">¶</a></h3>
-<p>小学奥数类型，对过河问题学习了一手</p>
+<h3><span class="section-number">8.9.16. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1232">Crossing   River</a><a class="headerlink" href="#crossing-river" title="Permalink to this headline">¶</a></h3>
+<p>/小学奥数类型，对过河问题学习了一手</p>
 </div>
 <div class="section" id="id14">
-<h3><span class="section-number">8.5.17. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1233">接水问题</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
-<p>priority_queue，注意会写小根堆</p>
+<h3><span class="section-number">8.9.17. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1233">接水问题</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>/priority_queue，注意会写小根堆</p>
 </div>
 </div>
 <div class="section" id="id15">
-<h2><span class="section-number">8.6. </span>其他题目<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.10. </span>其他题目<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="noip2004">
-<h3><span class="section-number">8.6.1. </span>[<a class="reference external" href="https://www.luogu.com.cn/problem/P1088">NOIP2004 普及组] 火星人</a><a class="headerlink" href="#noip2004" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.10.1. </span>[<a class="reference external" href="https://www.luogu.com.cn/problem/P1088">NOIP2004 普及组] 火星人</a><a class="headerlink" href="#noip2004" title="Permalink to this headline">¶</a></h3>
 <p>/</p>
 </div>
 <div class="section" id="noip2007">
-<h3><span class="section-number">8.6.2. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P1094">[NOIP2007 普及组] 纪念品分组</a><a class="headerlink" href="#noip2007" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.10.2. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P1094">[NOIP2007 普及组] 纪念品分组</a><a class="headerlink" href="#noip2007" title="Permalink to this headline">¶</a></h3>
 <p>/</p>
 </div>
 <div class="section" id="noip2008">
-<h3><span class="section-number">8.6.3. </span>[<a class="reference external" href="https://www.luogu.com.cn/problem/P1056">NOIP2008 普及组] 排座椅</a><a class="headerlink" href="#noip2008" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.10.3. </span>[<a class="reference external" href="https://www.luogu.com.cn/problem/P1056">NOIP2008 普及组] 排座椅</a><a class="headerlink" href="#noip2008" title="Permalink to this headline">¶</a></h3>
 <p>/</p>
 </div>
 <div class="section" id="p2672-noip2015">
-<h3><span class="section-number">8.6.4. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P2672">P2672 [NOIP2015 普及组] 推销员</a><a class="headerlink" href="#p2672-noip2015" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.10.4. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P2672">P2672 [NOIP2015 普及组] 推销员</a><a class="headerlink" href="#p2672-noip2015" title="Permalink to this headline">¶</a></h3>
 <p>/</p>
-<p><a class="reference external" href="https://www.luogu.com.cn/problem/P1090">P1090 [NOIP2004 提高组] 合并果子 / [USACO06NOV] Fence Repair G</a></p>
+</div>
+<div class="section" id="p1090-noip2004-usaco06nov-fence-repair-g">
+<h3><span class="section-number">8.10.5. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P1090">P1090 [NOIP2004 提高组] 合并果子 / [USACO06NOV] Fence Repair G</a><a class="headerlink" href="#p1090-noip2004-usaco06nov-fence-repair-g" title="Permalink to this headline">¶</a></h3>
 <p>/哈夫曼编码问题，<code class="docutils literal notranslate"><span class="pre">priority_queue&lt;int&gt;</span></code></p>
 </div>
 <div class="section" id="p1080-noip2012">
-<h3><span class="section-number">8.6.5. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P1080">P1080 [NOIP2012 提高组] 国王游戏</a><a class="headerlink" href="#p1080-noip2012" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="id16">
-<h3><span class="section-number">8.6.6. </span>/<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.10.6. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P1080">P1080 [NOIP2012 提高组] 国王游戏</a><a class="headerlink" href="#p1080-noip2012" title="Permalink to this headline">¶</a></h3>
+<p>/</p>
 </div>
 </div>
 </div>
