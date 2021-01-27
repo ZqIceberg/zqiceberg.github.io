@@ -41,6 +41,12 @@ vector<int> v(10);
 // size 10, initial value 5
 vector<int> v(10, 5);
 
+//vector的排序
+sort(v.begin(), v.end());
+reverse(v.begin(), v.end());
+
+sort(a, a+n);
+reverse(a, a+n);
 ```
 
 <center>
@@ -73,9 +79,23 @@ cout << pos << '\n';  //实践一下
 
 
 
+```cpp
+//Note: 我们需要用到不同的头文件
+#include <vector>
+#include <set>
+#include <queue>
+
+//总之，可以用万能头
+#include <bits/stdc++.h>
+```
+
+
+
 ### set集合
 
 A **set** is a data structure that maintains a collection of elements. The basic operations of sets are element insertion, search and removal.The benefit of the set structure is that it maintains the order of the elements.
+
+vector如果要排序，需要sort一下；set就会默认是有序的
 
 ```cpp
 set<int> s;
@@ -168,6 +188,44 @@ for (auto x : m) {
 }
 ```
 
+```cpp
+//所以，我想问，能不能 map<int, string>
+```
+
+
+
+### pair
+
+<center>
+
+![](../media/image-20210127140319559.png)
+
+</center>
+
+```cpp
+pair<int, int> A, B;
+A = make_pair(1, 2);    //比赛中可以用这种写法
+
+//经常的，会这样去用
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef pair<int, int> PII;
+
+const int N = 110;
+
+PII a[N];
+
+int main()
+{
+	int n;
+    cin >> n;
+    for (int i = 0; i < n; i++) cin >> a[i].first >> a[i].second;
+    
+    return 0;
+}
+```
+
 
 
 ### iterator迭代器
@@ -175,17 +233,8 @@ for (auto x : m) {
 Many functions in **the C++ standard library** operate with iterators. An **iterator** is a variable that points to an element in a data structure. 用 iterator 来写遍历，遍历不同的容器，都可以用 iterator，但是只有部分容器支持下标访问，比如 vector。
 
 ```cpp
-//vector的排序
-sort(v.begin(), v.end());
-reverse(v.begin(), v.end());
-
-sort(a, a+n);
-reverse(a, a+n);
-```
-
-```cpp
 //set的遍历
-set<int>::iterator it = s.begin();
+set<int>::iterator it;
 for (it = s.begin(); it != s.end(); it++) {
     cout << *it << "\n";
 }
@@ -197,7 +246,34 @@ cout << *it << "\n";
 //查找元素是否存在
 it = s.find(x);
 if (it == s.end()) {
-//x is not found
+	//x is not found
+}
+```
+
+
+
+```cpp
+//示例
+//set<pair<int, int> > 
+#include <bits/stdc++.h>
+
+using namespace std;
+
+typedef pair<int, int> PII;
+
+set<PII> s;
+
+int main()
+{
+	s.insert(make_pair(3, 5));
+	s.insert(make_pair(7, 9));
+	s.insert(make_pair(11, 13));
+
+	set<PII>::iterator it;
+	for (it = s.begin(); it != s.end(); it++)
+		printf("%d %d\n", (*it).first, (*it).second);
+
+	return 0;
 }
 ```
 
