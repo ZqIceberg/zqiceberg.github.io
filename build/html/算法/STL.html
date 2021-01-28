@@ -492,7 +492,7 @@ cout &lt;&lt; pos &lt;&lt; &#39;\n&#39;;  //实践一下
 <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>默认是大根堆，如果要写小根堆，就是push进去<code class="docutils literal notranslate"><span class="pre">x</span></code>的时候，push成<code class="docutils literal notranslate"><span class="pre">-x</span></code>，取出使用的时候，加个负号再使用。实现大根堆，还有一个方法，如下：</p>
+<p>默认是大根堆，如果要写小根堆，就是push <code class="docutils literal notranslate"><span class="pre">x</span></code>进去的时候，push成<code class="docutils literal notranslate"><span class="pre">-x</span></code>，取出使用的时候，加个负号再使用。实现大根堆，还有一个方法，如下：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">priority_queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span><span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="n">q</span><span class="p">;</span><span class="c1">//这样就可以实现小根堆了 </span>
 </pre></div>
 </div>
