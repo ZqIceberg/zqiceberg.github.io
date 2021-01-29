@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>4. sortings排序 &mdash; 信息学奥赛普及组算法21天突破 0.7.1 documentation</title>
+  <title>5. sortings排序 &mdash; 信息学奥赛普及组算法21天突破 0.7.1 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5. recursion 递推" href="%E9%80%92%E6%8E%A8.html" />
-    <link rel="prev" title="3. high accuracy高精度" href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html" /> 
+    <link rel="next" title="6. recursion 递推" href="%E9%80%92%E6%8E%A8.html" />
+    <link rel="prev" title="4. high accuracy高精度" href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,64 +91,65 @@
             
               <p class="caption"><span class="caption-text">一、普及组算法部分</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.html">1. time complexity时间复杂度</a></li>
-<li class="toctree-l1"><a class="reference internal" href="STL.html">2. data structure(STL)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html">3. high accuracy高精度</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">4. sortings排序</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">4.1. 概念</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#bubble-sort-o-n-2">4.1.1. Bubble sort冒泡排序，<em>O</em>(n^2)​</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">4.1.2. 选择排序</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">4.1.3. 插入排序</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">4.1.4. 桶排序</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">4.1.5. 快速排序（放在分治讲解）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">4.1.6. 归并排序，逆序对（放在分治讲解）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sorting-in-c-stl">4.1.7. Sorting in C++（STL）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#user-defined-structs">4.1.8. User-defined structs自定义结构体排序</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">4.1.9. 几种排序算法的比较：</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%BA%8F%E8%A8%80.html">1. preface序言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.html">2. time complexity时间复杂度</a></li>
+<li class="toctree-l1"><a class="reference internal" href="STL.html">3. data structure(STL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html">4. high accuracy高精度</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. sortings排序</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">5.1. 概念</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bubble-sort-o-n-2">5.1.1. Bubble sort冒泡排序，<em>O</em>(n^2)​</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">5.1.2. 选择排序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">5.1.3. 插入排序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">5.1.4. 桶排序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">5.1.5. 快速排序（放在分治讲解）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">5.1.6. 归并排序，逆序对（放在分治讲解）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sorting-in-c-stl">5.1.7. Sorting in C++（STL）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-defined-structs">5.1.8. User-defined structs自定义结构体排序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">5.1.9. 几种排序算法的比较：</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">4.2. 《一本通》题目</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id9">4.2.1. 【例2.2】车厢重组</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">4.2.2. 【例2.5】求逆序对</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#k">4.2.3. 谁考了第k名</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">4.2.4. 奇数单增序列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">4.2.5. 成绩排序</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">4.2.6. 奖学金</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">4.2.7. 分数线划定</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">4.2.8. 整数奇偶排序</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">4.2.9. 合影效果</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">4.2.10. 病人排队</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">4.2.11. 明明的随机数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">4.2.12. 单词排序</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">4.2.13. 出现次数超过一半的数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">4.2.14. 统计字符数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">5.2. 《一本通》题目</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">5.2.1. 【例2.2】车厢重组</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">5.2.2. 【例2.5】求逆序对</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k">5.2.3. 谁考了第k名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">5.2.4. 奇数单增序列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">5.2.5. 成绩排序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">5.2.6. 奖学金</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">5.2.7. 分数线划定</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">5.2.8. 整数奇偶排序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">5.2.9. 合影效果</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">5.2.10. 病人排队</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">5.2.11. 明明的随机数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">5.2.12. 单词排序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">5.2.13. 出现次数超过一半的数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">5.2.14. 统计字符数</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id22">4.3. 其他题目</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#noip2011">4.3.1. [NOIP2011 普及组] 瑞士轮</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#p1626">4.3.2. P1626 象棋比赛</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#p1716">4.3.3. P1716 双调序列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#p3955-noip2017">4.3.4. P3955 [NOIP2017 普及组] 图书管理员</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#p4432-coci2017-2018-2-zigzag">4.3.5. P4432 [COCI2017-2018#2] ZigZag</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#p2676-usaco07dec-bookshelf-b">4.3.6. P2676 [USACO07DEC]Bookshelf B</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#p4379-usaco18open-lemonade-line-s">4.3.7. P4379 [USACO18OPEN]Lemonade Line S</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#p1056-noip2008">4.3.8. P1056 [NOIP2008 普及组] 排座椅</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#p1097-noip2007">4.3.9. P1097 [NOIP2007 提高组] 统计数字</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id22">5.3. 其他题目</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#noip2011">5.3.1. [NOIP2011 普及组] 瑞士轮</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#p1626">5.3.2. P1626 象棋比赛</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#p1716">5.3.3. P1716 双调序列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#p3955-noip2017">5.3.4. P3955 [NOIP2017 普及组] 图书管理员</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#p4432-coci2017-2018-2-zigzag">5.3.5. P4432 [COCI2017-2018#2] ZigZag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#p2676-usaco07dec-bookshelf-b">5.3.6. P2676 [USACO07DEC]Bookshelf B</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#p4379-usaco18open-lemonade-line-s">5.3.7. P4379 [USACO18OPEN]Lemonade Line S</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#p1056-noip2008">5.3.8. P1056 [NOIP2008 普及组] 排座椅</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#p1097-noip2007">5.3.9. P1097 [NOIP2007 提高组] 统计数字</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E6%8E%A8.html">5. recursion 递推</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E5%BD%92.html">6. recursive 递归</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html">7. complete search and backtracking 搜索与回溯</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E8%B4%AA%E5%BF%83.html">8. greedy algorithm 贪心</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%88%86%E6%B2%BB.html">9. divide and conquer分治</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">10. bfs宽度优先搜索</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html">11. dp动态规划</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E6%A0%88.html">12. stack栈</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E9%98%9F%E5%88%97.html">13. queue队列</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E6%A0%91.html">14. trees树</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA.html">15. graph图论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E6%8E%A8.html">6. recursion 递推</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E5%BD%92.html">7. recursive 递归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html">8. complete search and backtracking 搜索与回溯</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E8%B4%AA%E5%BF%83.html">9. greedy algorithm 贪心</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%88%86%E6%B2%BB.html">10. divide and conquer分治</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">11. bfs宽度优先搜索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html">12. dp动态规划</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A0%88.html">13. stack栈</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%98%9F%E5%88%97.html">14. queue队列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A0%91.html">15. trees树</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA.html">16. graph图论</a></li>
 </ul>
 <p class="caption"><span class="caption-text">二、计算机使用教程</span></p>
 <ul>
@@ -207,7 +208,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li><span class="section-number">4. </span>sortings排序</li>
+      <li><span class="section-number">5. </span>sortings排序</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -227,12 +228,12 @@
            <div itemprop="articleBody">
             
   <div class="section" id="sortings">
-<h1><span class="section-number">4. </span>sortings排序<a class="headerlink" href="#sortings" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">5. </span>sortings排序<a class="headerlink" href="#sortings" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2><span class="section-number">4.1. </span>概念<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.1. </span>概念<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>用途：Given an array that contains <em>n</em> elements, your task is to sort the elements in increasing order.</p>
 <div class="section" id="bubble-sort-o-n-2">
-<h3><span class="section-number">4.1.1. </span>Bubble sort冒泡排序，<em>O</em>(n^2)​<a class="headerlink" href="#bubble-sort-o-n-2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.1. </span>Bubble sort冒泡排序，<em>O</em>(n^2)​<a class="headerlink" href="#bubble-sort-o-n-2" title="Permalink to this headline">¶</a></h3>
 <p>冒泡排序，排序n轮，每一轮遍历一遍数组。当发现两个连续数字顺序不对时，交换他们。</p>
 <p><a class="reference external" href="https://www.runoob.com/w3cnote/bubble-sort.html">动画演示</a></p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
@@ -268,7 +269,7 @@
 </div>
 </div>
 <div class="section" id="id2">
-<h3><span class="section-number">4.1.2. </span>选择排序<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.2. </span>选择排序<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://www.runoob.com/w3cnote/selection-sort.html">动画演示</a></p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
 	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
@@ -277,7 +278,7 @@
 </div>
 </div>
 <div class="section" id="id3">
-<h3><span class="section-number">4.1.3. </span>插入排序<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.3. </span>插入排序<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://www.runoob.com/w3cnote/insertion-sort.html">动画演示</a></p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
 	
@@ -296,22 +297,22 @@
 </div>
 </div>
 <div class="section" id="id4">
-<h3><span class="section-number">4.1.4. </span>桶排序<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.4. </span>桶排序<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>排序的手段，不是通过对比元素大小，而是采用其他手段实现。</p>
 <p>The algorithm creates a <em>bookkeeping</em> array, whose indices are elements of the original array. The algorithm iterates through the original array and calculates how many times each element appears in the array.</p>
 <p>Counting sort is a very efficient algorithm but it can only be used when the constant <em>c</em> is small enough, so that the array elements can be used as indices in the bookkeeping array.</p>
 <p><a class="reference external" href="https://www.runoob.com/w3cnote/bucket-sort.html">动画演示</a></p>
 </div>
 <div class="section" id="id5">
-<h3><span class="section-number">4.1.5. </span>快速排序（放在分治讲解）<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.5. </span>快速排序（放在分治讲解）<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>/两个哨兵，一个从左走，一个从右走</p>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">4.1.6. </span>归并排序，逆序对（放在分治讲解）<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.6. </span>归并排序，逆序对（放在分治讲解）<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>/交换的时候，不再必须交换两个相邻元素</p>
 </div>
 <div class="section" id="sorting-in-c-stl">
-<h3><span class="section-number">4.1.7. </span>Sorting in C++（STL）<a class="headerlink" href="#sorting-in-c-stl" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.7. </span>Sorting in C++（STL）<a class="headerlink" href="#sorting-in-c-stl" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span>
 <span class="n">sort</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
 
@@ -333,7 +334,7 @@
 </div>
 </div>
 <div class="section" id="user-defined-structs">
-<h3><span class="section-number">4.1.8. </span>User-defined structs自定义结构体排序<a class="headerlink" href="#user-defined-structs" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.8. </span>User-defined structs自定义结构体排序<a class="headerlink" href="#user-defined-structs" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//使用重载小于号的方法</span>
 <span class="k">struct</span> <span class="n">P</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
@@ -353,7 +354,7 @@
 </div>
 </div>
 <div class="section" id="id7">
-<h3><span class="section-number">4.1.9. </span>几种排序算法的比较：<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.9. </span>几种排序算法的比较：<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://www.bilibili.com/video/BV1Ws411f7aJ?from=search&amp;seid=2499169625775675300">6分钟演示15种排序算法</a>，（注意开音响，有声效）</p>
 <ol class="simple">
 <li><p>稳定性。插入、冒泡、二叉树、归并是稳定的；选择、希尔、快排、堆排是不稳定的。（有跨度的交换，会导致不稳定）</p></li>
@@ -371,144 +372,144 @@
 </div>
 </div>
 <div class="section" id="id8">
-<h2><span class="section-number">4.2. </span>《一本通》题目<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2. </span>《一本通》题目<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id9">
-<h3><span class="section-number">4.2.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1310">【例2.2】车厢重组</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1310">【例2.2】车厢重组</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//冒泡</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id10">
-<h3><span class="section-number">4.2.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1311">【例2.5】求逆序对</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1311">【例2.5】求逆序对</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//归并</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="k">
-<h3><span class="section-number">4.2.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1176">谁考了第k名</a><a class="headerlink" href="#k" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1176">谁考了第k名</a><a class="headerlink" href="#k" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//结构体排序</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id11">
-<h3><span class="section-number">4.2.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1177">奇数单增序列</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1177">奇数单增序列</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//初次使用sort</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id12">
-<h3><span class="section-number">4.2.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1178">成绩排序</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1178">成绩排序</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//结构体排序</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id13">
-<h3><span class="section-number">4.2.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1179">奖学金</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1179">奖学金</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//结构体排序，[NOIP2007 普及组\] 奖学金</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id14">
-<h3><span class="section-number">4.2.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1180">分数线划定</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1180">分数线划定</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//结构体排序，模拟，[NOIP2009 普及组] 分数线划定</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id15">
-<h3><span class="section-number">4.2.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1181">整数奇偶排序</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1181">整数奇偶排序</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//sort，reverse</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id16">
-<h3><span class="section-number">4.2.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1182">合影效果</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1182">合影效果</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//男女分开，分别排序</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id17">
-<h3><span class="section-number">4.2.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1183">病人排队</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1183">病人排队</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//结构体排序</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id18">
-<h3><span class="section-number">4.2.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1184">明明的随机数</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1184">明明的随机数</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//桶排，[NOIP2006 普及组] 明明的随机数</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id19">
-<h3><span class="section-number">4.2.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1185">单词排序</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1185">单词排序</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//初次接触 map&lt;string, int&gt;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id20">
-<h3><span class="section-number">4.2.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1186">出现次数超过一半的数</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1186">出现次数超过一半的数</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//稍微思考一下性质</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id21">
-<h3><span class="section-number">4.2.14. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1187">统计字符数</a><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.14. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1187">统计字符数</a><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//桶排</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="id22">
-<h2><span class="section-number">4.3. </span>其他题目<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.3. </span>其他题目<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="noip2011">
-<h3><span class="section-number">4.3.1. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P1309">[NOIP2011 普及组] 瑞士轮</a><a class="headerlink" href="#noip2011" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.3.1. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P1309">[NOIP2011 普及组] 瑞士轮</a><a class="headerlink" href="#noip2011" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="p1626">
-<h3><span class="section-number">4.3.2. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P1626">P1626 象棋比赛</a><a class="headerlink" href="#p1626" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.3.2. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P1626">P1626 象棋比赛</a><a class="headerlink" href="#p1626" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//桶排</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="p1716">
-<h3><span class="section-number">4.3.3. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P1716">P1716 双调序列</a><a class="headerlink" href="#p1716" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.3.3. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P1716">P1716 双调序列</a><a class="headerlink" href="#p1716" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="p3955-noip2017">
-<h3><span class="section-number">4.3.4. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P3955">P3955 [NOIP2017 普及组] 图书管理员</a><a class="headerlink" href="#p3955-noip2017" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.3.4. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P3955">P3955 [NOIP2017 普及组] 图书管理员</a><a class="headerlink" href="#p3955-noip2017" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="p4432-coci2017-2018-2-zigzag">
-<h3><span class="section-number">4.3.5. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P4432">P4432 [COCI2017-2018#2] ZigZag</a><a class="headerlink" href="#p4432-coci2017-2018-2-zigzag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.3.5. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P4432">P4432 [COCI2017-2018#2] ZigZag</a><a class="headerlink" href="#p4432-coci2017-2018-2-zigzag" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="p2676-usaco07dec-bookshelf-b">
-<h3><span class="section-number">4.3.6. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P2676">P2676 [USACO07DEC]Bookshelf B</a><a class="headerlink" href="#p2676-usaco07dec-bookshelf-b" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.3.6. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P2676">P2676 [USACO07DEC]Bookshelf B</a><a class="headerlink" href="#p2676-usaco07dec-bookshelf-b" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//sortings + greedy</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="p4379-usaco18open-lemonade-line-s">
-<h3><span class="section-number">4.3.7. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P4379">P4379 [USACO18OPEN]Lemonade Line S</a><a class="headerlink" href="#p4379-usaco18open-lemonade-line-s" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.3.7. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P4379">P4379 [USACO18OPEN]Lemonade Line S</a><a class="headerlink" href="#p4379-usaco18open-lemonade-line-s" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//sortings + greedy</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="p1056-noip2008">
-<h3><span class="section-number">4.3.8. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P1056">P1056 [NOIP2008 普及组] 排座椅</a><a class="headerlink" href="#p1056-noip2008" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.3.8. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P1056">P1056 [NOIP2008 普及组] 排座椅</a><a class="headerlink" href="#p1056-noip2008" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//sortings + greedy</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="p1097-noip2007">
-<h3><span class="section-number">4.3.9. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P1097">P1097 [NOIP2007 提高组] 统计数字</a><a class="headerlink" href="#p1097-noip2007" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.3.9. </span><a class="reference external" href="https://www.luogu.com.cn/problem/P1097">P1097 [NOIP2007 提高组] 统计数字</a><a class="headerlink" href="#p1097-noip2007" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//sorting + binary search</span>
 </pre></div>
 </div>
@@ -522,8 +523,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="%E9%80%92%E6%8E%A8.html" class="btn btn-neutral float-right" title="5. recursion 递推" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html" class="btn btn-neutral float-left" title="3. high accuracy高精度" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="%E9%80%92%E6%8E%A8.html" class="btn btn-neutral float-right" title="6. recursion 递推" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html" class="btn btn-neutral float-left" title="4. high accuracy高精度" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

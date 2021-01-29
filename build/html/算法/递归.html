@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>6. recursive 递归 &mdash; 信息学奥赛普及组算法21天突破 0.7.1 documentation</title>
+  <title>7. recursive 递归 &mdash; 信息学奥赛普及组算法21天突破 0.7.1 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. complete search and backtracking 搜索与回溯" href="%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html" />
-    <link rel="prev" title="5. recursion 递推" href="%E9%80%92%E6%8E%A8.html" /> 
+    <link rel="next" title="8. complete search and backtracking 搜索与回溯" href="%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html" />
+    <link rel="prev" title="6. recursion 递推" href="%E9%80%92%E6%8E%A8.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,60 +91,61 @@
             
               <p class="caption"><span class="caption-text">一、普及组算法部分</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.html">1. time complexity时间复杂度</a></li>
-<li class="toctree-l1"><a class="reference internal" href="STL.html">2. data structure(STL)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html">3. high accuracy高精度</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E6%8E%92%E5%BA%8F.html">4. sortings排序</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E6%8E%A8.html">5. recursion 递推</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">6. recursive 递归</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">6.1. 概念</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">6.2. 入门问题</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id3">6.2.1. 爬楼梯</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">6.2.2. 菲波那契数列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pell">6.2.3. Pell数列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%BA%8F%E8%A8%80.html">1. preface序言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.html">2. time complexity时间复杂度</a></li>
+<li class="toctree-l1"><a class="reference internal" href="STL.html">3. data structure(STL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html">4. high accuracy高精度</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%8E%92%E5%BA%8F.html">5. sortings排序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E6%8E%A8.html">6. recursion 递推</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. recursive 递归</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">7.1. 概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">7.2. 入门问题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">7.2.1. 爬楼梯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">7.2.2. 菲波那契数列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pell">7.2.3. Pell数列</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#complete-search">6.3. Complete search</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id5">6.3.1. 问题：生成子集</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">6.3.2. 问题：生成排列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#complete-search">7.3. Complete search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">7.3.1. 问题：生成子集</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">7.3.2. 问题：生成排列</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">6.4. 《进阶指南》题目</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id8">6.4.1. 递归实现指数型枚举</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">6.4.2. 递归实现组合型枚举</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">6.4.3. 递归实现排列型枚举</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">7.4. 《进阶指南》题目</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">7.4.1. 递归实现指数型枚举</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">7.4.2. 递归实现组合型枚举</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">7.4.3. 递归实现排列型枚举</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id11">6.5. 《一本通》题目</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id12">6.5.1. 【例4.5】集合的划分</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#noip2001">6.5.2. 【例4.6】数的计数(Noip2001)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">6.5.3. 逆波兰表达式</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">6.5.4. 全排列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">6.5.5. 分解因数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">6.5.6. 菲波那契数列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">6.5.7. Pell数列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">6.5.8. 扩号匹配问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">6.5.9. 爬楼梯</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">6.5.10. 汉诺塔问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">6.5.11. 放苹果</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id22">6.5.12. 求最大公约数问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id23">6.5.13. 2的幂次方表示</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id24">6.5.14. 分数求和</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id25">6.5.15. 因子分解</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id26">6.5.16. 判断元素是否存在</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">7.5. 《一本通》题目</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">7.5.1. 【例4.5】集合的划分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#noip2001">7.5.2. 【例4.6】数的计数(Noip2001)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">7.5.3. 逆波兰表达式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">7.5.4. 全排列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">7.5.5. 分解因数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">7.5.6. 菲波那契数列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">7.5.7. Pell数列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">7.5.8. 扩号匹配问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">7.5.9. 爬楼梯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">7.5.10. 汉诺塔问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">7.5.11. 放苹果</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">7.5.12. 求最大公约数问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">7.5.13. 2的幂次方表示</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">7.5.14. 分数求和</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">7.5.15. 因子分解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">7.5.16. 判断元素是否存在</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html">7. complete search and backtracking 搜索与回溯</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E8%B4%AA%E5%BF%83.html">8. greedy algorithm 贪心</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%88%86%E6%B2%BB.html">9. divide and conquer分治</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">10. bfs宽度优先搜索</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html">11. dp动态规划</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E6%A0%88.html">12. stack栈</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E9%98%9F%E5%88%97.html">13. queue队列</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E6%A0%91.html">14. trees树</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA.html">15. graph图论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html">8. complete search and backtracking 搜索与回溯</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E8%B4%AA%E5%BF%83.html">9. greedy algorithm 贪心</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%88%86%E6%B2%BB.html">10. divide and conquer分治</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">11. bfs宽度优先搜索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html">12. dp动态规划</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A0%88.html">13. stack栈</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%98%9F%E5%88%97.html">14. queue队列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A0%91.html">15. trees树</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA.html">16. graph图论</a></li>
 </ul>
 <p class="caption"><span class="caption-text">二、计算机使用教程</span></p>
 <ul>
@@ -203,7 +204,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li><span class="section-number">6. </span>recursive 递归</li>
+      <li><span class="section-number">7. </span>recursive 递归</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -223,9 +224,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="recursive">
-<h1><span class="section-number">6. </span>recursive 递归<a class="headerlink" href="#recursive" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">7. </span>recursive 递归<a class="headerlink" href="#recursive" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2><span class="section-number">6.1. </span>概念<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.1. </span>概念<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p><strong>递归</strong>是程序遍历状态空间的基本方式。以“原问题”为起点，尝试寻找把状态空间缩小到已知的“问题边界”的路线，再通过该路线反向回溯的遍历方式，就是递归。</p>
 <p>程序在每个步骤应该面对相同种类的问题，这些问题都是原问题的一个子问题，可能仅在规模或者某些限制条件上有所区别，并且能够使用“求解原问题的程序”进行求解。程序在执行变换操作执行三个操作：</p>
 <ol class="simple">
@@ -237,33 +238,33 @@
 <p>在使用枚举算法蛮力搜索问题的整个“状态空间”时，经常需要递归。（枚举算法，就是遍历一遍，逐个举例。初级的枚举很简单，就是for循环的应用，高级的就很难了，复杂在题目题目和遍历的操作方式）</p>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">6.2. </span>入门问题<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.2. </span>入门问题<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
-<h3><span class="section-number">6.2.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1204">爬楼梯</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.2.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1204">爬楼梯</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//理解推导公式后，利用递归实现</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id4">
-<h3><span class="section-number">6.2.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1201">菲波那契数列</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.2.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1201">菲波那契数列</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//理解推导公式后，利用递归实现</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="pell">
-<h3><span class="section-number">6.2.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1202">Pell数列</a><a class="headerlink" href="#pell" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.2.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1202">Pell数列</a><a class="headerlink" href="#pell" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//需要使用记忆化</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="complete-search">
-<h2><span class="section-number">6.3. </span>Complete search<a class="headerlink" href="#complete-search" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.3. </span>Complete search<a class="headerlink" href="#complete-search" title="Permalink to this headline">¶</a></h2>
 <p>在学习递归之后，我们就学会了遍历问题状态空间的一种方式方法。这样我们就可以去尝试搜索这个问题的状态空间。这里，我们先来接触Complete search（也可以理解为暴力搜索）</p>
 <p><strong>Complete search</strong> is a general method that can be used to solve almost any algorithm problem. The idea is to generate all possible solutions to the problem using brute force, and then select the best solution or count the number of solutions, depending on the problem.</p>
 <p>Complete search is a good technique if there is enough time to go through all the solutions, because the search is usually easy to implement and it always gives the correct answer. If complete search is too slow, other techniques, such as greedy algorithms or dynamic programming, may be needed.</p>
 <div class="section" id="id5">
-<h3><span class="section-number">6.3.1. </span><a class="reference external" href="#">问题：生成子集</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.3.1. </span><a class="reference external" href="#">问题：生成子集</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>For example, the subsets of {0,1,2} are 􏰀, {0}, {1}, {2}, {0,1}, {0,2}, {1,2} and {0,1,2}.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//An elegant way to go through all subsets of a set is to use recursion</span>
 <span class="kt">void</span> <span class="nf">search</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
@@ -298,7 +299,7 @@
 </div>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">6.3.2. </span><a class="reference external" href="#">问题：生成排列</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.3.2. </span><a class="reference external" href="#">问题：生成排列</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>For example, the permutations of {0,1,2} are (0,1,2), (0,2,1), (1,0,2), (1,2,0), (2,0,1) and (2,1,0).</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//Each function call adds a new element to permutation. The array chosen indicates which elements are already included in the permutation. If the size of permutation equals the size of the set, a permutation has been generated.</span>
 
@@ -333,9 +334,9 @@
 </div>
 </div>
 <div class="section" id="id7">
-<h2><span class="section-number">6.4. </span>《进阶指南》题目<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.4. </span>《进阶指南》题目<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id8">
-<h3><span class="section-number">6.4.1. </span><a class="reference external" href="https://www.acwing.com/problem/content/94/">递归实现指数型枚举</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.1. </span><a class="reference external" href="https://www.acwing.com/problem/content/94/">递归实现指数型枚举</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>/子集枚举</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">chosen</span><span class="p">;</span>
 
@@ -384,7 +385,7 @@
 </div>
 </div>
 <div class="section" id="id9">
-<h3><span class="section-number">6.4.2. </span><a class="reference external" href="https://www.acwing.com/problem/content/95/">递归实现组合型枚举</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.2. </span><a class="reference external" href="https://www.acwing.com/problem/content/95/">递归实现组合型枚举</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>/在子集枚举的基础上，进行剪枝</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">chosen</span><span class="p">;</span>
 
@@ -433,7 +434,7 @@
 </div>
 </div>
 <div class="section" id="id10">
-<h3><span class="section-number">6.4.3. </span><a class="reference external" href="https://www.acwing.com/problem/content/96/">递归实现排列型枚举</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.3. </span><a class="reference external" href="https://www.acwing.com/problem/content/96/">递归实现排列型枚举</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>/排列枚举</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//用数组存方案</span>
 <span class="c1">//注意一下0-index，如果是1-index呢？递归的边界是....？</span>
@@ -486,16 +487,16 @@
 </div>
 </div>
 <div class="section" id="id11">
-<h2><span class="section-number">6.5. </span>《一本通》题目<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.5. </span>《一本通》题目<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id12">
-<h3><span class="section-number">6.5.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1315">【例4.5】集合的划分</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1315">【例4.5】集合的划分</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//{an}是k子集合中的一个,S(n-1, k-1)</span>
 <span class="c1">//{an}不是k子集合中的任意一个子集，an与其他元素构成了子集，问题相当于S(n-1,k)。把an加入到k个子集中的任意一个中，有k种加入的方法</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="noip2001">
-<h3><span class="section-number">6.5.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1316">【例4.6】数的计数(Noip2001)</a><a class="headerlink" href="#noip2001" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1316">【例4.6】数的计数(Noip2001)</a><a class="headerlink" href="#noip2001" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//子问题是[1...x/2]</span>
 <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
 		<span class="n">dfs</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
@@ -505,7 +506,7 @@
 </div>
 </div>
 <div class="section" id="id13">
-<h3><span class="section-number">6.5.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1198">逆波兰表达式</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1198">逆波兰表达式</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//* a b</span>
 <span class="c1">//读入的是*号，我们就返回 dfs() * dfs()</span>
     
@@ -514,13 +515,13 @@
 </div>
 </div>
 <div class="section" id="id14">
-<h3><span class="section-number">6.5.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1199">全排列</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1199">全排列</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//前面的例题</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id15">
-<h3><span class="section-number">6.5.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1200">分解因数</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1200">分解因数</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>//求的是分解的方案数， 有两种分析的方法
 //1. dfs(x, y)，调用时dfs(x, 2)，从2开始向上搜索x的约数
 	边界是x==1
@@ -537,19 +538,19 @@
 </div>
 </div>
 <div class="section" id="id16">
-<h3><span class="section-number">6.5.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1201">菲波那契数列</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1201">菲波那契数列</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id17">
-<h3><span class="section-number">6.5.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1202">Pell数列</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1202">Pell数列</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id18">
-<h3><span class="section-number">6.5.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1203">扩号匹配问题</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1203">扩号匹配问题</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//模拟搜索的过程，用递归实现这个搜索的模拟过程</span>
 <span class="c1">//遇到左括号，就先标记上</span>
 <span class="c1">//遇到右括号，就从当前位置往前找“有标记的左括号”</span>
@@ -558,19 +559,19 @@
 </div>
 </div>
 <div class="section" id="id19">
-<h3><span class="section-number">6.5.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1204">爬楼梯</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1204">爬楼梯</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id20">
-<h3><span class="section-number">6.5.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1205">汉诺塔问题</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1205">汉诺塔问题</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id21">
-<h3><span class="section-number">6.5.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1206">放苹果</a><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1206">放苹果</a><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//把M个同样的苹果放在N个同样的盘子里，允许有的盘子空着不放，问共有多少种不同的分法？</span>
 <span class="c1">//这道题目意义深远，打个星号</span>
 <span class="c1">//分情况讨论，盘子比苹果多的情况，苹果比盘子多的情况</span>
@@ -578,31 +579,31 @@
 </div>
 </div>
 <div class="section" id="id22">
-<h3><span class="section-number">6.5.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1207">求最大公约数问题</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1207">求最大公约数问题</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//介绍gcd模板</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id23">
-<h3><span class="section-number">6.5.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1208">2的幂次方表示</a><a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1208">2的幂次方表示</a><a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//这道题比较复杂，作为拓展学习，涉及位运算，对理解二进制数有帮助</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id24">
-<h3><span class="section-number">6.5.14. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1209">分数求和</a><a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.14. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1209">分数求和</a><a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//模拟两个分数相加的过程，通分和约分</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id25">
-<h3><span class="section-number">6.5.15. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1210">因子分解</a><a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.15. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1210">因子分解</a><a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//分解质因数</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id26">
-<h3><span class="section-number">6.5.16. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1211">判断元素是否存在</a><a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.16. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1211">判断元素是否存在</a><a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//用递归遍历问题的状态空间，进行暴力枚举</span>
 </pre></div>
 </div>
@@ -616,8 +617,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html" class="btn btn-neutral float-right" title="7. complete search and backtracking 搜索与回溯" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="%E9%80%92%E6%8E%A8.html" class="btn btn-neutral float-left" title="5. recursion 递推" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html" class="btn btn-neutral float-right" title="8. complete search and backtracking 搜索与回溯" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%E9%80%92%E6%8E%A8.html" class="btn btn-neutral float-left" title="6. recursion 递推" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

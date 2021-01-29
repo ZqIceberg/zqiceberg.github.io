@@ -11,6 +11,7 @@
    :caption: 一、普及组算法部分
    :numbered:
 
+   算法/序言
    算法/时间复杂度.md
    算法/STL.md
    算法/高精度.md
