@@ -32,6 +32,7 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -91,7 +92,7 @@
               <p class="caption"><span class="caption-text">一、普及组算法部分</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.html">1. time complexity时间复杂度</a></li>
-<li class="toctree-l1"><a class="reference internal" href="STL.html">2. stl标准模板库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="STL.html">2. data structure(STL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html">3. high accuracy高精度</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E6%8E%92%E5%BA%8F.html">4. sortings排序</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E6%8E%A8.html">5. recursion 递推</a></li>
@@ -103,7 +104,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#scheduling">8.3. Scheduling时间安排问题</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tasks-and-deadlines">8.4. Tasks and deadlines任务截止时间问题</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#minimizing-sums">8.5. Minimizing sums求最小的和</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#data-compression-huffman-coding">8.6. Data compression数据压缩（引出Huffman coding应用）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-compression-huffman-coding">8.6. Data compression数据压缩（引出Huffman coding的用途）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#huffman-coding">8.7. Huffman coding哈夫曼编码</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">8.8. 常见题型</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">8.9. 《一本通》题目</a><ul>
@@ -310,7 +311,7 @@
 </center><p>The last part does not depend on <em>x</em>, so we can ignore it. The remaining parts form a function <code class="docutils literal notranslate"><span class="pre">nx^2−2x</span></code> where <em>s</em>=<em>a</em>1+<em>a</em>2+···+<em>a</em>n. This is a parabola opening upwards with roots <em>x</em> = 0 and <em>x</em> = 2<em>s</em>/<em>n</em>, and the minimum value is the average of the roots <em>x</em> = <em>s</em>/<em>n</em>, i.e., the average of the numbers <em>a</em>1,<em>a</em>2,…,<em>an</em>.</p>
 </div>
 <div class="section" id="data-compression-huffman-coding">
-<h2><span class="section-number">8.6. </span>Data compression数据压缩（引出Huffman coding应用）<a class="headerlink" href="#data-compression-huffman-coding" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.6. </span>Data compression数据压缩（引出Huffman coding的用途）<a class="headerlink" href="#data-compression-huffman-coding" title="Permalink to this headline">¶</a></h2>
 <p>A <strong>binary code</strong> assigns for each character of a string a <strong>codeword</strong> that consists of bits. We can <em>compress</em> the string using the binary code by replacing each character by the corresponding codeword. For example, the following binary code assigns codewords for characters A–D:</p>
 <center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">charactor</span>      <span class="n">codeword</span>
         <span class="n">A</span>            <span class="mo">00</span>

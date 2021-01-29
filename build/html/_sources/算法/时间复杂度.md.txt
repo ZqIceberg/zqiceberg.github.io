@@ -64,7 +64,7 @@ for (int i = 1; i <= n; i++) {
 //这段代码，是O(n^2)的
 ```
 
-还有$O(nm)$
+还有***O*(nm)​**
 
 ```cpp
 for (int i = 1; i <= n; i++) {
@@ -115,7 +115,9 @@ void g(int n) {
 
 ### 举例，最大子段和
 
-Given an array of *n* numbers, our task is to calculate the **maximum subarray sum**.[from《编程珠玑》]
+Given an array of *n* numbers, our task is to calculate the **maximum subarray sum**.
+
+*from《编程珠玑》*
 
 ```cpp
 //举例
@@ -124,8 +126,6 @@ Given an array of *n* numbers, our task is to calculate the **maximum subarray s
 //最大子段和是10
     2  4  -3  5  2
 ```
-
-
 
 ##### 算法1，*O(n^3)​*
 
@@ -161,8 +161,11 @@ cout << best << "\n";
 
 Consider the subproblem of finding the maximum-sum subarray that ends at position *k*. There are two possibilities:
 
-1. The subarray only contains the element at position *k*.
-2. The subarray consists of a subarray that ends at position *k* − 1, followed by the element at position *k*.
+```cpp
+1. The subarray only contains the element at position k.
+2. The subarray consists of a subarray that ends at position k − 1,
+followed by the element at position k.
+```
 
 In the latter case, since we want to find a subarray with maximum sum, the subarray that ends at position *k* − 1 should also have the maximum sum. Thus, we can solve the problem efficiently by calculating the maximum subarray sum for each ending position from left to right.
 
@@ -175,4 +178,7 @@ for (int k = 0; k < n; k++) {
 cout << best << "\n";
 ```
 
-aha，这是就是动态规划..（所以，你会了一个经典dp问题）
+
+
+*aha，这是就是**动态规划**..（所以，你会了一个经典dp问题）(当有人把动态规划认为是学习算法的里程碑，或者分水岭，此时，你已经悄然渡过)*
+

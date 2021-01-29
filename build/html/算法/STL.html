@@ -240,7 +240,7 @@
 </pre></div>
 </div>
 <center><p><img alt="../_images/image-20210127120543993.png" src="../_images/image-20210127120543993.png" /></p>
-</center><p>The string structure is also a dynamic array that can be used almost like a vector. string类 类型也是一个动态数组，用起来很像vector，经常用的<code class="docutils literal notranslate"><span class="pre">s.substr(pos,</span> <span class="pre">length)</span></code> <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">pos</span> <span class="pre">=</span> <span class="pre">s.find('c')</span></code>，还有<code class="docutils literal notranslate"><span class="pre">+</span></code>用来拼接两个string</p>
+</center><p>The string structure is also a dynamic array that can be used almost like a vector. string类 类型也是一个动态数组，用起来很像 vector ，经常用的<code class="docutils literal notranslate"><span class="pre">s.substr(pos,</span> <span class="pre">length)</span></code> <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">pos</span> <span class="pre">=</span> <span class="pre">s.find('c')</span></code>，还有<code class="docutils literal notranslate"><span class="pre">+</span></code>用来拼接两个 string</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>string a = &quot;hatti&quot;;
 string b = a+a;
 cout &lt;&lt; b &lt;&lt; &quot;\n&quot;; // hattihatti
@@ -273,7 +273,7 @@ cout &lt;&lt; pos &lt;&lt; &#39;\n&#39;;  //实践一下
 <div class="section" id="set">
 <h2><span class="section-number">2.3. </span>set集合<a class="headerlink" href="#set" title="Permalink to this headline">¶</a></h2>
 <p>A <strong>set</strong> is a data structure that maintains a collection of elements. The basic operations of sets are element insertion, search and removal.The benefit of the set structure is that it maintains the order of the elements.</p>
-<p>vector如果要排序，需要sort一下；set就会默认是有序的</p>
+<p>vector 如果要排序，需要 sort 一下； set 就会默认是有序的</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">s</span><span class="p">;</span>
 <span class="n">s</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
 <span class="n">s</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
@@ -333,7 +333,7 @@ cout &lt;&lt; pos &lt;&lt; &#39;\n&#39;;  //实践一下
 <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">m</span><span class="p">[</span><span class="s">&quot;aybabtu&quot;</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span> <span class="c1">// 0</span>
 </pre></div>
 </div>
-<p>所以，上述这个操作，不是很好，当查询次数很多，会造成空间问题（我在CF现场比赛中，真实遇见…，当时还不熟练这个操作）</p>
+<p>所以，上述这个操作，不是很好，当查询次数很多，会造成空间问题（我在 CF 现场比赛中，真实遇见…，当时还不熟练这个操作）</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//判断是否存在，用count</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="s">&quot;aybabtu&quot;</span><span class="p">))</span> <span class="p">{</span>
     <span class="c1">// key exists</span>
@@ -398,6 +398,7 @@ cout &lt;&lt; pos &lt;&lt; &#39;\n&#39;;  //实践一下
 </div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//示例</span>
 <span class="c1">//set&lt;pair&lt;int, int&gt; &gt; </span>
+<span class="c1">//不能写成set&lt;pair&lt;int, int&gt;&gt;，这也是不建议用#define宏定义的原因</span>
 <span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp"></span>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>

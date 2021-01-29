@@ -6,41 +6,49 @@
 
 程序在每个步骤应该面对相同种类的问题，这些问题都是原问题的一个子问题，可能仅在规模或者某些限制条件上有所区别，并且能够使用“求解原问题的程序”进行求解。程序在执行变换操作执行三个操作：
 
-1. 缩小问题状态空间的规模。程序尝试寻找在 “原问题” 与 “问题边界” 之间的变换路线，并向正在探索的路线上迈进一步。
-2. 尝试求解规模缩小以后的问题，可能成功，可能失败。
-3. 如果成功，即找到了规模缩小后的问题的答案，那么将答案扩展到当前问题。如果失败，那么重新回到当前问题，程序可能会继续寻找当前问题的其他变换路线，直到最终确定当前问题无法求解。
+1. *缩小问题状态空间的规模。程序尝试寻找在 “原问题” 与 “问题边界” 之间的变换路线，并向正在探索的路线上迈进一步。*
+2. *尝试求解规模缩小以后的问题，可能成功，可能失败。*
+3. *如果成功，即找到了规模缩小后的问题的答案，那么将答案扩展到当前问题。如果失败，那么重新回到当前问题，程序可能会继续寻找当前问题的其他变换路线，直到最终确定当前问题无法求解。*
 
 
 
-**使用递归的前提：**函数理解深入（带参的函数，有返回值的函数，函数的嵌套(就是“自身调用自身”)），操作时，试验无限递归，递归的终止条件，“回溯时还原现场”保证执行前后程序面对问题的状态是相同的。
+**使用递归的前提：** 函数理解深入（带参的函数，有返回值的函数，函数的嵌套(就是“自身调用自身”)）。操作时，试验无限递归，递归的终止条件，“回溯时还原现场”保证执行前后程序面对问题的状态是相同的。
 
 在使用枚举算法蛮力搜索问题的整个“状态空间”时，经常需要递归。（枚举算法，就是遍历一遍，逐个举例。初级的枚举很简单，就是for循环的应用，高级的就很难了，复杂在题目题目和遍历的操作方式）
 
 
 
-### 入门例题
+### 入门问题
 
 ##### [爬楼梯](http://ybt.ssoier.cn:8088/problem_show.php?pid=1204)
 
-/理解推导公式后，利用递归实现
+```cpp
+//理解推导公式后，利用递归实现
+```
 
 ##### [菲波那契数列](http://ybt.ssoier.cn:8088/problem_show.php?pid=1201)
 
-/理解推导公式后，利用递归实现
+```cpp
+//理解推导公式后，利用递归实现
+```
 
 ##### [Pell数列](http://ybt.ssoier.cn:8088/problem_show.php?pid=1202)
 
-/需要使用记忆化
+```cpp
+//需要使用记忆化
+```
 
 
 
 ### Complete search
 
-在学习递归之后，我们就学会了遍历问题空间的一种方式方法。这样我们就可以去尝试搜索这个问题的状态空间。这里，我们先来接触Complete search（也可以理解为暴力搜索）
+在学习递归之后，我们就学会了遍历问题状态空间的一种方式方法。这样我们就可以去尝试搜索这个问题的状态空间。这里，我们先来接触Complete search（也可以理解为暴力搜索）
 
 **Complete search** is a general method that can be used to solve almost any algorithm problem. The idea is to generate all possible solutions to the problem using brute force, and then select the best solution or count the number of solutions, depending on the problem.
 
 Complete search is a good technique if there is enough time to go through all the solutions, because the search is usually easy to implement and it always gives the correct answer. If complete search is too slow, other techniques, such as greedy algorithms or dynamic programming, may be needed.
+
+
 
 ##### [问题：生成子集]()
 
@@ -165,6 +173,7 @@ void dfs(int x)
 ```
 
 ```cpp
+//位运算版本，这是进阶的
 void dfs(int u, int state)
 {
     if (u == n)
@@ -182,6 +191,8 @@ void dfs(int u, int state)
     dfs(u + 1, state | 1 << u); //选
 }
 ```
+
+
 
 ##### [递归实现组合型枚举](https://www.acwing.com/problem/content/95/)
 
@@ -214,6 +225,7 @@ void dfs(int x)
 ```
 
 ```cpp
+//位运算版本，这是进阶的
 void dfs(int u, int sum, int state)
 {
     if (sum > m || sum + n - u < m) return ;
@@ -297,64 +309,121 @@ void dfs(int u, int state)
 
 ##### [【例4.5】集合的划分](http://ybt.ssoier.cn:8088/problem_show.php?pid=1315)
 
-/
+```cpp
+//{an}是k子集合中的一个,S(n-1, k-1)
+//{an}不是k子集合中的任意一个子集，an与其他元素构成了子集，问题相当于S(n-1,k)。把an加入到k个子集中的任意一个中，有k种加入的方法
+```
 
 ##### [【例4.6】数的计数(Noip2001)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1316)
 
-/
+```cpp
+//子问题是[1...x/2]
+for (int i = 1; i <= x / 2; i++){
+		dfs(i);
+		h[x] += h[i];
+}
+```
 
 ##### [逆波兰表达式](http://ybt.ssoier.cn:8088/problem_show.php?pid=1198)
 
-/
+```cpp
+//* a b
+//读入的是*号，我们就返回 dfs() * dfs()
+    
+//这个题目的难点是string转double，如何转
+```
 
 ##### [全排列](http://ybt.ssoier.cn:8088/problem_show.php?pid=1199)
 
-/
+```cpp
+//前面的例题
+```
 
 ##### [分解因数](http://ybt.ssoier.cn:8088/problem_show.php?pid=1200)
 
-/
+```cpp
+//求的是分解的方案数， 有两种分析的方法
+//1. dfs(x, y)，调用时dfs(x, 2)，从2开始向上搜索x的约数
+	边界是x==1
+        
+	for (int i = y; i <= x; i++)  //从y往上找x的约数，如果找到，就求解子问题dfs(x/i, i)
+		if (x % i == 0) res += dfs(x / i, i);
+
+//2. dfs(a, b)，从b开始向下搜索a的约数，调用时dfs(x, x)
+	边界是a == 1 和 b == 1
+    
+    如果a % b == 0，我们就 res += dfs(a / b, b); 把这个约数除掉，求解子问题
+	如果a % b != 0，我们就 dfs(a, b - 1); 往下看子问题
+```
 
 ##### [菲波那契数列](http://ybt.ssoier.cn:8088/problem_show.php?pid=1201)
 
-/
+```cpp
+//
+```
 
 ##### [Pell数列](http://ybt.ssoier.cn:8088/problem_show.php?pid=1202)
 
-/
+```cpp
+//
+```
 
 ##### [扩号匹配问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1203)
 
-/
+```cpp
+//模拟搜索的过程，用递归实现这个搜索的模拟过程
+//遇到左括号，就先标记上
+//遇到右括号，就从当前位置往前找“有标记的左括号”
+//找到了，就取消左括号的标记；没找到，就把这个右括号，标记起来
+```
 
 ##### [爬楼梯](http://ybt.ssoier.cn:8088/problem_show.php?pid=1204)
 
-/
+```cpp
+//
+```
 
 ##### [汉诺塔问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1205)
 
-/
+```cpp
+//
+```
 
 ##### [放苹果](http://ybt.ssoier.cn:8088/problem_show.php?pid=1206)
 
-/
+```cpp
+//把M个同样的苹果放在N个同样的盘子里，允许有的盘子空着不放，问共有多少种不同的分法？
+//这道题目意义深远，打个星号
+//分情况讨论，盘子比苹果多的情况，苹果比盘子多的情况
+```
 
 ##### [求最大公约数问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1207)
 
-/
+```cpp
+//介绍gcd模板
+```
 
 ##### [2的幂次方表示](http://ybt.ssoier.cn:8088/problem_show.php?pid=1208)
 
-/
+```cpp
+//这道题比较复杂，作为拓展学习，涉及位运算，对理解二进制数有帮助
+```
 
 ##### [分数求和](http://ybt.ssoier.cn:8088/problem_show.php?pid=1209)
 
-/
+```cpp
+//模拟两个分数相加的过程，通分和约分
+```
 
 ##### [因子分解](http://ybt.ssoier.cn:8088/problem_show.php?pid=1210)
 
-/
+```cpp
+//分解质因数
+```
 
 ##### [判断元素是否存在](http://ybt.ssoier.cn:8088/problem_show.php?pid=1211)
 
-/
+```cpp
+//用递归遍历问题的状态空间，进行暴力枚举
+```
+

@@ -218,9 +218,10 @@
 <h1><span class="section-number">7. </span>complete search and backtracking 搜索与回溯<a class="headerlink" href="#complete-search-and-backtracking" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
 <h2><span class="section-number">7.1. </span>概念<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>搜索，也就是对状态空间进行枚举，通过穷尽所有的可能来找到最优解，或者统计合法解的个数。<strong>Complete search</strong>，我们在学习递归的时候，就了解到了。递归枚举子集，递归枚举组合，递归枚举排列，是三个入门的问题。</p>
+<p><strong>搜索</strong>，也就是对状态空间进行枚举，通过穷尽所有的可能来找到最优解，或者统计合法解的个数。</p>
+<p><strong>Complete search</strong>，我们在学习递归的时候，就了解到了。递归枚举子集，递归枚举组合，递归枚举排列，是三个入门的问题。</p>
 <p>在讲到搜索的时候，会有几个概念，&lt;深度优先搜索、深度优先遍历&gt;，&lt;宽度优先搜索、宽度优先遍历&gt;（也叫广度优先搜索）。遍历呢，一般是指图上的搜索。我们在学习搜索的时候，主要是指学习深度优先搜索。</p>
-<p>下面这段话，用来理解和区分这几个常用的概念问题。<strong>deep first search(dfs)</strong>， 按照深度优先的顺序对“问题状态空间”进行搜索的算法（理解理解搜索树，是不是深度优先?）。“深搜”，是一种包括遍历形式、状态记录与检索、剪枝优化等算法整体设计的统称。提前学习建图方法后，掌握在图上进行遍历，进一步把“问题空间”类比为一张图。研究dfs算法之前，要定义该过程产生的“搜索树”结构，整个深搜算法就是基于该搜索树完成的。（用递归实现的指数型枚举、排列性枚举、组合型枚举，其实就是深搜的三种最简单的形式）。<strong>dfs</strong>，常常指利用递归函数实现暴力枚举的算法。<strong>递归搜索</strong>，该类搜索算法的特点在于，将要搜索的目标分成若干“层”，每层基于前几层的状态进行决策，直到达到目标状态。</p>
+<p>下面这段话，用来理解和区分这几个常用的概念问题。<strong>depth first search(dfs)</strong>， 按照深度优先的顺序对“问题状态空间”进行搜索的算法（理解理解搜索树，是不是深度优先?）。“深搜”，是一种包括遍历形式、状态记录与检索、剪枝优化等算法整体设计的统称。提前学习建图方法后，掌握在图上进行遍历，进一步把“问题空间”类比为一张图。研究dfs算法之前，要定义该过程产生的 “搜索树” 结构，整个深搜算法就是基于该搜索树完成的*（用递归实现的指数型枚举、排列性枚举、组合型枚举，其实就是深搜的三种最简单的形式）<em>。<strong>dfs</strong>，常常指利用递归函数实现暴力枚举的算法。<strong>递归搜索</strong>，该类搜索算法的特点在于，将要搜索的目标分成若干“层”，每层基于前几层的状态进行决策，直到达到目标状态。</em>（不要过多纠结于名词概念，能够inplementation才是王道。）*</p>
 </div>
 <div class="section" id="complete-search">
 <h2><span class="section-number">7.2. </span>Complete search<a class="headerlink" href="#complete-search" title="Permalink to this headline">¶</a></h2>
@@ -232,11 +233,15 @@
 </div>
 <div class="section" id="id2">
 <h3><span class="section-number">7.2.2. </span><a class="reference external" href="https://www.acwing.com/problem/content/94/">递归实现指数型枚举</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>/子集枚举</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//子集枚举</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="id3">
 <h3><span class="section-number">7.2.3. </span><a class="reference external" href="https://www.acwing.com/problem/content/95/">递归实现组合型枚举</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>/在子集枚举的基础上，进行剪枝</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//在子集枚举的基础上，进行剪枝</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="generating-permutations">
 <h3><span class="section-number">7.2.4. </span>Generating permutations生成排列问题<a class="headerlink" href="#generating-permutations" title="Permalink to this headline">¶</a></h3>
@@ -244,13 +249,32 @@
 </div>
 <div class="section" id="id4">
 <h3><span class="section-number">7.2.5. </span><a class="reference external" href="https://www.acwing.com/problem/content/96/">递归实现排列型枚举</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>/排列枚举</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//排列枚举</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="id5">
 <h2><span class="section-number">7.3. </span>将正整数拆分问题<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<p><strong>问题1</strong>：将正整数 n 分解成3个不同的正整数，如 6 = 1 + 2 + 3，排在后面的数必须大于等于前面的数，输出所有方案。</p>
-<p><strong>问题2</strong>：将正整数 n 分解成小于等于 m 个正整数之和，且排在后面的数必须大于等于前面的数，并输出所有方案。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>//问题1：
+  将正整数 n 分解成3个不同的正整数，如 6 = 1 + 2 + 3，
+  排在后面的数必须大于等于前面的数，输出所有方案。
+ 
+  -- 递推实现
+  -- 递归实现
+      
+//问题2：
+  将正整数 n 分解成 m 个正整数之和，
+  且排在后面的数必须大于等于前面的数，并输出所有方案。
+
+4 3
+      
+1 1 2 
+1 3 
+2 2 
+4
+</pre></div>
+</div>
 <p>对于<strong>问题1</strong>，我们可以使用循环处理，using 3 loops</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
   <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
@@ -258,12 +282,13 @@
       <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="n">k</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d=%d+%d+%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>如果问题变成“将正整数n分解成4个不同的正整数”，此时就需要4重循环。如果问题变成“分解成小于等于m个整数”，那么，就没办法使用loops去弄了，需要使用递归搜索。下面，我们考虑<strong>问题2</strong>。（用搜索树，来表示）</p>
+<p>如果问题变成“将正整数n分解成4个不同的正整数”，此时就需要4重循环。如果问题变成“分解成小于等于m个整数”，那么，就没办法使用loops去弄了，需要使用递归搜索。</p>
+<p>下面，我们考虑<strong>问题2</strong>。（用搜索树，来表示）</p>
 <p>我们将问题分层，第 i 层决定 ai。则为了进行第 i 层决策，我们需要记录三个状态变量：</p>
 <ul class="simple">
-<li><p>n - sum of (a1…ai)，表示后面所有正整数的和；</p></li>
-<li><p>$a_{i-1}$ ，表示前一层的正整数，以确保正整数递增；</p></li>
-<li><p>i ，确保我们最多输出 m 个正整数。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">-</span> <span class="pre">sum</span> <span class="pre">of</span> <span class="pre">(a1...ai)</span></code>，表示后面所有正整数的和；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a_(i-1)</span></code> ，表示前一层的正整数，以确保正整数递增；($a_{i-1}$)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">i</span></code> ，确保我们最多输出 m 个正整数。</p></li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//arr[]记录方案</span>
 <span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
@@ -272,7 +297,7 @@
   <span class="p">}</span>
     
   <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
       <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
       <span class="n">dfs</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>  <span class="c1">//剩余n-j, 分解了i+1个数，前一个数用的是j</span>
     <span class="p">}</span>
@@ -300,17 +325,130 @@
     <span class="p">}</span>
     
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-       <span class="k">if</span> <span class="p">(</span><span class="n">column</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">||</span> <span class="n">diag1</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">]</span> <span class="o">||</span> <span class="n">diag2</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="o">+</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span>
-       <span class="n">column</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">diag1</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">diag2</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="o">+</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-       <span class="n">search</span><span class="p">(</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
-       <span class="n">column</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">diag1</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">diag2</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="o">+</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-	<span class="p">}</span> 
+		<span class="k">if</span> <span class="p">(</span><span class="n">column</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">||</span> <span class="n">diag1</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">]</span> <span class="o">||</span> <span class="n">diag2</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="o">+</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span>
+        <span class="n">column</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">diag1</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">diag2</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="o">+</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">search</span><span class="p">(</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">column</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">diag1</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">diag2</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="o">+</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="n">search</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">//调用</span>
 </pre></div>
 </div>
 <p>Let <em>q</em>(<em>n</em>) denote the number of ways to place <em>n</em> queens on an <em>n</em> × <em>n</em> chessboard. The above backtracking algorithm tells us that, for example, <strong><em>q</em>(8) = 92</strong>。（记忆：八皇后问题有92种方案）</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>//按行枚举
+//对角线 dg[u+i]，反对角线udg[n−u+i]中的下标
+//u+i和 n−u+i 表示的是截距
+
+（1）反对角线 y=x+b, 截距 b=y−x，因为我们要把 b 当做数组下标，所以 b 不能是负的，所以我们 +n，保证是结果是正的
+（2）而对角线 y=−x+b, 截距是 b=y+x，这里截距一定是正的，所以不需要加偏移量
+#include &lt;iostream&gt;
+using namespace std;
+const int N = 20;
+
+// bool数组用来判断搜索的下一个位置是否可行
+// col列，dg对角线，udg反对角线
+// g[N][N]用来存路径
+
+int n;
+char g[N][N];
+bool col[N], dg[N], udg[N];
+
+void dfs(int u)
+{
+    // u == n 表示已经搜了n行，故输出这条路径
+    if (u == n)
+    {
+        for (int i = 0; i &lt; n; i ++ ) puts(g[i]);   // 等价于cout &lt;&lt; g[i] &lt;&lt; endl;
+        puts(&quot;&quot;);  // 换行
+        return;
+    }
+
+    //对n个位置按行搜索
+    for (int i = 0; i &lt; n; i ++ )
+        //剪枝(对于不满足要求的点，不再继续往下搜索)
+        //udg[n - u + i]，+n是为了保证大于0
+        if (!col[i] &amp;&amp; !dg[u + i] &amp;&amp; !udg[n - u + i])
+        {
+            g[u][i] = &#39;Q&#39;;
+            col[i] = dg[u + i] = udg[n - u + i] = true;
+            dfs(u + 1);
+            // 恢复现场 这步很关键
+            col[i] = dg[u + i] = udg[n - u + i] = false;
+            g[u][i] = &#39;.&#39;;
+
+        }
+}
+
+int main()
+{
+    cin &gt;&gt; n;
+    for (int i = 0; i &lt; n; i ++ )
+        for (int j = 0; j &lt; n; j ++ )
+            g[i][j] = &#39;.&#39;;
+
+    dfs(0);
+
+    return 0;
+}   
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//每个元素进行枚举</span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+
+<span class="c1">// 因为是一个个搜索，所以加了row</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">g</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">];</span>
+<span class="kt">bool</span> <span class="n">row</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">col</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">dg</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">udg</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+
+<span class="c1">// s表示已经放上去的皇后个数</span>
+<span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">s</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// 处理超出边界的情况</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span> <span class="o">++</span> <span class="p">;</span>
+
+    <span class="c1">// 说明已经放好了n个皇后，表示枚举完 n^2 个了</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span> <span class="o">++</span> <span class="p">)</span> <span class="n">puts</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+            <span class="n">puts</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 不放皇后  就往下搜下一个位置</span>
+    <span class="n">dfs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
+
+    <span class="c1">// 放皇后</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">row</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">col</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">dg</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">udg</span><span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span> <span class="o">+</span> <span class="n">n</span><span class="p">])</span>
+    <span class="p">{</span>
+        <span class="n">g</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;Q&#39;</span><span class="p">;</span>
+        <span class="n">row</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">col</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">dg</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">udg</span><span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span> <span class="o">+</span> <span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="n">dfs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="n">row</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">col</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">dg</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">udg</span><span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span> <span class="o">+</span> <span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="n">g</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;.&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span> <span class="o">++</span> <span class="p">)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span> <span class="o">++</span> <span class="p">)</span>
+            <span class="n">g</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;.&#39;</span><span class="p">;</span>
+
+    <span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://www.acwing.com/solution/content/2820/">参考https://www.acwing.com/solution/content/2820/</a></p>
 </div>
 <div class="section" id="id6">
 <h2><span class="section-number">7.5. </span>深搜代码框架<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
@@ -473,6 +611,80 @@ dfs(s[i], i);
 <p>苹果数量大于盘子数量，第n个盘子不放dfs(m, n - 1)，每个盘子都放一个dfs(m - n, n)</p>
 <p>苹果数量小于盘子数量，问题等价于dfs(m, m)</p>
 <p>问题边界：0个苹果，1种放法。1个盘子，1种放法。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//把正整数n分解成3个不同的正整数，递推和递归的实现</span>
+<span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">A</span><span class="p">[</span><span class="mi">110</span><span class="p">];</span>
+
+<span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sum</span><span class="p">,</span> <span class="kt">int</span> <span class="n">a</span><span class="p">)</span>  <span class="c1">//当前第u个，已经分配了sum，可以从a开始用</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">u</span> <span class="o">==</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">sum</span> <span class="o">==</span> <span class="n">n</span><span class="p">){</span>
+			<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+			<span class="n">puts</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+
+		<span class="k">return</span> <span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+		<span class="n">A</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+		<span class="n">dfs</span><span class="p">(</span><span class="n">u</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="c1">//cin &gt;&gt; n &gt;&gt; m;</span>
+	<span class="c1">//dfs(1, 0, 1); </span>
+
+	<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+			<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+				<span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="n">k</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//将正整数n分解成 小于等于m个 正整数之和，且排在后面的数必须大于等于前面的数，并输出所有方案</span>
+<span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">A</span><span class="p">[</span><span class="mi">110</span><span class="p">];</span>
+
+<span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">a</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+		<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+		<span class="n">puts</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+		<span class="k">return</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">){</span>
+		<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+			<span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+			<span class="n">dfs</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">m</span><span class="p">;</span>
+	<span class="n">dfs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>

@@ -206,7 +206,7 @@ The last part does not depend on *x*, so we can ignore it. The remaining parts f
 
 
 
-### Data compression数据压缩（引出Huffman coding应用）
+### Data compression数据压缩（引出Huffman coding的用途）
 
 A **binary code** assigns for each character of a string a **codeword** that consists of bits. We can *compress* the string using the binary code by replacing each character by the corresponding codeword. For example, the following binary code assigns codewords for characters A–D:
 
@@ -273,6 +273,8 @@ charactor      codeword
 </center>
 
 Using this code, it would not be possible to know if the compressed string 1011 corresponds to the string AB or the string C.
+
+
 
 ### Huffman coding哈夫曼编码
 

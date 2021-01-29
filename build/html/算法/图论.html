@@ -32,6 +32,7 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -91,7 +92,7 @@
               <p class="caption"><span class="caption-text">一、普及组算法部分</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.html">1. time complexity时间复杂度</a></li>
-<li class="toctree-l1"><a class="reference internal" href="STL.html">2. stl标准模板库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="STL.html">2. data structure(STL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html">3. high accuracy高精度</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E6%8E%92%E5%BA%8F.html">4. sortings排序</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E6%8E%A8.html">5. recursion 递推</a></li>
@@ -104,7 +105,18 @@
 <li class="toctree-l1"><a class="reference internal" href="%E6%A0%88.html">12. stack栈</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E9%98%9F%E5%88%97.html">13. queue队列</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E6%A0%91.html">14. trees树</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">15. graph图论</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">15. graph图论</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">15.1. 概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#connectivity">15.2. Connectivity连通性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#edge-directions">15.3. Edge directions有向边</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#edge-weights">15.4. Edge weights边权</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#neighbors-and-degrees">15.5. Neighbors and degrees相邻的两个顶点和顶点的度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simplicity">15.6. Simplicity简单图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adjacency-list-representation-vector">15.7. Adjacency list representation邻接表建图(vector版本)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adjacency-matrix-representation">15.8. Adjacency matrix representation邻接矩阵建图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adjacency-list-representation">15.9. Adjacency list representation邻接表建图(一维数组版本)</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">二、计算机使用教程</span></p>
 <ul>
@@ -184,7 +196,154 @@
             
   <div class="section" id="graph">
 <h1><span class="section-number">15. </span>graph图论<a class="headerlink" href="#graph" title="Permalink to this headline">¶</a></h1>
-<empty></div>
+<p>Many programming problems can be solved by modeling the problem as a graph problem and using an appropriate graph algorithm. A typical example of a graph is a network of roads and cities in a country.</p>
+<div class="section" id="id1">
+<h2><span class="section-number">15.1. </span>概念<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>graph</strong> consists of <strong>nodes</strong> and <strong>edges</strong>. In this book, the variable <em>n</em> denotes the number of nodes in a graph, and the variable <em>m</em> denotes the number of edges. The nodes are numbered using integers 1,2,…,<em>n</em>. 下面这个图，有5个顶点，7条边。</p>
+<center><p><img alt="../_images/image-20210128182946646.png" src="../_images/image-20210128182946646.png" /></p>
+</center><p>A <strong>path</strong> leads from node <em>a</em> to node <em>b</em> through edges of the graph. The <strong>length</strong> of a path is the number of edges in it. For example, the above graph contains a path 1→3→4→5 of length 3 from node 1 to node 5:</p>
+<center><p><img alt="../_images/image-20210128183048974.png" src="../_images/image-20210128183048974.png" /></p>
+</center><p>A path is a <strong>cycle</strong> if the first and last node is the same. For example, the above graph contains a cycle 1 → 3 → 4 → 1. A path is <strong>simple</strong> if each node appears at most once in the path.(概念，简单图)</p>
+</div>
+<div class="section" id="connectivity">
+<h2><span class="section-number">15.2. </span>Connectivity连通性<a class="headerlink" href="#connectivity" title="Permalink to this headline">¶</a></h2>
+<p>A graph is <strong>connected</strong> if there is a path between any two nodes. For example, the following graph is connected:</p>
+<center><p><img alt="../_images/image-20210128183300876.png" src="../_images/image-20210128183300876.png" /></p>
+</center><p>The following graph is not connected, because it is not possible to get from node 4 to any other node:</p>
+<center><p><img alt="../_images/image-20210128183343977.png" src="../_images/image-20210128183343977.png" /></p>
+</center><p>The connected parts of a graph are called its <strong>components</strong>. For example, the following graph contains three components: {1, 2, 3}, {4, 5, 6, 7} and {8}.</p>
+<center><p><img alt="../_images/image-20210128183418819.png" src="../_images/image-20210128183418819.png" /></p>
+</center><p>A <strong>tree</strong> is a connected graph that consists of <em>n</em> nodes and <em>n</em> − 1 edges. There is a unique path between any two nodes of a tree. For example, the following graph is a tree:</p>
+<center><p><img alt="../_images/image-20210128183443609.png" src="../_images/image-20210128183443609.png" /></p>
+</center></div>
+<div class="section" id="edge-directions">
+<h2><span class="section-number">15.3. </span>Edge directions有向边<a class="headerlink" href="#edge-directions" title="Permalink to this headline">¶</a></h2>
+<p>A graph is <strong>directed</strong> if the edges can be traversed in one direction only. For example, the following graph is directed:</p>
+<center><p><img alt="../_images/image-20210128183527489.png" src="../_images/image-20210128183527489.png" /></p>
+</center><p>The above graph contains a path 3→1→2→5 from node 3 to node 5, but there is no path from node 5 to node 3.</p>
+<p>无向边，其实，是两条有向边的合并版本</p>
+</div>
+<div class="section" id="edge-weights">
+<h2><span class="section-number">15.4. </span>Edge weights边权<a class="headerlink" href="#edge-weights" title="Permalink to this headline">¶</a></h2>
+<p>In a <strong>weighted</strong> graph, each edge is assigned a <strong>weight</strong>. The weights are often interpreted as edge lengths. For example, the following graph is weighted:</p>
+<center><p><img alt="../_images/image-20210128183636938.png" src="../_images/image-20210128183636938.png" /></p>
+</center><p>The length of a path in a weighted graph is the sum of the edge weights on the path. For example, in the above graph, the length of the path 1 → 2 → 5 is 12, and the length of the path 1→3→4→5 is 11. The latter path is the <strong>shortest</strong> path from node 1 to node 5.</p>
+</div>
+<div class="section" id="neighbors-and-degrees">
+<h2><span class="section-number">15.5. </span>Neighbors and degrees相邻的两个顶点和顶点的度<a class="headerlink" href="#neighbors-and-degrees" title="Permalink to this headline">¶</a></h2>
+<p>Two nodes are <strong>neighbors</strong> or <strong>adjacent</strong> if there is an edge between them. The <strong>degree</strong> of a node is the number of its neighbors. For example, in the following graph, the neighbors of node 2 are 1, 4 and 5, so its degree is 3.</p>
+<center><p><img alt="../_images/image-20210128183754769.png" src="../_images/image-20210128183754769.png" /></p>
+</center><p>The sum of degrees in a graph is always 2<em>m</em>, where <em>m</em> is the number of edges, because each edge increases the degree of exactly two nodes by one. For this reason, the sum of degrees is always even.</p>
+<p>A graph is <strong>regular</strong> if the degree of every node is a constant <em>d</em>. A graph is <strong>complete</strong> if the degree of every node is <em>n</em> − 1, i.e., the graph contains all possible edges between the nodes.</p>
+<p>In a directed graph, the <strong>indegree</strong> of a node is the number of edges that end at the node, and the <strong>outdegree</strong> of a node is the number of edges that start at the node. For example, in the following graph, the indegree of node 2 is 2, and the outdegree of node 2 is 1.</p>
+<center><p><img alt="../_images/image-20210128183824451.png" src="../_images/image-20210128183824451.png" /></p>
+</center><p>概念：完全图，每个顶点的度数都是n-1。在有向图中，分为入度和出度。</p>
+</div>
+<div class="section" id="simplicity">
+<h2><span class="section-number">15.6. </span>Simplicity简单图<a class="headerlink" href="#simplicity" title="Permalink to this headline">¶</a></h2>
+<p>A graph is <strong>simple</strong> if no edge starts and ends at the same node, and there are no multiple edges between two nodes. Often we assume that graphs are simple. For example, the following graph is <em>not</em> simple:</p>
+<center><p><img alt="../_images/image-20210128184003302.png" src="../_images/image-20210128184003302.png" /></p>
+</center><p>概念：简单图，无重边，无自环</p>
+</div>
+<div class="section" id="adjacency-list-representation-vector">
+<h2><span class="section-number">15.7. </span>Adjacency list representation邻接表建图(vector版本)<a class="headerlink" href="#adjacency-list-representation-vector" title="Permalink to this headline">¶</a></h2>
+<p>In the adjacency list representation, each node <em>x</em> in the graph is assigned an <strong>adjacency list</strong> that consists of nodes to which there is an edge from <em>x</em>. Adjacency lists are the most popular way to represent graphs, and most algorithms can be efficiently implemented using them.</p>
+<p>A convenient way to store the adjacency lists is to declare an array of vectors as follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">adj</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>The constant <em>N</em> is chosen so that all adjacency lists can be stored. For example, the graph</p>
+<center><p><img alt="../_images/image-20210128184136255.png" src="../_images/image-20210128184136255.png" /></p>
+</center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">adj</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">adj</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">adj</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="n">adj</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="n">adj</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>If the graph is undirected, it can be stored in a similar way, but each edge is added in both directions.</p>
+<p>For a weighted graph, the structure can be extended as follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//当边权不是1的时候，可以用pair维护</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">adj</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>In this case, the adjacency list of node <em>a</em> contains the pair (<em>b</em>,<em>w</em>) always when there is an edge from node <em>a</em> to node <em>b</em> with weight <em>w</em>. For example, the graph can be stored as follows:</p>
+<center><p><img alt="../_images/image-20210128184252453.png" src="../_images/image-20210128184252453.png" /></p>
+</center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">adj</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">push_back</span><span class="p">({</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">});</span>
+<span class="n">adj</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">push_back</span><span class="p">({</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">});</span>
+<span class="n">adj</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">push_back</span><span class="p">({</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">});</span>
+<span class="n">adj</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="n">push_back</span><span class="p">({</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">});</span>
+<span class="n">adj</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="n">push_back</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">});</span>
+</pre></div>
+</div>
+<p>The benefit of using adjacency lists is that we can efficiently find the nodes to which we can move from a given node through an edge. For example, the following loop goes through all nodes to which we can move from node <em>s</em>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//这是C++ 11的写法，在比赛中，还不能使用</span>
+<span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">u</span> <span class="p">:</span> <span class="n">adj</span><span class="p">[</span><span class="n">s</span><span class="p">])</span> <span class="p">{</span>
+    <span class="c1">// process node u</span>
+<span class="p">}</span>
+
+<span class="c1">//这样枚举就可以了，理解“散列边”这个概念</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adjacency-matrix-representation">
+<h2><span class="section-number">15.8. </span>Adjacency matrix representation邻接矩阵建图<a class="headerlink" href="#adjacency-matrix-representation" title="Permalink to this headline">¶</a></h2>
+<p>An <strong>adjacency matrix</strong> is a two-dimensional array that indicates which edges the graph contains. We can efficiently check from an adjacency matrix if there is an edge between two nodes. The matrix can be stored as an array</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">adj</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>where each value adj[<em>a</em>][<em>b</em>] indicates whether the graph contains an edge from node <em>a</em> to node <em>b</em>. If the edge is included in the graph, then adj[<em>a</em>][<em>b</em>] = 1, and otherwise adj[<em>a</em>][<em>b</em>] = 0. For example, the graph can be represented as follows:</p>
+<center><p><img alt="../_images/image-20210128184524164.png" src="../_images/image-20210128184524164.png" /></p>
+<p><img alt="../_images/image-20210128184546508.png" src="../_images/image-20210128184546508.png" /></p>
+</center><p>If the graph is weighted, the adjacency matrix representation can be extended so that the matrix contains the weight of the edge if the edge exists. Using this representation, the graph corresponds to the following matrix:</p>
+<center><p><img alt="../_images/image-20210128184620255.png" src="../_images/image-20210128184620255.png" /></p>
+<p><img alt="../_images/image-20210128184632710.png" src="../_images/image-20210128184632710.png" /></p>
+</center><p>The drawback of the adjacency matrix representation is that the matrix contains <strong>n^2</strong> elements, and usually most of them are zero. For this reason, the representation cannot be used if the graph is large.</p>
+<center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>你看，这个邻接矩阵是不是就是一个矩阵，表示一个点和另外一个点的连通性
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>邻接矩阵不能存很大的图，因为受建立二维数组大小的限制。适合存稠密图
+邻接表可以存很大的图，也可以存很小的图。更适合存稀疏图
+</pre></div>
+</div>
+</center></div>
+<div class="section" id="adjacency-list-representation">
+<h2><span class="section-number">15.9. </span>Adjacency list representation邻接表建图(一维数组版本)<a class="headerlink" href="#adjacency-list-representation" title="Permalink to this headline">¶</a></h2>
+<p>我用这个用的更多一些</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">h</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">e</span><span class="p">[</span><span class="n">M</span><span class="p">],</span> <span class="n">ne</span><span class="p">[</span><span class="n">M</span><span class="p">],</span> <span class="n">idx</span><span class="p">;</span> 
+
+<span class="kt">void</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">e</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">ne</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">h</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//调用</span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+<span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">add</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+<span class="c1">//双向表，就双向add，单向边就一个add</span>
+<span class="c1">//要注意一维数组开的大小问题，如果是无向图，M是N的两倍</span>
+<span class="c1">//如果是有边权的情况，就还需要开一个一维数组w[M]用来维护边权</span>
+<span class="c1">//理解“散列”的形状</span>
+
+<span class="c1">//枚举边</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="n">u</span><span class="p">];</span> <span class="n">i</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">ne</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">st</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">(</span><span class="n">j</span><span class="p">);</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span> <span class="c1">//所有子树的最大值</span>
+            <span class="n">sum</span> <span class="o">+=</span> <span class="n">s</span><span class="p">;</span>          <span class="c1">//累积求这个点的子树大小</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
 
 
            </div>

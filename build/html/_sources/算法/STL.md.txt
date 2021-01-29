@@ -55,7 +55,7 @@ reverse(a, a+n);
 
 </center>
 
-The string structure is also a dynamic array that can be used almost like a vector. string类 类型也是一个动态数组，用起来很像vector，经常用的`s.substr(pos, length)` `int pos = s.find('c')`，还有`+`用来拼接两个string
+The string structure is also a dynamic array that can be used almost like a vector. string类 类型也是一个动态数组，用起来很像 vector ，经常用的`s.substr(pos, length)` `int pos = s.find('c')`，还有`+`用来拼接两个 string
 
 ```cpp
 string a = "hatti";
@@ -95,7 +95,7 @@ cout << pos << '\n';  //实践一下
 
 A **set** is a data structure that maintains a collection of elements. The basic operations of sets are element insertion, search and removal.The benefit of the set structure is that it maintains the order of the elements.
 
-vector如果要排序，需要sort一下；set就会默认是有序的
+vector 如果要排序，需要 sort 一下； set 就会默认是有序的
 
 ```cpp
 set<int> s;
@@ -174,7 +174,7 @@ map<string,int> m;
 cout << m["aybabtu"] << "\n"; // 0
 ```
 
-所以，上述这个操作，不是很好，当查询次数很多，会造成空间问题（我在CF现场比赛中，真实遇见...，当时还不熟练这个操作）
+所以，上述这个操作，不是很好，当查询次数很多，会造成空间问题（我在 CF 现场比赛中，真实遇见...，当时还不熟练这个操作）
 
 ```cpp
 //判断是否存在，用count
@@ -255,6 +255,7 @@ if (it == s.end()) {
 ```cpp
 //示例
 //set<pair<int, int> > 
+//不能写成set<pair<int, int>>，这也是不建议用#define宏定义的原因
 #include <bits/stdc++.h>
 
 using namespace std;
