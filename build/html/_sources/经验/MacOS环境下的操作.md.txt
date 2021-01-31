@@ -1,8 +1,8 @@
-# MacOS环境下的操作
+# macOS环境下的操作
 
-### MacOS下使用vscode
+### macOS下使用vscode
 
-MacOS下不能使用DEV C++，如果用vim，学习成本比较高（虽然学习vim是非常好的）
+macOS下不能使用DEV C++，如果用vim，学习成本比较高（虽然学习vim是非常好的）
 
 我们可以选择vscode，安装C++插件，就可以编译运行.cpp文件
 
