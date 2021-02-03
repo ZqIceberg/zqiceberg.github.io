@@ -690,9 +690,8 @@ f[i, j] = max{f(i, k) + f(k+1, j) + cost}
 ##### [ 【例9.19】乘积最大](http://ybt.ssoier.cn:8088/problem_show.php?pid=1275)
 
 ```cpp
-//区间dp
-//先预处理出来数字的问题，更好一些
 //int dp[N][M]; //前i个数，插入了j个乘号
+//先预处理出来数字的问题，更好一些
 ```
 
 [https://www.acwing.com/solution/content/18940/](https://www.acwing.com/solution/content/18940/)
@@ -713,17 +712,15 @@ f[i, j] = max{f(i, k) + f(k+1, j) + cost}
 ##### [【例9.22】复制书稿(book)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1278)
 
 ```cpp
-//区间dp
-//打印答案的方式，要好好学习
+//输出具体方案，用了一个贪心的策略去设计输出答案的过程
+//以下两种设计都可行，请体验体验
 //设计状态dp[i][j] i个人，抄前j本书的复制时间
 //设计状态dp[i][j] i个本书，又前j个人去抄
-//这两种设计都可行，请体验体验
 ```
 
 ##### [【例9.23】橱窗布置(flower)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1279)
 
 ```cpp
-//区间dp
 //dp[i][j] 前i朵花插在前j个花瓶里
 ```
 

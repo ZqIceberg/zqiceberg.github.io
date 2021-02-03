@@ -870,9 +870,8 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 </div>
 <div class="section" id="id46">
 <h3><span class="section-number">12.10.34. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1275"> 【例9.19】乘积最大</a><a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//区间dp</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//int dp[N][M]; //前i个数，插入了j个乘号</span>
 <span class="c1">//先预处理出来数字的问题，更好一些</span>
-<span class="c1">//int dp[N][M]; //前i个数，插入了j个乘号</span>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://www.acwing.com/solution/content/18940/">https://www.acwing.com/solution/content/18940/</a></p>
@@ -892,18 +891,16 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 </div>
 <div class="section" id="book">
 <h3><span class="section-number">12.10.37. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1278">【例9.22】复制书稿(book)</a><a class="headerlink" href="#book" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//区间dp</span>
-<span class="c1">//打印答案的方式，要好好学习</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//输出具体方案，用了一个贪心的策略去设计输出答案的过程</span>
+<span class="c1">//以下两种设计都可行，请体验体验</span>
 <span class="c1">//设计状态dp[i][j] i个人，抄前j本书的复制时间</span>
 <span class="c1">//设计状态dp[i][j] i个本书，又前j个人去抄</span>
-<span class="c1">//这两种设计都可行，请体验体验</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="flower">
 <h3><span class="section-number">12.10.38. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1279">【例9.23】橱窗布置(flower)</a><a class="headerlink" href="#flower" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//区间dp</span>
-<span class="c1">//dp[i][j] 前i朵花插在前j个花瓶里</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//dp[i][j] 前i朵花插在前j个花瓶里</span>
 </pre></div>
 </div>
 </div>
