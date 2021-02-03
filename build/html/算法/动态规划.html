@@ -187,13 +187,14 @@
 </ul>
 <p class="caption"><span class="caption-text">二、计算机使用教程</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/MacOS%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">1. MacOS环境下的操作</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">2. Windows环境下的操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">1. Windows环境下的操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/macOS%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">2. macOS环境下的操作</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%BB%A3%E7%A0%81%E7%BB%8F%E9%AA%8C.html">3. 代码经验</a></li>
 </ul>
 <p class="caption"><span class="caption-text">三、C++语言部分</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../C%2B%2B/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA.html">1. 输入输出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E8%AF%AD%E6%B3%95/endl.html">1. end and flushing the buffer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E8%AF%AD%E6%B3%95/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA.html">2. 输入输出</a></li>
 </ul>
 
             
@@ -878,14 +879,14 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 </div>
 <div class="section" id="id47">
 <h3><span class="section-number">12.10.35. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1276">【例9.20】编辑距离</a><a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//编辑距离</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//编辑距离，经典问题</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id48">
 <h3><span class="section-number">12.10.36. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1277">【例9.21】方格取数</a><a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//从左上走到右下，走了两次，问能取到的最大值</span>
-<span class="c1">//定义一个四维的状态</span>
+<span class="c1">//定义一个四维的状态，dp[N][N][N][N]，经过发现，可以优化到三维</span>
 </pre></div>
 </div>
 </div>
@@ -893,12 +894,16 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 <h3><span class="section-number">12.10.37. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1278">【例9.22】复制书稿(book)</a><a class="headerlink" href="#book" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//区间dp</span>
 <span class="c1">//打印答案的方式，要好好学习</span>
+<span class="c1">//设计状态dp[i][j] i个人，抄前j本书的复制时间</span>
+<span class="c1">//设计状态dp[i][j] i个本书，又前j个人去抄</span>
+<span class="c1">//这两种设计都可行，请体验体验</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="flower">
 <h3><span class="section-number">12.10.38. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1279">【例9.23】橱窗布置(flower)</a><a class="headerlink" href="#flower" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//区间dp</span>
+<span class="c1">//dp[i][j] 前i朵花插在前j个花瓶里</span>
 </pre></div>
 </div>
 </div>
@@ -930,13 +935,15 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 <h3><span class="section-number">12.10.43. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1300"> 鸡蛋的硬度</a><a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//特别经典的一道题目，很难的，基本自己想不出来的，可以思考二十分钟试一试</span>
 <span class="c1">//有两种设计状态的方法</span>
+<span class="c1">//dp[i][j] 测量长度i层楼，用j个鸡蛋，最坏情况下需要扔的次数，O(n^2*m)</span>
+<span class="c1">//dp[i][j] 用j个鸡蛋测i次，最多能测量的区间长度，O(nm)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id54">
 <h3><span class="section-number">12.10.44. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1301"> 大盗阿福</a><a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//从一个商店，可以被盗，也可以不被盗的两种情况入手，思考状态的设计</span>
-<span class="c1">//还有一种思路，线性dp的思路，状态只有一维</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//从一个商店，可以被盗，也可以不被盗的两种情况入手，思考状态的设计dp[N][2]</span>
+<span class="c1">//还有一种思路，线性dp的思路，状态只有一维，类似最大字段和的O(n)操作</span>
 </pre></div>
 </div>
 </div>
@@ -944,6 +951,7 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 <h3><span class="section-number">12.10.45. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1302">股票买卖</a><a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//dp，状态机模型</span>
 <span class="c1">//ybt的第8个测试点，跑起来不稳定，有可能会TLE这个点</span>
+<span class="c1">//dp[N][3][2]; //dp(i,j,0)第i天，买卖j次，当前没有股票；dp(i,j,1)当前有股票</span>
 </pre></div>
 </div>
 </div>
@@ -958,7 +966,7 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 </div>
 <div class="section" id="id57">
 <h3><span class="section-number">12.10.47. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1304">数的划分</a><a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="c1">//先从鸣人的影分身，变形一下，实现一个版本</span>
+<div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="c1">//先从鸣人的影分身，变形一下，实现第一个版本，trick一下就可以</span>
 <span class="c1">//重新的，从集合角度出发，分析(.... | .....)</span>
 </pre></div>
 </div>
@@ -966,14 +974,15 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 <div class="section" id="maximum-sum">
 <h3><span class="section-number">12.10.48. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1305"> Maximum sum</a><a class="headerlink" href="#maximum-sum" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//这段题目求的是，两个不重合的最大子段和</span>
-<span class="c1">//最大子段和，这个会的</span>
+<span class="c1">//最大子段和，这个会写的</span>
 <span class="c1">//如何表示两个不重合的最大子段和呢？ 多画图看一看就会找到线索</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id58">
 <h3><span class="section-number">12.10.49. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1306">最长公共子上升序列</a><a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//LIS+LCS，非常好的题目，这个题面还要求输出方案。有O(n^4), O(n^3), O(n^2)的写法，都需要深入思考，琢磨实现</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//LIS+LCS，非常好的题目，这个题面还要求输出方案。</span>
+<span class="c1">//有O(n^4), O(n^3), O(n^2)的写法，都需要深入思考，琢磨实现</span>
 </pre></div>
 </div>
 </div>

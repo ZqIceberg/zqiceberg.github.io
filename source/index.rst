@@ -40,9 +40,10 @@
 .. toctree::
    :maxdepth: 2
    :caption: 三、C++语言部分
+   :glob:
    :numbered:
 
-   C++/输入输出.md
+   语法/*
 
 .. math::
 
