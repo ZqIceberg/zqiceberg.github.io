@@ -116,6 +116,16 @@
 <li class="toctree-l2"><a class="reference internal" href="#adjacency-list-representation-vector">16.7. Adjacency list representation邻接表建图(vector版本)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#adjacency-matrix-representation">16.8. Adjacency matrix representation邻接矩阵建图</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#adjacency-list-representation">16.9. Adjacency list representation邻接表建图(一维数组版本)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graph-traversal">16.10. Graph traversal图的遍历</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#depth-first-search">16.11. Depth-first search深度优先遍历</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#breadth-first-search">16.12. Breadth-first search宽度优先遍历</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#connectivity-check">16.13. Connectivity check连通性验证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#finding-cycles">16.14. Finding cycles判环</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shortest-paths">16.15. Shortest paths最短路</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bellmanford-algorithm-k">16.16. Bellman–Ford algorithm单源最短路，负权边，可判负环，不超过k边</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spfa-algorithmbellman-ford">16.17. SPFA algorithm队列优化的Bellman-Ford</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dijkstras-algorithm">16.18. Dijkstra’s algorithm单源最短路，边权都是正数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#floydwarshall-algorithm">16.19. Floyd–Warshall algorithm多源汇最短路</a></li>
 </ul>
 </li>
 </ul>
@@ -315,7 +325,7 @@
 </center></div>
 <div class="section" id="adjacency-list-representation">
 <h2><span class="section-number">16.9. </span>Adjacency list representation邻接表建图(一维数组版本)<a class="headerlink" href="#adjacency-list-representation" title="Permalink to this headline">¶</a></h2>
-<p>我用这个用的更多一些</p>
+<p>我一般用这个方法</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">h</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">e</span><span class="p">[</span><span class="n">M</span><span class="p">],</span> <span class="n">ne</span><span class="p">[</span><span class="n">M</span><span class="p">],</span> <span class="n">idx</span><span class="p">;</span> 
 
 <span class="kt">void</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
@@ -344,6 +354,458 @@
     <span class="p">}</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="graph-traversal">
+<h2><span class="section-number">16.10. </span>Graph traversal图的遍历<a class="headerlink" href="#graph-traversal" title="Permalink to this headline">¶</a></h2>
+<p>depth-first search and breadth-first search. Both algorithms are given a starting node in the graph, and they visit all nodes that can be reached from the starting node. The difference in the algorithms is the order in which they visit the nodes.</p>
+</div>
+<div class="section" id="depth-first-search">
+<h2><span class="section-number">16.11. </span>Depth-first search深度优先遍历<a class="headerlink" href="#depth-first-search" title="Permalink to this headline">¶</a></h2>
+<p>Depth-first search always follows a single path in the graph as long as it finds new nodes. After this, it returns to previous nodes and begins to explore other parts of the graph. The algorithm keeps track of visited nodes, so that it processes each node only once.</p>
+<center><p><img alt="../_images/image-20210204135134206.png" src="../_images/image-20210204135134206.png" /></p>
+</center><p>The neighbors of node 5 are 2 and 3, but the search has already visited both of them, so it is time to return to the previous nodes. Also the neighbors of nodes 3 and 2 have been visited, so we next move from node 1 to node 4</p>
+<p>The time complexity of depth-first search is <strong><em>O</em>(<em>n</em> + <em>m</em>)</strong> where <em>n</em> is the number of nodes and <em>m</em> is the number of edges, because the algorithm processes each node and edge once.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">adj</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+<span class="kt">bool</span> <span class="n">visited</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+
+<span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">visited</span><span class="p">[</span><span class="n">s</span><span class="p">])</span> <span class="k">return</span><span class="p">;</span>
+    <span class="n">visited</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="c1">// process node s</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">u</span><span class="p">:</span> <span class="n">adj</span><span class="p">[</span><span class="n">s</span><span class="p">])</span> <span class="p">{</span>
+		<span class="n">dfs</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="breadth-first-search">
+<h2><span class="section-number">16.12. </span>Breadth-first search宽度优先遍历<a class="headerlink" href="#breadth-first-search" title="Permalink to this headline">¶</a></h2>
+<p><strong>Breadth-first search</strong> (BFS) visits the nodes in increasing order of their distance from the starting node. Thus, we can calculate the distance from the starting node to all other nodes using breadth-first search.</p>
+<center><p><img alt="../_images/image-20210204135619766.png" src="../_images/image-20210204135619766.png" /></p>
+</center><p>Like in depth-first search, the time complexity of breadth-first search is <strong><em>O</em>(<em>n</em> + <em>m</em>)</strong>, where <em>n</em> is the number of nodes and <em>m</em> is the number of edges.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">visited</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">distance</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+
+<span class="n">visited</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="n">distance</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span> <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+    <span class="c1">// process node s</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">u</span> <span class="p">:</span> <span class="n">adj</span><span class="p">[</span><span class="n">s</span><span class="p">])</span> <span class="p">{</span>
+       <span class="k">if</span> <span class="p">(</span><span class="n">visited</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span>
+       <span class="n">visited</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+       <span class="n">distance</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+       <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+	<span class="p">}</span> 
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="connectivity-check">
+<h2><span class="section-number">16.13. </span>Connectivity check连通性验证<a class="headerlink" href="#connectivity-check" title="Permalink to this headline">¶</a></h2>
+<p>从任意一个点出发，做dfs，可以判断这个图是否连通的。通过这种方法，我们也可以用来统计图当中，有多少个独立的块。从1…n遍历，如果一个点没遍历过，就dfs进去，遍历的时候进行标记。</p>
+<center><img src="../media/image-20210204141619453.png" alt="" style="zoom:50%;" /></center></div>
+<div class="section" id="finding-cycles">
+<h2><span class="section-number">16.14. </span>Finding cycles判环<a class="headerlink" href="#finding-cycles" title="Permalink to this headline">¶</a></h2>
+<center><img src="../media/image-20210204141943931.png" alt="" style="zoom:50%;" /></center><p>After moving from node 2 to node 5 we notice that the neighbor 3 of node 5 has already been visited. Thus, the graph contains a cycle that goes through node 3, for example, 3→2→5→3.</p>
+<p>Another way to find out whether a graph contains a cycle is to simply calculate the number of nodes and edges in every component. If a component contains <em>c</em> nodes and no cycle, it must contain exactly <em>c</em> − 1 edges (so it has to be a tree). If there are <em>c</em> or more edges, the component surely contains a cycle.</p>
+</div>
+<div class="section" id="shortest-paths">
+<h2><span class="section-number">16.15. </span>Shortest paths最短路<a class="headerlink" href="#shortest-paths" title="Permalink to this headline">¶</a></h2>
+<p>Finding a shortest path between two nodes of a graph is an important problem that has many practical applications. For example, a natural problem related to a road network is to calculate the shortest possible length of a route between two cities, given the lengths of the roads.</p>
+<p>In an unweighted graph, the length of a path equals the number of its edges, and we can simply use breadth-first search to find a shortest path. However, in this chapter we focus on weighted graphs where more sophisticated algorithms are needed for finding shortest paths.</p>
+</div>
+<div class="section" id="bellmanford-algorithm-k">
+<h2><span class="section-number">16.16. </span>Bellman–Ford algorithm单源最短路，负权边，可判负环，不超过k边<a class="headerlink" href="#bellmanford-algorithm-k" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>Bellman–Ford algorithm</strong> finds shortest paths from a starting node to all nodes of the graph. The algorithm can process all kinds of graphs, provided that the graph does not contain a cycle with negative length. If the graph contains a negative cycle, the algorithm can detect this.</p>
+<p>The algorithm keeps track of distances from the starting node to all nodes of the graph. Initially, the distance to the starting node is 0 and the distance to all other nodes in infinite. The algorithm reduces the distances by finding edges that shorten the paths until it is not possible to reduce any distance.</p>
+<p>Let us consider how the Bellman–Ford algorithm works in the following graph:</p>
+<center><p><img alt="../_images/image-20210204142648416.png" src="../_images/image-20210204142648416.png" /></p>
+</center><p>Each node of the graph is assigned a distance. Initially, the distance to the starting node is 0, and the distance to all other nodes is infinite.</p>
+<p>The algorithm searches for edges that reduce distances. First, all edges from node 1 reduce distances:</p>
+<center><p><img alt="../_images/image-20210204142730496.png" src="../_images/image-20210204142730496.png" /></p>
+</center><p>After this, edges 2 → 5 and 3 → 4 reduce distances:</p>
+<center><p><img alt="../_images/image-20210204142805762.png" src="../_images/image-20210204142805762.png" /></p>
+</center><center><p><img alt="../_images/image-20210204142829927.png" src="../_images/image-20210204142829927.png" /></p>
+</center><p>After this, no edge can reduce any distance. This means that the distances are final, and we have successfully calculated the shortest distances from the starting node to all nodes of the graph.</p>
+<p>For example, the shortest distance 3 from node 1 to node 5 corresponds to the following path:</p>
+<center><p><img alt="../_images/image-20210204142918024.png" src="../_images/image-20210204142918024.png" /></p>
+</center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//直接给出一个完整代码</span>
+<span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">2020</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="mi">220</span><span class="p">;</span>
+
+<span class="k">struct</span> <span class="n">Edge</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">;</span>
+<span class="p">}</span><span class="n">edge</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">d</span><span class="p">[</span><span class="n">M</span><span class="p">],</span> <span class="n">bp</span><span class="p">[</span><span class="n">M</span><span class="p">];</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> 
+		<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">edge</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">edge</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">b</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">edge</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">w</span><span class="p">);</span>
+
+	<span class="n">memset</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mh">0x3f</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">d</span><span class="p">);</span>
+	<span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">memcpy</span><span class="p">(</span><span class="n">bp</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">bp</span><span class="p">);</span>  <span class="c1">//注意要backup，防止串联</span>
+		<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">edge</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">edge</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">b</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">edge</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">w</span><span class="p">;</span>
+			<span class="k">if</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">bp</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span> 
+				<span class="n">d</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="n">bp</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="n">memcpy</span><span class="p">(</span><span class="n">bp</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">bp</span><span class="p">);</span> <span class="c1">//如果还能再更新，就存在环</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">edge</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">edge</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">b</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">edge</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">w</span><span class="p">;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">bp</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span> 
+		<span class="p">{</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">&quot;circle</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+			<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mh">0x3f3f3f3f</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;can&#39;t arrive!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>  <span class="c1">//注意d[n]路径中有可能有负权边，不一定是INF，但会是INF量级的</span>
+	<span class="k">else</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="n">n</span><span class="p">]);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>每个结点的最短距离，最多被更新n-1次
+利用这个性质
+我们循环n-1次，每次遍历所有的边，当d[b] &gt; backup[a] + w的时候，就更新d[b]
+
+再循环一次，如果还发生更新边的情况，就说明有负环
+
+判断d[n] &gt; 0x3f3f3f3f / 2，就说明不可达
+
+1.为啥d[n] &gt; 0x3f3f3f3f / 2，比如图中有两个点，第n-1个点，第n个点，n-1到n的距离是正值，但是如果n-1个点无法到达，第n个点也无法到达。但是d[n] 会被d[n-1]+w更新，0x3f3f3f3f-w
+2.为啥用backup[a] + w来更新d[b],因为1-m每条边更新，如果一条边发生更新，会引发后面的边也传递更新，就发生了串联，就不对了
+所以每次更新b的时候，我们用backup[a]的值
+</pre></div>
+</div>
+<p>The time complexity of the algorithm is <strong><em>O</em>(<em>nm</em>)</strong>, because the algorithm consists of <em>n</em> − 1 rounds and iterates through all <em>m</em> edges during a round. If there are no negative cycles in the graph, all distances are final after <em>n</em> − 1 rounds, because each shortest path can contain at most <em>n</em> − 1 edges.</p>
+<p>In practice, the final distances can usually be found faster than in <em>n</em>−1 rounds. Thus, a possible way to make the algorithm more efficient is to stop the algorithm if no distance can be reduced during a round.</p>
+<p>If the graph contains a negative cycle, we can shorten infinitely many times any path that contains the cycle by repeating the cycle again and again. Thus, the concept of a shortest path is not meaningful in this situation.</p>
+<p>A negative cycle can be detected using the Bellman–Ford algorithm by running the algorithm for <em>n</em> rounds. If the last round reduces any distance, the graph contains a negative cycle. Note that this algorithm can be used to search for a negative cycle in the whole graph regardless of the starting node.</p>
+</div>
+<div class="section" id="spfa-algorithmbellman-ford">
+<h2><span class="section-number">16.17. </span>SPFA algorithm队列优化的Bellman-Ford<a class="headerlink" href="#spfa-algorithmbellman-ford" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>SPFA algorithm</strong> (”Shortest Path Faster Algorithm”)  is a variant of the Bellman–Ford algorithm, that is often more efficient than the original algorithm. The SPFA algorithm does not go through all the edges on each round, but instead, it chooses the edges to be examined in a more intelligent way.</p>
+<p>The algorithm maintains a queue of nodes that might be used for reducing the distances. First, the algorithm adds the starting node <em>x</em> to the queue. Then, the algorithm always processes the first node in the queue, and when an edge <em>a</em> → <em>b</em> reduces a distance, node <em>b</em> is added to the queue.</p>
+<p>The efficiency of the SPFA algorithm depends on the structure of the graph: the algorithm is often efficient, but its worst case time complexity is still <strong><em>O</em>(<em>nm</em>)</strong> and it is possible to create inputs that make the algorithm as slow as the original Bellman–Ford algorithm.（如果是一个网格状的图，就会卡SPFA）</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//给出完整代码</span>
+<span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mf">1e5</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">h</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">w</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">e</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">ne</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">idx</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">d</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+<span class="kt">bool</span> <span class="n">st</span><span class="p">[</span><span class="n">N</span><span class="p">];</span> <span class="c1">//当前的点是不是在队列当中</span>
+
+<span class="kt">void</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">e</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">ne</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">w</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">,</span> <span class="n">h</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">spfa</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">memset</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mh">0x3f</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">d</span><span class="p">);</span>
+	<span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+	<span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
+	<span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+	<span class="n">st</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+	<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span> <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+		<span class="n">st</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>  <span class="c1">//维护在没在队列里</span>
+
+        <span class="c1">//t变小，他的所有所有出边可能变小。更新过谁，再拿它去更新别人</span>
+		<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="n">t</span><span class="p">];</span> <span class="n">i</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">ne</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>  
+		<span class="p">{</span>
+			<span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+			<span class="k">if</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">d</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+			<span class="p">{</span>
+				<span class="n">d</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+				<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">st</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+				<span class="p">{</span>
+					<span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">j</span><span class="p">);</span>
+					<span class="n">st</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+				<span class="p">}</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	
+	<span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+
+	<span class="n">memset</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">h</span><span class="p">);</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+
+		<span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">spfa</span><span class="p">();</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">res</span> <span class="o">==</span> <span class="mh">0x3f3f3f3f</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;impossible</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span> <span class="c1">//spfa只会更新所有能从起点走到的点，所以如果无解，那么起点就走不到终点，那么终点的距离就是0x3f3f3f3f</span>
+	<span class="k">else</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dijkstras-algorithm">
+<h2><span class="section-number">16.18. </span>Dijkstra’s algorithm单源最短路，边权都是正数<a class="headerlink" href="#dijkstras-algorithm" title="Permalink to this headline">¶</a></h2>
+<p><strong>Dijkstra’s algorithm</strong> finds shortest paths from the starting node to all nodes of the graph, like the Bellman–Ford algorithm. The benefit of Dijsktra’s algorithm is that it is more efficient and can be used for processing large graphs. However, the algorithm requires that there are no negative weight edges in the graph.（原理是基于贪心）</p>
+<p>Like the Bellman–Ford algorithm, Dijkstra’s algorithm maintains distances to the nodes and reduces them during the search. Dijkstra’s algorithm is efficient, because it only processes each edge in the graph once, using the fact that there are no negative edges.</p>
+<p>Let us consider how Dijkstra’s algorithm works in the following graph when the starting node is node 1:</p>
+<center><p><img alt="../_images/image-20210204145752781.png" src="../_images/image-20210204145752781.png" /></p>
+</center><p>Like in the Bellman–Ford algorithm, initially the distance to the starting node is 0 and the distance to all other nodes is infinite.</p>
+<p>At each step, Dijkstra’s algorithm selects a node that has not been processed yet and whose distance is as small as possible. The first such node is node 1 with distance 0.</p>
+<p>When a node is selected, the algorithm goes through all edges that start at the node and reduces the distances using them:</p>
+<center><p><img alt="../_images/image-20210204145857873.png" src="../_images/image-20210204145857873.png" /></p>
+</center><p>In this case, the edges from node 1 reduced the distances of nodes 2, 4 and 5, whose distances are now 5, 9 and 1. The next node to be processed is node 5 with distance 1. This reduces the distance to node 4 from 9 to 3:</p>
+<center><p><img alt="../_images/image-20210204145949068.png" src="../_images/image-20210204145949068.png" /></p>
+</center><p>After this, the next node is node 4, which reduces the distance to node 3 to 9:</p>
+<center><p><img alt="../_images/image-20210204150019114.png" src="../_images/image-20210204150019114.png" /></p>
+</center><p>A remarkable property in Dijkstra’s algorithm is that whenever a node is selected, its distance is final. For example, at this point of the algorithm, the distances 0, 1 and 3 are the final distances to nodes 1, 5 and 4.</p>
+<p>After this, the algorithm processes the two remaining nodes, and the final distances are as follows:</p>
+<p><img alt="../_images/image-20210204150124280.png" src="../_images/image-20210204150124280.png" /></p>
+<p>对于有负权边的图，Dijkstra是不可用的。The shortest path from node 1 to node 4 is 1 → 3 → 4 and its length is 1. However, Dijkstra’s algorithm finds the path 1 → 2 → 4 by following the minimum weight edges. The algorithm does not take into account that on the other path, the weight −5 compensates the previous large weight 6.</p>
+<center><p><img alt="../_images/image-20210204150302111.png" src="../_images/image-20210204150302111.png" /></p>
+</center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//朴素版，稠密图，O(n^2)</span>
+<span class="cp">#include</span> <span class="cpf">&lt;cstring&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">510</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">g</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">dist</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+<span class="kt">bool</span> <span class="n">st</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+
+<span class="kt">int</span> <span class="nf">dijkstra</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="mh">0x3f</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">dist</span><span class="p">);</span>
+    <span class="n">dist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">st</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">t</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">||</span> <span class="n">dist</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">dist</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+                <span class="n">t</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+
+        <span class="n">st</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+            <span class="n">dist</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">dist</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">g</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">==</span> <span class="mh">0x3f3f3f3f</span><span class="p">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>  
+    <span class="k">else</span> <span class="n">dist</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+
+    <span class="n">memset</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="mh">0x3f</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">g</span><span class="p">);</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="n">m</span><span class="o">--</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+        <span class="n">g</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">],</span> <span class="n">c</span><span class="p">);</span>  <span class="c1">//重边，邻接矩阵中只存最小的权值</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="n">dijkstra</span><span class="p">();</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//堆优化版，稀疏图，O(n + mlogm)</span>
+<span class="c1">//the algorithm goes through all nodes of the graph and adds for each edge at most one distance to the priority queue.</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">PII</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mf">1e4</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="mf">2e5</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span> <span class="n">INF</span> <span class="o">=</span> <span class="mh">0x3f3f3f3f</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">st</span><span class="p">,</span> <span class="n">ed</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">h</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">e</span><span class="p">[</span><span class="n">M</span><span class="p">],</span> <span class="n">ne</span><span class="p">[</span><span class="n">M</span><span class="p">],</span> <span class="n">w</span><span class="p">[</span><span class="n">M</span><span class="p">],</span> <span class="n">idx</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">d</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+<span class="kt">bool</span> <span class="n">vis</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+
+<span class="kt">void</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">e</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">=</span>  <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">,</span> <span class="n">ne</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">h</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">dijkstra</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">memset</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mh">0x3f</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">d</span><span class="p">);</span>
+	<span class="n">d</span><span class="p">[</span><span class="n">st</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+	<span class="n">priority_queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
+	<span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">st</span><span class="p">));</span>
+
+	<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+	<span class="p">{</span>
+		<span class="n">PII</span> <span class="n">t</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">top</span><span class="p">();</span> <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+		<span class="kt">int</span> <span class="n">ver</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">dist</span> <span class="o">=</span> <span class="o">-</span><span class="n">t</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+
+		<span class="k">if</span> <span class="p">(</span><span class="n">vis</span><span class="p">[</span><span class="n">ver</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span>
+		<span class="n">vis</span><span class="p">[</span><span class="n">ver</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+		
+		<span class="c1">//加强一下对i的理解，for枚举的是散列边，w[i]是边的长度，就是点到点的距离。d[j]&gt;dist+w[i] </span>
+		<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="n">ver</span><span class="p">];</span> <span class="n">i</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">ne</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+		<span class="p">{</span>
+			<span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+			<span class="k">if</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">dist</span> <span class="o">+</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+			<span class="p">{</span>
+				<span class="n">d</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">+</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+				<span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="o">-</span><span class="n">d</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">j</span><span class="p">));</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">ed</span><span class="p">]</span> <span class="o">==</span> <span class="n">INF</span><span class="p">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+	<span class="k">else</span> <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">ed</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d%d%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">st</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ed</span><span class="p">);</span>
+
+	<span class="n">memset</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">h</span><span class="p">);</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">m</span><span class="o">--</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+
+		<span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">dijkstra</span><span class="p">();</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="floydwarshall-algorithm">
+<h2><span class="section-number">16.19. </span>Floyd–Warshall algorithm多源汇最短路<a class="headerlink" href="#floydwarshall-algorithm" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>Floyd–Warshall algorithm</strong> provides an alternative way to approach the problem of finding shortest paths. Unlike the other algorithms of this chapter, it finds all shortest paths between the nodes in a single run.</p>
+<p>The algorithm maintains a two-dimensional array that contains distances between the nodes. First, distances are calculated only using direct edges between the nodes, and after this, the algorithm reduces distances by using intermediate nodes in paths.</p>
+<center><p><img alt="../_images/image-20210204151219271.png" src="../_images/image-20210204151219271.png" /></p>
+</center><p>Initially, the distance from each node to itself is 0, and the distance between nodes <em>a</em> and <em>b</em> is <em>x</em> if there is an edge between nodes <em>a</em> and <em>b</em> with weight <em>x</em>. All other distances are infinite.</p>
+<p>In this graph, the initial array is as follows:</p>
+<center><p><img alt="../_images/image-20210204151257314.png" src="../_images/image-20210204151257314.png" /></p>
+</center><p>The algorithm consists of consecutive rounds. On each round, the algorithm selects a new node that can act as an intermediate node in paths from now on, and distances are reduced using this node.</p>
+<p>On the first round, node 1 is the new intermediate node. There is a new path between nodes 2 and 4 with length 14, because node 1 connects them. There is also a new path between nodes 2 and 5 with length 6.</p>
+<center><p><img alt="../_images/image-20210204151410800.png" src="../_images/image-20210204151410800.png" /></p>
+</center><p>On the second round, node 2 is the new intermediate node. This creates new paths between nodes 1 and 3 and between nodes 3 and 5:</p>
+<center><p><img alt="../_images/image-20210204151442004.png" src="../_images/image-20210204151442004.png" /></p>
+</center><p>On the third round, node 3 is the new intermediate round. There is a new path between nodes 2 and 4:</p>
+<center><p><img alt="../_images/image-20210204151508072.png" src="../_images/image-20210204151508072.png" /></p>
+</center><p>The algorithm continues like this, until all nodes have been appointed inter- mediate nodes. After the algorithm has finished, the array contains the minimum distances between any two nodes:</p>
+<center><p><img alt="../_images/image-20210204151535928.png" src="../_images/image-20210204151535928.png" /></p>
+</center><p>For example, the array tells us that the shortest distance between nodes 2 and 4 is 8. This corresponds to the following path:</p>
+<center><p><img alt="../_images/image-20210204151601971.png" src="../_images/image-20210204151601971.png" /></p>
+</center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//完整代码</span>
+<span class="cp">#include</span> <span class="cpf">&lt;cstring&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">210</span><span class="p">,</span> <span class="n">INF</span> <span class="o">=</span> <span class="mf">1e9</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">Q</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">d</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">];</span>
+
+<span class="kt">void</span> <span class="nf">floyd</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+                <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">Q</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">j</span><span class="p">)</span> <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">else</span> <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">INF</span><span class="p">;</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="n">m</span><span class="o">--</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">;</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">w</span><span class="p">);</span>
+
+        <span class="n">d</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">],</span> <span class="n">w</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">floyd</span><span class="p">();</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="n">Q</span><span class="o">--</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">INF</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="n">puts</span><span class="p">(</span><span class="s">&quot;impossible&quot;</span><span class="p">);</span>
+        <span class="k">else</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The time complexity of the algorithm is <strong><em>O</em>(*n^*3)</strong>, because it contains three nested loops that go through the nodes of the graph.</p>
+<p>Since the implementation of the Floyd–Warshall algorithm is simple, the algorithm can be a good choice even if it is only needed to find a single shortest path in the graph. However, the algorithm can only be used when the graph is so small that a cubic time complexity is fast enough.（Floyd的原理是动态规划，因为需要使用三重循环，和邻接矩阵建图，要注意数据范围，还有图不能很大）</p>
+<p><img alt="../_images/image-20210204143307245.png" src="../_images/image-20210204143307245.png" /></p>
+<p>from yxc，orz..</p>
 </div>
 </div>
 
