@@ -370,95 +370,142 @@ charactor      codeword
 
 ##### [【例6.1】排队接水](http://ybt.ssoier.cn:8088/problem_show.php?pid=1319)
 
-/排序类型
+```cpp
+//排序类型
+```
 
 ##### [【例6.2】均分纸牌(Noip2002)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1320)
 
-/按题意for一遍
+```cpp
+//按题意for一遍
+```
 
 ##### [【例6.3】删数问题(Noip1994)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1321)
 
-/贪心：干掉下降子序列第一个数字。或者模拟取找
+```cpp
+//贪心：干掉下降子序列第一个数字。或者模拟取找
+```
 
 ##### [【例6.4】拦截导弹问题(Noip1999)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1322)
 
-/LIS，下降子序列个数 和 最长上升子序列长度 对偶
+```cpp
+//LIS，下降子序列个数 和 最长上升子序列长度 对偶
+```
 
 ##### [【例6.5】活动选择](http://ybt.ssoier.cn:8088/problem_show.php?pid=1323)
 
-/排序类型，数轴上的问题
+```cpp
+//排序类型，数轴上的问题
+```
 
 ##### [【例6.6】整数区间](http://ybt.ssoier.cn:8088/problem_show.php?pid=1324)
 
-/排序类型，数轴上的问题，会用到双指针方法
+```cpp
+//排序类型，数轴上的问题，会用到双指针方法
+```
 
 ##### [An Easy Problem](http://ybt.ssoier.cn:8088/problem_show.php?pid=1223)
 
-/暴力枚举，学习使用位运算
+```cpp
+//暴力枚举，学习使用位运算
+```
 
 ##### [最大子矩阵](http://ybt.ssoier.cn:8088/problem_show.php?pid=1224)
 
-/纯暴力会T，学习使用二维前缀和
+```cpp
+//纯暴力会T，学习使用二维前缀和
+```
 
 ##### [金银岛](http://ybt.ssoier.cn:8088/problem_show.php?pid=1225)
 
-/排序类型，去性价比最高的
+```cpp
+//排序类型，去性价比最高的
+```
 
 ##### [装箱问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1226)
 
-/小学奥数问题，手搓模拟画图找规律.//https://blog.csdn.net/zqhf123/article/details/104254143
+```cpp
+///小学奥数问题，手搓模拟画图找规律.//https://blog.csdn.net/zqhf123/article/details/104254143
+```
+
+https://blog.csdn.net/zqhf123/article/details/104254143
 
 ##### [Ride to Office](http://ybt.ssoier.cn:8088/problem_show.php?pid=1227)
 
-/poj题目，题干描述有bug，误以为从0时出发。不如去看英文版
+```cpp
+//poj题目，题干描述有bug，误以为从0时出发。不如去看英文版
+```
 
 ##### [书架](http://ybt.ssoier.cn:8088/problem_show.php?pid=1228)
 
-/排序类型
+```cpp
+//排序类型
+```
 
 ##### [电池的寿命](http://ybt.ssoier.cn:8088/problem_show.php?pid=1229)
 
-/题干描述和样例，让我误以为电池只有3小时、5小时电量。还是读题障碍
+```cpp
+//题干描述和样例，让我误以为电池只有3小时、5小时电量。还是读题障碍
+```
 
 ##### [寻找平面上的极大点](http://ybt.ssoier.cn:8088/problem_show.php?pid=1230)
 
-/暴力枚举，n只有100，或者sort一遍后枚举
+```cpp
+//暴力枚举，n只有100，或者sort一遍后枚举
+```
 
 ##### [最小新整数](http://ybt.ssoier.cn:8088/problem_show.php?pid=1231)
 
-/和前面删数是一个类型，换成了多组测试数据
+```cpp
+//和前面删数是一个类型，换成了多组测试数据
+```
 
 ##### [Crossing   River](http://ybt.ssoier.cn:8088/problem_show.php?pid=1232)
 
-/小学奥数类型，对过河问题学习了一手
+```cpp
+//小学奥数类型，对过河问题学习了一手
+```
 
 ##### [接水问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1233)
 
-/priority_queue，注意会写小根堆
+```cpp
+//priority_queue，注意会写小根堆
+```
 
 ### 其他题目
 
 ##### [[NOIP2004 普及组\] 火星人](https://www.luogu.com.cn/problem/P1088)
 
-/
+```cpp
+//
+```
 
 ##### [[NOIP2007 普及组] 纪念品分组](https://www.luogu.com.cn/problem/P1094)
 
-/
+```cpp
+//
+```
 
 ##### [[NOIP2008 普及组\] 排座椅](https://www.luogu.com.cn/problem/P1056)
 
-/
+```cpp
+//
+```
 
 ##### [P2672 [NOIP2015 普及组] 推销员](https://www.luogu.com.cn/problem/P2672)
 
-/
+```cpp
+//
+```
 
 ##### [P1090 [NOIP2004 提高组] 合并果子 / [USACO06NOV] Fence Repair G](https://www.luogu.com.cn/problem/P1090)
 
-/哈夫曼编码问题，`priority_queue<int>`
+```cpp
+//哈夫曼编码问题，priority_queue<int>
+```
 
 ##### [P1080 [NOIP2012 提高组] 国王游戏](https://www.luogu.com.cn/problem/P1080)
 
-/
-
+```cpp
+//
+```

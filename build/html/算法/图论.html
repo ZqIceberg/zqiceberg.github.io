@@ -126,6 +126,49 @@
 <li class="toctree-l2"><a class="reference internal" href="#spfa-algorithmbellman-ford">16.17. SPFA algorithm队列优化的Bellman-Ford</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dijkstras-algorithm">16.18. Dijkstra’s algorithm单源最短路，边权都是正数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#floydwarshall-algorithm">16.19. Floyd–Warshall algorithm多源汇最短路</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">16.20. 《一本通》题目</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">16.20.1. 【例题】一笔画问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#snow">16.20.2. 铲雪车(snow)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fence">16.20.3. 骑马修栅栏(fence)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">16.20.4. 【例4-1】最短路径问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">16.20.5.  【例4-2】牛的旅行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">16.20.6. 【例4-4】最小花费</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">16.20.6.1. 【例4-6】香甜的黄油</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#msner">16.20.7. 信使(msner)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#travel">16.20.8. 最优乘车(travel)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shopth">16.20.9. 最短路径(shopth)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#heatwv">16.20.10. 热浪(heatwv)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#candy">16.20.11. 分糖果(candy)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dijkstra">16.20.12.  城市路(Dijkstra)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spfa">16.20.13. 最短路(Spfa)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spfa-ii">16.20.14.  SPFA(II)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dijkastra-ii">16.20.15. Dijkastra(II)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#floyd">16.20.16.  Floyd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cdrom">16.20.17. 刻录光盘(cdrom)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bead">16.20.18. 珍珠(bead)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#relation">16.20.19. 【例4-7】亲戚(relation)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">16.20.20. 【例4-8】格子游戏</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#group">16.20.21. 团伙(group)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#black">16.20.22. 打击犯罪(black)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#buy">16.20.23. 搭配购买(buy)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gen">16.20.24. 家谱(gen)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">16.20.25. 亲戚</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#noi2001">16.20.26. 食物链【NOI2001】</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">16.20.27.  【例4-9】城市公交网建设问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">16.20.28. 【例4-10】最优布线问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agrinet">16.20.29. 【例4-11】最短网络(agrinet)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">16.20.30. 【例4-12】家谱树</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#net">16.20.31. 局域网(net)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#city">16.20.32. 繁忙的都市(city)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#liaison">16.20.33. 联络员(liaison)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#grid">16.20.34.  连接格点(grid)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">16.20.35. 【例4-13】奖金</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#slides">16.20.36. 烦人的幻灯片(slides)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#virus">16.20.37.  病毒(virus)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -597,8 +640,8 @@
 <center><p><img alt="../_images/image-20210204150019114.png" src="../_images/image-20210204150019114.png" /></p>
 </center><p>A remarkable property in Dijkstra’s algorithm is that whenever a node is selected, its distance is final. For example, at this point of the algorithm, the distances 0, 1 and 3 are the final distances to nodes 1, 5 and 4.</p>
 <p>After this, the algorithm processes the two remaining nodes, and the final distances are as follows:</p>
-<p><img alt="../_images/image-20210204150124280.png" src="../_images/image-20210204150124280.png" /></p>
-<p>对于有负权边的图，Dijkstra是不可用的。The shortest path from node 1 to node 4 is 1 → 3 → 4 and its length is 1. However, Dijkstra’s algorithm finds the path 1 → 2 → 4 by following the minimum weight edges. The algorithm does not take into account that on the other path, the weight −5 compensates the previous large weight 6.</p>
+<center><p><img alt="../_images/image-20210204150124280.png" src="../_images/image-20210204150124280.png" /></p>
+</center><p>对于有负权边的图，Dijkstra是不可用的。The shortest path from node 1 to node 4 is 1 → 3 → 4 and its length is 1. However, Dijkstra’s algorithm finds the path 1 → 2 → 4 by following the minimum weight edges. The algorithm does not take into account that on the other path, the weight −5 compensates the previous large weight 6.</p>
 <center><p><img alt="../_images/image-20210204150302111.png" src="../_images/image-20210204150302111.png" /></p>
 </center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//朴素版，稠密图，O(n^2)</span>
 <span class="cp">#include</span> <span class="cpf">&lt;cstring&gt;</span><span class="cp"></span>
@@ -806,6 +849,369 @@
 <p>Since the implementation of the Floyd–Warshall algorithm is simple, the algorithm can be a good choice even if it is only needed to find a single shortest path in the graph. However, the algorithm can only be used when the graph is so small that a cubic time complexity is fast enough.（Floyd的原理是动态规划，因为需要使用三重循环，和邻接矩阵建图，要注意数据范围，还有图不能很大）</p>
 <p><img alt="../_images/image-20210204143307245.png" src="../_images/image-20210204143307245.png" /></p>
 <p>from yxc，orz..</p>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">16.20. </span>《一本通》题目<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3><span class="section-number">16.20.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1341">【例题】一笔画问题</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//寻找欧拉路/欧拉回路。</span>
+<span class="c1">//找到入度是奇数的点，这个点作为出发点。否则就从1开始出发</span>
+<span class="c1">//dfs()遍历图，一边走一遍划掉边</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="snow">
+<h3><span class="section-number">16.20.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1374">铲雪车(snow)</a><a class="headerlink" href="#snow" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//每条道路都是双向道路，题面说明可以遍历所有街道，那一定是欧拉回路的</span>
+<span class="c1">//直接利用欧拉回路的性质解题</span>
+<span class="c1">//需要注意的是时间有可能很大，不开LL见祖宗</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fence">
+<h3><span class="section-number">16.20.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1375">骑马修栅栏(fence)</a><a class="headerlink" href="#fence" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//一笔画问题，一笔遍历完所有栅栏</span>
+<span class="c1">//完成建图后，从度数是奇数的点出发，进行dfs()，一边走一边抹掉边</span>
+<span class="c1">//题目中没有给出结点编号范围，在读入的时候，明确一下起始和终止结点编号</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3><span class="section-number">16.20.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1342">【例4-1】最短路径问题</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//n&lt;=100</span>
+<span class="c1">//朴素dijkstra</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3><span class="section-number">16.20.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1343"> 【例4-2】牛的旅行</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//n&lt;=150</span>
+<span class="c1">//编程找出一条连接两个不同牧场的路径，使得连上这条路径后，这个更大的新牧场有最小的直径</span>
+
+<span class="c1">//floyd预处理两点之间的最短距离</span>
+<span class="c1">//用来判断两个点是否在一个连通块内</span>
+<span class="c1">//先更新一遍连通块内部的最大直径，维护一个s1[N]</span>
+<span class="c1">//res1，代表连通块的最大直径</span>
+<span class="c1">//再暴力枚举，连接两个不连通的两个点，更新一个连上之后半径</span>
+<span class="c1">//res2，代表连上两个连通块之后的半径</span>
+<span class="c1">//问：使得连上这条路径后，这个更大的新牧场有最小的直径</span>
+<span class="c1">//输出min(res1, res2)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><span class="section-number">16.20.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1344">【例4-4】最小花费</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//n&lt;=2000</span>
+<span class="c1">//转账需要扣除手续费，问终点的人收到100元，起点的人，最少需要准备多少钱</span>
+<span class="c1">//最短路问题</span>
+<span class="c1">//如果边长是1.0 * (100 - c) / 100, c代表扣除的手续费</span>
+<span class="c1">//那么就是用朴素dijkstra跑一遍最长路</span>
+</pre></div>
+</div>
+<div class="section" id="id7">
+<h4><span class="section-number">16.20.6.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1345">【例4-6】香甜的黄油</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//找出使所有牛到达的路程和最短的牧场（他将把糖放在那）</span>
+<span class="c1">//奶牛n&lt;=500,牧场p&lt;=800</span>
+<span class="c1">//枚举所有的牧场，跑最短路，更新res</span>
+<span class="c1">//可以用spfa，堆优化dijkstra</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="msner">
+<h3><span class="section-number">16.20.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1376">信使(msner)</a><a class="headerlink" href="#msner" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//n&lt;=100</span>
+<span class="c1">//所有结点到结点1距离的最小值</span>
+<span class="c1">//跑一遍floyd，找一遍答案，如果发现有无法到达的结点就输出-1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="travel">
+<h3><span class="section-number">16.20.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1377">最优乘车(travel)</a><a class="headerlink" href="#travel" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//n&lt;=500</span>
+<span class="c1">//这道题思路比较巧妙，第一反应是分层图，很快就验证不对</span>
+<span class="c1">//正确思路：一条公交路线上的结点(注意是单向)，这些结点的距离都是1</span>
+<span class="c1">//那么从起点，到终点的最短路，减去1，就是答案</span>
+<span class="c1">//最短路可用floyd</span>
+
+<span class="c1">//恶心的是输入，不好处理</span>
+<span class="c1">//方法一：还要注意把第一行的回车处理好</span>
+	<span class="n">getline</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
+	<span class="n">stringstream</span> <span class="nf">ssin</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">ssin</span> <span class="o">&gt;&gt;</span> <span class="n">x</span><span class="p">)</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+<span class="c1">//方法二：</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">++</span><span class="p">]);</span>
+	<span class="n">ch</span> <span class="o">=</span> <span class="n">getchar</span><span class="p">();</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">ch</span><span class="o">==</span><span class="sc">&#39; &#39;</span><span class="p">){</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">);</span>
+		<span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+		<span class="n">ch</span> <span class="o">=</span> <span class="n">getchar</span><span class="p">();</span>
+	<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="shopth">
+<h3><span class="section-number">16.20.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1378">最短路径(shopth)</a><a class="headerlink" href="#shopth" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//n&lt;=80，题意也是明显的floyd最短路</span>
+<span class="c1">//恶心的还是读入</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+			<span class="k">if</span> <span class="p">(</span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+		<span class="p">}</span>
+<span class="c1">//这种方法在本地无法通过验证</span>
+<span class="c1">//提交oj可以AC</span>
+<span class="c1">//尝试getline() 然后处理&#39;-&#39; &#39;负数&#39; &#39;正数&#39;的方法，只能过40分，作罢</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="heatwv">
+<h3><span class="section-number">16.20.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1379">热浪(heatwv)</a><a class="headerlink" href="#heatwv" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//T&lt;=2500</span>
+<span class="c1">//跑spfa</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="candy">
+<h3><span class="section-number">16.20.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1380">分糖果(candy)</a><a class="headerlink" href="#candy" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//求第多少秒所有小朋友都吃完了糖</span>
+<span class="c1">//spfa求得距离C小朋友最远的距离far</span>
+<span class="c1">//答案是far + 1 + m</span>
+<span class="c1">//传到最远位置的时间，第一个人消耗的时间，最后一个人吃的时间</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dijkstra">
+<h3><span class="section-number">16.20.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1381"> 城市路(Dijkstra)</a><a class="headerlink" href="#dijkstra" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//n&lt;=2000</span>
+<span class="c1">//朴素dijkstra</span>
+<span class="c1">//bellman_ford也可以</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="spfa">
+<h3><span class="section-number">16.20.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1382">最短路(Spfa)</a><a class="headerlink" href="#spfa" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//n&lt;=1e5</span>
+<span class="c1">//有重边、自环，跑spfa求最短路</span>
+<span class="c1">//读入的时候，可以不理会重边和自环问题</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="spfa-ii">
+<h3><span class="section-number">16.20.14. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1419"> SPFA(II)</a><a class="headerlink" href="#spfa-ii" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//n&lt;=20000</span>
+<span class="c1">//spfa</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dijkastra-ii">
+<h3><span class="section-number">16.20.15. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1420">Dijkastra(II)</a><a class="headerlink" href="#dijkastra-ii" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//n&lt;=2e5</span>
+<span class="c1">//堆优化dijkstra</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="floyd">
+<h3><span class="section-number">16.20.16. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1421"> Floyd</a><a class="headerlink" href="#floyd" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//n&lt;=500, floyd</span>
+<span class="c1">//题目不存在负环，但是可能存在负边</span>
+<span class="c1">//这样会造成dist &lt; INF 但是也是不可达</span>
+<span class="c1">//最后计算结果前，对不可达的点，刷一遍，刷成INF</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cdrom">
+<h3><span class="section-number">16.20.17. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1383">刻录光盘(cdrom)</a><a class="headerlink" href="#cdrom" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//图的连通性问题</span>
+<span class="c1">//利用floyd，判断出两个点是否可达</span>
+<span class="c1">//two loops枚举所有两个点组合，用并查集p[i]来更新父亲</span>
+<span class="c1">//最后one loops遍历一遍有几个结点的p[i]==i,就说明需要几个光盘</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bead">
+<h3><span class="section-number">16.20.18. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1384">珍珠(bead)</a><a class="headerlink" href="#bead" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//读入的时候，dp[a][b]=1，表示a比b大</span>
+<span class="c1">//跑floyd，得到所有两两关系</span>
+<span class="c1">//two loops枚举两点，统计对于每个点，有多少个点比自己大，有多少个点比自己小</span>
+<span class="k">if</span> <span class="p">((</span><span class="n">cnt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">cnt2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span> <span class="n">res</span><span class="o">++</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="relation">
+<h3><span class="section-number">16.20.19. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1346">【例4-7】亲戚(relation)</a><a class="headerlink" href="#relation" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//并查集</span>
+<span class="c1">//只能通过90分，网上的题解也不能AC</span>
+<span class="c1">//网站上还是有2500多人AC的【待办】</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3><span class="section-number">16.20.20. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1347">【例4-8】格子游戏</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//并查集</span>
+<span class="c1">//二维转一维的操作(x = (a - 1) * n + b;)</span>
+<span class="c1">//两个点是否在一个集合里，如何在，那么连上就成圈了</span>
+<span class="c1">//整个看成一个图，容易理解</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="group">
+<h3><span class="section-number">16.20.21. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1385">团伙(group)</a><a class="headerlink" href="#group" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//并查集</span>
+<span class="c1">//1、我朋友的朋友是我的朋友；2、我敌人的敌人是我的朋友；</span>
+<span class="c1">//使用vector&lt;int&gt; h[N]存储每个点的所有敌人，类似开放链</span>
+<span class="c1">//当读到两个人是敌人，就枚举一遍已有的敌人，敌人的敌人是朋友，建立起朋友关系</span>
+<span class="c1">//最后看p[N]中有几个祖宗，可以用set&lt;int&gt;进行统计</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="black">
+<h3><span class="section-number">16.20.22. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1386">打击犯罪(black)</a><a class="headerlink" href="#black" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//并查集</span>
+<span class="c1">//p[N]维护祖先，son[N]维护子树大小</span>
+<span class="c1">//所有有关系的团队，都是编号大的向编号小的合并，合并的时候，更新子树大小</span>
+<span class="c1">//最后把son[k]&gt;n/2的干掉，1...k都干掉（从n往1遍历找到一个满足条件的i就是答案）</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="buy">
+<h3><span class="section-number">16.20.23. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1387">搭配购买(buy)</a><a class="headerlink" href="#buy" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//并查集+01背包（题意不是只可以买一个集合的，可以买多个集合的，要考虑到这些）</span>
+<span class="c1">//并查集维护出来每一个集合的体积和，价值和</span>
+<span class="c1">//然后对这些体积和，价值和，进行01背包，求max</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gen">
+<h3><span class="section-number">16.20.24. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1388">家谱(gen)</a><a class="headerlink" href="#gen" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//并查集</span>
+<span class="c1">//用map&lt;string, string&gt; p;维护祖先关系</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3><span class="section-number">16.20.25. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1389">亲戚</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//并查集</span>
+<span class="c1">//p[N]维护祖先, son[N]维护子树大小</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="noi2001">
+<h3><span class="section-number">16.20.26. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1390">食物链【NOI2001】</a><a class="headerlink" href="#noi2001" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//三类动物的食物链构成了有趣的环形。A吃B， B吃C，C吃A</span>
+<span class="c1">//此题精华：知道每个点和根结点的关系,就能知道每个点之间的关系</span>
+<span class="c1">//到根结点距离是1，可以吃根</span>
+<span class="c1">//到根结点距离是2，可以被根吃</span>
+<span class="c1">//到根结点距离是3，与根同类</span>
+
+<span class="c1">//在一个组织里，求两人之间的距离，只需要知道和领袖之间的距离</span>
+<span class="c1">//d[x],d[y]的差值，看mod 3的值，来分析吃与被吃的关系</span>
+
+<span class="c1">//部分示例代码</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">op</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">px</span> <span class="o">==</span> <span class="n">py</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">-</span> <span class="n">d</span><span class="p">[</span><span class="n">y</span><span class="p">])</span><span class="o">%</span><span class="mi">3</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">))</span> <span class="n">res</span><span class="o">++</span><span class="p">;</span>
+	<span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">px</span> <span class="o">!=</span> <span class="n">py</span><span class="p">){</span>		
+        <span class="n">p</span><span class="p">[</span><span class="n">px</span><span class="p">]</span> <span class="o">=</span> <span class="n">py</span><span class="p">;</span>
+		<span class="n">d</span><span class="p">[</span><span class="n">px</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">-</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">];</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">find</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">!=</span> <span class="n">x</span><span class="p">){</span>
+		<span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">]);</span>
+		<span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">+=</span> <span class="n">d</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">]];</span>  <span class="c1">//递归的加上每一个前辈的距离，就是到祖先的距离</span>
+		<span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3><span class="section-number">16.20.27. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1348"> 【例4-9】城市公交网建设问题</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//n&lt;=100, MST</span>
+<span class="c1">//kruscal，取边的时候，维护到答案里</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h3><span class="section-number">16.20.28. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1349">【例4-10】最优布线问题</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//n&lt;=100, MST</span>
+<span class="c1">//prim</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="agrinet">
+<h3><span class="section-number">16.20.29. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1350">【例4-11】最短网络(agrinet)</a><a class="headerlink" href="#agrinet" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//n&lt;=100, MST</span>
+<span class="c1">//prim</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h3><span class="section-number">16.20.30. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1351">【例4-12】家谱树</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//topsort</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="net">
+<h3><span class="section-number">16.20.31. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1391">局域网(net)</a><a class="headerlink" href="#net" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//n&lt;=100, MST</span>
+<span class="c1">//prim</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="city">
+<h3><span class="section-number">16.20.32. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1392">繁忙的都市(city)</a><a class="headerlink" href="#city" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//边长进行排序(greedy)，做并查集</span>
+<span class="c1">//维护选出了几条道路，分值最大的那条道路的分值</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="liaison">
+<h3><span class="section-number">16.20.33. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1393">联络员(liaison)</a><a class="headerlink" href="#liaison" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//通讯渠道分为两类，一类必选，一类选择性选择</span>
+<span class="c1">//必选都选上，维护res，维护并查集关系</span>
+<span class="c1">//然后选择性边排序(greedy)，做并查集</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="grid">
+<h3><span class="section-number">16.20.34. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1394"> 连接格点(grid)</a><a class="headerlink" href="#grid" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//二维转一维的操作</span>
+<span class="c1">//优先对纵向(花费1)做并查集，然后对横向(花费2)做并查集</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3><span class="section-number">16.20.35. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1352">【例4-13】奖金</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//满足各位代表的意见，且同时使得总奖金数最少</span>
+<span class="c1">//反向建边，add(b, a); in[a]++, 进行topsort</span>
+<span class="c1">//反向处理的时候，后一结点比前一结点花费多1(员工a的奖金应该比b高)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="slides">
+<h3><span class="section-number">16.20.36. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1395">烦人的幻灯片(slides)</a><a class="headerlink" href="#slides" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//幻灯片用字母表示</span>
+<span class="c1">//每个数字的位置读入后，判断都在哪些字母范围内</span>
+<span class="c1">//建边g[j][i] = 1; //字母j到数字i有边，同时，维护好in[i]，数字的度数</span>
+<span class="c1">//这样就形成了一个两个集合的映射关系，从数字度数为1的，进行topsort</span>
+<span class="c1">//topsort(u)，查找和数字u有关系的字母i，紧接着看那些数字j和字母i有关系</span>
+<span class="c1">//把边抹掉，in[j]--。如果in[j]==1，topsort(j)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="virus">
+<h3><span class="section-number">16.20.37. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1396"> 病毒(virus)</a><a class="headerlink" href="#virus" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//病毒污染了字典，把字母换成了另外一个字母，但是相对顺序没有改变</span>
+<span class="c1">//给了多个字符串，读入后，维护起来污染后字母的相对顺序，然后做topsort</span>
+<span class="c1">//做topsort的时候，维护好d[i]，存的是原字母相对于a的偏移</span>
+<span class="c1">//遍历一遍d[i]，维护map&lt;char, char&gt;</span>
+<span class="c1">//对要翻译的字符串进行处理，如果遇到没有翻译的字符，就是字典不全</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 

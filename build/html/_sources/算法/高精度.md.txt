@@ -239,47 +239,69 @@ vector<int> div(vector<int> &A, int b, int &r)
 
 ##### [【例1.3】高精度乘法](http://ybt.ssoier.cn:8088/problem_show.php?pid=1307)
 
-/
+```cpp
+//
+```
 
 ##### [【例1.5】高精除](http://ybt.ssoier.cn:8088/problem_show.php?pid=1308)
 
-高精除高精，先不搞
+```cpp
+//高精除高精，先不搞
+```
 
 ##### [【例1.6】回文数(Noip1999)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1309)
 
-/
+```cpp
+//
+```
 
 ##### [大整数加法](http://ybt.ssoier.cn:8088/problem_show.php?pid=1168)
 
-/
+```cpp
+//
+```
 
 ##### [大整数减法](http://ybt.ssoier.cn:8088/problem_show.php?pid=1169)
 
-/
+```cpp
+//
+```
 
 ##### [计算2的N次方](http://ybt.ssoier.cn:8088/problem_show.php?pid=1170)
 
-/
+```cpp
+//
+```
 
 ##### [大整数的因子](http://ybt.ssoier.cn:8088/problem_show.php?pid=1171)
 
-/
+```cpp
+//
+```
 
 ##### [求10000以内n的阶乘](http://ybt.ssoier.cn:8088/problem_show.php?pid=1172)
 
-/
+```cpp
+//
+```
 
 ##### [阶乘和](http://ybt.ssoier.cn:8088/problem_show.php?pid=1173)
 
-/
+```cpp
+//
+```
 
 ##### [大整数乘法](http://ybt.ssoier.cn:8088/problem_show.php?pid=1174)
 
-/
+```cpp
+//
+```
 
 ##### [除以13](http://ybt.ssoier.cn:8088/problem_show.php?pid=1175)
 
-/
+```cpp
+//
+```
 
 ### 参考：
 

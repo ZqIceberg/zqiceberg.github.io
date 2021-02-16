@@ -1,0 +1,731 @@
+# graph图论(一)
+
+Many programming problems can be solved by modeling the problem as a graph problem and using an appropriate graph algorithm. A typical example of a graph is a network of roads and cities in a country. 
+
+
+
+### 概念
+
+A **graph** consists of **nodes** and **edges**. In this book, the variable *n* denotes the number of nodes in a graph, and the variable *m* denotes the number of edges. The nodes are numbered using integers 1,2,...,*n*. 下面这个图，有5个顶点，7条边。
+
+<center>
+
+![](../media/image-20210128182946646.png)
+
+</center>
+
+A **path** leads from node *a* to node *b* through edges of the graph. The **length** of a path is the number of edges in it. For example, the above graph contains a path 1→3→4→5 of length 3 from node 1 to node 5:
+
+<center>
+
+![](../media/image-20210128183048974.png)
+
+</center>
+
+A path is a **cycle** if the first and last node is the same. For example, the above graph contains a cycle 1 → 3 → 4 → 1. A path is **simple** if each node appears at most once in the path.(概念，简单图)
+
+
+
+### Connectivity连通性
+
+A graph is **connected** if there is a path between any two nodes. For example, the following graph is connected:
+
+<center>
+
+![](../media/image-20210128183300876.png)
+
+</center>
+
+The following graph is not connected, because it is not possible to get from node 4 to any other node:
+
+<center>
+
+![](../media/image-20210128183343977.png)
+
+</center>
+
+The connected parts of a graph are called its **components**. For example, the following graph contains three components: {1, 2, 3}, {4, 5, 6, 7} and {8}.
+
+<center>
+
+![](../media/image-20210128183418819.png)
+
+</center>
+
+A **tree** is a connected graph that consists of *n* nodes and *n* − 1 edges. There is a unique path between any two nodes of a tree. For example, the following graph is a tree:
+
+<center>
+
+![](../media/image-20210128183443609.png)
+
+</center>
+
+### Edge directions有向边
+
+A graph is **directed** if the edges can be traversed in one direction only. For example, the following graph is directed:
+
+<center>
+
+![](../media/image-20210128183527489.png)
+
+</center>
+
+The above graph contains a path 3→1→2→5 from node 3 to node 5, but there is no path from node 5 to node 3.
+
+无向边，其实，是两条有向边的合并版本
+
+### Edge weights边权
+
+In a **weighted** graph, each edge is assigned a **weight**. The weights are often interpreted as edge lengths. For example, the following graph is weighted:
+
+<center>
+
+![](../media/image-20210128183636938.png)
+
+</center>
+
+The length of a path in a weighted graph is the sum of the edge weights on the path. For example, in the above graph, the length of the path 1 → 2 → 5 is 12, and the length of the path 1→3→4→5 is 11. The latter path is the **shortest** path from node 1 to node 5.
+
+### Neighbors and degrees相邻的两个顶点和顶点的度
+
+Two nodes are **neighbors** or **adjacent** if there is an edge between them. The **degree** of a node is the number of its neighbors. For example, in the following graph, the neighbors of node 2 are 1, 4 and 5, so its degree is 3.
+
+<center>
+
+![](../media/image-20210128183754769.png)
+
+</center>
+
+The sum of degrees in a graph is always 2*m*, where *m* is the number of edges, because each edge increases the degree of exactly two nodes by one. For this reason, the sum of degrees is always even.
+
+A graph is **regular** if the degree of every node is a constant *d*. A graph is **complete** if the degree of every node is *n* − 1, i.e., the graph contains all possible edges between the nodes.
+
+In a directed graph, the **indegree** of a node is the number of edges that end at the node, and the **outdegree** of a node is the number of edges that start at the node. For example, in the following graph, the indegree of node 2 is 2, and the outdegree of node 2 is 1.
+
+<center>
+
+![](../media/image-20210128183824451.png)
+
+</center>
+
+概念：完全图，每个顶点的度数都是n-1。在有向图中，分为入度和出度。
+
+### Simplicity简单图
+
+A graph is **simple** if no edge starts and ends at the same node, and there are no multiple edges between two nodes. Often we assume that graphs are simple. For example, the following graph is *not* simple:
+
+<center>
+
+![](../media/image-20210128184003302.png)
+
+</center>
+
+概念：简单图，无重边，无自环
+
+
+
+### Adjacency list representation邻接表建图(vector版本)
+
+In the adjacency list representation, each node *x* in the graph is assigned an **adjacency list** that consists of nodes to which there is an edge from *x*. Adjacency lists are the most popular way to represent graphs, and most algorithms can be efficiently implemented using them.
+
+A convenient way to store the adjacency lists is to declare an array of vectors as follows:
+
+```cpp
+ vector<int> adj[N];
+```
+
+The constant *N* is chosen so that all adjacency lists can be stored. For example, the graph
+
+<center>
+
+![](../media/image-20210128184136255.png)
+
+</center>
+
+```cpp
+adj[1].push_back(2);
+adj[2].push_back(3);
+adj[2].push_back(4);
+adj[3].push_back(4);
+adj[4].push_back(1);
+```
+
+If the graph is undirected, it can be stored in a similar way, but each edge is added in both directions.
+
+For a weighted graph, the structure can be extended as follows:
+
+```cpp
+//当边权不是1的时候，可以用pair维护
+vector<pair<int,int>> adj[N];
+```
+
+In this case, the adjacency list of node *a* contains the pair (*b*,*w*) always when there is an edge from node *a* to node *b* with weight *w*. For example, the graph can be stored as follows:
+
+<center>
+
+![](../media/image-20210128184252453.png)
+
+</center>
+
+```cpp
+adj[1].push_back({2,5});
+adj[2].push_back({3,7});
+adj[2].push_back({4,6});
+adj[3].push_back({4,5});
+adj[4].push_back({1,2});
+```
+
+The benefit of using adjacency lists is that we can efficiently find the nodes to which we can move from a given node through an edge. For example, the following loop goes through all nodes to which we can move from node *s*:
+
+```cpp
+//这是C++ 11的写法，在比赛中，还不能使用
+for (auto u : adj[s]) {
+    // process node u
+}
+
+//这样枚举就可以了，理解“散列边”这个概念
+for (int i = 0; i < adj[i].size(); i++)
+{
+
+}
+```
+
+### Adjacency matrix representation邻接矩阵建图
+
+An **adjacency matrix** is a two-dimensional array that indicates which edges the graph contains. We can efficiently check from an adjacency matrix if there is an edge between two nodes. The matrix can be stored as an array
+
+```cpp
+int adj[N][N];
+```
+
+where each value adj[*a*][*b*] indicates whether the graph contains an edge from node *a* to node *b*. If the edge is included in the graph, then adj[*a*][*b*] = 1, and otherwise adj[*a*][*b*] = 0. For example, the graph can be represented as follows:
+
+<center>
+
+![](../media/image-20210128184524164.png)
+
+
+
+![](../media/image-20210128184546508.png)
+
+</center>
+
+If the graph is weighted, the adjacency matrix representation can be extended so that the matrix contains the weight of the edge if the edge exists. Using this representation, the graph corresponds to the following matrix:
+
+<center>
+
+![](../media/image-20210128184620255.png)
+
+![](../media/image-20210128184632710.png)
+
+</center>
+
+The drawback of the adjacency matrix representation is that the matrix contains **n^2** elements, and usually most of them are zero. For this reason, the representation cannot be used if the graph is large.
+
+<center>
+
+```cpp
+你看，这个邻接矩阵是不是就是一个矩阵，表示一个点和另外一个点的连通性
+```
+
+```cpp
+邻接矩阵不能存很大的图，因为受建立二维数组大小的限制。适合存稠密图
+邻接表可以存很大的图，也可以存很小的图。更适合存稀疏图
+```
+
+</center>
+
+
+
+### Adjacency list representation邻接表建图(一维数组版本)
+
+我一般用这个方法
+
+```cpp
+int h[N], e[M], ne[M], idx; 
+
+void add(int a, int b)
+{
+    e[idx] = b, ne[idx] = h[a], h[a] = idx++;
+}
+
+//调用
+scanf("%d%d", &a, &b);
+add(a, b), add(b, a);
+//双向表，就双向add，单向边就一个add
+//要注意一维数组开的大小问题，如果是无向图，M是N的两倍
+//如果是有边权的情况，就还需要开一个一维数组w[M]用来维护边权
+//理解“散列”的形状
+
+//枚举边
+for (int i = h[u]; i != -1; i = ne[i])
+    {
+        int j = e[i];
+        if (!st[j])
+        {
+            int s = dfs(j);
+            res = max(res, s); //所有子树的最大值
+            sum += s;          //累积求这个点的子树大小
+        }
+    }
+```
+
+
+
+### Graph traversal图的遍历
+
+depth-first search and breadth-first search. Both algorithms are given a starting node in the graph, and they visit all nodes that can be reached from the starting node. The difference in the algorithms is the order in which they visit the nodes.
+
+### Depth-first search深度优先遍历
+
+Depth-first search always follows a single path in the graph as long as it finds new nodes. After this, it returns to previous nodes and begins to explore other parts of the graph. The algorithm keeps track of visited nodes, so that it processes each node only once.
+
+<center>
+
+![](../media/image-20210204135134206.png)
+
+</center>
+
+The neighbors of node 5 are 2 and 3, but the search has already visited both of them, so it is time to return to the previous nodes. Also the neighbors of nodes 3 and 2 have been visited, so we next move from node 1 to node 4
+
+The time complexity of depth-first search is ***O*(*n* + *m*)** where *n* is the number of nodes and *m* is the number of edges, because the algorithm processes each node and edge once.
+
+```cpp
+vector<int> adj[N];
+bool visited[N];
+
+void dfs(int s) {
+    if (visited[s]) return;
+    visited[s] = true;
+    // process node s
+    for (auto u: adj[s]) {
+		dfs(u);
+    }
+}
+```
+
+### Breadth-first search宽度优先遍历
+
+**Breadth-first search** (BFS) visits the nodes in increasing order of their distance from the starting node. Thus, we can calculate the distance from the starting node to all other nodes using breadth-first search.
+
+<center>
+
+![](../media/image-20210204135619766.png)
+
+</center>
+
+Like in depth-first search, the time complexity of breadth-first search is ***O*(*n* + *m*)**, where *n* is the number of nodes and *m* is the number of edges.
+
+```cpp
+queue<int> q;
+bool visited[N];
+int distance[N];
+
+visited[x] = true;
+distance[x] = 0;
+q.push(x);
+while (!q.empty()) {
+    int s = q.front(); q.pop();
+    // process node s
+    for (auto u : adj[s]) {
+       if (visited[u]) continue;
+       visited[u] = true;
+       distance[u] = distance[s]+1;
+       q.push(u);
+	} 
+}
+```
+
+
+
+### Connectivity check连通性验证
+
+从任意一个点出发，做dfs，可以判断这个图是否连通的。通过这种方法，我们也可以用来统计图当中，有多少个独立的块。从1...n遍历，如果一个点没遍历过，就dfs进去，遍历的时候进行标记。
+
+A graph is connected if there is a path between any two nodes of the graph. Thus, we can check if a graph is connected by starting at an arbitrary node and finding out if we can reach all other nodes. For example, in the graph a depth-first search from node 1 visits the following nodes:
+
+<center>
+
+![](../media/image-20210216142822489.png)
+
+</center>
+
+Since the search did not visit all the nodes, we can conclude that the graph is not connected. In a similar way, we can also find all connected components of a graph by iterating through the nodes and always starting a new depth-first search if the current node does not belong to any component yet.
+
+ 
+
+### Finding cycles判环
+
+
+
+![image-20210216143233356](../media/image-20210216143233356.png)
+
+
+
+After moving from node 2 to node 5 we notice that the neighbor 3 of node 5 has already been visited. Thus, the graph contains a cycle that goes through node 3, for example, 3→2→5→3.
+
+Another way to find out whether a graph contains a cycle is to simply calculate the number of nodes and edges in every component. If a component contains *c* nodes and no cycle, it must contain exactly *c* − 1 edges (so it has to be a tree). If there are *c* or more edges, the component surely contains a cycle.
+
+
+### 《一本通》题目
+
+##### [【例题】一笔画问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1341)
+
+```cpp
+//寻找欧拉路/欧拉回路。
+//找到入度是奇数的点，这个点作为出发点。否则就从1开始出发
+//dfs()遍历图，一边走一遍划掉边
+```
+
+##### [铲雪车(snow)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1374)
+
+```cpp
+//每条道路都是双向道路，题面说明可以遍历所有街道，那一定是欧拉回路的
+//直接利用欧拉回路的性质解题
+//需要注意的是时间有可能很大，不开LL见祖宗
+```
+
+##### [骑马修栅栏(fence)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1375)
+
+```cpp
+//一笔画问题，一笔遍历完所有栅栏
+//完成建图后，从度数是奇数的点出发，进行dfs()，一边走一边抹掉边
+//题目中没有给出结点编号范围，在读入的时候，明确一下起始和终止结点编号
+```
+
+##### [【例4-1】最短路径问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1342)
+
+```cpp
+//n<=100
+//朴素dijkstra
+```
+
+##### [ 【例4-2】牛的旅行](http://ybt.ssoier.cn:8088/problem_show.php?pid=1343)
+
+```cpp
+//n<=150
+//编程找出一条连接两个不同牧场的路径，使得连上这条路径后，这个更大的新牧场有最小的直径
+
+//floyd预处理两点之间的最短距离
+//用来判断两个点是否在一个连通块内
+//先更新一遍连通块内部的最大直径，维护一个s1[N]
+//res1，代表连通块的最大直径
+//再暴力枚举，连接两个不连通的两个点，更新一个连上之后半径
+//res2，代表连上两个连通块之后的半径
+//问：使得连上这条路径后，这个更大的新牧场有最小的直径
+//输出min(res1, res2)
+```
+
+##### [【例4-4】最小花费](http://ybt.ssoier.cn:8088/problem_show.php?pid=1344)
+
+```cpp
+//n<=2000
+//转账需要扣除手续费，问终点的人收到100元，起点的人，最少需要准备多少钱
+//最短路问题
+//如果边长是1.0 * (100 - c) / 100, c代表扣除的手续费
+//那么就是用朴素dijkstra跑一遍最长路
+```
+
+###### [【例4-6】香甜的黄油](http://ybt.ssoier.cn:8088/problem_show.php?pid=1345)
+
+```cpp
+//找出使所有牛到达的路程和最短的牧场（他将把糖放在那）
+//奶牛n<=500,牧场p<=800
+//枚举所有的牧场，跑最短路，更新res
+//可以用spfa，堆优化dijkstra
+```
+
+##### [信使(msner)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1376)
+
+```cpp
+//n<=100
+//所有结点到结点1距离的最小值
+//跑一遍floyd，找一遍答案，如果发现有无法到达的结点就输出-1
+```
+
+##### [最优乘车(travel)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1377)
+
+```cpp
+//n<=500
+//这道题思路比较巧妙，第一反应是分层图，很快就验证不对
+//正确思路：一条公交路线上的结点(注意是单向)，这些结点的距离都是1
+//那么从起点，到终点的最短路，减去1，就是答案
+//最短路可用floyd
+
+//恶心的是输入，不好处理
+//方法一：还要注意把第一行的回车处理好
+	getline(cin, s);
+	stringstream ssin(s);
+	while (ssin >> x) a[idx++] = x;
+//方法二：
+	scanf("%d", &a[idx++]);
+	ch = getchar();
+	while (ch==' '){
+		scanf("%d", &x);
+		a[idx++] = x;
+		ch = getchar();
+	}
+```
+
+##### [最短路径(shopth)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1378)
+
+``` cpp
+//n<=80，题意也是明显的floyd最短路
+//恶心的还是读入
+	for (int i = 1; i <= n; i++)
+		for (int j = 1; j <= n; j++){
+			if (scanf("%d", &x) == 1) dp[i][j] = x;
+		}
+//这种方法在本地无法通过验证
+//提交oj可以AC
+//尝试getline() 然后处理'-' '负数' '正数'的方法，只能过40分，作罢
+```
+
+##### [热浪(heatwv)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1379)
+
+```cpp
+//T<=2500
+//跑spfa
+```
+
+##### [分糖果(candy)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1380)
+
+```cpp
+//求第多少秒所有小朋友都吃完了糖
+//spfa求得距离C小朋友最远的距离far
+//答案是far + 1 + m
+//传到最远位置的时间，第一个人消耗的时间，最后一个人吃的时间
+```
+
+##### [ 城市路(Dijkstra)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1381)
+
+```cpp
+//n<=2000
+//朴素dijkstra
+//bellman_ford也可以
+```
+
+##### [最短路(Spfa)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1382)
+
+```cpp
+//n<=1e5
+//有重边、自环，跑spfa求最短路
+//读入的时候，可以不理会重边和自环问题
+```
+
+##### [ SPFA(II)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1419)
+
+```cpp
+//n<=20000
+//spfa
+```
+
+##### [Dijkastra(II)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1420)
+
+```cpp
+//n<=2e5
+//堆优化dijkstra
+```
+
+##### [ Floyd](http://ybt.ssoier.cn:8088/problem_show.php?pid=1421)
+
+```cpp
+//n<=500, floyd
+//题目不存在负环，但是可能存在负边
+//这样会造成dist < INF 但是也是不可达
+//最后计算结果前，对不可达的点，刷一遍，刷成INF
+```
+
+##### [刻录光盘(cdrom)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1383)
+
+```cpp
+//图的连通性问题
+//利用floyd，判断出两个点是否可达
+//two loops枚举所有两个点组合，用并查集p[i]来更新父亲
+//最后one loops遍历一遍有几个结点的p[i]==i,就说明需要几个光盘
+```
+
+##### [珍珠(bead)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1384)
+
+```cpp
+//读入的时候，dp[a][b]=1，表示a比b大
+//跑floyd，得到所有两两关系
+//two loops枚举两点，统计对于每个点，有多少个点比自己大，有多少个点比自己小
+if ((cnt[i] >= (n+1)/2) || (cnt2[i] >= (n+1)/2)) res++;
+```
+
+##### [【例4-7】亲戚(relation)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1346)
+
+```cpp
+//并查集
+//只能通过90分，网上的题解也不能AC
+//网站上还是有2500多人AC的【待办】
+```
+
+##### [【例4-8】格子游戏](http://ybt.ssoier.cn:8088/problem_show.php?pid=1347)
+
+```cpp
+//并查集
+//二维转一维的操作(x = (a - 1) * n + b;)
+//两个点是否在一个集合里，如何在，那么连上就成圈了
+//整个看成一个图，容易理解
+```
+
+##### [团伙(group)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1385)
+
+```cpp
+//并查集
+//1、我朋友的朋友是我的朋友；2、我敌人的敌人是我的朋友；
+//使用vector<int> h[N]存储每个点的所有敌人，类似开放链
+//当读到两个人是敌人，就枚举一遍已有的敌人，敌人的敌人是朋友，建立起朋友关系
+//最后看p[N]中有几个祖宗，可以用set<int>进行统计
+```
+
+##### [打击犯罪(black)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1386)
+
+```cpp
+//并查集
+//p[N]维护祖先，son[N]维护子树大小
+//所有有关系的团队，都是编号大的向编号小的合并，合并的时候，更新子树大小
+//最后把son[k]>n/2的干掉，1...k都干掉（从n往1遍历找到一个满足条件的i就是答案）
+```
+
+##### [搭配购买(buy)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1387)
+
+```cpp
+//并查集+01背包（题意不是只可以买一个集合的，可以买多个集合的，要考虑到这些）
+//并查集维护出来每一个集合的体积和，价值和
+//然后对这些体积和，价值和，进行01背包，求max
+```
+
+##### [家谱(gen)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1388)
+
+```cpp
+//并查集
+//用map<string, string> p;维护祖先关系
+```
+
+##### [亲戚](http://ybt.ssoier.cn:8088/problem_show.php?pid=1389)
+
+```cpp
+//并查集
+//p[N]维护祖先, son[N]维护子树大小
+```
+
+##### [食物链【NOI2001】](http://ybt.ssoier.cn:8088/problem_show.php?pid=1390)
+
+```cpp
+//三类动物的食物链构成了有趣的环形。A吃B， B吃C，C吃A
+//此题精华：知道每个点和根结点的关系,就能知道每个点之间的关系
+//到根结点距离是1，可以吃根
+//到根结点距离是2，可以被根吃
+//到根结点距离是3，与根同类
+
+//在一个组织里，求两人之间的距离，只需要知道和领袖之间的距离
+//d[x],d[y]的差值，看mod 3的值，来分析吃与被吃的关系
+
+//部分示例代码
+if (op == 1){
+	if (px == py && ((d[x] - d[y])%3 != 0)) res++;
+	else if (px != py){		
+        p[px] = py;
+		d[px] = d[y] - d[x];
+	}
+}
+
+int find(int x)
+{
+	if (p[x] != x){
+		int t = find(p[x]);
+		d[x] += d[p[x]];  //递归的加上每一个前辈的距离，就是到祖先的距离
+		p[x] = t;
+	}
+	return p[x];
+}
+```
+
+##### [ 【例4-9】城市公交网建设问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1348)
+
+```cpp
+//n<=100, MST
+//kruscal，取边的时候，维护到答案里
+```
+
+##### [【例4-10】最优布线问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1349)
+
+```cpp
+//n<=100, MST
+//prim
+```
+
+##### [【例4-11】最短网络(agrinet)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1350)
+
+```cpp
+//n<=100, MST
+//prim
+```
+
+##### [【例4-12】家谱树](http://ybt.ssoier.cn:8088/problem_show.php?pid=1351)
+
+```cpp
+//topsort
+```
+
+##### [局域网(net)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1391)
+
+```cpp
+//n<=100, MST
+//prim
+```
+
+##### [繁忙的都市(city)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1392)
+
+```cpp
+//边长进行排序(greedy)，做并查集
+//维护选出了几条道路，分值最大的那条道路的分值
+```
+
+##### [联络员(liaison)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1393)
+
+```cpp
+//通讯渠道分为两类，一类必选，一类选择性选择
+//必选都选上，维护res，维护并查集关系
+//然后选择性边排序(greedy)，做并查集
+```
+
+##### [ 连接格点(grid)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1394)
+
+```cpp
+//二维转一维的操作
+//优先对纵向(花费1)做并查集，然后对横向(花费2)做并查集
+```
+
+##### [【例4-13】奖金](http://ybt.ssoier.cn:8088/problem_show.php?pid=1352)
+
+```cpp
+//满足各位代表的意见，且同时使得总奖金数最少
+//反向建边，add(b, a); in[a]++, 进行topsort
+//反向处理的时候，后一结点比前一结点花费多1(员工a的奖金应该比b高)
+```
+
+##### [烦人的幻灯片(slides)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1395)
+
+```cpp
+//幻灯片用字母表示
+//每个数字的位置读入后，判断都在哪些字母范围内
+//建边g[j][i] = 1; //字母j到数字i有边，同时，维护好in[i]，数字的度数
+//这样就形成了一个两个集合的映射关系，从数字度数为1的，进行topsort
+//topsort(u)，查找和数字u有关系的字母i，紧接着看那些数字j和字母i有关系
+//把边抹掉，in[j]--。如果in[j]==1，topsort(j)
+```
+
+##### [ 病毒(virus)](http://ybt.ssoier.cn:8088/problem_show.php?pid=1396)
+
+```cpp
+//病毒污染了字典，把字母换成了另外一个字母，但是相对顺序没有改变
+//给了多个字符串，读入后，维护起来污染后字母的相对顺序，然后做topsort
+//做topsort的时候，维护好d[i]，存的是原字母相对于a的偏移
+//遍历一遍d[i]，维护map<char, char>
+//对要翻译的字符串进行处理，如果遇到没有翻译的字符，就是字典不全
+```
+

@@ -14,59 +14,83 @@
 
 ###### [【例8.2】细胞](http://ybt.ssoier.cn:8088/problem_show.php?pid=1329)
 
-Flood Fill
+```cpp
+//Flood Fill
+```
 
 ###### [【例8.3】最少步数](http://ybt.ssoier.cn:8088/problem_show.php?pid=1330)
 
-棋盘问题，最短路
+```cpp
+//棋盘问题，最短路
+```
 
 ###### [Dungeon Master](http://ybt.ssoier.cn:8088/problem_show.php?pid=1248)
 
-棋盘问题，三维迷宫
+```cpp
+//棋盘问题，最短路
+```
 
 ###### [Lake Counting](http://ybt.ssoier.cn:8088/problem_show.php?pid=1249)
 
-Flood Fill
+```cpp
+//Flood Fill
+```
 
 ###### [ The Castle](http://ybt.ssoier.cn:8088/problem_show.php?pid=1250)
 
-Flood Fill，位运算
+```cpp
+//Flood Fill，位运算
+```
 
 ###### [仙岛求药](http://ybt.ssoier.cn:8088/problem_show.php?pid=1251)
 
-棋盘问题，最短路，多组测试数据
+```cpp
+//棋盘问题，最短路，多组测试数据
+```
 
 ###### [走迷宫](http://ybt.ssoier.cn:8088/problem_show.php?pid=1252)
 
-棋盘问题，最短路，一组测试数据
+```cpp
+//棋盘问题，最短路，一组测试数据
+```
 
 ###### [ 抓住那头牛](http://ybt.ssoier.cn:8088/problem_show.php?pid=1253)
 
-最短路问题，问题空间转换为数轴上运动
+```cpp
+//最短路问题，问题空间转换为数轴上运动
+```
 
 ###### [走出迷宫](http://ybt.ssoier.cn:8088/problem_show.php?pid=1254)
 
-棋盘问题，最短路
+```cpp
+//棋盘问题，最短路
+```
 
 ###### [迷宫问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1255)
 
-棋盘问题，打印路径
+```cpp
+//棋盘问题，打印路径
+```
 
 ###### [献给阿尔吉侬的花束](http://ybt.ssoier.cn:8088/problem_show.php?pid=1256)
 
-棋盘问题，最短路，T组数据
+```cpp
+//棋盘问题，最短路，T组数据
+```
 
 ###### [Knight Moves](http://ybt.ssoier.cn:8088/problem_show.php?pid=1257)
 
-棋盘问题，最短路，8个方位
-
-
+```cpp
+//棋盘问题，最短路，8个方位
+```
 
 ### 《517》题目
 
 ###### [拼图游戏](https://517coding.com/p/3710)
 
-对拼图的编码，解码，开哈希，移动拼图的模拟。此题能够独立写出来，标志这bfs过关
+```cpp
+//对拼图的编码，解码，开哈希，移动拼图的模拟。此题能够独立写出来，标志这bfs过关
+```
 
 类似的题目有：
 
@@ -74,8 +98,12 @@ Flood Fill，位运算
 
 ###### [营救计划](https://517coding.com/p/3730)
 
-迷宫问题，遇到守卫还是道路分类讨论
+```cpp
+//迷宫问题，遇到守卫还是道路分类讨论
+```
 
 ###### [倒酒](https://517coding.com/p/3740)
 
-锻炼问题状态的理解，三个酒杯的状态表述，模拟三个酒杯互相倒酒的枚举过程。一道好题。
+```cpp
+//锻炼问题状态的理解，三个酒杯的状态表述，模拟三个酒杯互相倒酒的枚举过程。一道好题。
+```

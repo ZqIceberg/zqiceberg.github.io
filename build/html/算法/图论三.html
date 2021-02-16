@@ -1,0 +1,521 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>19. graph图论(三) &mdash; 信息学奥赛普及组算法21天突破 0.7.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Windows环境下的操作" href="../%E7%BB%8F%E9%AA%8C/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html" />
+    <link rel="prev" title="18. graph图论(二)" href="%E5%9B%BE%E8%AE%BA%E4%BA%8C.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 信息学奥赛普及组算法21天突破
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">一、普及组算法部分</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="%E5%BA%8F%E8%A8%80.html">1. preface序言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.html">2. time complexity时间复杂度</a></li>
+<li class="toctree-l1"><a class="reference internal" href="STL.html">3. data structure(STL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html">4. high accuracy高精度</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%8E%92%E5%BA%8F.html">5. sortings排序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E6%8E%A8.html">6. recursion 递推</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E5%BD%92.html">7. recursive 递归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html">8. complete search and backtracking 搜索与回溯</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E8%B4%AA%E5%BF%83.html">9. greedy algorithm 贪心</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%88%86%E6%B2%BB.html">10. divide and conquer分治</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">11. bfs宽度优先搜索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html">12. dp动态规划</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A0%88.html">13. stack栈</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%98%9F%E5%88%97.html">14. queue队列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A0%91%E4%B8%80.html">15. trees树(一)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A0%91%E4%BA%8C.html">16. trees树(二)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%B8%80.html">17. graph图论(一)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%BA%8C.html">18. graph图论(二)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">19. graph图论(三)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#spanning-trees">19.1. Spanning trees生成树(连通+无环)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kruskals-algorithm">19.2. Kruskal’s algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#union-find-structure">19.3. Union-find structure并查集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prims-algorithm">19.4. Prim’s algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">19.5. 最小生成树知识结构图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#directed-graphs">19.6. Directed graphs有向图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#topological-sorting">19.7. Topological sorting拓扑序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dynamic-programming">19.8. Dynamic programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#counting-the-number-of-paths">19.9. Counting the number of paths(统计方案数)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extending-dijkstras-algorithm-dijkstra-dp">19.10. Extending Dijkstra’s algorithm(对dijkstra得到的最短路径，使用dp)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#representing-problems-as-graphs">19.11. Representing problems as graphs(背包问题转化到图上)</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">二、计算机使用教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">1. Windows环境下的操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/macOS%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">2. macOS环境下的操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%BB%A3%E7%A0%81%E7%BB%8F%E9%AA%8C.html">3. 代码经验</a></li>
+</ul>
+<p class="caption"><span class="caption-text">三、C++语言部分</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%E8%AF%AD%E6%B3%95/endl.html">1. end and flushing the buffer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E8%AF%AD%E6%B3%95/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA.html">2. 输入输出</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">信息学奥赛普及组算法21天突破</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><span class="section-number">19. </span>graph图论(三)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/算法/图论三.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="graph">
+<h1><span class="section-number">19. </span>graph图论(三)<a class="headerlink" href="#graph" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="spanning-trees">
+<h2><span class="section-number">19.1. </span>Spanning trees生成树(连通+无环)<a class="headerlink" href="#spanning-trees" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>spanning tree</strong> of a graph consists of all nodes of the graph and some of the edges of the graph so that there is a path between any two nodes. Like trees in general, spanning trees are <strong>connected(连通的) and acyclic(无环)</strong>. Usually there are several ways to construct a spanning tree.</p>
+<p>A <strong>minimum spanning tree</strong> is a spanning tree whose weight is as small as possible.</p>
+<p>In a similar way, a <strong>maximum spanning tree</strong> is a spanning tree whose weight is as large as possible.</p>
+<center><p><img alt="../_images/image-20210215234254997.png" src="../_images/image-20210215234254997.png" /></p>
+</center></div>
+<div class="section" id="kruskals-algorithm">
+<h2><span class="section-number">19.2. </span>Kruskal’s algorithm<a class="headerlink" href="#kruskals-algorithm" title="Permalink to this headline">¶</a></h2>
+<p>In <strong>Kruskal’s algorithm</strong>, the initial spanning tree only contains the nodes of the graph and does not contain any edges. Then the algorithm goes through the edges ordered by their weights, and always adds an edge to the tree if it does not create a cycle.</p>
+<p>The algorithm maintains the components of the tree. Initially, each node of the graph belongs to a separate component. Always when an edge is added to the tree, two components are joined. Finally, all nodes belong to the same component, and a minimum spanning tree has been found.</p>
+<center><img src="../media/image-20210215234148640.png" alt="" style="zoom:50%;" /></center><p>The first step of the algorithm is to sort the edges in increasing order of their weights. The result is the following list:</p>
+<center><img src="../media/image-20210215234416217.png" alt="" style="zoom:50%;" /></center><p>After this, the algorithm goes through the list and adds each edge to the tree if it joins two separate components.Initially, each node is in its own component:</p>
+<center><img src="../media/image-20210215234454330.png" alt="" style="zoom:50%;" /></center><p>The first edge to be added to the tree is the edge 5–6 that creates a component {5,6} by joining the components {5} and {6}.</p>
+<center><img src="../media/image-20210215234612131.png" alt="" style="zoom:50%;" /></center><p>After this, the edges 1–2, 3–6 and 1–5 are added in a similar way.</p>
+<center><img src="../media/image-20210215234701399.png" alt="" style="zoom:50%;" /></center><p>After those steps, most components have been joined and there are two components in the tree: {1,2,3,5,6} and {4}.</p>
+<p>The next edge in the list is the edge 2–3, but it will not be included in the tree, because nodes 2 and 3 are already in the same component. For the same reason, the edge 2–5 will not be included in the tree.</p>
+<p>Finally, the edge 4–6 will be included in the tree:</p>
+<center><img src="../media/image-20210215234754141.png" alt="" style="zoom:50%;" /></center><p>After this, the algorithm will not add any new edges, because the graph is connected and there is a path between any two nodes. The resulting graph is a minimum spanning tree with weight 2+3+3+5+7=20.</p>
+<p><strong>Why does this work?</strong></p>
+<p>It is a good question why Kruskal’s algorithm works. Why does the greedy strategy guarantee that we will find a minimum spanning tree?</p>
+<p>Let us see what happens if the minimum weight edge of the graph is <em>not</em> included in the spanning tree. For example, suppose that a spanning tree for the previous graph would not contain the minimum weight edge 5–6. We do not know the exact structure of such a spanning tree, but in any case it has to contain some edges. Assume that the tree would be as follows:</p>
+<center><img src="../media/image-20210215234901597.png" alt="" style="zoom:50%;" /></center><p>However, it is not possible that the above tree would be a minimum spanning tree for the graph. The reason for this is that we can remove an edge from the tree and replace it with the minimum weight edge 5–6. This produces a spanning tree whose weight is <em>smaller</em>:</p>
+<center><img src="../media/image-20210215234938432.png" alt="" style="zoom:50%;" /></center><p>For this reason, it is always optimal to include the minimum weight edge in the tree to produce a minimum spanning tree. Using a similar argument, we can show that it is also optimal to add the next edge in weight order to the tree, and so on. Hence, Kruskal’s algorithm works correctly and always produces a minimum spanning tree.</p>
+<p><strong>Implementation</strong></p>
+<p>When implementing Kruskal’s algorithm, it is convenient to use the edge list representation of the graph. The first phase of the algorithm sorts the edges in the list in <em><em><em>O</em>(<em>m</em>log</em>m</em>)** time. After this, the second phase of the algorithm builds the minimum spanning tree as follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(...)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">same</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span> <span class="n">unite</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We will solve the problem using a union-find structure that implements both functions in **<em>O</em>(log <em>n</em>) **time. Thus, the time complexity of Kruskal’s algorithm will be **<em>O</em>(<em>m</em> log <em>n</em>) **after sorting the edge list.</p>
+<blockquote>
+<div><p>此处，O(mlogm), O(mlogn)都是对的</p>
+</div></blockquote>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//示例代码</span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">200010</span><span class="p">;</span><span class="c1">//SE问题，也可能出现在这里，一般就是边界问题</span>
+
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">p</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+
+<span class="k">struct</span> <span class="n">Edge</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">;</span>
+
+    <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span> <span class="p">(</span><span class="k">const</span> <span class="n">Edge</span> <span class="o">&amp;</span><span class="n">W</span><span class="p">)</span><span class="k">const</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">w</span> <span class="o">&lt;</span> <span class="n">W</span><span class="p">.</span><span class="n">w</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="n">edges</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+
+<span class="kt">int</span> <span class="nf">find</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">!=</span> <span class="n">x</span><span class="p">)</span> <span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">]);</span>
+    <span class="k">return</span> <span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>   
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">;</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">w</span><span class="p">);</span>
+        <span class="n">edges</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="c1">//直接写kruscal, 不用把他单独包起来了</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="n">edges</span> <span class="o">+</span> <span class="n">m</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">edges</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">edges</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">b</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">edges</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">w</span><span class="p">;</span>
+
+        <span class="n">a</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">b</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">p</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="n">w</span><span class="p">;</span><span class="c1">//最小生成树，所有树边的权重之和</span>
+            <span class="n">cnt</span><span class="o">++</span><span class="p">;</span> <span class="c1">//当前加了多少条边</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">cnt</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="n">puts</span><span class="p">(</span><span class="s">&quot;impossible&quot;</span><span class="p">);</span>
+    <span class="k">else</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="union-find-structure">
+<h2><span class="section-number">19.3. </span>Union-find structure并查集<a class="headerlink" href="#union-find-structure" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>union-find structure</strong> maintains a collection of sets. The sets are disjoint, so no element belongs to more than one set. Two <em><em><em>O</em>(log</em>n</em>)** time operations are supported: the unite operation joins two sets, and the find operation finds the representative of the set that contains a given element.</p>
+<p><strong>structure数据结构</strong></p>
+<p>In a union-find structure, one element in each set is the representative of the set, and there is a chain from any other element of the set to the representative. For example, assume that the sets are {1,4,7}, {5} and {2,3,6,8}:</p>
+<center><img src="../media/image-20210215235633819.png" alt="" style="zoom:50%;" /></center><p>In this case the representatives of the sets are 4, 5 and 2. We can find the representative of any element by following the chain that begins at the element. For example, the element 2 is the representative for the element 6, because we follow the chain 6 → 3 → 2. Two elements belong to the same set exactly when their representatives are the same.</p>
+<p>Two sets can be joined by connecting the representative of one set to the representative of the other set. For example, the sets {1,4,7} and {2,3,6,8} can be joined as follows:</p>
+<center><img src="../media/image-20210215235745779.png" alt="" style="zoom:50%;" /></center><p>The resulting set contains the elements {1,2,3,4,6,7,8}. From this on, the element 2 is the representative for the entire set and the old representative 4 points to the element 2.</p>
+<p>The efficiency of the union-find structure depends on how the sets are joined. It turns out that we can follow a simple strategy: always connect the representa- tive of the <em>smaller</em> set to the representative of the <em>larger</em> set (or if the sets are of equal size, we can make an arbitrary choice). Using this strategy, the length of any chain will be <em><em><em>O</em>(log</em>n</em>)**, so we can find the representative of any element efficiently by following the corresponding chain.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//初始化</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+
+<span class="c1">//合并</span>
+<span class="n">p</span><span class="p">[</span><span class="n">find</span><span class="p">(</span><span class="n">a</span><span class="p">)]</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>  
+<span class="c1">//或者</span>
+<span class="kt">int</span> <span class="n">pa</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">pb</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">pa</span> <span class="o">!=</span> <span class="n">pb</span><span class="p">)</span> <span class="n">p</span><span class="p">[</span><span class="n">pa</span><span class="p">]</span> <span class="o">=</span> <span class="n">pb</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">find</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>  <span class="c1">//返回x的祖宗结点+路径压缩</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">!=</span> <span class="n">x</span><span class="p">)</span> <span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">]);</span>
+    <span class="k">return</span> <span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//另外一份模板</span>
+<span class="c1">//the array link contains for each element the next element in the chain or the element itself if it is a representative, and the array size indicates for each representative the size of the corresponding set.</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">link</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">size</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">unite</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">size</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">[</span><span class="n">b</span><span class="p">])</span> <span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+    <span class="n">size</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">+=</span> <span class="n">size</span><span class="p">[</span><span class="n">b</span><span class="p">];</span>
+    <span class="n">link</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="prims-algorithm">
+<h2><span class="section-number">19.4. </span>Prim’s algorithm<a class="headerlink" href="#prims-algorithm" title="Permalink to this headline">¶</a></h2>
+<p><strong>rim’s algorithm</strong> is an alternative method for finding a minimum spanning tree. The algorithm first adds an arbitrary node to the tree. After this, the algorithm always chooses a minimum-weight edge that adds a new node to the tree. Finally, all nodes have been added to the tree and a minimum spanning tree has been found.</p>
+<p>Prim’s algorithm resembles Dijkstra’s algorithm. The difference is that Dijkstra’s algorithm always selects an edge whose distance from the starting node is minimum, but Prim’s algorithm simply selects the minimum weight edge that adds a new node to the tree.</p>
+<p>Let us consider how Prim’s algorithm works in the following graph:</p>
+<center><img src="../media/image-20210216001138719.png" alt="" style="zoom:50%;" /></center><p>Initially, there are no edges between the nodes:</p>
+<center><img src="../media/image-20210216001202630.png" alt="" style="zoom:50%;" /></center><p>An arbitrary node can be the starting node, so let us choose node 1. First, we add node 2 that is connected by an edge of weight 3:</p>
+<center><img src="../media/image-20210216001230334.png" alt="" style="zoom:50%;" /></center><p>After this, there are two edges with weight 5, so we can add either node 3 or node 5 to the tree. Let us add node 3 first:</p>
+<center><img src="../media/image-20210216001256424.png" alt="" style="zoom:50%;" /></center><p>The process continues until all nodes have been included in the tree:</p>
+<center><img src="../media/image-20210216001336372.png" alt="" style="zoom:50%;" /></center><p><strong>Implementation</strong></p>
+<p>Like Dijkstra’s algorithm, Prim’s algorithm can be efficiently implemented using a priority queue. The priority queue should contain all nodes that can be connected to the current component using a single edge, in increasing order of the weights of the corresponding edges.</p>
+<p>The time complexity of Prim’s algorithm is <em><em><em>O</em>(<em>n</em>+<em>m</em>log</em>m</em>)** that equals the time complexity of Dijkstra’s algorithm. In practice, Prim’s and Kruskal’s algorithms are both efficient, and the choice of the algorithm is a matter of taste. Still, most competitive programmers use Kruskal’s algorithm.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//示例代码</span>
+<span class="cp">#include</span> <span class="cpf">&lt;cstring&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">510</span><span class="p">,</span> <span class="n">INF</span> <span class="o">=</span> <span class="mh">0x3f3f3f3f</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">g</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">dist</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+<span class="kt">bool</span> <span class="n">st</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+
+<span class="kt">int</span> <span class="nf">prim</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="mh">0x3f</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">dist</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">st</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">t</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">||</span> <span class="n">dist</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">dist</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+                <span class="n">t</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&amp;&amp;</span> <span class="n">dist</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">INF</span><span class="p">)</span> <span class="k">return</span> <span class="n">INF</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="n">res</span> <span class="o">+=</span> <span class="n">dist</span><span class="p">[</span><span class="n">t</span><span class="p">];</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="n">dist</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">g</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+        <span class="n">st</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span> 
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+
+    <span class="n">memset</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="mh">0x3f</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">g</span><span class="p">);</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="n">m</span><span class="o">--</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+        <span class="n">g</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">],</span> <span class="n">c</span><span class="p">);</span>  <span class="c1">//无向图是一种特殊的有向图</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="n">prim</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">t</span> <span class="o">==</span> <span class="n">INF</span><span class="p">)</span> <span class="n">puts</span><span class="p">(</span><span class="s">&quot;impossible&quot;</span><span class="p">);</span>  <span class="c1">//当前到大距离最小的点的距离都是INF，那就说明图是不连通的</span>
+    <span class="k">else</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">19.5. </span>最小生成树知识结构图<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<center><p><img alt="../_images/image-20210216002511545.png" src="../_images/image-20210216002511545.png" /></p>
+</center><p>from yxc</p>
+</div>
+<div class="section" id="directed-graphs">
+<h2><span class="section-number">19.6. </span>Directed graphs有向图<a class="headerlink" href="#directed-graphs" title="Permalink to this headline">¶</a></h2>
+<p>概念：</p>
+<ul class="simple">
+<li><p><strong>Acyclic graphs</strong>: There are no cycles in the graph, so there is no path from any node to itself.</p></li>
+<li><p><strong>Successor graphs</strong>: The outdegree of each node is 1, so each node has a unique successor.</p></li>
+<li><p>Directed acyclic graphs are sometimes called <strong>DAG</strong>s.(DAG, 有向无环图)</p></li>
+</ul>
+</div>
+<div class="section" id="topological-sorting">
+<h2><span class="section-number">19.7. </span>Topological sorting拓扑序<a class="headerlink" href="#topological-sorting" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>topological sort</strong> is an ordering of the nodes of a directed graph such that if there is a path from node <em>a</em> to node <em>b</em>, then node <em>a</em> appears before node <em>b</em> in the ordering. For example, for the graph one topological sort is [4,1,5,2,3,6]:</p>
+<center><img src="../media/image-20210216130114946.png" alt="" style="zoom:50%;" /></center><p>An acyclic graph always has a topological sort. However, if the graph contains a cycle, it is not possible to form a topological sort, because no node of the cycle can appear before the other nodes of the cycle in the ordering. It turns out that depth-first search can be used to both check if a directed graph contains a cycle and, if it does not contain a cycle, to construct a topological sort.</p>
+<blockquote>
+<div><p>topsort就是有向图的宽度优先遍历的应用
+拓扑序，不唯一。如要要字典序最小的拓扑序，在遍历入度为0的点的时候，从1开始遍历，并入队</p>
+</div></blockquote>
+</div>
+<div class="section" id="dynamic-programming">
+<h2><span class="section-number">19.8. </span>Dynamic programming<a class="headerlink" href="#dynamic-programming" title="Permalink to this headline">¶</a></h2>
+<p>If a directed graph is acyclic, dynamic programming can be applied to it. For example, we can efficiently solve the following problems concerning paths from a starting node to an ending node:</p>
+<ul class="simple">
+<li><p>how many different paths are there?</p></li>
+<li><p>what is the shortest/longest path?</p></li>
+<li><p>what is the minimum/maximum number of edges in a path?</p></li>
+<li><p>which nodes certainly appear in any path?</p></li>
+</ul>
+</div>
+<div class="section" id="counting-the-number-of-paths">
+<h2><span class="section-number">19.9. </span>Counting the number of paths(统计方案数)<a class="headerlink" href="#counting-the-number-of-paths" title="Permalink to this headline">¶</a></h2>
+<p>As an example, let us calculate the number of paths from node 1 to node 6 in the following graph:</p>
+<center><img src="../media/image-20210216130854576.png" alt="" style="zoom:50%;" /></center><p>There are a total of three such paths:</p>
+<p>• 1→2→3→6
+• 1→4→5→2→3→6
+• 1→4→5→3→6</p>
+<p>Let paths(<em>x</em>) denote the number of paths from node 1 to node <em>x</em>. As a base case, paths(1) = 1. Then, to calculate other values of paths(<em>x</em>), we may use the recursion where <em>a</em>1,<em>a</em>2,…,<em>ak</em> are the nodes from which there is an edge to <em>x</em>. Since the graph is acyclic, the values of paths(<em>x</em>) can be calculated in the order of a topological sort. A topological sort for the above graph is as follows:</p>
+<center><img src="../media/image-20210216131000068.png" alt="" style="zoom:50%;" /><img src="../media/image-20210216131022856.png" alt="" style="zoom:50%;" /><img src="../media/image-20210216131038004.png" alt="" style="zoom:50%;" /></center><p>For example, to calculate the value of paths(3), we can use the formula paths(2) + paths(5), because there are edges from nodes 2 and 5 to node 3. Since paths(2) = 2 and paths(5) = 1, we conclude that paths(3) = 3.</p>
+</div>
+<div class="section" id="extending-dijkstras-algorithm-dijkstra-dp">
+<h2><span class="section-number">19.10. </span>Extending Dijkstra’s algorithm(对dijkstra得到的最短路径，使用dp)<a class="headerlink" href="#extending-dijkstras-algorithm-dijkstra-dp" title="Permalink to this headline">¶</a></h2>
+<p>A by-product of Dijkstra’s algorithm is a directed, acyclic graph that indicates for each node of the original graph the possible ways to reach the node using a shortest path from the starting node. Dynamic programming can be applied to that graph. For example, in the graph the shortest paths from node 1 may use the following edges:</p>
+<center><img src="../media/image-20210216131252497.png" alt="" style="zoom:50%;" /></center><p>Now we can, for example, calculate the number of shortest paths from node 1 to node 5 using dynamic programming:</p>
+<center><img src="../media/image-20210216131326849.png" alt="" style="zoom:50%;" /></center></div>
+<div class="section" id="representing-problems-as-graphs">
+<h2><span class="section-number">19.11. </span>Representing problems as graphs(背包问题转化到图上)<a class="headerlink" href="#representing-problems-as-graphs" title="Permalink to this headline">¶</a></h2>
+<p>Actually, any dynamic programming problem can be represented as a directed, acyclic graph. In such a graph, each node corresponds to a dynamic programming state and the edges indicate how the states depend on each other.</p>
+<p>As an example, consider the problem of forming a sum of money <em>n</em> using coins {<em>c</em>1,<em>c</em>2,…,<em>c</em>k}. In this problem, we can construct a graph where each node corresponds to a sum of money, and the edges show how the coins can be chosen. For example, for coins {1, 3, 4} and <em>n</em> = 6, the graph is as follows:</p>
+<center><img src="../media/image-20210216131420225.png" alt="" style="zoom:50%;" /></center><p>Using this representation, the shortest path from node 0 to node <em>n</em> corresponds to a solution with the minimum number of coins, and the total number of paths from node 0 to node <em>n</em> equals the total number of solutions.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../%E7%BB%8F%E9%AA%8C/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html" class="btn btn-neutral float-right" title="1. Windows环境下的操作" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%E5%9B%BE%E8%AE%BA%E4%BA%8C.html" class="btn btn-neutral float-left" title="18. graph图论(二)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, zqiceberg.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
