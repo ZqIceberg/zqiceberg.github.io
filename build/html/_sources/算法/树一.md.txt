@@ -42,13 +42,14 @@ void dfs(int s, int e) { //e代表父亲节点
 The function is given two parameters: the current node *s* and the previous node *e*. The purpose of the parameter *e* is to make sure that the search only moves to nodes that have not been visited yet.
 
 ```cpp
-//In the first call e = 0, because there is no previous node, and it is allowed to proceed to any direction in the tree.
+//In the first call e = 0, because there is no previous node, 
+//and it is allowed to proceed to any direction in the tree.
 	dfs(x, 0);
 ```
 
 
 
-### Dynamic programming使用dp求子树大小
+**Dynamic programming使用dp求子树大小(应用)**
 
 Dynamic programming can be used to calculate some information during a tree traversal. Using dynamic programming, we can, for example, calculate in *O*(*n*) time for each node of a rooted tree the number of nodes in its subtree or the length of the longest path from the node to a leaf.
 
@@ -81,9 +82,9 @@ Note that there may be several maximum-length paths. In the above path, we could
 
 Next we will discuss two ***O*(*n*)** time algorithms for calculating the diameter of a tree. The first algorithm is based on dynamic programming, and the second algorithm uses two depth-first searches.
 
-**Algorithm 1**
+##### **Algorithm 1**
 
-**A general way to approach many tree problems is to first root the tree arbitrarily. After this, we can try to solve the problem separately for each subtree. **Our first algorithm for calculating the diameter is based on this idea.
+**A general way to approach many tree problems is to first root the tree arbitrarily. After this, we can try to solve the problem separately for each subtree.**  Our first algorithm for calculating the diameter is based on this idea.
 
 An important observation is that every path in a rooted tree has a *highest point*: the highest node that belongs to the path. Thus, we can calculate for each node the length of the longest path whose highest point is the node. One of those paths corresponds to the diameter of the tree.
 
@@ -97,12 +98,12 @@ For example, in the following tree, node 1 is the highest point on the path that
 
 We calculate for each node *x* two values:
 
-* toLeaf(*x*): the maximum length of a path from *x* to any leaf
-* maxLength(*x*): the maximum length of a path whose highest point is *x*
+* **toLeaf(*x*): **the maximum length of a path from *x* to any leaf
+* **maxLength(*x*):** the maximum length of a path whose highest point is *x*
 
 For example, in the above tree, toLeaf(1) = 2, because there is a path 1 → 2 → 6, and maxLength(1)=4, because there is a path 6→2→1→4→7. In this case, maxLength(1) equals the diameter.
 
-Dynamic programming can be used to calculate the above values for all nodes in *O*(*n*) time. First, to calculate toLeaf(*x*), we go through the children of *x*, choose a child *c* with maximum toLeaf(*c*) and add one to this value. Then, to calculate maxLength(*x*), we choose two distinct children *a* and *b* such that the sum toLeaf(*a*) + toLeaf(*b*) is maximum and add two to this sum.
+Dynamic programming can be used to calculate the above values for all nodes in ***O*(*n*)** time. First, to calculate toLeaf(*x*), we go through the children of *x*, choose a child *c* with maximum toLeaf(*c*) and add one to this value. Then, to calculate maxLength(*x*), we choose two distinct children *a* and *b* such that the sum toLeaf(*a*) + toLeaf(*b*) is maximum and add two to this sum.
 
 ```cpp
 //类似floyd呢
@@ -111,7 +112,7 @@ Dynamic programming can be used to calculate the above values for all nodes in *
 
 
 
-**Algorithm 2**
+##### **Algorithm 2 两次dfs**
 
 Another efficient way to calculate the diameter of a tree is based on two depth- first searches. First, we choose an arbitrary node *a* in the tree and find the farthest node *b* from *a*. Then, we find the farthest node *c* from *b*. The diameter of the tree is the distance between *b* and *c*.
 
@@ -234,6 +235,8 @@ However, the situation is different if we only know the pre-order and post- orde
 ![](../media/image-20210204162024821.png)
 
 </center>
+
+一本通中有很多针对二叉树的题目，都是使用the technique of recursion，NOIP真题中有多道类似的题目，需要多加练习。
 
 
 

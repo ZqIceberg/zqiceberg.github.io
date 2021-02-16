@@ -1,12 +1,12 @@
 # graph图论(三)
 
-### Spanning trees生成树(连通+无环)
+### spanning tree生成树
 
 A **spanning tree** of a graph consists of all nodes of the graph and some of the edges of the graph so that there is a path between any two nodes. Like trees in general, spanning trees are **connected(连通的) and acyclic(无环)**. Usually there are several ways to construct a spanning tree.
 
-A **minimum spanning tree** is a spanning tree whose weight is as small as possible. 
+A **minimum spanning tree(最小生成树)** is a spanning tree whose weight is as small as possible. 
 
-In a similar way, a **maximum spanning tree** is a spanning tree whose weight is as large as possible. 
+In a similar way, a **maximum spanning tree(最大生成树)** is a spanning tree whose weight is as large as possible. 
 
 <center>
 
@@ -16,7 +16,7 @@ In a similar way, a **maximum spanning tree** is a spanning tree whose weight is
 
 
 
-### Kruskal’s algorithm
+##### Kruskal’s algorithm
 
 In **Kruskal’s algorithm**, the initial spanning tree only contains the nodes of the graph and does not contain any edges. Then the algorithm goes through the edges ordered by their weights, and always adds an edge to the tree if it does not create a cycle.
 
@@ -24,39 +24,39 @@ The algorithm maintains the components of the tree. Initially, each node of the 
 
 <center>
 
-<img src="../media/image-20210215234148640.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216151402775.png)
 
 </center>
 
 The first step of the algorithm is to sort the edges in increasing order of their weights. The result is the following list:
 
-<center>
-
-<img src="../media/image-20210215234416217.png" alt="" style="zoom:50%;" />
-
-</center>
+![](../media/image-20210216151430863.png)
 
 After this, the algorithm goes through the list and adds each edge to the tree if it joins two separate components.Initially, each node is in its own component:
 
 <center>
 
-<img src="../media/image-20210215234454330.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216151502142.png)
 
 </center>
+
+
 
 The first edge to be added to the tree is the edge 5–6 that creates a component {5,6} by joining the components {5} and {6}. 
 
 <center>
 
-<img src="../media/image-20210215234612131.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216151526339.png)
 
 </center>
+
+
 
 After this, the edges 1–2, 3–6 and 1–5 are added in a similar way.
 
 <center>
 
-<img src="../media/image-20210215234701399.png" alt="" style="zoom:50%;" />
+!![](../media/image-20210216151604215.png)
 
 </center>
 
@@ -68,7 +68,7 @@ Finally, the edge 4–6 will be included in the tree:
 
 <center>
 
-<img src="../media/image-20210215234754141.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216151629848.png)
 
 </center>
 
@@ -82,7 +82,7 @@ Let us see what happens if the minimum weight edge of the graph is *not* include
 
 <center>
 
-<img src="../media/image-20210215234901597.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216151652060.png)
 
 </center>
 
@@ -90,9 +90,11 @@ However, it is not possible that the above tree would be a minimum spanning tree
 
 <center>
 
-<img src="../media/image-20210215234938432.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216151715601.png)
 
 </center>
+
+
 
 For this reason, it is always optimal to include the minimum weight edge in the tree to produce a minimum spanning tree. Using a similar argument, we can show that it is also optimal to add the next edge in weight order to the tree, and so on. Hence, Kruskal’s algorithm works correctly and always produces a minimum spanning tree.
 
@@ -108,7 +110,7 @@ for (...) {
 
 We will solve the problem using a union-find structure that implements both functions in ***O*(log *n*) **time. Thus, the time complexity of Kruskal’s algorithm will be ***O*(*m* log *n*) **after sorting the edge list.
 
-> 此处，O(mlogm), O(mlogn)都是对的
+*此处，O(mlogm), O(mlogn)都是对的*
 
 ```cpp
 //示例代码
@@ -175,7 +177,9 @@ int main()
 }
 ```
 
-### Union-find structure并查集
+
+
+##### Union-find structure并查集
 
 A **union-find structure** maintains a collection of sets. The sets are disjoint, so no element belongs to more than one set. Two ***O*(log*n*)** time operations are supported: the unite operation joins two sets, and the find operation finds the representative of the set that contains a given element.
 
@@ -185,7 +189,7 @@ In a union-find structure, one element in each set is the representative of the 
 
 <center>
 
-<img src="../media/image-20210215235633819.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216151814427.png)
 
 </center>
 
@@ -195,7 +199,7 @@ Two sets can be joined by connecting the representative of one set to the repres
 
 <center>
 
-<img src="../media/image-20210215235745779.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216151746411.png)
 
 </center>
 
@@ -239,9 +243,9 @@ void unite(int a, int b) {
 
 
 
-### Prim’s algorithm
+##### Prim’s algorithm
 
-**rim’s algorithm** is an alternative method for finding a minimum spanning tree. The algorithm first adds an arbitrary node to the tree. After this, the algorithm always chooses a minimum-weight edge that adds a new node to the tree. Finally, all nodes have been added to the tree and a minimum spanning tree has been found.
+**Prim’s algorithm** is an alternative method for finding a minimum spanning tree. The algorithm first adds an arbitrary node to the tree. After this, the algorithm always chooses a minimum-weight edge that adds a new node to the tree. Finally, all nodes have been added to the tree and a minimum spanning tree has been found.
 
 Prim’s algorithm resembles Dijkstra’s algorithm. The difference is that Dijkstra’s algorithm always selects an edge whose distance from the starting node is minimum, but Prim’s algorithm simply selects the minimum weight edge that adds a new node to the tree.
 
@@ -249,7 +253,7 @@ Let us consider how Prim’s algorithm works in the following graph:
 
 <center>
 
-<img src="../media/image-20210216001138719.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216151843331.png)
 
 </center>
 
@@ -257,15 +261,17 @@ Initially, there are no edges between the nodes:
 
 <center>
 
-<img src="../media/image-20210216001202630.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216151901900.png)
 
 </center>
+
+
 
 An arbitrary node can be the starting node, so let us choose node 1. First, we add node 2 that is connected by an edge of weight 3:
 
 <center>
 
-<img src="../media/image-20210216001230334.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216151339300.png)
 
 </center>
 
@@ -273,17 +279,21 @@ After this, there are two edges with weight 5, so we can add either node 3 or no
 
 <center>
 
-<img src="../media/image-20210216001256424.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216151318466.png)
 
 </center>
+
+
 
 The process continues until all nodes have been included in the tree:
 
-<center>
 
-<img src="../media/image-20210216001336372.png" alt="" style="zoom:50%;" />
 
-</center>
+![](../media/image-20210216151257358.png)
+
+
+
+
 
 **Implementation**
 
@@ -353,7 +363,7 @@ int main()
 
 
 
-### 最小生成树知识结构图
+##### 最小生成树知识结构图
 
 <center>
 
@@ -377,15 +387,17 @@ from yxc
 
 
 
-### Topological sorting拓扑序
+##### Topological sorting拓扑序
 
 A **topological sort** is an ordering of the nodes of a directed graph such that if there is a path from node *a* to node *b*, then node *a* appears before node *b* in the ordering. For example, for the graph one topological sort is [4,1,5,2,3,6]:
 
 <center>
 
-<img src="../media/image-20210216130114946.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216150342706.png)
 
 </center>
+
+
 
 An acyclic graph always has a topological sort. However, if the graph contains a cycle, it is not possible to form a topological sort, because no node of the cycle can appear before the other nodes of the cycle in the ordering. It turns out that depth-first search can be used to both check if a directed graph contains a cycle and, if it does not contain a cycle, to construct a topological sort.
 
@@ -394,7 +406,7 @@ An acyclic graph always has a topological sort. However, if the graph contains a
 
 
 
-### Dynamic programming
+##### Dynamic programming
 
 If a directed graph is acyclic, dynamic programming can be applied to it. For example, we can efficiently solve the following problems concerning paths from a starting node to an ending node:
 
@@ -406,17 +418,17 @@ If a directed graph is acyclic, dynamic programming can be applied to it. For ex
 
 * which nodes certainly appear in any path?
 
-
-
-### Counting the number of paths(统计方案数)
+**Counting the number of paths(统计方案数)(应用)**
 
 As an example, let us calculate the number of paths from node 1 to node 6 in the following graph:
 
 <center>
 
-<img src="../media/image-20210216130854576.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216151203418.png)
 
 </center>
+
+
 
 There are a total of three such paths: 
 
@@ -428,37 +440,39 @@ Let paths(*x*) denote the number of paths from node 1 to node *x*. As a base cas
 
 <center>
 
-<img src="../media/image-20210216131000068.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216151053424.png)
 
+![](../media/image-20210216151109158.png)
 
-
-<img src="../media/image-20210216131022856.png" alt="" style="zoom:50%;" />
-
-<img src="../media/image-20210216131038004.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216151131635.png)
 
 </center>
 
+
+
 For example, to calculate the value of paths(3), we can use the formula paths(2) + paths(5), because there are edges from nodes 2 and 5 to node 3. Since paths(2) = 2 and paths(5) = 1, we conclude that paths(3) = 3.
 
-### Extending Dijkstra’s algorithm(对dijkstra得到的最短路径，使用dp)
+**Extending Dijkstra’s algorithm(对dijkstra得到的最短路径，使用dp)(应用)**
 
 A by-product of Dijkstra’s algorithm is a directed, acyclic graph that indicates for each node of the original graph the possible ways to reach the node using a shortest path from the starting node. Dynamic programming can be applied to that graph. For example, in the graph the shortest paths from node 1 may use the following edges:
 
 <center>
 
-<img src="../media/image-20210216131252497.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216151025797.png)
 
 </center>
+
+
 
 Now we can, for example, calculate the number of shortest paths from node 1 to node 5 using dynamic programming:
 
 <center>
 
-<img src="../media/image-20210216131326849.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216150922157.png)
 
 </center>
 
-### Representing problems as graphs(背包问题转化到图上)
+**Representing problems as graphs(背包问题转化到图上)(应用)**
 
 Actually, any dynamic programming problem can be represented as a directed, acyclic graph. In such a graph, each node corresponds to a dynamic programming state and the edges indicate how the states depend on each other.
 
@@ -466,8 +480,191 @@ As an example, consider the problem of forming a sum of money *n* using coins {*
 
 <center>
 
-<img src="../media/image-20210216131420225.png" alt="" style="zoom:50%;" />
+![](../media/image-20210216150755195.png)
 
 </center>
 
+
+
 Using this representation, the shortest path from node 0 to node *n* corresponds to a solution with the minimum number of coins, and the total number of paths from node 0 to node *n* equals the total number of solutions.
+
+
+
+##### Successor paths后继路径
+
+这里介绍successor paths是因为它引出了倍增的应用，需要学习倍增。noip普及组中，还没遇到successor paths的题目。
+
+In successor graphs, the outdegree of each node is 1, *i.e., exactly one edge starts at each node*. A successor graph consists of one or more components, each of which contains one cycle and some paths that lead to it.
+
+Successor graphs are sometimes called **functional graphs**. The reason for this is that any successor graph corresponds to a function that defines the edges of the graph. The parameter for the function is a node of the graph, and the function gives the successor of that node.
+
+![](../media/image-20210216153224535.png)
+
+![](../media/image-20210216153241697.png)
+
+Since each node of a successor graph has a unique successor, we can also define a function succ(*x*,*k*) that gives the node that we will reach if we begin at node *x* and walk *k* steps forward. For example, in the above graph succ(4, 6) = 2, because we will reach node 2 by walking 6 steps from node 4:
+
+![](../media/image-20210216153334833.png)
+
+A straightforward way to calculate a value of succ(*x*,*k*) is to start at node *x* and walk *k* steps forward, which takes ***O*(*k*)** time. However, using preprocessing, any value of succ(*x*, *k*) can be calculated in only ***O*(log *k*)** time.
+
+The idea is to precalculate all values of succ(*x*,*k*) where *k* is a power of two and at most *u*, where *u* is the maximum number of steps we will ever walk. This can be efficiently done, because we can use the following recursion:
+
+![](../media/image-20210216153434044.png)
+
+Precalculating the values takes ***O*(*n*log*u*)** time, because ***O*(log*u*)** values are calculated for each node. In the above graph, the first values are as follows:
+
+![](../media/image-20210216153224535.png)
+
+![](../media/image-20210216153626341.png)
+
+After this, any value of succ(*x*, *k*) can be calculated by presenting the number of steps *k* as a sum of powers of two. For example, if we want to calculate the value of succ(*x*, 11), we first form the representation 11 = 8 + 2 + 1. Using that,
+
+![](../media/image-20210216153651766.png)
+
+![](../media/image-20210216154258776.png)
+
+Such a representation always consists of ***O*(log *k*)** parts, so calculating a value of succ(*x*, *k*) takes ***O*(log *k*)** time.
+
+
+
+### Paths and circuits路径和回路
+
+An **Eulerian path** is a path that goes through each edge exactly once.
+
+A **Hamiltonian path** is a path that visits each node exactly once.
+
+While Eulerian and Hamiltonian paths look like similar concepts at first glance, the computational problems related to them are very different. It turns out that there is a simple rule that determines whether a graph contains an Eulerian path, and there is also an efficient algorithm to find such a path if it exists. On the contrary, checking the existence of a Hamiltonian path is a NP-hard problem, and no efficient algorithm is known for solving the problem.
+
+
+
+##### Eulerian paths欧拉路径，一笔画问题
+
+> L. Euler studied such paths in 1736 when he solved the famous Königsberg bridge problem. This was the birth of graph theory.(七座桥问题)
+
+An **Eulerian path**(欧拉路径) is a path that goes exactly once through each edge of the graph. For example, the graph has an Eulerian path from node 2 to node 5:
+
+![](../media/image-20210216204006927.png)
+
+An **Eulerian circuit**(欧拉回路) is an Eulerian path that starts and ends at the same node. For example, the graph has an Eulerian circuit that starts and ends at node 1:
+
+![](../media/image-20210216204225555.png)
+
+**Existence**
+
+The existence of Eulerian paths and circuits depends on the degrees of the nodes. First, **an undirected graph** has an Eulerian path exactly when all the edges belong to the same connected component and
+
+* the degree of each node is even(所有点的度数是偶数)(欧拉回路)
+
+* the degree of exactly two nodes is odd, and the degree of all other nodes is even.(有两个点度数是奇数，其他所有点的度数是偶数)(欧拉路径)(奇数点就是起点)
+* 以上两点满足其一
+
+In the first case, each Eulerian path is also an Eulerian circuit. In the second case, the odd-degree nodes are the starting and ending nodes of an Eulerian path which is not an Eulerian circuit.
+
+![](../media/image-20210216212405254.png)
+
+nodes 1, 3 and 4 have a degree of 2, and nodes 2 and 5 have a degree of 3. Exactly two nodes have an odd degree, so there is an Eulerian path between nodes 2 and 5, but the graph does not contain an Eulerian circuit.
+
+In **a directed graph**, we focus on indegrees and outdegrees of the nodes. A directed graph contains an Eulerian path exactly when all the edges belong to the same connected component and
+
+* in each node, the indegree equals the outdegree(所有点出度和入度相等)(欧拉回路)
+* in one node, the indegree is one larger than the outdegree, in another node, the outdegree is one larger than the indegree, and in all other nodes, the indegree equals the outdegree.(一个点入度比出点大1，一个点出点比入度大1，其他点入度和出度相等)(欧拉路径)
+* 以上两点满足其一
+
+In the first case, each Eulerian path is also an Eulerian circuit, and in the second case, the graph contains an Eulerian path that begins at the node whose outdegree is larger and ends at the node whose indegree is larger.
+
+![](../media/image-20210216212700549.png)
+
+nodes 1, 3 and 4 have both indegree 1 and outdegree 1, node 2 has indegree 1 and outdegree 2, and node 5 has indegree 2 and outdegree 1. Hence, the graph contains an Eulerian path from node 2 to node 5:
+
+![](../media/image-20210216212731106.png)
+
+```cpp
+//示例代码，一笔画问题
+#include <bits/stdc++.h>
+
+using namespace std;
+
+const int N = 110;
+
+int g[N][N], in[N];
+int n, m;
+vector<int> path;
+bool vis[N];
+int circuit = 0;
+
+void dfs(int u)
+{
+	path.push_back(u);
+
+	for (int j = 1; j <= n; j++)
+		if (g[u][j]){
+			g[u][j] = g[j][u] = 0; //这条边画掉
+			dfs(j);
+			break;
+		}
+}
+
+int main()
+{
+	cin >> n >> m;
+	for (int i = 0; i < m; i++){
+		int a, b;
+		cin >> a >> b;
+		g[a][b] = g[b][a] = 1;
+
+		in[a]++; in[b]++;
+	}
+	
+	int st = 1;
+	for (int i = 1; i <= n; i++){
+		if (in[i] & 1) {st = i;break;}
+	}
+
+	dfs(st);
+
+	for (int i = 0; i < (int)path.size(); i++) printf("%d ", path[i]);
+	puts("");
+
+	return 0;
+}
+```
+
+
+
+##### Hamiltonian paths哈密尔顿路径
+
+A **Hamiltonian path** is a path that visits each node of the graph exactly once. For example, the graph contains a Hamiltonian path from node 1 to node 3:
+
+![](../media/image-20210216213051686.png)
+
+If a Hamiltonian path begins and ends at the same node, it is called a **Hamil- tonian circuit**. The graph above also has an Hamiltonian circuit that begins and ends at node 1:
+
+![](../media/image-20210216213116983.png)
+
+**Construction**
+
+Since there is no efficient way to check if a Hamiltonian path exists, it is clear that there is also no method to efficiently construct the path, because otherwise we could just try to construct the path and see whether it exists.
+
+A simple way to search for a Hamiltonian path is to use a backtracking algorithm that goes through all possible ways to construct the path. The time complexity of such an algorithm is at least ***O*(*n*!)**, because there are *n*! different ways to choose the order of *n* nodes.(使用complete search + backtracking直接搜)
+
+A more efficient solution is based on dynamic programming . The idea is to calculate values of a function possible(*S*,*x*), where *S* is a subset of nodes and *x* is one of the nodes. The function indicates whether there is a Hamiltonian path that visits the nodes of *S* and ends at node *x*. It is possible to implement this solution in ***O*(2^*n* * *n*^2)** time.(使用状压dp)
+
+```cpp
+//示例代码，《进阶指南》P7，求起点0到终点n-1的最短Hamilton路径
+//使用了状压dp
+int f[1 << 20][20];
+int hamilton(int n, int weight[20][20]){
+	memset(f, 0x3f, sizeof f);
+    f[1][0] = 0;
+    for (int i = 1; i < 1 << n; i++)
+        for (int j = 0; j < n; j++)
+            	if (i >> j & 1)
+                    	for (int k = 0; k < n; k++)
+                            	if ((i^1<<j) >> k & 1)
+                                    f[i][j] = min(f[i][j], f[i^1<<j][k] + weight[k][j]);
+    
+    return f[(1<<n) - 1][n - 1];                       	
+}
+```
+

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>15. trees树(一) &mdash; 信息学奥赛普及组算法21天突破 0.7.1 documentation</title>
+  <title>18. trees树(一) &mdash; 信息学奥赛普及组算法21天突破 0.7.1 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="16. trees树(二)" href="%E6%A0%91%E4%BA%8C.html" />
-    <link rel="prev" title="14. queue队列" href="%E9%98%9F%E5%88%97.html" /> 
+    <link rel="next" title="19. trees树(二)" href="%E6%A0%91%E4%BA%8C.html" />
+    <link rel="prev" title="17. graph图论(三)" href="%E5%9B%BE%E8%AE%BA%E4%B8%89.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -105,38 +105,41 @@
 <li class="toctree-l1"><a class="reference internal" href="%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html">12. dp动态规划</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E6%A0%88.html">13. stack栈</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E9%98%9F%E5%88%97.html">14. queue队列</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">15. trees树(一)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#tree-traversal">15.1. Tree traversal树的遍历</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#dynamic-programmingdp">15.2. Dynamic programming使用dp求子树大小</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#diameter">15.3. Diameter树的直径</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#binary-trees">15.4. Binary trees二叉树</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">15.5. 《一本通》题目</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">15.5.1. 【例3-1】找树根和孩子</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">15.5.2. 【例3-2】单词查找树</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id4">15.5.2.1.  【例3-3】医院设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%B8%80.html">15. graph图论(一)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%BA%8C.html">16. graph图论(二)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%B8%89.html">17. graph图论(三)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">18. trees树(一)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tree-traversal">18.1. Tree traversal树的遍历</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#diameter">18.2. Diameter树的直径</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#algorithm-1">18.2.1. <strong>Algorithm 1</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#algorithm-2-dfs">18.2.2. <strong>Algorithm 2 两次dfs</strong></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">15.5.3. 【例3-4】求后序遍历</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">15.5.4. 【例3-5】扩展二叉树</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#drop">15.5.5. 小球(drop)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#flist">15.5.6. 二叉树遍历(flist)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#fbi-fbi">15.5.7. FBI树(fbi)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#btout">15.5.8. 二叉树输出(btout)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tree-a">15.5.9. 查找二叉树(tree_a)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tree-c">15.5.10. 对称二叉树(tree_c)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#fruit">15.5.11. 合并果子(fruit)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#minval">15.5.12. 最小函数值(minval)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">15.5.13. 看病</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">15.5.14. 小明的账单</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#fishing">15.5.15. 鱼塘钓鱼(fishing）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#binary-trees">18.3. Binary trees二叉树</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">18.4. 《一本通》题目</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">18.4.1. 【例3-1】找树根和孩子</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">18.4.2. 【例3-2】单词查找树</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">18.4.2.1.  【例3-3】医院设置</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">18.4.3. 【例3-4】求后序遍历</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">18.4.4. 【例3-5】扩展二叉树</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#drop">18.4.5. 小球(drop)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flist">18.4.6. 二叉树遍历(flist)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fbi-fbi">18.4.7. FBI树(fbi)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#btout">18.4.8. 二叉树输出(btout)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tree-a">18.4.9. 查找二叉树(tree_a)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tree-c">18.4.10. 对称二叉树(tree_c)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fruit">18.4.11. 合并果子(fruit)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minval">18.4.12. 最小函数值(minval)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">18.4.13. 看病</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">18.4.14. 小明的账单</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fishing">18.4.15. 鱼塘钓鱼(fishing）</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="%E6%A0%91%E4%BA%8C.html">16. trees树(二)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%B8%80.html">17. graph图论(一)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%BA%8C.html">18. graph图论(二)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%B8%89.html">19. graph图论(三)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A0%91%E4%BA%8C.html">19. trees树(二)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">二、计算机使用教程</span></p>
 <ul>
@@ -196,7 +199,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li><span class="section-number">15. </span>trees树(一)</li>
+      <li><span class="section-number">18. </span>trees树(一)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -216,7 +219,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="trees">
-<h1><span class="section-number">15. </span>trees树(一)<a class="headerlink" href="#trees" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">18. </span>trees树(一)<a class="headerlink" href="#trees" title="Permalink to this headline">¶</a></h1>
 <p>注：先学习图，再学习本章节。</p>
 <p>A <strong>tree</strong> is a connected, acyclic graph that consists of <em>n</em> nodes and <em>n</em> − 1 edges. Removing any edge from a tree divides it into two components, and adding any edge to a tree creates a cycle. Moreover, there is always a unique path between any two nodes of a tree.（树是图的一部分，连通的，无环，有n个顶点，n-1条边）</p>
 <p>The <strong>leaves</strong> of a tree are the nodes with degree 1, i.e., with only one neighbor.</p>
@@ -226,7 +229,7 @@
 <p>The structure of a rooted tree is <em>recursive</em>: each node of the tree acts as the root of a <strong>subtree</strong> that contains the node itself and all nodes that are in the subtrees of its children. For example, in the above tree, the subtree of node 2 consists of nodes 2, 5, 6 and 8:</p>
 <center><p><img alt="../_images/image-20210204152709289.png" src="../_images/image-20210204152709289.png" /></p>
 </center><div class="section" id="tree-traversal">
-<h2><span class="section-number">15.1. </span>Tree traversal树的遍历<a class="headerlink" href="#tree-traversal" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">18.1. </span>Tree traversal树的遍历<a class="headerlink" href="#tree-traversal" title="Permalink to this headline">¶</a></h2>
 <p>General graph traversal algorithms can be used to traverse the nodes of a tree. However, the traversal of a tree is easier to implement than that of a general graph, because there are no cycles in the tree and it is not possible to reach a node from multiple directions.</p>
 <p>The typical way to traverse a tree is to start a depth-first search at an arbitrary node. The following recursive function can be used:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//e代表父亲节点</span>
@@ -238,13 +241,12 @@
 </pre></div>
 </div>
 <p>The function is given two parameters: the current node <em>s</em> and the previous node <em>e</em>. The purpose of the parameter <em>e</em> is to make sure that the search only moves to nodes that have not been visited yet.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//In the first call e = 0, because there is no previous node, and it is allowed to proceed to any direction in the tree.</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//In the first call e = 0, because there is no previous node, </span>
+<span class="c1">//and it is allowed to proceed to any direction in the tree.</span>
 	<span class="n">dfs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="dynamic-programmingdp">
-<h2><span class="section-number">15.2. </span>Dynamic programming使用dp求子树大小<a class="headerlink" href="#dynamic-programmingdp" title="Permalink to this headline">¶</a></h2>
+<p><strong>Dynamic programming使用dp求子树大小(应用)</strong></p>
 <p>Dynamic programming can be used to calculate some information during a tree traversal. Using dynamic programming, we can, for example, calculate in <em>O</em>(<em>n</em>) time for each node of a rooted tree the number of nodes in its subtree or the length of the longest path from the node to a leaf.</p>
 <p>As an example, let us calculate for each node <em>s</em> a value count[<em>s</em>]: the number of nodes in its subtree. The subtree contains the node itself and all nodes in the subtrees of its children, so we can calculate the number of nodes recursively using the following code:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
@@ -259,28 +261,31 @@
 </div>
 </div>
 <div class="section" id="diameter">
-<h2><span class="section-number">15.3. </span>Diameter树的直径<a class="headerlink" href="#diameter" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">18.2. </span>Diameter树的直径<a class="headerlink" href="#diameter" title="Permalink to this headline">¶</a></h2>
 <p>The <strong>diameter</strong> of a tree is the maximum length of a path between two nodes. Forexample, consider the following tree:</p>
 <center><p><img alt="../_images/image-20210204153506250.png" src="../_images/image-20210204153506250.png" /></p>
 </center><p>Note that there may be several maximum-length paths. In the above path, we could replace node 6 with node 5 to obtain another path with length 4.</p>
 <p>Next we will discuss two <strong><em>O</em>(<em>n</em>)</strong> time algorithms for calculating the diameter of a tree. The first algorithm is based on dynamic programming, and the second algorithm uses two depth-first searches.</p>
-<p><strong>Algorithm 1</strong></p>
-<p>**A general way to approach many tree problems is to first root the tree arbitrarily. After this, we can try to solve the problem separately for each subtree. **Our first algorithm for calculating the diameter is based on this idea.</p>
+<div class="section" id="algorithm-1">
+<h3><span class="section-number">18.2.1. </span><strong>Algorithm 1</strong><a class="headerlink" href="#algorithm-1" title="Permalink to this headline">¶</a></h3>
+<p><strong>A general way to approach many tree problems is to first root the tree arbitrarily. After this, we can try to solve the problem separately for each subtree.</strong>  Our first algorithm for calculating the diameter is based on this idea.</p>
 <p>An important observation is that every path in a rooted tree has a <em>highest point</em>: the highest node that belongs to the path. Thus, we can calculate for each node the length of the longest path whose highest point is the node. One of those paths corresponds to the diameter of the tree.</p>
 <p>For example, in the following tree, node 1 is the highest point on the path that corresponds to the diameter:</p>
 <center><p><img alt="../_images/image-20210204154113525.png" src="../_images/image-20210204154113525.png" /></p>
 </center><p>We calculate for each node <em>x</em> two values:</p>
 <ul class="simple">
-<li><p>toLeaf(<em>x</em>): the maximum length of a path from <em>x</em> to any leaf</p></li>
-<li><p>maxLength(<em>x</em>): the maximum length of a path whose highest point is <em>x</em></p></li>
+<li><p>**toLeaf(<em>x</em>): **the maximum length of a path from <em>x</em> to any leaf</p></li>
+<li><p><strong>maxLength(<em>x</em>):</strong> the maximum length of a path whose highest point is <em>x</em></p></li>
 </ul>
 <p>For example, in the above tree, toLeaf(1) = 2, because there is a path 1 → 2 → 6, and maxLength(1)=4, because there is a path 6→2→1→4→7. In this case, maxLength(1) equals the diameter.</p>
-<p>Dynamic programming can be used to calculate the above values for all nodes in <em>O</em>(<em>n</em>) time. First, to calculate toLeaf(<em>x</em>), we go through the children of <em>x</em>, choose a child <em>c</em> with maximum toLeaf(<em>c</em>) and add one to this value. Then, to calculate maxLength(<em>x</em>), we choose two distinct children <em>a</em> and <em>b</em> such that the sum toLeaf(<em>a</em>) + toLeaf(<em>b</em>) is maximum and add two to this sum.</p>
+<p>Dynamic programming can be used to calculate the above values for all nodes in <strong><em>O</em>(<em>n</em>)</strong> time. First, to calculate toLeaf(<em>x</em>), we go through the children of <em>x</em>, choose a child <em>c</em> with maximum toLeaf(<em>c</em>) and add one to this value. Then, to calculate maxLength(<em>x</em>), we choose two distinct children <em>a</em> and <em>b</em> such that the sum toLeaf(<em>a</em>) + toLeaf(<em>b</em>) is maximum and add two to this sum.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//类似floyd呢</span>
 <span class="c1">//还没实现过这种写法,要写一下</span>
 </pre></div>
 </div>
-<p><strong>Algorithm 2</strong></p>
+</div>
+<div class="section" id="algorithm-2-dfs">
+<h3><span class="section-number">18.2.2. </span><strong>Algorithm 2 两次dfs</strong><a class="headerlink" href="#algorithm-2-dfs" title="Permalink to this headline">¶</a></h3>
 <p>Another efficient way to calculate the diameter of a tree is based on two depth- first searches. First, we choose an arbitrary node <em>a</em> in the tree and find the farthest node <em>b</em> from <em>a</em>. Then, we find the farthest node <em>c</em> from <em>b</em>. The diameter of the tree is the distance between <em>b</em> and <em>c</em>.</p>
 <p>In the following graph, <em>a</em>, <em>b</em> and <em>c</em> could be:</p>
 <center><p><img alt="../_images/image-20210204154340195.png" src="../_images/image-20210204154340195.png" /></p>
@@ -356,8 +361,9 @@
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="binary-trees">
-<h2><span class="section-number">15.4. </span>Binary trees二叉树<a class="headerlink" href="#binary-trees" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">18.3. </span>Binary trees二叉树<a class="headerlink" href="#binary-trees" title="Permalink to this headline">¶</a></h2>
 <p>A <strong>binary tree</strong> is a rooted tree where each node has a left and right subtree. It is possible that a subtree of a node is empty. Thus, every node in a binary tree has zero, one or two children.</p>
 <p>For example, the following tree is a binary tree:</p>
 <center><p><img alt="../_images/image-20210204161911728.png" src="../_images/image-20210204161911728.png" /></p>
@@ -371,23 +377,24 @@
 <p>If we know <strong>the pre-order and in-order</strong> of a tree, we can reconstruct the exact structure of the tree. For example, the above tree is the only possible tree with pre-order [1, 2, 4, 5, 6, 3, 7] and in-order [4, 2, 6, 5, 1, 3, 7]. In a similar way, <strong>the post-order and in-order</strong> also determine the structure of a tree.</p>
 <p>However, the situation is different if we only know the pre-order and post- order of a tree. In this case, there may be more than one tree that match the orderings. For example, in both of the trees the pre-order is [1,2] and the post-order is [2,1], but the structures of the trees are different.</p>
 <center><p><img alt="../_images/image-20210204162024821.png" src="../_images/image-20210204162024821.png" /></p>
-</center></div>
+</center><p>一本通中有很多针对二叉树的题目，都是使用the technique of recursion，NOIP真题中有多道类似的题目，需要多加练习。</p>
+</div>
 <div class="section" id="id1">
-<h2><span class="section-number">15.5. </span>《一本通》题目<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">18.4. </span>《一本通》题目<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id2">
-<h3><span class="section-number">15.5.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1336">【例3-1】找树根和孩子</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.4.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1336">【例3-1】找树根和孩子</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//fa[N]维护每个结点的父亲，如果一个节点没有fa，他就是根</span>
 <span class="c1">//son[N]维护孩子个数</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id3">
-<h3><span class="section-number">15.5.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1337">【例3-2】单词查找树</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.4.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1337">【例3-2】单词查找树</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//trie树，可以高效的存储和查找字符串</span>
 </pre></div>
 </div>
 <div class="section" id="id4">
-<h4><span class="section-number">15.5.2.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1338"> 【例3-3】医院设置</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">18.4.2.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1338"> 【例3-3】医院设置</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//floyd维护出任意两点的距离</span>
 <span class="c1">//枚举医院的位置，更新res</span>
 </pre></div>
@@ -395,7 +402,7 @@
 </div>
 </div>
 <div class="section" id="id5">
-<h3><span class="section-number">15.5.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1339">【例3-4】求后序遍历</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.4.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1339">【例3-4】求后序遍历</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//给出先序和中序，求后续</span>
 <span class="kt">void</span> <span class="n">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">l1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r2</span><span class="p">)</span>
 <span class="c1">//根据先序l1位置的根，去找中序中根的位置</span>
@@ -403,14 +410,14 @@
 </div>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">15.5.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1340">【例3-5】扩展二叉树</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.4.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1340">【例3-5】扩展二叉树</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//给出扩展二叉树的先序序列，输出中序和后序</span>
 <span class="c1">//题解给出的是指针写法【指针】</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="drop">
-<h3><span class="section-number">15.5.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1363">小球(drop)</a><a class="headerlink" href="#drop" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.4.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1363">小球(drop)</a><a class="headerlink" href="#drop" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//起初所有节点都是false，访问这个点就会设置成相反状态</span>
 <span class="c1">//求第i个小球停在哪个叶子结点上</span>
 <span class="c1">//方法1，模拟1...i个小球的下落过程</span>
@@ -420,7 +427,7 @@
 </div>
 </div>
 <div class="section" id="flist">
-<h3><span class="section-number">15.5.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1364">二叉树遍历(flist)</a><a class="headerlink" href="#flist" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.4.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1364">二叉树遍历(flist)</a><a class="headerlink" href="#flist" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//给出中序序列和按层序列，求先序序列</span>
 <span class="c1">//在按层遍历序列中先遇到根，在中序序列中，找到根的位置，break出来</span>
 <span class="c1">//进行递归处理</span>
@@ -429,7 +436,7 @@
 </div>
 </div>
 <div class="section" id="fbi-fbi">
-<h3><span class="section-number">15.5.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1365">FBI树(fbi)</a><a class="headerlink" href="#fbi-fbi" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.4.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1365">FBI树(fbi)</a><a class="headerlink" href="#fbi-fbi" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="c1">//边界</span>
@@ -445,7 +452,7 @@
 </div>
 </div>
 <div class="section" id="btout">
-<h3><span class="section-number">15.5.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1366">二叉树输出(btout)</a><a class="headerlink" href="#btout" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.4.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1366">二叉树输出(btout)</a><a class="headerlink" href="#btout" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//给出先序和中序，求凹入表示</span>
 <span class="kt">int</span> <span class="n">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">l1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r2</span><span class="p">)</span>
 <span class="c1">//照样递归下去，dfs返回的是子树大小，用son[N]维护每个结点的子树大小</span>
@@ -453,13 +460,13 @@
 </div>
 </div>
 <div class="section" id="tree-a">
-<h3><span class="section-number">15.5.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1367">查找二叉树(tree_a)</a><a class="headerlink" href="#tree-a" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.4.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1367">查找二叉树(tree_a)</a><a class="headerlink" href="#tree-a" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//题意是，中序遍历的顺序，值为target的结点是第几个被遍历到的</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="tree-c">
-<h3><span class="section-number">15.5.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1368">对称二叉树(tree_c)</a><a class="headerlink" href="#tree-c" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.4.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1368">对称二叉树(tree_c)</a><a class="headerlink" href="#tree-c" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//思路1，从s[1]开始，两两为一单位，要么都是#，要么都不是#</span>
 <span class="c1">//思路2，根据左儿子和右儿子的位置，去判断左右儿子要么同时为#，要么同时不是#</span>
 <span class="c1">//两个思路，都需要在读入的字符串后面加上一个#，避免最后一个叶子结点没有兄弟的情况</span>
@@ -467,33 +474,33 @@
 </div>
 </div>
 <div class="section" id="fruit">
-<h3><span class="section-number">15.5.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1369">合并果子(fruit)</a><a class="headerlink" href="#fruit" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.4.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1369">合并果子(fruit)</a><a class="headerlink" href="#fruit" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//小根堆</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="minval">
-<h3><span class="section-number">15.5.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1370">最小函数值(minval)</a><a class="headerlink" href="#minval" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.4.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1370">最小函数值(minval)</a><a class="headerlink" href="#minval" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//用一个大根堆，维护前m个较小值</span>
 <span class="c1">//如果堆的大小&gt;=m，新读入的数字，比堆顶小，就更新维护进来</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id7">
-<h3><span class="section-number">15.5.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1371">看病</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.4.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1371">看病</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//priority_queue&lt;node&gt; q;自定义结构体使用优先队列</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id8">
-<h3><span class="section-number">15.5.14. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1372">小明的账单</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.4.14. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1372">小明的账单</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//每天付最大账单和最小账单</span>
 <span class="c1">//使用multiset维护</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="fishing">
-<h3><span class="section-number">15.5.15. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1373">鱼塘钓鱼(fishing）</a><a class="headerlink" href="#fishing" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.4.15. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1373">鱼塘钓鱼(fishing）</a><a class="headerlink" href="#fishing" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//这道题目的处理思路，在另外一个题目也遇到过</span>
 <span class="c1">//类似的操作是，把路程消耗先消耗掉，然后就可以看做随意跳来跳去的</span>
 
@@ -513,8 +520,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="%E6%A0%91%E4%BA%8C.html" class="btn btn-neutral float-right" title="16. trees树(二)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="%E9%98%9F%E5%88%97.html" class="btn btn-neutral float-left" title="14. queue队列" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="%E6%A0%91%E4%BA%8C.html" class="btn btn-neutral float-right" title="19. trees树(二)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%E5%9B%BE%E8%AE%BA%E4%B8%89.html" class="btn btn-neutral float-left" title="17. graph图论(三)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

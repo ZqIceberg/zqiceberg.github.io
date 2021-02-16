@@ -4,7 +4,7 @@ Many programming problems can be solved by modeling the problem as a graph probl
 
 
 
-### 概念
+### terminology术语
 
 A **graph** consists of **nodes** and **edges**. In this book, the variable *n* denotes the number of nodes in a graph, and the variable *m* denotes the number of edges. The nodes are numbered using integers 1,2,...,*n*. 下面这个图，有5个顶点，7条边。
 
@@ -24,9 +24,7 @@ A **path** leads from node *a* to node *b* through edges of the graph. The **len
 
 A path is a **cycle** if the first and last node is the same. For example, the above graph contains a cycle 1 → 3 → 4 → 1. A path is **simple** if each node appears at most once in the path.(概念，简单图)
 
-
-
-### Connectivity连通性
+##### Connectivity连通性
 
 A graph is **connected** if there is a path between any two nodes. For example, the following graph is connected:
 
@@ -60,7 +58,7 @@ A **tree** is a connected graph that consists of *n* nodes and *n* − 1 edges. 
 
 </center>
 
-### Edge directions有向边
+##### Edge directions有向边
 
 A graph is **directed** if the edges can be traversed in one direction only. For example, the following graph is directed:
 
@@ -74,7 +72,7 @@ The above graph contains a path 3→1→2→5 from node 3 to node 5, but there i
 
 无向边，其实，是两条有向边的合并版本
 
-### Edge weights边权
+##### Edge weights边权
 
 In a **weighted** graph, each edge is assigned a **weight**. The weights are often interpreted as edge lengths. For example, the following graph is weighted:
 
@@ -86,7 +84,7 @@ In a **weighted** graph, each edge is assigned a **weight**. The weights are oft
 
 The length of a path in a weighted graph is the sum of the edge weights on the path. For example, in the above graph, the length of the path 1 → 2 → 5 is 12, and the length of the path 1→3→4→5 is 11. The latter path is the **shortest** path from node 1 to node 5.
 
-### Neighbors and degrees相邻的两个顶点和顶点的度
+##### Neighbors and degrees相邻的两个顶点和顶点的度
 
 Two nodes are **neighbors** or **adjacent** if there is an edge between them. The **degree** of a node is the number of its neighbors. For example, in the following graph, the neighbors of node 2 are 1, 4 and 5, so its degree is 3.
 
@@ -110,7 +108,7 @@ In a directed graph, the **indegree** of a node is the number of edges that end 
 
 概念：完全图，每个顶点的度数都是n-1。在有向图中，分为入度和出度。
 
-### Simplicity简单图
+##### Simplicity简单图
 
 A graph is **simple** if no edge starts and ends at the same node, and there are no multiple edges between two nodes. Often we assume that graphs are simple. For example, the following graph is *not* simple:
 
@@ -122,9 +120,9 @@ A graph is **simple** if no edge starts and ends at the same node, and there are
 
 概念：简单图，无重边，无自环
 
+### Graph representation建图
 
-
-### Adjacency list representation邻接表建图(vector版本)
+##### Adjacency list representation邻接表建图(vector版本)
 
 In the adjacency list representation, each node *x* in the graph is assigned an **adjacency list** that consists of nodes to which there is an edge from *x*. Adjacency lists are the most popular way to represent graphs, and most algorithms can be efficiently implemented using them.
 
@@ -190,7 +188,7 @@ for (int i = 0; i < adj[i].size(); i++)
 }
 ```
 
-### Adjacency matrix representation邻接矩阵建图
+##### Adjacency matrix representation邻接矩阵建图
 
 An **adjacency matrix** is a two-dimensional array that indicates which edges the graph contains. We can efficiently check from an adjacency matrix if there is an edge between two nodes. The matrix can be stored as an array
 
@@ -235,9 +233,7 @@ The drawback of the adjacency matrix representation is that the matrix contains 
 
 </center>
 
-
-
-### Adjacency list representation邻接表建图(一维数组版本)
+##### Adjacency list representation邻接表建图(一维数组版本)
 
 我一般用这个方法
 
@@ -276,7 +272,7 @@ for (int i = h[u]; i != -1; i = ne[i])
 
 depth-first search and breadth-first search. Both algorithms are given a starting node in the graph, and they visit all nodes that can be reached from the starting node. The difference in the algorithms is the order in which they visit the nodes.
 
-### Depth-first search深度优先遍历
+##### Depth-first search深度优先遍历
 
 Depth-first search always follows a single path in the graph as long as it finds new nodes. After this, it returns to previous nodes and begins to explore other parts of the graph. The algorithm keeps track of visited nodes, so that it processes each node only once.
 
@@ -304,7 +300,7 @@ void dfs(int s) {
 }
 ```
 
-### Breadth-first search宽度优先遍历
+##### Breadth-first search宽度优先遍历
 
 **Breadth-first search** (BFS) visits the nodes in increasing order of their distance from the starting node. Thus, we can calculate the distance from the starting node to all other nodes using breadth-first search.
 
@@ -338,7 +334,7 @@ while (!q.empty()) {
 
 
 
-### Connectivity check连通性验证
+**Connectivity check图的连通性验证(应用)**
 
 从任意一个点出发，做dfs，可以判断这个图是否连通的。通过这种方法，我们也可以用来统计图当中，有多少个独立的块。从1...n遍历，如果一个点没遍历过，就dfs进去，遍历的时候进行标记。
 
@@ -352,19 +348,23 @@ A graph is connected if there is a path between any two nodes of the graph. Thus
 
 Since the search did not visit all the nodes, we can conclude that the graph is not connected. In a similar way, we can also find all connected components of a graph by iterating through the nodes and always starting a new depth-first search if the current node does not belong to any component yet.
 
- 
-
-### Finding cycles判环
 
 
+**Finding cycles判环(应用)**
 
-![image-20210216143233356](../media/image-20210216143233356.png)
+A graph contains a cycle if during a graph traversal, we find a node whose neighbor (other than the previous node in the current path) has already been visited. For example, the graph contains two cycles and we can find one of them as follows:
+
+
+
+![](../media/image-20210216143233356.png)
 
 
 
 After moving from node 2 to node 5 we notice that the neighbor 3 of node 5 has already been visited. Thus, the graph contains a cycle that goes through node 3, for example, 3→2→5→3.
 
-Another way to find out whether a graph contains a cycle is to simply calculate the number of nodes and edges in every component. If a component contains *c* nodes and no cycle, it must contain exactly *c* − 1 edges (so it has to be a tree). If there are *c* or more edges, the component surely contains a cycle.
+Another way to find out whether a graph contains a cycle is to simply calculate the number of nodes and edges in every component. If a component contains *c* nodes and no cycle, it must contain exactly *c* − 1 edges (so it has to be a tree). If there are *c* or more edges, the component surely contains a cycle.（如果边数>=c，那么一定存在环）
+
+
 
 
 ### 《一本通》题目

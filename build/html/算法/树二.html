@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>16. trees树(二) &mdash; 信息学奥赛普及组算法21天突破 0.7.1 documentation</title>
+  <title>19. trees树(二) &mdash; 信息学奥赛普及组算法21天突破 0.7.1 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="17. graph图论(一)" href="%E5%9B%BE%E8%AE%BA%E4%B8%80.html" />
-    <link rel="prev" title="15. trees树(一)" href="%E6%A0%91%E4%B8%80.html" /> 
+    <link rel="next" title="1. Windows环境下的操作" href="../%E7%BB%8F%E9%AA%8C/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html" />
+    <link rel="prev" title="18. trees树(一)" href="%E6%A0%91%E4%B8%80.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -105,15 +105,26 @@
 <li class="toctree-l1"><a class="reference internal" href="%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html">12. dp动态规划</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E6%A0%88.html">13. stack栈</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E9%98%9F%E5%88%97.html">14. queue队列</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E6%A0%91%E4%B8%80.html">15. trees树(一)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">16. trees树(二)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#tree-queries">16.1. Tree queries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#finding-ancestors">16.2. Finding ancestors(查找祖先)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%B8%80.html">15. graph图论(一)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%BA%8C.html">16. graph图论(二)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%B8%89.html">17. graph图论(三)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A0%91%E4%B8%80.html">18. trees树(一)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">19. trees树(二)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#finding-ancestors">19.1. Finding ancestors(查找祖先)(倍增)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#subtrees-and-paths">19.2. Subtrees and paths</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subtree-queries">19.2.1. <strong>Subtree queries</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#path-queries">19.2.2. <strong>Path queries</strong></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%B8%80.html">17. graph图论(一)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%BA%8C.html">18. graph图论(二)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%B8%89.html">19. graph图论(三)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lowest-common-ancestorlca">19.3. Lowest common ancestor最近公共祖先LCA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">19.3.1. #方法一 向上标记法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">19.3.2. #方法二 树上倍增法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#euler-tour-technique">19.3.3. #方法三 Euler tour technique欧拉序列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tarjan">19.3.4. #方法四 Tarjan算法</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">二、计算机使用教程</span></p>
 <ul>
@@ -173,7 +184,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li><span class="section-number">16. </span>trees树(二)</li>
+      <li><span class="section-number">19. </span>trees树(二)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -193,20 +204,116 @@
            <div itemprop="articleBody">
             
   <div class="section" id="trees">
-<h1><span class="section-number">16. </span>trees树(二)<a class="headerlink" href="#trees" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="tree-queries">
-<h2><span class="section-number">16.1. </span>Tree queries<a class="headerlink" href="#tree-queries" title="Permalink to this headline">¶</a></h2>
+<h1><span class="section-number">19. </span>trees树(二)<a class="headerlink" href="#trees" title="Permalink to this headline">¶</a></h1>
+<p><strong>Tree queries</strong>这部分属于提高组内容，但很值得了解了解。</p>
 <ul class="simple">
 <li><p>what is the <em>k</em>th ancestor of a node？</p></li>
 <li><p>what is the sum of values in the subtree of a node?</p></li>
 <li><p>what is the sum of values on a path between two nodes?</p></li>
 <li><p>what is the lowest common ancestor of two nodes?</p></li>
 </ul>
-</div>
 <div class="section" id="finding-ancestors">
-<h2><span class="section-number">16.2. </span>Finding ancestors(查找祖先)<a class="headerlink" href="#finding-ancestors" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">19.1. </span>Finding ancestors(查找祖先)(倍增)<a class="headerlink" href="#finding-ancestors" title="Permalink to this headline">¶</a></h2>
 <p>The <em>k</em>th <strong>ancestor</strong> of a node <em>x</em> in a rooted tree is the node that we will reach if we move <em>k</em> levels up from <em>x</em>. Let ancestor(<em>x</em>,<em>k</em>) denote the <em>k</em>th ancestor of a node <em>x</em> (or 0 if there is no such an ancestor). For example, in the following tree, ancestor(2, 1) = 1 and ancestor(8, 2) = 4.</p>
-<center><img src="../media/image-20210216132102986.png" alt="" style="zoom:50%;" /></center><p>An easy way to calculate any value of ancestor(<em>x</em>,<em>k</em>) is to perform a sequence of <em>k</em> moves in the tree. However, the time complexity of this method is <em>O</em>(<em>k</em>), which may be slow, because a tree of <em>n</em> nodes may have a chain of <em>n</em> nodes.</p>
+<p><img alt="../_images/image-20210216152628069.png" src="../_images/image-20210216152628069.png" /></p>
+<p>An easy way to calculate any value of ancestor(<em>x</em>,<em>k</em>) is to perform a sequence of <em>k</em> moves in the tree. However, the time complexity of this method is <strong><em>O</em>(<em>k</em>)</strong>, which may be slow, because a tree of <em>n</em> nodes may have a chain of <em>n</em> nodes.</p>
+<p>any value of ancestor(<em>x</em>, <em>k</em>) can be efficiently calculated in <em>O</em>(log <em>k</em>) time after preprocessing. The idea is to precalculate all values ancestor(<em>x</em>, <em>k</em>) where <em>k</em> ≤ <em>n</em> is a power of two. For example, the values for the above tree are as follows:(<strong>倍增</strong>，类似<strong>Successor paths</strong>)</p>
+<p><img alt="../_images/image-20210216152811133.png" src="../_images/image-20210216152811133.png" /></p>
+<p>The preprocessing takes <strong><em>O</em>(<em>n</em> log <em>n</em>)</strong> time, because **<em>O</em>(log <em>n</em>) **values are calculated for each node. After this, any value of ancestor(<em>x</em>,<em>k</em>) can be calculated in <em><em><em>O</em>(log</em>k</em>) **time by representing <em><strong>k</strong></em> as a sum where each term is a power of two.</p>
+</div>
+<div class="section" id="subtrees-and-paths">
+<h2><span class="section-number">19.2. </span>Subtrees and paths<a class="headerlink" href="#subtrees-and-paths" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>tree traversal array</strong> contains the nodes of a rooted tree in the order in which a depth-first search from the root node visits them.</p>
+<p><img alt="../_images/image-20210216155716167.png" src="../_images/image-20210216155716167.png" /></p>
+<p><img alt="../_images/image-20210216155741218.png" src="../_images/image-20210216155741218.png" /></p>
+<p>Hence, the corresponding tree traversal array is as follows:</p>
+<p><img alt="../_images/image-20210216155759995.png" src="../_images/image-20210216155759995.png" /></p>
+<div class="section" id="subtree-queries">
+<h3><span class="section-number">19.2.1. </span><strong>Subtree queries</strong><a class="headerlink" href="#subtree-queries" title="Permalink to this headline">¶</a></h3>
+<p>Each subtree of a tree corresponds to a subarray of the tree traversal array such that the first element of the subarray is the root node. For example, the following subarray contains the nodes of the subtree of node 4:</p>
+<p><img alt="../_images/image-20210216160200252.png" src="../_images/image-20210216160200252.png" /></p>
+<p>Using this fact, we can efficiently process queries that are related to subtrees of a tree. As an example, consider a problem where each node is assigned a value, and our task is to support the following queries:</p>
+<ul class="simple">
+<li><p>update the value of a node</p></li>
+<li><p>calculate the sum of values in the subtree of a node</p></li>
+</ul>
+<p>Consider the following tree where the blue numbers are the values of the nodes. For example, the sum of the subtree of node 4 is 3+4+3+1=11.</p>
+<p><img alt="../_images/image-20210216160314293.png" src="../_images/image-20210216160314293.png" /></p>
+<p>The idea is to construct a tree traversal array that contains three values for each node: the identifier of the node, the size of the subtree, and the value of the node. For example, the array for the above tree is as follows:</p>
+<p><img alt="../_images/image-20210216160337743.png" src="../_images/image-20210216160337743.png" /></p>
+<p>Using this array, we can calculate the sum of values in any subtree by first finding out the size of the subtree and then the values of the corresponding nodes. For example, the values in the subtree of node 4 can be found as follows:</p>
+<p><img alt="../_images/image-20210216161349159.png" src="../_images/image-20210216161349159.png" /></p>
+<p>To answer the queries efficiently, it suffices to store the values of the nodes in a <strong>binary indexed or segment tree</strong>. After this, we can both update a value and calculate the sum of values in <strong><em>O</em>(log <em>n</em>)</strong> time.</p>
+</div>
+<div class="section" id="path-queries">
+<h3><span class="section-number">19.2.2. </span><strong>Path queries</strong><a class="headerlink" href="#path-queries" title="Permalink to this headline">¶</a></h3>
+<p>Using a tree traversal array, we can also efficiently calculate sums of values on paths from the root node to any node of the tree. Consider a problem where our task is to support the following queries:</p>
+<ul class="simple">
+<li><p>change the value of a node</p></li>
+<li><p>calculate the sum of values on a path from the root to a node</p></li>
+</ul>
+<p>For example, in the following tree, the sum of values from the root node to node 7 is 4+5+5=14:</p>
+<p><img alt="../_images/image-20210216161623195.png" src="../_images/image-20210216161623195.png" /></p>
+<p>We can solve this problem like before, but now each value in the last row of the array is the sum of values on a path from the root to the node. For example, the following array corresponds to the above tree:</p>
+<p><img alt="../_images/image-20210216161645274.png" src="../_images/image-20210216161645274.png" /></p>
+<p>When the value of a node increases by <em>x</em>, the sums of all nodes in its subtree increase by <em>x</em>. For example, if the value of node 4 increases by 1, the array changes as follows:</p>
+<p><img alt="../_images/image-20210216161705312.png" src="../_images/image-20210216161705312.png" /></p>
+<p>Thus, to support both the operations, we should be able to increase all values in a range and retrieve a single value. This can be done in <strong><em>O</em>(log <em>n</em>)</strong> time using a <strong>binary indexed or segment tree</strong>.</p>
+</div>
+</div>
+<div class="section" id="lowest-common-ancestorlca">
+<h2><span class="section-number">19.3. </span>Lowest common ancestor最近公共祖先LCA<a class="headerlink" href="#lowest-common-ancestorlca" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>lowest common ancestor</strong> of two nodes of a rooted tree is the lowest node whose subtree contains both the nodes. A typical problem is to efficiently process queries that ask to find the lowest common ancestor of two nodes. 给定一棵有根树，若结点 z 既是结点 x 的祖先，也是结点 y 的祖先，则成 z 是 x, y 的公共祖先。在 x, y 的所有公共祖先中，深度最大的一个称为 x, y 的最近公共祖先，记为LCA(x, y)。 LCA(x, y) 是 x 到根的路径与 y 到根的路径的交汇点，它也是 x 与 y 之间的路径上深度最小的结点。</p>
+<p>For example, in the following tree, the lowest common ancestor of nodes 5 and 8 is node 2:</p>
+<p><img alt="../_images/image-20210216161927484.png" src="../_images/image-20210216161927484.png" /></p>
+<div class="section" id="id1">
+<h3><span class="section-number">19.3.1. </span>#方法一 向上标记法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>从 x 向上走到根结点，并标记所有经过的结点。</p>
+<p>从 y 向上走到根结点，当第一次遇到已标记的结点时，就找到了 LCA(x, y)。</p>
+<p>对于每个询问，向上标记法的时间复杂度最坏为 <strong><em>O</em>(n)</strong></p>
+</div>
+<div class="section" id="id2">
+<h3><span class="section-number">19.3.2. </span>#方法二 树上倍增法<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>One way to solve the problem is to use the fact that we can efficiently find the <em>k</em>th ancestor of any node in the tree. Using this, we can divide the problem of finding the lowest common ancestor into two parts.</p>
+<p>We use two pointers that initially point to the two nodes whose lowest common ancestor we should find. First, we move one of the pointers upwards so that both pointers point to nodes at the same level.（假设d[x] &gt;= d[y]，先让x走到与y同一深度。若此时x == y，说明已经找到了LCA，LCA就是y）</p>
+<p>In the example scenario, we move the second pointer one level up so that it points to node 6 which is at the same level with node 5:</p>
+<p><img alt="../_images/image-20210216200041024.png" src="../_images/image-20210216200041024.png" /></p>
+<p>After this, we determine the minimum number of steps needed to move both pointers upwards so that they will point to the same node. The node to which the pointers point after this is the lowest common ancestor.(用二进制拆分思想，x 和 y 一起往上跳，保持深度一致，且二者不相会。此时，x, y 必定只差一步就相会了，它们的父结点 F[x, 0] 就是 LCA)</p>
+<p>In the example scenario, it suffices to move both pointers one step upwards to node 2, which is the lowest common ancestor:</p>
+<p><img alt="../_images/image-20210216200154400.png" src="../_images/image-20210216200154400.png" /></p>
+<p>Since both parts of the algorithm can be performed in <em><em><em>O</em>(log</em>n</em>)** time using precomputed information, we can find the lowest common ancestor of any two nodes in <strong><em>O</em>(log <em>n</em>)</strong> time.</p>
+</div>
+<div class="section" id="euler-tour-technique">
+<h3><span class="section-number">19.3.3. </span>#方法三 Euler tour technique欧拉序列<a class="headerlink" href="#euler-tour-technique" title="Permalink to this headline">¶</a></h3>
+<p>Another way to solve the problem is based on a tree traversal array. Once again, the idea is to traverse the nodes using a depth-first search:</p>
+<p><img alt="../_images/image-20210216201352192.png" src="../_images/image-20210216201352192.png" /></p>
+<p>However, we use a different tree traversal array than before: we add each node to the array <em>always</em> when the depth-first search walks through the node, and not only at the first visit. Hence, a node that has <em>k</em> children appears <em>k</em> + 1 times in the array and there are a total of 2<em>n</em> − 1 nodes in the array.</p>
+<p>We store two values in the array: the identifier of the node and the depth of the node in the tree. The following array corresponds to the above tree:</p>
+<p><img alt="../_images/image-20210216201426135.png" src="../_images/image-20210216201426135.png" /></p>
+<p>Now we can find the lowest common ancestor of nodes <em>a</em> and <em>b</em> by finding the node with the <em>minimum</em> depth between nodes <em>a</em> and <em>b</em> in the array. For example, the lowest common ancestor of nodes 5 and 8 can be found as follows:</p>
+<p><img alt="../_images/image-20210216201457313.png" src="../_images/image-20210216201457313.png" /></p>
+<p>Node 5 is at position 2, node 8 is at position 5, and the node with minimum depth between positions 2…5 is node 2 at position 3 whose depth is 2. Thus, the lowest common ancestor of nodes 5 and 8 is node 2.</p>
+<p>Thus, to find the lowest common ancestor of two nodes it suffices to process a range minimum query. Since the array is static, we can process such queries in <em>O</em>(1) time after an <strong><em>O</em>(<em>n</em> log <em>n</em>)</strong> time preprocessing.</p>
+</div>
+<div class="section" id="tarjan">
+<h3><span class="section-number">19.3.4. </span>#方法四 Tarjan算法<a class="headerlink" href="#tarjan" title="Permalink to this headline">¶</a></h3>
+<p>There is also an offline algorithm for processing a set of lowest common ancestor queries. The algorithm is based on the union-find data structure, and the benefit of the algorithm is that it is easier to implement than the algorithms discussed earlier in this chapter.</p>
+<p>The algorithm is given as input a set of pairs of nodes, and it determines for each such pair the lowest common ancestor of the nodes. The algorithm performs a depth-first tree traversal and maintains disjoint sets of nodes. Initially, each node belongs to a separate set. For each set, we also store the highest node in the tree that belongs to the set.</p>
+<p>When the algorithm visits a node <em>x</em>, it goes through all nodes <em>y</em> such that the lowest common ancestor of <em>x</em> and <em>y</em> has to be found. If <em>y</em> has already been visited, the algorithm reports that the lowest common ancestor of <em>x</em> and <em>y</em> is the highest node in the set of <em>y</em>. Then, after processing node <em>x</em>, the algorithm joins the sets of <em>x</em> and its parent.(时间复杂度<strong><em>O</em>(n + m)</strong>)</p>
+<p>For example, suppose that we want to find the lowest common ancestors of node pairs (5,8) and (2,7) in the following tree:</p>
+<p><img alt="../_images/image-20210216202442054.png" src="../_images/image-20210216202442054.png" /></p>
+<p>In the following trees, gray nodes denote visited nodes and dashed groups of nodes belong to the same set. When the algorithm visits node 8, it notices that node 5 has been visited and the highest node in its set is 2. Thus, the lowest common ancestor of nodes 5 and 8 is 2:</p>
+<p><img alt="../_images/image-20210216202533019.png" src="../_images/image-20210216202533019.png" /></p>
+<p>Later, when visiting node 7, the algorithm determines that the lowest common ancestor of nodes 2 and 7 is 1:</p>
+<p><img alt="../_images/image-20210216202557890.png" src="../_images/image-20210216202557890.png" /></p>
+<p>(具体再参考一下《进阶指南》P377，我感觉英文的更好理解这个过程，中文的更落脚于实现上)</p>
+<p><strong>Distances of nodes结点之间的距离</strong>(应用)</p>
+<p>The distance between nodes <em>a</em> and <em>b</em> equals the length of the path from <em>a</em> to <em>b</em>. It turns out that the problem of calculating the distance between nodes reduces to finding their lowest common ancestor.</p>
+<p>First, we root the tree arbitrarily. After this, the distance of nodes <em>a</em> and <em>b</em> can be calculated using the formula where <em>c</em> is the lowest common ancestor of <em>a</em> and <em>b</em> and depth(<em>s</em>) denotes the depth of node <em>s</em>.</p>
+<p><img alt="../_images/image-20210216163656754.png" src="../_images/image-20210216163656754.png" /></p>
+<p>For example, consider the distance of nodes 5 and 8, The lowest common ancestor of nodes 5 and 8 is node 2. The depths of the nodes are depth(5) = 3, depth(8) = 4 and depth(2) = 2, so the distance between nodes 5 and 8 is 3+4−2·2=3.</p>
+<p><img alt="../_images/image-20210216163739423.png" src="../_images/image-20210216163739423.png" /></p>
+</div>
 </div>
 </div>
 
@@ -216,8 +323,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="%E5%9B%BE%E8%AE%BA%E4%B8%80.html" class="btn btn-neutral float-right" title="17. graph图论(一)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="%E6%A0%91%E4%B8%80.html" class="btn btn-neutral float-left" title="15. trees树(一)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../%E7%BB%8F%E9%AA%8C/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html" class="btn btn-neutral float-right" title="1. Windows环境下的操作" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%E6%A0%91%E4%B8%80.html" class="btn btn-neutral float-left" title="18. trees树(一)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
