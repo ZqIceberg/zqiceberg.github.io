@@ -1,0 +1,230 @@
+# 顺序结构程序设计
+
+### 运算符和表达式
+
+[A+B问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1006)
+
+```cpp
+//
+```
+
+[计算(a+b)×c的值](http://ybt.ssoier.cn:8088/problem_show.php?pid=1007)
+
+```cpp
+//
+```
+
+[计算(a+b)×c的值](http://ybt.ssoier.cn:8088/problem_show.php?pid=1007)
+
+```cpp
+//
+```
+
+[带余除法](http://ybt.ssoier.cn:8088/problem_show.php?pid=1009)
+
+```cpp
+//被除数、除数、商、余数
+//% 模运算
+```
+
+[ 计算分数的浮点数值](http://ybt.ssoier.cn:8088/problem_show.php?pid=1010)
+
+```cpp
+printf("%lf");
+printf("%.9lf"); //保留小数点后9位
+```
+
+
+
+### 常量和变量
+
+[甲流疫情死亡率](http://ybt.ssoier.cn:8088/problem_show.php?pid=1011)
+
+```cpp
+//可能会在理解题意上出现stuck
+```
+
+[ 计算多项式的值](http://ybt.ssoier.cn:8088/problem_show.php?pid=1012)
+
+```cpp
+//多项式应该是一个超前知识点
+//需要认识一下 x^3 是个啥
+```
+
+[温度表达转化](http://ybt.ssoier.cn:8088/problem_show.php?pid=1013)
+
+```cpp
+//
+```
+
+[与圆相关的计算](http://ybt.ssoier.cn:8088/problem_show.php?pid=1014)
+
+```cpp
+//
+```
+
+[计算并联电阻的阻值](http://ybt.ssoier.cn:8088/problem_show.php?pid=1015)
+
+```cpp
+//背景知识：物理，并联串联电阻
+```
+
+
+
+### 标准数据类型
+
+[整型数据类型存储空间大小](http://ybt.ssoier.cn:8088/problem_show.php?pid=1016)
+
+```cpp
+sizeof 
+```
+
+[浮点型数据类型存储空间大小](http://ybt.ssoier.cn:8088/problem_show.php?pid=1017)
+
+```cpp
+//
+```
+
+[其他数据类型存储空间大小](http://ybt.ssoier.cn:8088/problem_show.php?pid=1018)
+
+```cpp
+//
+```
+
+[ 浮点数向零舍入](http://ybt.ssoier.cn:8088/problem_show.php?pid=1019)
+
+```cpp
+//上机实验：负的小数取整
+```
+
+[打印ASCII码](http://ybt.ssoier.cn:8088/problem_show.php?pid=1020)
+
+```cpp
+//百度ascii
+//学会0-9 A-Z a-z
+//学会大小写转化，字符和数字转化
+```
+
+[ 打印字符](http://ybt.ssoier.cn:8088/problem_show.php?pid=1021)
+
+```cpp
+//
+```
+
+[整型与布尔型的转换](http://ybt.ssoier.cn:8088/problem_show.php?pid=1022)
+
+```cpp
+//
+```
+
+[Hello,World!的大小](http://ybt.ssoier.cn:8088/problem_show.php?pid=1023)
+
+```cpp
+//
+```
+
+
+
+### 数据输入输出
+
+[保留3位小数的浮点数](http://ybt.ssoier.cn:8088/problem_show.php?pid=1024)
+
+```cpp
+//
+```
+
+[保留12位小数的浮点数](http://ybt.ssoier.cn:8088/problem_show.php?pid=1025)
+
+```cpp
+//
+```
+
+[空格分隔输出](http://ybt.ssoier.cn:8088/problem_show.php?pid=1026)
+
+```cpp
+//
+```
+
+[输出浮点数](http://ybt.ssoier.cn:8088/problem_show.php?pid=1027)
+
+```cpp
+//
+```
+
+[字符菱形](http://ybt.ssoier.cn:8088/problem_show.php?pid=1028)
+
+```cpp
+//
+```
+
+
+
+### 顺序结构实例
+
+[计算浮点数相除的余](http://ybt.ssoier.cn:8088/problem_show.php?pid=1029)
+
+```cpp
+//理解一下余数的定义
+```
+
+[计算球的体积](http://ybt.ssoier.cn:8088/problem_show.php?pid=1030)
+
+```cpp
+//v = 4/3 * PII * r^3
+//需要注意整数除整数的问题
+```
+
+[反向输出一个三位数](http://ybt.ssoier.cn:8088/problem_show.php?pid=1031)
+
+```cpp
+//拓展：给定一个数n，翻转得到新的数字n`，输出 n + n` 的值
+```
+
+[大象喝水查](http://ybt.ssoier.cn:8088/problem_show.php?pid=1032)
+
+```cpp
+//这道题PII取3.14即可
+//注意问题的实际背景，需要整桶整桶的水
+```
+
+[计算线段长度](http://ybt.ssoier.cn:8088/problem_show.php?pid=1033)
+
+```cpp
+//背景知识：笛卡尔坐标系
+```
+
+[计算三角形面积](http://ybt.ssoier.cn:8088/problem_show.php?pid=1034)
+
+```cpp
+//海伦公式
+p = (a+b+c) / 2;
+s = sqrt(p * (p-a) * (p-b) * (p-c));
+```
+
+[等差数列末项计算](http://ybt.ssoier.cn:8088/problem_show.php?pid=1035)
+
+```cpp
+//等差数列求和公式
+```
+
+[A×B问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1036)
+
+```cpp
+long long
+printf("%ld", x);
+1ll * a * b
+```
+
+[计算2的幂](http://ybt.ssoier.cn:8088/problem_show.php?pid=1037)
+
+```cpp
+//幂次，方 的叫法
+```
+
+[苹果和虫子](http://ybt.ssoier.cn:8088/problem_show.php?pid=1038)
+
+```cpp
+//还是题意，剩余多少完整的苹果
+//也要注意苹果很少，时间很长的情况，会是什么结果
+```
+
