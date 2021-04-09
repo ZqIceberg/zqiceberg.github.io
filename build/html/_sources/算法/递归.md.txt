@@ -2,7 +2,9 @@
 
 ### 概念
 
-**递归**是程序遍历状态空间的基本方式。以“原问题”为起点，尝试寻找把状态空间缩小到已知的“问题边界”的路线，再通过该路线反向回溯的遍历方式，就是递归。
+**递归**是程序遍历状态空间的基本方式。
+
+以“原问题”为起点，尝试寻找把状态空间缩小到已知的“问题边界”的路线，再通过该路线反向回溯的遍历方式，就是递归。
 
 程序在每个步骤应该面对相同种类的问题，这些问题都是原问题的一个子问题，可能仅在规模或者某些限制条件上有所区别，并且能够使用“求解原问题的程序”进行求解。程序在执行变换操作执行三个操作：
 
@@ -15,6 +17,167 @@
 **使用递归的前提：** 函数理解深入（带参的函数，有返回值的函数，函数的嵌套(就是“自身调用自身”)）。操作时，试验无限递归，递归的终止条件，“回溯时还原现场”保证执行前后程序面对问题的状态是相同的。
 
 在使用枚举算法蛮力搜索问题的整个“状态空间”时，经常需要递归。（枚举算法，就是遍历一遍，逐个举例。初级的枚举很简单，就是for循环的应用，高级的就很难了，复杂在题目题目和遍历的操作方式）
+
+
+
+**[Thinking recursively is natural, but need good amount of training.]()**
+
+<center>
+
+![](../media/image-20210409233128686.png)
+
+
+
+![](../media/image-20210409233249673.png)
+
+```cpp
+void TriangleRev(int x) {
+   if (x <= 0) return;
+
+   for (int i = 1; i <= x; i++)
+        cout << "*";
+
+	cout << endl;
+
+	TriangleRev(x - 1);
+}
+
+/*
+Call TriangleRev(7)
+TriangleRev(7) <-- prints 7 stars & new line
+  TriangleRev(6) <-- prints 6 stars & new line
+    TriangleRev(5) <-- prints 5 stars & new line
+      TriangleRev(4) <-- prints 4 stars & new line
+        TriangleRev(3) <-- prints 3 stars & new line
+          TriangleRev(2) <-- prints 2 stars & new line
+            TriangleRev(1) <-- prints 1 star & new line
+              TriangleRev(0) <-- base case
+            TriangleRev(1)
+          TriangleRev(2)
+        TriangleRev(3)
+      TriangleRev(4)
+    TriangleRev(5)
+  TriangleRev(6)
+TriangleRev(7)
+
+The output will be:
+*******
+******
+*****
+****
+***
+**
+*
+
+*/
+```
+
+
+
+![](../media/image-20210409233320418.png)
+
+```cpp
+void Triangle(int x) {
+   if (x <= 0) return;
+
+   Triangle(x - 1);
+
+   for (int i = 1; i <= x; i++)
+        cout << "*";
+   cout << endl;
+}
+
+
+/*
+Call Triangle(7)
+Triangle(7)
+  Triangle(6)
+    Triangle(5)
+      Triangle(4)
+        Triangle(3)
+          Triangle(2)
+            Triangle(1)
+              Triangle(0) <-- base case
+            Triangle(1) <-- prints 1 star & new line
+          Triangle(2) <-- prints 2 stars & new line
+        Triangle(3) <-- prints 3 stars & new line
+      Triangle(4) <-- prints 4 stars & new line
+    Triangle(5) <-- prints 5 stars & new line
+  Triangle(6) <-- prints 6 stars & new line
+Triangle(7) <-- prints 7 stars & new line
+
+The output will be:
+
+*
+**
+***
+****
+*****
+******
+*******
+*/
+```
+
+
+
+
+
+![](../media/image-20210409233405898.png)
+
+</center>
+
+
+
+### How to trace recursion
+
+```cpp
+// Factorial(n) = n * Factorial(n-1).		
+// Factorial(0) = Factorial(1) = 1
+
+int Fact(int n)
+{
+	if(n <= 1)
+		return 1;
+
+	return n * Fact(n-1);
+}
+
+/*
+Fact(4)
+	4* Fact(3)
+		3* Fact(2)
+			2* Fact(1)
+			2* 1 <-- 2
+		3* 2 <-- 6
+	4* 6 <-- 24
+*/
+
+```
+
+
+
+```cpp
+void printNumber(int n)	// for n > 0
+{	// 1234567
+	if(n)
+	{
+		printNumber(n/10);		// 214/10 = 21
+		cout<<n%10;				// 214%10 = 4
+	}
+}
+
+// E.g. 7 = 111		214 = 11010110
+// If number%2 get for us last bit in binray representation
+// If we could print last bit, we could print
+void printNumberBits(int n)	// for n > 0
+{
+	if(n)
+	{
+		printNumberBits(n/2);	// 214/2 = 1101011		last bit removed
+		cout<<n%2;				// 214%2 = 0
+	}
+}
+```
 
 
 
@@ -73,7 +236,7 @@ search(0); //调用
 
 
 
-The following tree illustrates the function calls when *n* = 3. We can always choose either the left branch (*k* is not included in the subset) or the right branch (*k* is included in the subset).（注意反复学习这个搜索树的执行过程）
+The following tree illustrates the function calls when *n* = 3. We can always choose either the left branch (*k* is not included in the subset) or the right branch (*k* is included in the subset).**（注意反复学习这个搜索树的执行过程）**
 
 
 
@@ -89,7 +252,7 @@ The following tree illustrates the function calls when *n* = 3. We can always ch
 //Each subset of a set of n elements can be represented as a sequence of n bits, which corresponds to an integer between 0...2n −1. The ones in the bit sequence indicate which elements are included in the subset.
 //上面的程序，我们使用了一个vector来存储选了什么数字
 //这里，我们来学习一下位运算的枚举子集
-//这是一个拓展，可以先不学
+//这是一个拓展
 
 for (int b = 0; b < (1<<n); b++) {
     vector<int> subset;
@@ -128,6 +291,7 @@ search(); //调用
 
 ```cpp
 //The C++ standard library contains the function next_permutation that can be used for this
+
 vector<int> permutation;
 for (int i = 0; i < n; i++) {
     permutation.push_back(i);
@@ -225,7 +389,25 @@ void dfs(int x)
 ```
 
 ```cpp
+//递归实现，枚举的时候带着顺序
+void get_combination(int u, int last)
+{
+	if (u == m){
+		for (int i = 0; i < m; i++) printf("%d ", chosen[i]);
+		puts("");
+	}
+
+	for (int j = last + 1; j <= n; j++){
+		chosen.push_back(j);
+		get_combination(u + 1, j);
+		chosen.pop_back();
+	}
+}
+```
+
+```cpp
 //位运算版本，这是进阶的
+//state表示状态
 void dfs(int u, int sum, int state)
 {
     if (sum > m || sum + n - u < m) return ;
@@ -241,7 +423,7 @@ void dfs(int u, int sum, int state)
     }
     
     dfs(u + 1, sum + 1, state | 1 << u);
-    dfs(u + 1, sum, state);
+    dfs(u + 1, sum    , state         );
 }
 ```
 
@@ -253,7 +435,8 @@ void dfs(int u, int sum, int state)
 
 ```cpp
 //用数组存方案
-//注意一下0-index，如果是1-index呢？递归的边界是....？
+//注意一下 0-index，如果是 1-index 呢？递归的边界是....什么？(提问)
+
 void dfs(int k)
 {
     if (k == n)
@@ -269,9 +452,7 @@ void dfs(int k)
         
         order[k] = i;
         chosen[i] = true;
-        
         dfs(k + 1);
-        
         chosen[i] = false;
     }
 }
@@ -279,8 +460,8 @@ void dfs(int k)
 
 ```cpp
 //用vector来存方案，用二进制数来记录状态
-vector<int> path;
 
+vector<int> path;
 void dfs(int u, int state)
 {
     if (u == n)
@@ -300,6 +481,7 @@ void dfs(int u, int state)
         }
 }
 ```
+
 
 
 
@@ -343,15 +525,14 @@ for (int i = 1; i <= x / 2; i++){
 
 ```cpp
 //求的是分解的方案数， 有两种分析的方法
+
 //1. dfs(x, y)，调用时dfs(x, 2)，从2开始向上搜索x的约数
-	边界是x==1
-        
+	边界是x==1        
 	for (int i = y; i <= x; i++)  //从y往上找x的约数，如果找到，就求解子问题dfs(x/i, i)
 		if (x % i == 0) res += dfs(x / i, i);
 
 //2. dfs(a, b)，从b开始向下搜索a的约数，调用时dfs(x, x)
 	边界是a == 1 和 b == 1
-    
     如果a % b == 0，我们就 res += dfs(a / b, b); 把这个约数除掉，求解子问题
 	如果a % b != 0，我们就 dfs(a, b - 1); 往下看子问题
 ```
@@ -371,7 +552,7 @@ for (int i = 1; i <= x / 2; i++){
 ##### [扩号匹配问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1203)
 
 ```cpp
-//模拟搜索的过程，用递归实现这个搜索的模拟过程
+//模拟搜索的过程，用递归实现这个搜索的模拟过程（这个就不是什么数字上的往深层次递归了，这是模拟）
 //遇到左括号，就先标记上
 //遇到右括号，就从当前位置往前找“有标记的左括号”
 //找到了，就取消左括号的标记；没找到，就把这个右括号，标记起来
@@ -400,19 +581,23 @@ for (int i = 1; i <= x / 2; i++){
 ##### [求最大公约数问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1207)
 
 ```cpp
-//介绍gcd模板
+//介绍GCD模板
 ```
 
 ##### [2的幂次方表示](http://ybt.ssoier.cn:8088/problem_show.php?pid=1208)
 
 ```cpp
 //这道题比较复杂，作为拓展学习，涉及位运算，对理解二进制数有帮助
+//先分析一下边界
+//然后找到小于等于这个数的2的最大幂次，可能还有一个尾巴剩余
+//对幂次进行递归处理
 ```
 
 ##### [分数求和](http://ybt.ssoier.cn:8088/problem_show.php?pid=1209)
 
 ```cpp
 //模拟两个分数相加的过程，通分和约分
+//约分的时候用到GCD
 ```
 
 ##### [因子分解](http://ybt.ssoier.cn:8088/problem_show.php?pid=1210)
@@ -425,5 +610,6 @@ for (int i = 1; i <= x / 2; i++){
 
 ```cpp
 //用递归遍历问题的状态空间，进行暴力枚举
+//这个也是模拟，递归往远处模拟排查
 ```
 

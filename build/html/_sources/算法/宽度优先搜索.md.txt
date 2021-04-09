@@ -10,12 +10,68 @@
 
 
 
+根据下面示例代码，学习bfs()，学会使用queue<>。bfs相对是好写的，模板很清晰。
+
+
+
 ### 《一本通》题目
 
 ###### [【例8.2】细胞](http://ybt.ssoier.cn:8088/problem_show.php?pid=1329)
 
 ```cpp
-//Flood Fill
+// Flood Fill
+// 示例代码
+#include <bits/stdc++.h>
+
+using namespace std;
+
+typedef pair<int, int> PII;
+
+const int N = 1e4 + 10;
+
+char s[N][N];
+int n, m; //没有给nm范围
+
+int dx[] = {0, 1, 0, -1}, dy[] = {1, 0, -1, 0};
+
+void bfs(int ux, int uy)
+{
+	queue<PII> q;
+	q.push(make_pair(ux, uy));
+
+	while (!q.empty()){
+		PII t = q.front(); q.pop();
+		int x = t.first, y = t.second;
+		s[x][y] = '0';
+		
+		for (int i = 0; i < 4; i++){
+			int a = x + dx[i], b = y + dy[i];
+			if (a < 0 || a >= n || b < 0 || b >= m) continue;
+			if (s[a][b] == '0') continue;
+
+			q.push(make_pair(a, b));
+		}
+	}
+}
+
+int main()
+{
+	cin >> n >> m;
+	for (int i = 0; i < n; i++) scanf("%s", s[i]);
+
+	int cnt = 0;
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < m; j++){
+			if (s[i][j] != '0'){
+				bfs(i, j);
+				cnt++;
+			}
+		}
+
+	cout << cnt << '\n';
+
+	return 0;
+}
 ```
 
 ###### [【例8.3】最少步数](http://ybt.ssoier.cn:8088/problem_show.php?pid=1330)

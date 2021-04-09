@@ -6,7 +6,7 @@ In many times, contestants start to think in a problem, found an idea (e.g. let'
 
 Sometimes, Idea is correct, but they don't study enough algorithms to know how to continue
 Sometimes, Idea is correct, but they don't do enough observations
-Sometimes, approach is correct (e.g. it is DP), but the idea itself is wrong (you need to think in other reccurance)
+Sometimes, approach is correct (e.g. it is DP), but the idea itself is wrong (you need to think in other recurrence)
 Sometimes, approach is incorrect, and you need to think differently
 
 **How to avoid stucking?**

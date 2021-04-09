@@ -2,6 +2,35 @@
 
 ### 函数
 
+```cpp
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void f(int x)
+{
+	if (x == 0) return ;
+
+	cout << x;
+	f(x - 1);
+} 
+
+int main()
+{
+	int n, m;
+	cin >> n; //10`
+	f(n);
+	puts("");
+
+	return 0;
+}
+
+```
+
+
+
+
+
 [求正整数2和n之间的完全数](http://ybt.ssoier.cn:8088/problem_show.php?pid=1150)
 
 ```cpp

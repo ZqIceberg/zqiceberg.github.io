@@ -99,40 +99,41 @@
 <li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E6%8E%A8.html">6. recursion 递推</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">7. recursive 递归</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">7.1. 概念</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">7.2. 入门问题</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id3">7.2.1. 爬楼梯</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">7.2.2. 菲波那契数列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pell">7.2.3. Pell数列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-trace-recursion">7.2. How to trace recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">7.3. 入门问题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">7.3.1. 爬楼梯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">7.3.2. 菲波那契数列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pell">7.3.3. Pell数列</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#complete-search">7.3. Complete search</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id5">7.3.1. 问题：生成子集</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">7.3.2. 问题：生成排列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#complete-search">7.4. Complete search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">7.4.1. 问题：生成子集</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">7.4.2. 问题：生成排列</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">7.4. 《进阶指南》题目</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id8">7.4.1. 递归实现指数型枚举</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">7.4.2. 递归实现组合型枚举</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">7.4.3. 递归实现排列型枚举</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">7.5. 《进阶指南》题目</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">7.5.1. 递归实现指数型枚举</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">7.5.2. 递归实现组合型枚举</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">7.5.3. 递归实现排列型枚举</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id11">7.5. 《一本通》题目</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id12">7.5.1. 【例4.5】集合的划分</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#noip2001">7.5.2. 【例4.6】数的计数(Noip2001)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">7.5.3. 逆波兰表达式</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">7.5.4. 全排列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">7.5.5. 分解因数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">7.5.6. 菲波那契数列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">7.5.7. Pell数列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">7.5.8. 扩号匹配问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">7.5.9. 爬楼梯</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">7.5.10. 汉诺塔问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">7.5.11. 放苹果</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id22">7.5.12. 求最大公约数问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id23">7.5.13. 2的幂次方表示</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id24">7.5.14. 分数求和</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id25">7.5.15. 因子分解</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id26">7.5.16. 判断元素是否存在</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">7.6. 《一本通》题目</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">7.6.1. 【例4.5】集合的划分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#noip2001">7.6.2. 【例4.6】数的计数(Noip2001)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">7.6.3. 逆波兰表达式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">7.6.4. 全排列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">7.6.5. 分解因数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">7.6.6. 菲波那契数列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">7.6.7. Pell数列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">7.6.8. 扩号匹配问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">7.6.9. 爬楼梯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">7.6.10. 汉诺塔问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">7.6.11. 放苹果</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">7.6.12. 求最大公约数问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">7.6.13. 2的幂次方表示</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">7.6.14. 分数求和</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">7.6.15. 因子分解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">7.6.16. 判断元素是否存在</a></li>
 </ul>
 </li>
 </ul>
@@ -153,15 +154,16 @@
 <p class="caption"><span class="caption-text">二、计算机使用教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Focused%20vs%20Diffused%20Thinking%3A%20Solve%20Hard%20Problems%20with%20this%20Simply%20Trick.html">1. Focused vs Diffused Thinking: Solve Hard Problems with this Simply Trick</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Thinking%20-%20Brainsotrm%20-%20Rank%20-%20Approach%20.html">2. Thinking - Brainsotrm - Rank - Approach</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Thinking%20-%20Problem%20Simplification.html">3. Thinking - Problem Simplification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">4. Windows环境下的操作</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/macOS%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">5. macOS环境下的操作</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%B8%AD%E5%AD%A6%E8%B6%85%E5%89%8D%E5%AD%A6%E4%B9%A0%E7%BB%8F%E5%8E%86%E5%AF%B9%E5%A4%A7%E5%AD%A6%E6%8B%94%E5%B0%96%E5%AD%A6%E7%94%9F%E5%AD%A6%E4%B9%A0%E7%8A%B6%E6%80%81%E7%9A%84%E5%BD%B1%E5%93%8D.html">6. 中学超前学习经历对大学拔尖学生学习状态的影响</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%BB%A3%E7%A0%81%E7%BB%8F%E9%AA%8C.html">7. 代码经验</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%BF%A1%E6%81%AF%E5%AD%A6%E6%AF%94%E8%B5%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html">8. 信息学比赛常见问题</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E5%8C%97%E5%A4%A7%E6%9D%8E%E6%99%93%E6%98%8E%E6%95%99%E6%8E%88%EF%BC%9A%E4%BB%8E%E8%B6%A3%E5%91%B3%E6%95%B0%E5%AD%A6%E5%88%B0%E8%B6%A3%E5%91%B3%E7%AE%97%E6%B3%95%E5%88%B0%E8%B6%A3%E5%91%B3%E7%BC%96%E7%A8%8B%E2%80%94%E2%80%94%E9%9D%9E%E4%B8%93%E4%B8%9A%E5%AD%A6%E4%B9%A0%E8%80%85%E4%BD%93%E4%BC%9A%E8%AE%A1%E7%AE%97%E6%80%9D%E7%BB%B4%E7%9A%84%E4%B8%80%E6%9D%A1%E9%80%94%E5%BE%84%EF%BC%9F.html">9. 北大李晓明教授：从趣味数学到趣味算法到趣味编程——非专业学习者体会计算思维的一条途径？</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E5%AF%B9%E8%AF%9DIOI2021%E5%9B%BD%E5%AE%B6%E9%98%9F%E6%88%90%E5%91%98%EF%BC%81%E7%9B%B4%E6%92%AD%E8%B6%85%E8%AF%A6%E7%BB%86%E6%96%87%E5%AD%97%E7%8F%8D%E8%97%8F%E7%89%88%E6%9D%A5%E5%95%A6.html">10. 对话IOI2021国家队成员！直播超详细文字珍藏版来啦</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/NOI%E5%A4%A7%E7%BA%B2.html">2. NOI大纲</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Thinking%20-%20Brainsotrm%20-%20Rank%20-%20Approach%20.html">3. Thinking - Brainsotrm - Rank - Approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Thinking%20-%20Problem%20Simplification.html">4. Thinking - Problem Simplification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">5. Windows环境下的操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/macOS%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">6. macOS环境下的操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%B8%AD%E5%AD%A6%E8%B6%85%E5%89%8D%E5%AD%A6%E4%B9%A0%E7%BB%8F%E5%8E%86%E5%AF%B9%E5%A4%A7%E5%AD%A6%E6%8B%94%E5%B0%96%E5%AD%A6%E7%94%9F%E5%AD%A6%E4%B9%A0%E7%8A%B6%E6%80%81%E7%9A%84%E5%BD%B1%E5%93%8D.html">7. 中学超前学习经历对大学拔尖学生学习状态的影响</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%BB%A3%E7%A0%81%E7%BB%8F%E9%AA%8C.html">8. 代码经验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%BF%A1%E6%81%AF%E5%AD%A6%E6%AF%94%E8%B5%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html">9. 信息学比赛常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E5%8C%97%E5%A4%A7%E6%9D%8E%E6%99%93%E6%98%8E%E6%95%99%E6%8E%88%EF%BC%9A%E4%BB%8E%E8%B6%A3%E5%91%B3%E6%95%B0%E5%AD%A6%E5%88%B0%E8%B6%A3%E5%91%B3%E7%AE%97%E6%B3%95%E5%88%B0%E8%B6%A3%E5%91%B3%E7%BC%96%E7%A8%8B%E2%80%94%E2%80%94%E9%9D%9E%E4%B8%93%E4%B8%9A%E5%AD%A6%E4%B9%A0%E8%80%85%E4%BD%93%E4%BC%9A%E8%AE%A1%E7%AE%97%E6%80%9D%E7%BB%B4%E7%9A%84%E4%B8%80%E6%9D%A1%E9%80%94%E5%BE%84%EF%BC%9F.html">10. 北大李晓明教授：从趣味数学到趣味算法到趣味编程——非专业学习者体会计算思维的一条途径？</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E5%AF%B9%E8%AF%9DIOI2021%E5%9B%BD%E5%AE%B6%E9%98%9F%E6%88%90%E5%91%98%EF%BC%81%E7%9B%B4%E6%92%AD%E8%B6%85%E8%AF%A6%E7%BB%86%E6%96%87%E5%AD%97%E7%8F%8D%E8%97%8F%E7%89%88%E6%9D%A5%E5%95%A6.html">11. 对话IOI2021国家队成员！直播超详细文字珍藏版来啦</a></li>
 </ul>
 <p class="caption"><span class="caption-text">三、C++语言部分</span></p>
 <ul>
@@ -245,7 +247,8 @@
 <h1><span class="section-number">7. </span>recursive 递归<a class="headerlink" href="#recursive" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
 <h2><span class="section-number">7.1. </span>概念<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p><strong>递归</strong>是程序遍历状态空间的基本方式。以“原问题”为起点，尝试寻找把状态空间缩小到已知的“问题边界”的路线，再通过该路线反向回溯的遍历方式，就是递归。</p>
+<p><strong>递归</strong>是程序遍历状态空间的基本方式。</p>
+<p>以“原问题”为起点，尝试寻找把状态空间缩小到已知的“问题边界”的路线，再通过该路线反向回溯的遍历方式，就是递归。</p>
 <p>程序在每个步骤应该面对相同种类的问题，这些问题都是原问题的一个子问题，可能仅在规模或者某些限制条件上有所区别，并且能够使用“求解原问题的程序”进行求解。程序在执行变换操作执行三个操作：</p>
 <ol class="simple">
 <li><p><em>缩小问题状态空间的规模。程序尝试寻找在 “原问题” 与 “问题边界” 之间的变换路线，并向正在探索的路线上迈进一步。</em></p></li>
@@ -254,35 +257,169 @@
 </ol>
 <p><strong>使用递归的前提：</strong> 函数理解深入（带参的函数，有返回值的函数，函数的嵌套(就是“自身调用自身”)）。操作时，试验无限递归，递归的终止条件，“回溯时还原现场”保证执行前后程序面对问题的状态是相同的。</p>
 <p>在使用枚举算法蛮力搜索问题的整个“状态空间”时，经常需要递归。（枚举算法，就是遍历一遍，逐个举例。初级的枚举很简单，就是for循环的应用，高级的就很难了，复杂在题目题目和遍历的操作方式）</p>
+<p><strong><a class="reference external" href="#">Thinking recursively is natural, but need good amount of training.</a></strong></p>
+<center><p><img alt="../_images/image-20210409233128686.png" src="../_images/image-20210409233128686.png" /></p>
+<p><img alt="../_images/image-20210409233249673.png" src="../_images/image-20210409233249673.png" /></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">TriangleRev</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+   <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">x</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;*&quot;</span><span class="p">;</span>
+
+	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+	<span class="n">TriangleRev</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">Call TriangleRev(7)</span>
+<span class="cm">TriangleRev(7) &lt;-- prints 7 stars &amp; new line</span>
+<span class="cm">  TriangleRev(6) &lt;-- prints 6 stars &amp; new line</span>
+<span class="cm">    TriangleRev(5) &lt;-- prints 5 stars &amp; new line</span>
+<span class="cm">      TriangleRev(4) &lt;-- prints 4 stars &amp; new line</span>
+<span class="cm">        TriangleRev(3) &lt;-- prints 3 stars &amp; new line</span>
+<span class="cm">          TriangleRev(2) &lt;-- prints 2 stars &amp; new line</span>
+<span class="cm">            TriangleRev(1) &lt;-- prints 1 star &amp; new line</span>
+<span class="cm">              TriangleRev(0) &lt;-- base case</span>
+<span class="cm">            TriangleRev(1)</span>
+<span class="cm">          TriangleRev(2)</span>
+<span class="cm">        TriangleRev(3)</span>
+<span class="cm">      TriangleRev(4)</span>
+<span class="cm">    TriangleRev(5)</span>
+<span class="cm">  TriangleRev(6)</span>
+<span class="cm">TriangleRev(7)</span>
+
+<span class="cm">The output will be:</span>
+<span class="cm">*******</span>
+<span class="cm">******</span>
+<span class="cm">*****</span>
+<span class="cm">****</span>
+<span class="cm">***</span>
+<span class="cm">**</span>
+<span class="cm">*</span>
+
+<span class="cm">*/</span>
+</pre></div>
+</div>
+<p><img alt="../_images/image-20210409233320418.png" src="../_images/image-20210409233320418.png" /></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">Triangle</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+   <span class="n">Triangle</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+
+   <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">x</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;*&quot;</span><span class="p">;</span>
+   <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="cm">/*</span>
+<span class="cm">Call Triangle(7)</span>
+<span class="cm">Triangle(7)</span>
+<span class="cm">  Triangle(6)</span>
+<span class="cm">    Triangle(5)</span>
+<span class="cm">      Triangle(4)</span>
+<span class="cm">        Triangle(3)</span>
+<span class="cm">          Triangle(2)</span>
+<span class="cm">            Triangle(1)</span>
+<span class="cm">              Triangle(0) &lt;-- base case</span>
+<span class="cm">            Triangle(1) &lt;-- prints 1 star &amp; new line</span>
+<span class="cm">          Triangle(2) &lt;-- prints 2 stars &amp; new line</span>
+<span class="cm">        Triangle(3) &lt;-- prints 3 stars &amp; new line</span>
+<span class="cm">      Triangle(4) &lt;-- prints 4 stars &amp; new line</span>
+<span class="cm">    Triangle(5) &lt;-- prints 5 stars &amp; new line</span>
+<span class="cm">  Triangle(6) &lt;-- prints 6 stars &amp; new line</span>
+<span class="cm">Triangle(7) &lt;-- prints 7 stars &amp; new line</span>
+
+<span class="cm">The output will be:</span>
+
+<span class="cm">*</span>
+<span class="cm">**</span>
+<span class="cm">***</span>
+<span class="cm">****</span>
+<span class="cm">*****</span>
+<span class="cm">******</span>
+<span class="cm">*******</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+<p><img alt="../_images/image-20210409233405898.png" src="../_images/image-20210409233405898.png" /></p>
+</center></div>
+<div class="section" id="how-to-trace-recursion">
+<h2><span class="section-number">7.2. </span>How to trace recursion<a class="headerlink" href="#how-to-trace-recursion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Factorial(n) = n * Factorial(n-1).		</span>
+<span class="c1">// Factorial(0) = Factorial(1) = 1</span>
+
+<span class="kt">int</span> <span class="nf">Fact</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span>
+		<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+
+	<span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">Fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">Fact(4)</span>
+<span class="cm">	4* Fact(3)</span>
+<span class="cm">		3* Fact(2)</span>
+<span class="cm">			2* Fact(1)</span>
+<span class="cm">			2* 1 &lt;-- 2</span>
+<span class="cm">		3* 2 &lt;-- 6</span>
+<span class="cm">	4* 6 &lt;-- 24</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">printNumber</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>	<span class="c1">// for n &gt; 0</span>
+<span class="p">{</span>	<span class="c1">// 1234567</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">printNumber</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">10</span><span class="p">);</span>		<span class="c1">// 214/10 = 21</span>
+		<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">n</span><span class="o">%</span><span class="mi">10</span><span class="p">;</span>				<span class="c1">// 214%10 = 4</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// E.g. 7 = 111		214 = 11010110</span>
+<span class="c1">// If number%2 get for us last bit in binray representation</span>
+<span class="c1">// If we could print last bit, we could print</span>
+<span class="kt">void</span> <span class="nf">printNumberBits</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>	<span class="c1">// for n &gt; 0</span>
+<span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">printNumberBits</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>	<span class="c1">// 214/2 = 1101011		last bit removed</span>
+		<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="p">;</span>				<span class="c1">// 214%2 = 0</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">7.2. </span>入门问题<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.3. </span>入门问题<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
-<h3><span class="section-number">7.2.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1204">爬楼梯</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.3.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1204">爬楼梯</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//理解推导公式后，利用递归实现</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id4">
-<h3><span class="section-number">7.2.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1201">菲波那契数列</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.3.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1201">菲波那契数列</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//理解推导公式后，利用递归实现</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="pell">
-<h3><span class="section-number">7.2.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1202">Pell数列</a><a class="headerlink" href="#pell" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.3.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1202">Pell数列</a><a class="headerlink" href="#pell" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//需要使用记忆化</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="complete-search">
-<h2><span class="section-number">7.3. </span>Complete search<a class="headerlink" href="#complete-search" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.4. </span>Complete search<a class="headerlink" href="#complete-search" title="Permalink to this headline">¶</a></h2>
 <p>在学习递归之后，我们就学会了遍历问题状态空间的一种方式方法。这样我们就可以去尝试搜索这个问题的状态空间。这里，我们先来接触Complete search（也可以理解为暴力搜索）</p>
 <p><strong>Complete search</strong> is a general method that can be used to solve almost any algorithm problem. The idea is to generate all possible solutions to the problem using brute force, and then select the best solution or count the number of solutions, depending on the problem.</p>
 <p>Complete search is a good technique if there is enough time to go through all the solutions, because the search is usually easy to implement and it always gives the correct answer. If complete search is too slow, other techniques, such as greedy algorithms or dynamic programming, may be needed.</p>
 <div class="section" id="id5">
-<h3><span class="section-number">7.3.1. </span><a class="reference external" href="#">问题：生成子集</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.1. </span><a class="reference external" href="#">问题：生成子集</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>For example, the subsets of {0,1,2} are 􏰀, {0}, {1}, {2}, {0,1}, {0,2}, {1,2} and {0,1,2}.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//An elegant way to go through all subsets of a set is to use recursion</span>
 <span class="kt">void</span> <span class="nf">search</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
@@ -300,12 +437,12 @@
 <span class="c1">//这个就是递归枚举子集</span>
 </pre></div>
 </div>
-<p>The following tree illustrates the function calls when <em>n</em> = 3. We can always choose either the left branch (<em>k</em> is not included in the subset) or the right branch (<em>k</em> is included in the subset).（注意反复学习这个搜索树的执行过程）</p>
+<p>The following tree illustrates the function calls when <em>n</em> = 3. We can always choose either the left branch (<em>k</em> is not included in the subset) or the right branch (<em>k</em> is included in the subset).<strong>（注意反复学习这个搜索树的执行过程）</strong></p>
 <center><p><img alt="../_images/image-20210125152214071.png" src="../_images/image-20210125152214071.png" /></p>
 </center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//Each subset of a set of n elements can be represented as a sequence of n bits, which corresponds to an integer between 0...2n −1. The ones in the bit sequence indicate which elements are included in the subset.</span>
 <span class="c1">//上面的程序，我们使用了一个vector来存储选了什么数字</span>
 <span class="c1">//这里，我们来学习一下位运算的枚举子集</span>
-<span class="c1">//这是一个拓展，可以先不学</span>
+<span class="c1">//这是一个拓展</span>
 
 <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">n</span><span class="p">);</span> <span class="n">b</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">subset</span><span class="p">;</span>
@@ -317,7 +454,7 @@
 </div>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">7.3.2. </span><a class="reference external" href="#">问题：生成排列</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.2. </span><a class="reference external" href="#">问题：生成排列</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>For example, the permutations of {0,1,2} are (0,1,2), (0,2,1), (1,0,2), (1,2,0), (2,0,1) and (2,1,0).</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//Each function call adds a new element to permutation. The array chosen indicates which elements are already included in the permutation. If the size of permutation equals the size of the set, a permutation has been generated.</span>
 
@@ -340,6 +477,7 @@
 </pre></div>
 </div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//The C++ standard library contains the function next_permutation that can be used for this</span>
+
 <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">permutation</span><span class="p">;</span>
 <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">permutation</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
@@ -352,9 +490,9 @@
 </div>
 </div>
 <div class="section" id="id7">
-<h2><span class="section-number">7.4. </span>《进阶指南》题目<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.5. </span>《进阶指南》题目<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id8">
-<h3><span class="section-number">7.4.1. </span><a class="reference external" href="https://www.acwing.com/problem/content/94/">递归实现指数型枚举</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.1. </span><a class="reference external" href="https://www.acwing.com/problem/content/94/">递归实现指数型枚举</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>/子集枚举</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">chosen</span><span class="p">;</span>
 
@@ -403,7 +541,7 @@
 </div>
 </div>
 <div class="section" id="id9">
-<h3><span class="section-number">7.4.2. </span><a class="reference external" href="https://www.acwing.com/problem/content/95/">递归实现组合型枚举</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.2. </span><a class="reference external" href="https://www.acwing.com/problem/content/95/">递归实现组合型枚举</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>/在子集枚举的基础上，进行剪枝</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">chosen</span><span class="p">;</span>
 
@@ -430,7 +568,24 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//递归实现，枚举的时候带着顺序</span>
+<span class="kt">void</span> <span class="nf">get_combination</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">last</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">u</span> <span class="o">==</span> <span class="n">m</span><span class="p">){</span>
+		<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span> <span class="n">chosen</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+		<span class="n">puts</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">last</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+		<span class="n">chosen</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">j</span><span class="p">);</span>
+		<span class="n">get_combination</span><span class="p">(</span><span class="n">u</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
+		<span class="n">chosen</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//位运算版本，这是进阶的</span>
+<span class="c1">//state表示状态</span>
 <span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sum</span><span class="p">,</span> <span class="kt">int</span> <span class="n">state</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">sum</span> <span class="o">&gt;</span> <span class="n">m</span> <span class="o">||</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">n</span> <span class="o">-</span> <span class="n">u</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">)</span> <span class="k">return</span> <span class="p">;</span>
@@ -446,16 +601,17 @@
     <span class="p">}</span>
     
     <span class="n">dfs</span><span class="p">(</span><span class="n">u</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sum</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">state</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">u</span><span class="p">);</span>
-    <span class="n">dfs</span><span class="p">(</span><span class="n">u</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sum</span><span class="p">,</span> <span class="n">state</span><span class="p">);</span>
+    <span class="n">dfs</span><span class="p">(</span><span class="n">u</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sum</span>    <span class="p">,</span> <span class="n">state</span>         <span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id10">
-<h3><span class="section-number">7.4.3. </span><a class="reference external" href="https://www.acwing.com/problem/content/96/">递归实现排列型枚举</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.3. </span><a class="reference external" href="https://www.acwing.com/problem/content/96/">递归实现排列型枚举</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>/排列枚举</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//用数组存方案</span>
-<span class="c1">//注意一下0-index，如果是1-index呢？递归的边界是....？</span>
+<span class="c1">//注意一下 0-index，如果是 1-index 呢？递归的边界是....什么？(提问)</span>
+
 <span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
@@ -471,17 +627,15 @@
         
         <span class="n">order</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
         <span class="n">chosen</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-        
         <span class="n">dfs</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-        
         <span class="n">chosen</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//用vector来存方案，用二进制数来记录状态</span>
-<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">path</span><span class="p">;</span>
 
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">path</span><span class="p">;</span>
 <span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">state</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">u</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
@@ -505,16 +659,16 @@
 </div>
 </div>
 <div class="section" id="id11">
-<h2><span class="section-number">7.5. </span>《一本通》题目<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.6. </span>《一本通》题目<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id12">
-<h3><span class="section-number">7.5.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1315">【例4.5】集合的划分</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1315">【例4.5】集合的划分</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//{an}是k子集合中的一个,S(n-1, k-1)</span>
 <span class="c1">//{an}不是k子集合中的任意一个子集，an与其他元素构成了子集，问题相当于S(n-1,k)。把an加入到k个子集中的任意一个中，有k种加入的方法</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="noip2001">
-<h3><span class="section-number">7.5.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1316">【例4.6】数的计数(Noip2001)</a><a class="headerlink" href="#noip2001" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1316">【例4.6】数的计数(Noip2001)</a><a class="headerlink" href="#noip2001" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//子问题是[1...x/2]</span>
 <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
 		<span class="n">dfs</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
@@ -524,7 +678,7 @@
 </div>
 </div>
 <div class="section" id="id13">
-<h3><span class="section-number">7.5.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1198">逆波兰表达式</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1198">逆波兰表达式</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//* a b</span>
 <span class="c1">//读入的是*号，我们就返回 dfs() * dfs()</span>
     
@@ -533,43 +687,42 @@
 </div>
 </div>
 <div class="section" id="id14">
-<h3><span class="section-number">7.5.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1199">全排列</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1199">全排列</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//前面的例题</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id15">
-<h3><span class="section-number">7.5.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1200">分解因数</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1200">分解因数</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>//求的是分解的方案数， 有两种分析的方法
+
 //1. dfs(x, y)，调用时dfs(x, 2)，从2开始向上搜索x的约数
-	边界是x==1
-        
+	边界是x==1        
 	for (int i = y; i &lt;= x; i++)  //从y往上找x的约数，如果找到，就求解子问题dfs(x/i, i)
 		if (x % i == 0) res += dfs(x / i, i);
 
 //2. dfs(a, b)，从b开始向下搜索a的约数，调用时dfs(x, x)
 	边界是a == 1 和 b == 1
-    
     如果a % b == 0，我们就 res += dfs(a / b, b); 把这个约数除掉，求解子问题
 	如果a % b != 0，我们就 dfs(a, b - 1); 往下看子问题
 </pre></div>
 </div>
 </div>
 <div class="section" id="id16">
-<h3><span class="section-number">7.5.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1201">菲波那契数列</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1201">菲波那契数列</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id17">
-<h3><span class="section-number">7.5.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1202">Pell数列</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1202">Pell数列</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id18">
-<h3><span class="section-number">7.5.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1203">扩号匹配问题</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//模拟搜索的过程，用递归实现这个搜索的模拟过程</span>
+<h3><span class="section-number">7.6.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1203">扩号匹配问题</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//模拟搜索的过程，用递归实现这个搜索的模拟过程（这个就不是什么数字上的往深层次递归了，这是模拟）</span>
 <span class="c1">//遇到左括号，就先标记上</span>
 <span class="c1">//遇到右括号，就从当前位置往前找“有标记的左括号”</span>
 <span class="c1">//找到了，就取消左括号的标记；没找到，就把这个右括号，标记起来</span>
@@ -577,19 +730,19 @@
 </div>
 </div>
 <div class="section" id="id19">
-<h3><span class="section-number">7.5.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1204">爬楼梯</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1204">爬楼梯</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id20">
-<h3><span class="section-number">7.5.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1205">汉诺塔问题</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1205">汉诺塔问题</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id21">
-<h3><span class="section-number">7.5.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1206">放苹果</a><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1206">放苹果</a><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//把M个同样的苹果放在N个同样的盘子里，允许有的盘子空着不放，问共有多少种不同的分法？</span>
 <span class="c1">//这道题目意义深远，打个星号</span>
 <span class="c1">//分情况讨论，盘子比苹果多的情况，苹果比盘子多的情况</span>
@@ -597,32 +750,37 @@
 </div>
 </div>
 <div class="section" id="id22">
-<h3><span class="section-number">7.5.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1207">求最大公约数问题</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//介绍gcd模板</span>
+<h3><span class="section-number">7.6.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1207">求最大公约数问题</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//介绍GCD模板</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id23">
-<h3><span class="section-number">7.5.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1208">2的幂次方表示</a><a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1208">2的幂次方表示</a><a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//这道题比较复杂，作为拓展学习，涉及位运算，对理解二进制数有帮助</span>
+<span class="c1">//先分析一下边界</span>
+<span class="c1">//然后找到小于等于这个数的2的最大幂次，可能还有一个尾巴剩余</span>
+<span class="c1">//对幂次进行递归处理</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id24">
-<h3><span class="section-number">7.5.14. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1209">分数求和</a><a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.14. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1209">分数求和</a><a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//模拟两个分数相加的过程，通分和约分</span>
+<span class="c1">//约分的时候用到GCD</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id25">
-<h3><span class="section-number">7.5.15. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1210">因子分解</a><a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.15. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1210">因子分解</a><a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//分解质因数</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id26">
-<h3><span class="section-number">7.5.16. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1211">判断元素是否存在</a><a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.16. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1211">判断元素是否存在</a><a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//用递归遍历问题的状态空间，进行暴力枚举</span>
+<span class="c1">//这个也是模拟，递归往远处模拟排查</span>
 </pre></div>
 </div>
 </div>

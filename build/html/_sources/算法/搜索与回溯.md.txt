@@ -289,9 +289,297 @@ int main()
 
 
 
-### 深搜代码框架
+
+
+### 更进一步的拓展
+
+##### [数字三角形模型]()
 
 ```cpp
+// Given grid of positive numbers, Start from 0, 0 and end at n, n. Move only to right and down - find path with sum of numbers is maximum.
+/*
+15
+24
+
+512
+678
+189
+*/
+int grid[MAX][MAX];
+
+// Think in function F(i, j) that find solution from (i, j) to (n, n)
+
+int maxPathSum(int r, int c)
+{
+	if( !valid(r, c))
+		return 0;
+
+	if (r == n-1 && c == n-1)
+		return grid[r][c];	// base
+
+	int path1 = maxPathSum(r, c+1);	// right
+	int path2 = maxPathSum(r+1, c);	// down
+
+	return grid[r][c] + max(path1, path2);
+}
+```
+
+
+
+##### [迷宫是否可以走出]()
+
+```cpp
+/*
+
+.SX..
+..X.E
+....X
+X.XX.
+ */
+
+char maze[MAX][MAX];	// filled with S (for start), E (for end), . (could pass) and X (block can't path)
+bool findEnd(int r, int c)		// Recursion State: r, c
+{
+    if( !valid(r, c) || maze[r][c] == 'X')
+		return false;		// invalid position or block position
+
+    if( maze[r][c] =='E')
+		return true;	// we found End
+
+	// Try the 4 neighbor cells
+
+	if(findEnd(r, c-1)) return true;  	// search up
+    if(findEnd(r, c+1)) return true; 	// search down
+    if(findEnd(r-1, c)) return true;  	// search left
+    if(findEnd(r+1, c)) return true;  	// search right
+
+	// Can't find a way for it!
+    return false;
+}
+
+// This code will go to infinity! ... we need to avoid cycles. Mark visited cells
+```
+
+```cpp
+bool vis[MAX][MAX];
+bool findEnd2(int r, int c)	// Recursion State: r, c	and FULL visted array
+{
+    if( !valid(r, c) || maze[r][c] == 'X' || vis[r][c] == 1)
+		return false;		// invalid position or block position
+
+
+	vis[r][c] = 1;	// we just visited it, don't allow any one bacl to it
+
+    if( maze[r][c] =='E')
+		return true;	// we found End
+
+	// Try the 4 neighbor cells
+
+	if(findEnd2(r, c-1)) return true;  	// search up
+    if(findEnd2(r, c+1)) return true; 	// search down
+    if(findEnd2(r-1, c)) return true;  	// search left
+    if(findEnd2(r+1, c)) return true;  	// search right
+
+	vis[r][c] = 0;	// undo marking, other paths allowed to use it now
+
+	// Can't find a way for it!
+    return false;
+}
+```
+
+
+
+##### [Flood Fill]()
+
+```cpp
+// Flood Fill...given maze where cells are . or X. You start at 0, 0..how many cells you could reach?
+/*
+..X.
+.X.X
+..X.
+
+...x.
+..x..
+.x...
+x....
+
+
+....X...
+....XXXX
+..X.....
+.X....XX
+..X.X.X.
+..X...X.
+...X..XX
+*/
+
+// A reachable block is called connected components. Each set of positions reachable together are connected component.
+
+int cnt = 0;
+void cntReachalbleCells(int r, int c)
+{
+    if( !valid(r, c) || maze[r][c] == 'X' || vis[r][c] == 1)
+		return;		// invalid position or block position
+
+
+	vis[r][c] = 1;	// we just visited it, don't allow any one back to it
+	cnt++;
+
+	// Try the 4 neighbor cells
+	cntReachalbleCells(r, c-1);
+    cntReachalbleCells(r, c+1);
+    cntReachalbleCells(r-1, c);
+    cntReachalbleCells(r+1, c);
+}
+
+// What about finding number of connected components?
+void cntComponents(int R, int C)
+{
+	int comps = 0;
+
+	for(int i = 0; i < R; ++i)
+	{
+		for(int j = 0; j < C; ++j)
+		{
+			cnt = 0;
+			cntReachalbleCells(i, j);
+
+			if(cnt > 0)
+				comps++;
+		}
+	}
+
+}
+```
+
+
+
+##### [generate all sequences of given length, of zeros and ones]()
+
+```cpp
+// 
+// E.g. for len = 3:	000, 001, 010, 011, 100, 101, 110, 111
+//								""												Count=1
+//					0								1							Count=2
+//			00 				01				10				11					Count=4
+//		000		001		010		011		100		101		110		11				Count=8
+//
+void generateBinary(int len, string cur = "")	// recursion state: integer, string
+{
+	if(len == 0)
+	{
+		cout<<cur<<"\n";
+		return;
+	}
+
+	// At each level, we branch twice...draw this tree
+	generateBinary(len-1, cur + "0");
+
+	generateBinary(len-1, cur + "1");
+}
+```
+
+
+
+##### [generate all sequences of given length, of zeros, ones and two2]()
+
+```cpp
+// generate all sequences of given length, of zeros, ones and two2
+// E.g. for len = 2:	00, 01, 02, 10, 11, 12, 20, 21, 22
+void generateTernary(int len, string cur = "")
+{
+	if(len == 0)
+	{
+		cout<<cur<<"\n";
+		return;
+	}
+
+	// At each level, we branch three times...draw this tree
+	generateTernary(len-1, cur + "0");
+
+	generateTernary(len-1, cur + "1");
+
+	generateTernary(len-1, cur + "2");
+}
+```
+
+
+
+##### [排列枚举]()
+
+```cpp
+// Print all possible permutations of numbers 0, 1, 2, ...n-1
+void perm(int i, int n, int vis[], int cur[])
+{
+	if(i == n)
+	{
+		for (int j = 0; j < n; ++j)
+			cout<<cur[j];
+		cout<<"\n";
+		return;
+	}
+
+	for (int j = 0; j < n; ++j) if(!vis[j])
+	{
+		vis[j] = 1;
+		cur[i] = j;
+
+		perm(i+1, n, vis, cur);
+
+		vis[j] = 0;
+	}
+}
+```
+
+
+
+##### [组合枚举]()
+
+```cpp
+// print N choose M combinations
+void comb(int i, int n, int m, int cur[], int curLen)
+{
+	if(curLen == m)
+	{
+		for (int j = 0; j < m; ++j)
+			cout<<cur[j];
+		cout<<"\n";
+		return;
+	}
+
+	if(i == n)	// we reached end, and have current combination is not correct
+		return;
+
+	// take it
+	cur[curLen] = i;
+	comb(i+1, n, m, cur, curLen+1);
+
+	// don't take it
+	comb(i+1, n, m, cur, curLen);
+}
+```
+
+
+
+### 递归的代码框架
+
+```cpp
+// v1
+// Typical backtracking procedure
+void recursion(state s)
+{
+	if( base(s) )
+		return ;
+
+	for each substate ss
+		mark ss
+
+		recursion (ss)
+
+		unmark ss
+}
+
+// v2
 int ans = 最坏情况, now;  // now为当前答案
 void dfs(传入数值) {
   if (到达目的地) ans = 从当前解与已有解中选最优;
@@ -306,7 +594,151 @@ void dfs(传入数值) {
 
 
 
-### memoization记忆化(进一步的)
+### 关于递归调用次数的实验
+
+**此过程需要上机实验**
+
+```cpp
+// Could we do recursion calls as we want? NO, you have stack limit size.
+// Say your function call reserve 1 integer (4 bytes) and a call need 2 pointers (8 bytes) for saving some return addresses
+// Say you have 1.5MB stack size, then you could do maximum 1.5MB / 12 bytes ~= 144617 call
+int dep = 0;
+
+void stackTest1()
+{
+	cout<<dep++<<"\n"<<flush;
+	stackTest1();
+}
+
+void stackTest2(int a = 1)
+{
+	cout<<dep++<<"\n"<<flush;
+	stackTest2(a);
+}
+
+void stackTest3()
+{
+	cout<<dep++<<"\n"<<flush;
+	int arr[50];	// be careful from your created items. E.g. Integrs, Strings, Structs.
+	stackTest3();
+}
+
+void stackTest4()
+{
+	cout<<dep++<<"\n"<<flush;
+	int arr[100];	// be careful from your created items. E.g. Integrs, Strings, Structs.
+	stackTest4();
+}
+
+void stackTest5()
+{
+	cout<<dep++<<"\n"<<flush;
+	int arr[50];
+	vector<int> v(50);	// Its internal array on heap not on stack
+	stackTest5();
+}
+
+void stackTest6()
+{
+	cout<<dep++<<"\n"<<flush;
+	int arr[50];
+	vector<int> v(1000);	// Its internal array on heap not on stack. Then watch from heap too
+	stackTest6();
+}
+
+void stackTest7()
+{
+	cout<<dep++<<"\n"<<flush;
+	int arr[1000];
+	stackTest7();
+}
+
+void stackTest8()
+{
+	cout<<dep++<<"\n"<<flush;
+	int arr[1000000];	// So big for my MACHINE stack limit
+	stackTest8();
+}
+
+void stackTest9(int a[])	// this is array reference. it behaves as if it is just an integer
+{
+	cout<<dep++<<"\n"<<flush;
+
+	stackTest9(a);
+}
+
+int arr[1000000];
+
+
+int main()
+{
+	stackTest9(arr);
+	return 0;
+}
+```
+
+
+
+### How to avoid stack problems
+
+```cpp
+// 1- If must do it in recursion, then avoid any unnecessary local data. Move to global as possible
+// 2- Move to iterative procedure
+// 3- Implement your own stack calls!
+```
+
+```cpp
+// Fibonacci Series: Fib(n) = fib(n-1) + fib(n-2).	Fib(0) = fib(1) = 1
+int fib(int n)
+{
+	if(n <= 1)
+		return 1;
+
+	return fib(n-2) + fib(n-1);
+}
+
+// what is search space? n
+// what is number of recursive calls? We are branching every time to 2 levels that differs in 1
+//										fib(5)
+//							fib(4)											fib(3)
+//				fib(3)					fib(2)						fib(2)			fib(1)
+//		fib(2)			fib(1)	fib(1)			fib(0)		fib(1)			fib(0)
+//	fib(1)	fib(1)
+//
+// We almost have 2^N calls
+
+// Wait, a space of N, is called 2^N times!
+// A fib of 50 do around ~1125899906842624 call!!!!!!
+//
+// Then, we must call a state more than once? and it too call other states, that already called!
+//
+// Check tree above, fib(3) called twice. Fib(2) called three times!
+//
+// Let's SAVE the answer, and let space of N is called 2N times!
+
+
+int savedAnswers[MAX];		/// Initialized to -1, means no answer
+int fibSave(int n)
+{
+	if(n <= 1)
+		return 1;
+
+	if(savedAnswers[n] != -1)
+		return savedAnswers[n];
+
+	return savedAnswers[n] = fib(n-2) + fib(n-1);
+}
+
+//													fib(5)=8
+//									fib(4)=5							fib(3)=3
+//						fib(3)=3					fib(2)=2
+//			fib(2)=2				fib(1)=1
+//	fib(1)=1		fib(1)=1
+```
+
+
+
+### memoization记忆化
 
 记忆化搜索，是在学习动态规划的时候，用到的。用记忆化搜索的方式，实现dp。在这个章节，练习题目时，也请感受一下记忆化操作。
 

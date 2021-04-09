@@ -18,12 +18,63 @@
 
 ```cpp
 //
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int sum;
+double ave;
+
+int main()
+{
+	int n;
+	cin >> n;
+
+	for (int i = 0; i < n; i++)
+	{
+		int x;
+		cin >> x;
+
+		sum += x;
+	}
+
+	ave = sum * 1.0 / n;
+
+	printf("%d %.5lf\n", sum, ave);
+
+	return 0;
+}
 ```
 
 [最高的分数](http://ybt.ssoier.cn:8088/problem_show.php?pid=1062)
 
 ```cpp
 //介绍”打擂台“
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int ans = -1;
+
+int main()
+{
+	int n;
+	cin >> n;
+
+	while (n--)
+	{
+		int x;
+		cin >> x;
+
+		ans = max(ans, x);
+	}
+
+	cout << ans << endl;
+
+	return 0;
+}
 ```
 
 [最大跨度值](http://ybt.ssoier.cn:8088/problem_show.php?pid=1063)
@@ -42,18 +93,24 @@
 
 ```cpp
 //判断奇数
+//模2不为0
+
+	for (int i = m; i <= n; i++)
+		if (i % 2) sum += i; 
 ```
 
 [满足条件的数累加](http://ybt.ssoier.cn:8088/problem_show.php?pid=1066)
 
 ```cpp
-//
+//能被17整除，模17等于0
 ```
 
 [整数的个数](http://ybt.ssoier.cn:8088/problem_show.php?pid=1067)
 
 ```cpp
-//
+		if (x == 1) a++;
+		if (x == 5) b++;
+		if (x == 10) c++;
 ```
 
 [ 与指定数字相同的数的个数](http://ybt.ssoier.cn:8088/problem_show.php?pid=1068)
@@ -65,7 +122,14 @@
 [乘方计算](http://ybt.ssoier.cn:8088/problem_show.php?pid=1069)
 
 ```cpp
-//
+//这个幂次的数学概念，如果不清楚，视频问我
+	long long res = 1ll;
+	while (n--)
+	{
+		res *= a;
+	}
+
+//1ll，1后面有两个l(小写L)，表示的是long long类型
 ```
 
 [人口增长](http://ybt.ssoier.cn:8088/problem_show.php?pid=1070)
