@@ -257,10 +257,10 @@
 </ol>
 <p><strong>使用递归的前提：</strong> 函数理解深入（带参的函数，有返回值的函数，函数的嵌套(就是“自身调用自身”)）。操作时，试验无限递归，递归的终止条件，“回溯时还原现场”保证执行前后程序面对问题的状态是相同的。</p>
 <p>在使用枚举算法蛮力搜索问题的整个“状态空间”时，经常需要递归。（枚举算法，就是遍历一遍，逐个举例。初级的枚举很简单，就是for循环的应用，高级的就很难了，复杂在题目题目和遍历的操作方式）</p>
-<p><strong><a class="reference external" href="#">Thinking recursively is natural, but need good amount of training.</a></strong></p>
+<p><strong>Thinking recursively is natural, but need good amount of training.</strong></p>
 <center><p><img alt="../_images/image-20210409233128686.png" src="../_images/image-20210409233128686.png" /></p>
 <p><img alt="../_images/image-20210409233249673.png" src="../_images/image-20210409233249673.png" /></p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">TriangleRev</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">TriangleRev</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
 
    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">x</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
@@ -301,8 +301,8 @@
 <span class="cm">*/</span>
 </pre></div>
 </div>
-<p><img alt="../_images/image-20210409233320418.png" src="../_images/image-20210409233320418.png" /></p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">Triangle</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+<center><p><img alt="../_images/image-20210409233320418.png" src="../_images/image-20210409233320418.png" /></p>
+</center><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">Triangle</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
 
    <span class="n">Triangle</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
@@ -343,7 +343,7 @@
 <span class="cm">*/</span>
 </pre></div>
 </div>
-<p><img alt="../_images/image-20210409233405898.png" src="../_images/image-20210409233405898.png" /></p>
+<center><p><img alt="../_images/image-20210409233405898.png" src="../_images/image-20210409233405898.png" /></p>
 </center></div>
 <div class="section" id="how-to-trace-recursion">
 <h2><span class="section-number">7.2. </span>How to trace recursion<a class="headerlink" href="#how-to-trace-recursion" title="Permalink to this headline">¶</a></h2>
@@ -373,8 +373,8 @@
 <span class="p">{</span>	<span class="c1">// 1234567</span>
 	<span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 	<span class="p">{</span>
-		<span class="n">printNumber</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">10</span><span class="p">);</span>		<span class="c1">// 214/10 = 21</span>
-		<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">n</span><span class="o">%</span><span class="mi">10</span><span class="p">;</span>				<span class="c1">// 214%10 = 4</span>
+		<span class="n">printNumber</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">10</span><span class="p">);</span>  <span class="c1">// 214/10 = 21</span>
+		<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">n</span><span class="o">%</span><span class="mi">10</span><span class="p">;</span>         <span class="c1">// 214%10 = 4</span>
 	<span class="p">}</span>
 <span class="p">}</span>
 
@@ -385,8 +385,8 @@
 <span class="p">{</span>
 	<span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 	<span class="p">{</span>
-		<span class="n">printNumberBits</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>	<span class="c1">// 214/2 = 1101011		last bit removed</span>
-		<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="p">;</span>				<span class="c1">// 214%2 = 0</span>
+		<span class="n">printNumberBits</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>	<span class="c1">// 214/2 = 1101011  last bit removed</span>
+		<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="p">;</span>              <span class="c1">// 214%2 = 0</span>
 	<span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -493,7 +493,7 @@
 <h2><span class="section-number">7.5. </span>《进阶指南》题目<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id8">
 <h3><span class="section-number">7.5.1. </span><a class="reference external" href="https://www.acwing.com/problem/content/94/">递归实现指数型枚举</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<p>/子集枚举</p>
+<p>子集枚举</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">chosen</span><span class="p">;</span>
 
 <span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
@@ -542,7 +542,7 @@
 </div>
 <div class="section" id="id9">
 <h3><span class="section-number">7.5.2. </span><a class="reference external" href="https://www.acwing.com/problem/content/95/">递归实现组合型枚举</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<p>/在子集枚举的基础上，进行剪枝</p>
+<p>在子集枚举的基础上，进行剪枝</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">chosen</span><span class="p">;</span>
 
 <span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
@@ -608,7 +608,7 @@
 </div>
 <div class="section" id="id10">
 <h3><span class="section-number">7.5.3. </span><a class="reference external" href="https://www.acwing.com/problem/content/96/">递归实现排列型枚举</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<p>/排列枚举</p>
+<p>排列枚举</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//用数组存方案</span>
 <span class="c1">//注意一下 0-index，如果是 1-index 呢？递归的边界是....什么？(提问)</span>
 

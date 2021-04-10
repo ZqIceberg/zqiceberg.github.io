@@ -100,47 +100,44 @@
 <li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E5%BD%92.html">7. recursive 递归</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">8. complete search and backtracking 搜索与回溯</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">8.1. 概念</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#complete-search">8.2. Complete search</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#complete-search">8.2. Complete search（例题）</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#generating-subsets">8.2.1. Generating subsets生成子集问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">8.2.2. 递归实现指数型枚举</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">8.2.3. 递归实现组合型枚举</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#generating-permutations">8.2.4. Generating permutations生成排列问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">8.2.5. 递归实现排列型枚举</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generating-permutations">8.2.2. Generating permutations生成排列问题</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">8.3. 将正整数拆分问题</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#backtracking">8.4. backtracking回溯</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">8.5. 更进一步的拓展</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id7">8.5.1. 数字三角形模型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">8.5.2. 迷宫是否可以走出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">8.3. 将正整数拆分问题（例题）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#backtracking">8.4. backtracking回溯（例题）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">8.5. 更进一步的拓展（*）</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">8.5.1. 数字三角形模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">8.5.2. 迷宫是否可以走出</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#flood-fill">8.5.3. Flood Fill</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#generate-all-sequences-of-given-length-of-zeros-and-ones">8.5.4. generate all sequences of given length, of zeros and ones</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#generate-all-sequences-of-given-length-of-zeros-ones-and-two2">8.5.5. generate all sequences of given length, of zeros, ones and two2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">8.5.6. 排列枚举</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">8.5.7. 组合枚举</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">8.5.6. 排列枚举</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">8.5.7. 组合枚举</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id11">8.6. 递归的代码框架</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id12">8.7. 关于递归调用次数的实验</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">8.6. 递归的代码框架</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">8.7. 关于递归调用次数的实验</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-avoid-stack-problems">8.8. How to avoid stack problems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#memoization">8.9. memoization记忆化</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id13">8.10. 《一本通》题目</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id14">8.10.1. 【例5.2】组合的输出</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">8.10.2. 【例5.3】自然数的拆分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">8.10. 《一本通》题目</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">8.10.1. 【例5.2】组合的输出</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">8.10.2. 【例5.3】自然数的拆分</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#letters">8.10.3. LETTERS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">8.10.4. 八皇后问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">8.10.5. 八皇后</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">8.10.6. 迷宫</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">8.10.7. 红与黑</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">8.10.8. 棋盘问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">8.10.9. 取石子游戏</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id22">8.10.10. 马走日</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id23">8.10.11. 单词接龙【难】</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id24">8.10.12. 分成互质组【难】</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id25">8.10.13. 放苹果</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">8.10.4. 八皇后问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">8.10.5. 八皇后</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">8.10.6. 迷宫</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">8.10.7. 红与黑</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">8.10.8. 棋盘问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">8.10.9. 取石子游戏</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">8.10.10. 马走日</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">8.10.11. 单词接龙【难】</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">8.10.12. 分成互质组【难】</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">8.10.13. 放苹果</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id26">8.11. 示例程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id23">8.11. 例题程序</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="%E8%B4%AA%E5%BF%83.html">9. greedy algorithm 贪心</a></li>
@@ -254,41 +251,36 @@
 <p><strong>搜索</strong>，也就是对状态空间进行枚举，通过穷尽所有的可能来找到最优解，或者统计合法解的个数。</p>
 <p><strong>Complete search</strong>，我们在学习递归的时候，就了解到了。递归枚举子集，递归枚举组合，递归枚举排列，是三个入门的问题。</p>
 <p>在讲到搜索的时候，会有几个概念，&lt;深度优先搜索、深度优先遍历&gt;，&lt;宽度优先搜索、宽度优先遍历&gt;（也叫广度优先搜索）。遍历呢，一般是指图上的搜索。我们在学习搜索的时候，主要是指学习深度优先搜索。</p>
-<p>下面这段话，用来理解和区分这几个常用的概念问题。<strong>depth first search(dfs)</strong>， 按照深度优先的顺序对“问题状态空间”进行搜索的算法（理解理解搜索树，是不是深度优先?）。“深搜”，是一种包括遍历形式、状态记录与检索、剪枝优化等算法整体设计的统称。提前学习建图方法后，掌握在图上进行遍历，进一步把“问题空间”类比为一张图。研究dfs算法之前，要定义该过程产生的 “搜索树” 结构，整个深搜算法就是基于该搜索树完成的*（用递归实现的指数型枚举、排列性枚举、组合型枚举，其实就是深搜的三种最简单的形式）<em>。<strong>dfs</strong>，常常指利用递归函数实现暴力枚举的算法。<strong>递归搜索</strong>，该类搜索算法的特点在于，将要搜索的目标分成若干“层”，每层基于前几层的状态进行决策，直到达到目标状态。</em>（不要过多纠结于名词概念，能够inplementation才是王道。）*</p>
+<p>下面这段话，用来理解和区分这几个常用的概念问题。<strong>depth first search(dfs)</strong>， 按照深度优先的顺序对“问题状态空间”进行搜索的算法（理解理解搜索树，是不是深度优先?）。“深搜”，是一种包括遍历形式、状态记录与检索、剪枝优化等算法整体设计的统称。提前学习建图方法后，掌握在图上进行遍历，进一步把“问题空间”类比为一张图。研究dfs算法之前，要定义该过程产生的 “搜索树” 结构，整个深搜算法就是基于该搜索树完成的*（用递归实现的指数型枚举、排列性枚举、组合型枚举，其实就是深搜的三种最简单的形式）*。<strong>dfs</strong>，常常指利用递归函数实现暴力枚举的算法。<strong>递归搜索</strong>，该类搜索算法的特点在于，将要搜索的目标分成若干“层”，每层基于前几层的状态进行决策，直到达到目标状态。</p>
+<p><em>（不要过多纠结于名词概念，能够inplementation才是王道。）</em></p>
 </div>
 <div class="section" id="complete-search">
-<h2><span class="section-number">8.2. </span>Complete search<a class="headerlink" href="#complete-search" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.2. </span>Complete search（例题）<a class="headerlink" href="#complete-search" title="Permalink to this headline">¶</a></h2>
 <p><strong>Complete search</strong> is a general method that can be used to solve almost any algorithm problem. The idea is to generate all possible solutions to the problem using brute force, and then select the best solution or count the number of solutions, depending on the problem.</p>
 <p>Complete search is a good technique if there is enough time to go through all the solutions, because the search is usually easy to implement and it always gives the correct answer. If complete search is too slow, other techniques, such as greedy algorithms or dynamic programming, may be needed.</p>
 <div class="section" id="generating-subsets">
 <h3><span class="section-number">8.2.1. </span>Generating subsets生成子集问题<a class="headerlink" href="#generating-subsets" title="Permalink to this headline">¶</a></h3>
 <p>这个问题我们在学习递归的时候已经学习，复习一下。</p>
-</div>
-<div class="section" id="id2">
-<h3><span class="section-number">8.2.2. </span><a class="reference external" href="https://www.acwing.com/problem/content/94/">递归实现指数型枚举</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.acwing.com/problem/content/94/">递归实现指数型枚举</a></p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//子集枚举</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id3">
-<h3><span class="section-number">8.2.3. </span><a class="reference external" href="https://www.acwing.com/problem/content/95/">递归实现组合型枚举</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.acwing.com/problem/content/95/">递归实现组合型枚举</a></p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//在子集枚举的基础上，进行剪枝</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="generating-permutations">
-<h3><span class="section-number">8.2.4. </span>Generating permutations生成排列问题<a class="headerlink" href="#generating-permutations" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.2.2. </span>Generating permutations生成排列问题<a class="headerlink" href="#generating-permutations" title="Permalink to this headline">¶</a></h3>
 <p>这个问题我们在学习递归的时候已经学习，复习一下。</p>
-</div>
-<div class="section" id="id4">
-<h3><span class="section-number">8.2.5. </span><a class="reference external" href="https://www.acwing.com/problem/content/96/">递归实现排列型枚举</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.acwing.com/problem/content/96/">递归实现排列型枚举</a></p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//排列枚举</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="id5">
-<h2><span class="section-number">8.3. </span>将正整数拆分问题<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2><span class="section-number">8.3. </span>将正整数拆分问题（例题）<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>//问题1：
   将正整数 n 分解成3个正整数，如 6 = 1 + 2 + 3，
   排在后面的数必须大于等于前面的数，输出所有方案。
@@ -347,7 +339,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="backtracking">
-<h2><span class="section-number">8.4. </span>backtracking回溯<a class="headerlink" href="#backtracking" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.4. </span>backtracking回溯（例题）<a class="headerlink" href="#backtracking" title="Permalink to this headline">¶</a></h2>
 <p>回溯法是一种经常被用在深度深度优先搜索（DFS）和广度优先搜索（BFS）的技巧。其本质是：走不通就回头。关键词：<strong>恢复现场</strong>。</p>
 <p>常见例题，八皇后问题（用搜索树，来表示）</p>
 <p>As an example, consider the problem of calculating the number of ways <em>n</em> queens can be placed on an <em>n</em> × <em>n</em> chessboard so that no two queens attack each other. For example, when <em>n</em> = 4, there are two possible solutions:</p>
@@ -487,10 +479,10 @@
 </div>
 <p><a class="reference external" href="https://www.acwing.com/solution/content/2820/">参考https://www.acwing.com/solution/content/2820/</a></p>
 </div>
-<div class="section" id="id6">
-<h2><span class="section-number">8.5. </span>更进一步的拓展<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id7">
-<h3><span class="section-number">8.5.1. </span><a class="reference external" href="#">数字三角形模型</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h2><span class="section-number">8.5. </span>更进一步的拓展（*）<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3><span class="section-number">8.5.1. </span><a class="reference external" href="#">数字三角形模型</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Given grid of positive numbers, Start from 0, 0 and end at n, n. Move only to right and down - find path with sum of numbers is maximum.</span>
 <span class="cm">/*</span>
 <span class="cm">15</span>
@@ -520,8 +512,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id8">
-<h3><span class="section-number">8.5.2. </span><a class="reference external" href="#">迷宫是否可以走出</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3><span class="section-number">8.5.2. </span><a class="reference external" href="#">迷宫是否可以走出</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
 
 <span class="cm">.SX..</span>
@@ -611,10 +603,9 @@
     <span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="n">valid</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">||</span> <span class="n">maze</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;X&#39;</span> <span class="o">||</span> <span class="n">vis</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
 		<span class="k">return</span><span class="p">;</span>		<span class="c1">// invalid position or block position</span>
 
-
 	<span class="n">vis</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>	<span class="c1">// we just visited it, don&#39;t allow any one back to it</span>
 	<span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
-
+    
 	<span class="c1">// Try the 4 neighbor cells</span>
 	<span class="n">cntReachalbleCells</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
     <span class="n">cntReachalbleCells</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
@@ -635,7 +626,7 @@
 			<span class="n">cntReachalbleCells</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
 
 			<span class="k">if</span><span class="p">(</span><span class="n">cnt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-				<span class="n">comps</span><span class="o">++</span><span class="p">;</span>
+                <span class="n">comps</span><span class="o">++</span><span class="p">;</span>
 		<span class="p">}</span>
 	<span class="p">}</span>
 
@@ -690,8 +681,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id9">
-<h3><span class="section-number">8.5.6. </span><a class="reference external" href="#">排列枚举</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3><span class="section-number">8.5.6. </span><a class="reference external" href="#">排列枚举</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Print all possible permutations of numbers 0, 1, 2, ...n-1</span>
 <span class="kt">void</span> <span class="nf">perm</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">vis</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">cur</span><span class="p">[])</span>
 <span class="p">{</span>
@@ -716,8 +707,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id10">
-<h3><span class="section-number">8.5.7. </span><a class="reference external" href="#">组合枚举</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3><span class="section-number">8.5.7. </span><a class="reference external" href="#">组合枚举</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// print N choose M combinations</span>
 <span class="kt">void</span> <span class="nf">comb</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">cur</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">curLen</span><span class="p">)</span>
 <span class="p">{</span>
@@ -743,8 +734,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="id11">
-<h2><span class="section-number">8.6. </span>递归的代码框架<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h2><span class="section-number">8.6. </span>递归的代码框架<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>// v1
 // Typical backtracking procedure
 void recursion(state s)
@@ -774,9 +765,9 @@ void dfs(传入数值) {
 </pre></div>
 </div>
 </div>
-<div class="section" id="id12">
-<h2><span class="section-number">8.7. </span>关于递归调用次数的实验<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
-<p><strong>此过程需要上机实验</strong></p>
+<div class="section" id="id9">
+<h2><span class="section-number">8.7. </span>关于递归调用次数的实验<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p><em>此处需要上机实验</em></p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Could we do recursion calls as we want? NO, you have stack limit size.</span>
 <span class="c1">// Say your function call reserve 1 integer (4 bytes) and a call need 2 pointers (8 bytes) for saving some return addresses</span>
 <span class="c1">// Say you have 1.5MB stack size, then you could do maximum 1.5MB / 12 bytes ~= 144617 call</span>
@@ -936,16 +927,16 @@ int main() {
 </pre></div>
 </div>
 </div>
-<div class="section" id="id13">
-<h2><span class="section-number">8.10. </span>《一本通》题目<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id14">
-<h3><span class="section-number">8.10.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1317">【例5.2】组合的输出</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h2><span class="section-number">8.10. </span>《一本通》题目<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h3><span class="section-number">8.10.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1317">【例5.2】组合的输出</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//递归实现组合枚举</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id15">
-<h3><span class="section-number">8.10.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1318">【例5.3】自然数的拆分</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3><span class="section-number">8.10.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1318">【例5.3】自然数的拆分</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//拆分成若干个小于n的自然数之和</span>
 </pre></div>
 </div>
@@ -956,32 +947,32 @@ int main() {
 </pre></div>
 </div>
 </div>
-<div class="section" id="id16">
-<h3><span class="section-number">8.10.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1213">八皇后问题</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3><span class="section-number">8.10.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1213">八皇后问题</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//92种方案</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id17">
-<h3><span class="section-number">8.10.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1214">八皇后</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3><span class="section-number">8.10.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1214">八皇后</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//输出第x种方案</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id18">
-<h3><span class="section-number">8.10.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1215">迷宫</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id15">
+<h3><span class="section-number">8.10.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1215">迷宫</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//棋盘上dfs，判断是否可达。注意是不用回溯</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id19">
-<h3><span class="section-number">8.10.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1216">红与黑</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id16">
+<h3><span class="section-number">8.10.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1216">红与黑</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//总共能到达多少块黑色瓷砖</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id20">
-<h3><span class="section-number">8.10.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1217">棋盘问题</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h3><span class="section-number">8.10.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1217">棋盘问题</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>//棋盘形状是不规则的，只能在 # 位置上摆放。两个棋子不能同行同列，摆放k个棋子，有多少种方案。设计一个带参数的dfs函数
 void dfs(int u, int num) 枚举到第u行，已经摆放了num个棋子
     
@@ -996,8 +987,8 @@ for (int i = u; i &lt; n; i++)
 </pre></div>
 </div>
 </div>
-<div class="section" id="id21">
-<h3><span class="section-number">8.10.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1218">取石子游戏</a><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id18">
+<h3><span class="section-number">8.10.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1218">取石子游戏</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//从较多的那堆里取，去较少那堆的整数倍，最后把一堆棋子取空，就是赢家。多组数据，问先手是不是赢家。</span>
 <span class="c1">//a / b &gt;= 2, 先手必胜。</span>
 <span class="c1">//a / b &lt; 2, 先手只有一种取法。</span>
@@ -1006,16 +997,16 @@ for (int i = u; i &lt; n; i++)
 </pre></div>
 </div>
 </div>
-<div class="section" id="id22">
-<h3><span class="section-number">8.10.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1219">马走日</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id19">
+<h3><span class="section-number">8.10.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1219">马走日</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//给出起始位置，问有多少方案可以遍历到棋盘上的所有点。</span>
 <span class="kt">void</span> <span class="n">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="c1">//num是已经遍历点的个数</span>
 <span class="c1">//用数组控制8个方向的写法，判断点合法性的方法</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id23">
-<h3><span class="section-number">8.10.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1220">单词接龙</a>【难】<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id20">
+<h3><span class="section-number">8.10.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1220">单词接龙</a>【难】<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>//要拼成的单词长度尽可能的长，两个单词重合的部分就会尽可能的少。
 if (a.substr(a.size() - k, k) == b.substr(0, k))
 用g[i][j] = k 维护两个单词之间重叠关系
@@ -1037,8 +1028,8 @@ dfs(s[i], i);
 </pre></div>
 </div>
 </div>
-<div class="section" id="id24">
-<h3><span class="section-number">8.10.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1221">分成互质组</a>【难】<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id21">
+<h3><span class="section-number">8.10.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1221">分成互质组</a>【难】<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//方法一：拿着鸡蛋去往篮子里放，有合适的放或者不放，没有合适的就先开一个篮子</span>
 
 <span class="c1">//爆搜，每一个位置有两种操作</span>
@@ -1070,8 +1061,8 @@ dfs(s[i], i);
 </pre></div>
 </div>
 </div>
-<div class="section" id="id25">
-<h3><span class="section-number">8.10.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1222">放苹果</a><a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id22">
+<h3><span class="section-number">8.10.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1222">放苹果</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//苹果数量大于盘子数量，第n个盘子不放dfs(m, n - 1)，每个盘子都放一个dfs(m - n, n)</span>
 <span class="c1">//苹果数量小于盘子数量，问题等价于dfs(m, m)</span>
 <span class="c1">//问题边界：0个苹果，1种放法。1个盘子，1种放法。</span>
@@ -1079,8 +1070,8 @@ dfs(s[i], i);
 </div>
 </div>
 </div>
-<div class="section" id="id26">
-<h2><span class="section-number">8.11. </span>示例程序<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id23">
+<h2><span class="section-number">8.11. </span>例题程序<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//将正整数n分解成 小于等于m个 正整数之和，且排在后面的数必须大于等于前面的数，并输出所有方案</span>
 <span class="c1">//问题2的递归实现</span>
 <span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp"></span>
