@@ -345,15 +345,14 @@ bool findEnd(int r, int c)		// Recursion State: r, c
 
     if( maze[r][c] =='E')
 		return true;	// we found End
-
-	// Try the 4 neighbor cells
-
-	if(findEnd(r, c-1)) return true;  	// search up
+    
+    // Try the 4 neighbor cells
+    if(findEnd(r, c-1)) return true;  	// search up
     if(findEnd(r, c+1)) return true; 	// search down
     if(findEnd(r-1, c)) return true;  	// search left
     if(findEnd(r+1, c)) return true;  	// search right
-
-	// Can't find a way for it!
+    
+    // Can't find a way for it!
     return false;
 }
 
@@ -367,22 +366,19 @@ bool findEnd2(int r, int c)	// Recursion State: r, c	and FULL visted array
     if( !valid(r, c) || maze[r][c] == 'X' || vis[r][c] == 1)
 		return false;		// invalid position or block position
 
-
 	vis[r][c] = 1;	// we just visited it, don't allow any one bacl to it
 
     if( maze[r][c] =='E')
 		return true;	// we found End
-
-	// Try the 4 neighbor cells
-
-	if(findEnd2(r, c-1)) return true;  	// search up
+	
+    // Try the 4 neighbor cells
+    if(findEnd2(r, c-1)) return true;  	// search up
     if(findEnd2(r, c+1)) return true; 	// search down
     if(findEnd2(r-1, c)) return true;  	// search left
     if(findEnd2(r+1, c)) return true;  	// search right
-
-	vis[r][c] = 0;	// undo marking, other paths allowed to use it now
-
-	// Can't find a way for it!
+    
+    vis[r][c] = 0;	// undo marking, other paths allowed to use it now
+    // Can't find a way for it!
     return false;
 }
 ```
@@ -420,12 +416,12 @@ void cntReachalbleCells(int r, int c)
 {
     if( !valid(r, c) || maze[r][c] == 'X' || vis[r][c] == 1)
 		return;		// invalid position or block position
-
-	vis[r][c] = 1;	// we just visited it, don't allow any one back to it
-	cnt++;
     
-	// Try the 4 neighbor cells
-	cntReachalbleCells(r, c-1);
+    vis[r][c] = 1;	// we just visited it, don't allow any one back to it
+    cnt++;
+    
+    // Try the 4 neighbor cells
+    cntReachalbleCells(r, c-1);
     cntReachalbleCells(r, c+1);
     cntReachalbleCells(r-1, c);
     cntReachalbleCells(r+1, c);
@@ -442,12 +438,9 @@ void cntComponents(int R, int C)
 		{
 			cnt = 0;
 			cntReachalbleCells(i, j);
-
-			if(cnt > 0)
-                comps++;
+            if(cnt > 0) comps++;
 		}
 	}
-
 }
 ```
 
@@ -512,8 +505,7 @@ void perm(int i, int n, int vis[], int cur[])
 {
 	if(i == n)
 	{
-		for (int j = 0; j < n; ++j)
-			cout<<cur[j];
+		for (int j = 0; j < n; ++j) cout<<cur[j];
 		cout<<"\n";
 		return;
 	}
@@ -563,7 +555,7 @@ void comb(int i, int n, int m, int cur[], int curLen)
 ### 递归的代码框架
 
 ```cpp
-// v1
+// version 1
 // Typical backtracking procedure
 void recursion(state s)
 {
@@ -578,16 +570,16 @@ void recursion(state s)
 		unmark ss
 }
 
-// v2
+// version 2
 int ans = 最坏情况, now;  // now为当前答案
 void dfs(传入数值) {
-  if (到达目的地) ans = 从当前解与已有解中选最优;
-  for (遍历所有可能性)
-    if (可行) {
-      进行操作;
-      dfs(缩小规模);
-      撤回操作;
-    }
+    if (到达目的地) ans = 从当前解与已有解中选最优;
+    for (遍历所有可能性)
+        if (可行) {
+            进行操作;
+            dfs(缩小规模);
+            撤回操作;
+        }
 }
 ```
 
@@ -678,7 +670,7 @@ int main()
 
 
 
-### How to avoid stack problems
+### How to avoid stack problems（记忆化出场）
 
 ```cpp
 // 1- If must do it in recursion, then avoid any unnecessary local data. Move to global as possible
@@ -747,18 +739,18 @@ int fibSave(int n)
 int g[MAXN];  // 定义记忆化数组
 int ans = 最坏情况, now;
 void dfs f(传入数值) {
-  if (g[规模] != 无效数值) return;  // 或记录解，视情况而定
-  if (到达目的地) ans = 从当前解与已有解中选最优;  // 输出解，视情况而定
-  for (遍历所有可能性)
-    if (可行) {
-      进行操作;
-      dfs(缩小规模);
-      撤回操作;
-    }
+    if (g[规模] != 无效数值) return;  // 或记录解，视情况而定
+    if (到达目的地) ans = 从当前解与已有解中选最优;  // 输出解，视情况而定
+    for (遍历所有可能性)
+        if (可行) {
+            进行操作;
+            dfs(缩小规模);
+            撤回操作;
+        }
 }
+
 int main() {
-  ... memset(g, 无效数值, sizeof(g));  // 初始化记忆化数组
-  ...
+    memset(g, 无效数值, sizeof(g));  // 初始化记忆化数组
 }
 ```
 
