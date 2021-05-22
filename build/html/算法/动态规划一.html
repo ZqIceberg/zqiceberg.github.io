@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>12. dp动态规划 &mdash; 信息学奥赛普及组算法21天突破 0.7.1 documentation</title>
+  <title>13. DP动态规划(一) &mdash; 信息学奥赛普及组算法21天突破 0.7.1 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="13. stack栈" href="%E6%A0%88.html" />
-    <link rel="prev" title="11. bfs宽度优先搜索" href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html" /> 
+    <link rel="next" title="14. DP动态规划(二)" href="%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BA%8C.html" />
+    <link rel="prev" title="12. bfs宽度优先搜索" href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,109 +99,114 @@
 <li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E6%8E%A8.html">6. recursion 递推</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E5%BD%92.html">7. recursive 递归</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html">8. complete search and backtracking 搜索与回溯</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E8%B4%AA%E5%BF%83.html">9. greedy algorithm 贪心</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%88%86%E6%B2%BB.html">10. divide and conquer分治</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">11. bfs宽度优先搜索</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">12. dp动态规划</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">12.1. 概念</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">12.2. 再看硬币问题</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#memoization">12.3. memoization记忆化</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#constructing-a-solution">12.4. Constructing a solution记录方案(循环,递归)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#counting-the-number-of-solutions">12.5. Counting the number of solutions统计方案个数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">12.6. 另一个角度，介绍动态规划</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">12.7. 专题：线性dp</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#longest-increasing-subsequence">12.7.1. Longest increasing subsequence最长上升子序列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#paths-in-a-grid">12.7.2. paths in a grid方格取数问题，数字三角形模型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">12.7.3. 背包问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#edit-distance">12.7.4. edit distance编辑距离</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E8%B4%AA%E5%BF%83%E4%B8%80.html">9. greedy algorithm 贪心(一)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E8%B4%AA%E5%BF%83%E4%BA%8C.html">10. greedy algorithm 贪心(二)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%88%86%E6%B2%BB.html">11. divide and conquer分治</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">12. bfs宽度优先搜索</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">13. DP动态规划(一)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">13.1. 概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">13.2. 再看硬币问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#memoization">13.3. memoization记忆化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#constructing-a-solution">13.4. Constructing a solution记录方案(循环,递归)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#counting-the-number-of-solutions">13.5. Counting the number of solutions统计方案个数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">13.6. 另一个角度，介绍动态规划</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">13.7. 专题：线性DP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#longest-increasing-subsequence">13.7.1. Longest increasing subsequence最长上升子序列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#paths-in-a-grid">13.7.2. paths in a grid方格取数问题，数字三角形模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">13.7.3. 背包问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edit-distance">13.7.4. edit distance编辑距离</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">12.8. 专题：背包问题</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id7">12.8.1. 0/1背包</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">12.8.2. 完全背包</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">12.8.3. 多重背包</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">12.8.4. 混合三种背包问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">12.8.5. 分组背包</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">12.8.6. 有依赖的背包问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">13.8. 专题：背包问题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">13.8.1. 0/1背包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">13.8.2. 完全背包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">13.8.3. 多重背包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">13.8.4. 混合三种背包问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">13.8.5. 分组背包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">13.8.6. 有依赖的背包问题</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id13">12.9. 专题：区间dp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id14">12.10. 《一本通》题目</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id15">12.10.1. 【例9.2】数字金字塔</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">12.10.2. 【例9.3】求最长不下降序列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#noip1999">12.10.3. 【例9.4】拦截导弹(Noip1999)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">12.10.4. 【例9.5】城市交通路网</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">12.10.5. 【例9.6】挖地雷</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">12.10.6. 【例9.7】友好城市</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">12.10.7. 【例9.8】合唱队形</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">12.10.8. 【例9.9】最长公共子序列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id22">12.10.9. 【例9.10】机器分配</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id23">12.10.10. 最长上升子序列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id24">12.10.11. 最大子矩阵</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id25">12.10.12. 登山</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id26">12.10.13. 摘花生</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id27">12.10.14. 最大上升子序列和</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id28">12.10.15. 怪盗基德的滑翔翼</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id29">12.10.16. 最低通行费</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id30">12.10.17. 三角形最佳路径问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id31">12.10.18. 拦截导弹</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id32">12.10.19. 【例9.11】01背包问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id33">12.10.20. 【例9.12】完全背包问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id34">12.10.21. 【例9.13】庆功会</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id35">12.10.22. 【例9.14】混合背包</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id36">12.10.23. 【例9.15】潜水员</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id37">12.10.24. 【例9.16】分组背包</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id38">12.10.25. 【例9.17】货币系统</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id39">12.10.26.  采药</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id40">12.10.27. 数字组合</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id41">12.10.28. 宠物小精灵之收服</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id42">12.10.29. 买书</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#charm-bracelet">12.10.30. Charm Bracelet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id43">12.10.31. 装箱问题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id44">12.10.32. 开餐馆</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id45">12.10.33. 【例9.18】合并石子</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id46">12.10.34.  【例9.19】乘积最大</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id47">12.10.35. 【例9.20】编辑距离</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id48">12.10.36. 【例9.21】方格取数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#book">12.10.37. 【例9.22】复制书稿(book)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#flower">12.10.38. 【例9.23】橱窗布置(flower)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id49">12.10.39. 【例9.24】滑雪</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id50">12.10.40. 公共子序列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id51">12.10.41. 计算字符串距离</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id52">12.10.42. 糖果</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id53">12.10.43.  鸡蛋的硬度</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id54">12.10.44.  大盗阿福</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id55">12.10.45. 股票买卖</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id56">12.10.46. 鸣人的影分身</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id57">12.10.47. 数的划分</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#maximum-sum">12.10.48.  Maximum sum</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id58">12.10.49. 最长公共子上升序列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">13.9. 专题：区间dp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">13.10. 《一本通》题目</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id15">13.10.1. 【例9.2】数字金字塔</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">13.10.2. 【例9.3】求最长不下降序列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#noip1999">13.10.3. 【例9.4】拦截导弹(Noip1999)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">13.10.4. 【例9.5】城市交通路网</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">13.10.5. 【例9.6】挖地雷</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">13.10.6. 【例9.7】友好城市</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">13.10.7. 【例9.8】合唱队形</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">13.10.8. 【例9.9】最长公共子序列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">13.10.9. 【例9.10】机器分配</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">13.10.10. 最长上升子序列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">13.10.11. 最大子矩阵</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">13.10.12. 登山</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">13.10.13. 摘花生</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">13.10.14. 最大上升子序列和</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">13.10.15. 怪盗基德的滑翔翼</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">13.10.16. 最低通行费</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">13.10.17. 三角形最佳路径问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id31">13.10.18. 拦截导弹</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id32">13.10.19. 【例9.11】01背包问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id33">13.10.20. 【例9.12】完全背包问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id34">13.10.21. 【例9.13】庆功会</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id35">13.10.22. 【例9.14】混合背包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id36">13.10.23. 【例9.15】潜水员</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id37">13.10.24. 【例9.16】分组背包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">13.10.25. 【例9.17】货币系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id39">13.10.26.  采药</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id40">13.10.27. 数字组合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id41">13.10.28. 宠物小精灵之收服</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id42">13.10.29. 买书</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#charm-bracelet">13.10.30. Charm Bracelet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id43">13.10.31. 装箱问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id44">13.10.32. 开餐馆</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id45">13.10.33. 【例9.18】合并石子</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id46">13.10.34.  【例9.19】乘积最大</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id47">13.10.35. 【例9.20】编辑距离</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id48">13.10.36. 【例9.21】方格取数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#book">13.10.37. 【例9.22】复制书稿(book)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flower">13.10.38. 【例9.23】橱窗布置(flower)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id49">13.10.39. 【例9.24】滑雪</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id50">13.10.40. 公共子序列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id51">13.10.41. 计算字符串距离</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id52">13.10.42. 糖果</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id53">13.10.43.  鸡蛋的硬度</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id54">13.10.44.  大盗阿福</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id55">13.10.45. 股票买卖</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id56">13.10.46. 鸣人的影分身</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id57">13.10.47. 数的划分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#maximum-sum">13.10.48.  Maximum sum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id58">13.10.49. 最长公共子上升序列</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="%E6%A0%88.html">13. stack栈</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E9%98%9F%E5%88%97.html">14. queue队列</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%B8%80.html">15. graph图论(一)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%BA%8C.html">16. graph图论(二)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%B8%89.html">17. graph图论(三)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E6%A0%91%E4%B8%80.html">18. trees树(一)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E6%A0%91%E4%BA%8C.html">19. trees树(二)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BA%8C.html">14. DP动态规划(二)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A0%88.html">15. stack栈</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%98%9F%E5%88%97.html">16. queue队列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%B8%80.html">17. graph图论(一)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%BA%8C.html">18. graph图论(二)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%B8%89.html">19. graph图论(三)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A0%91%E4%B8%80.html">20. trees树(一)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A0%91%E4%BA%8C.html">21. trees树(二)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">二、计算机使用教程</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Focused%20vs%20Diffused%20Thinking%3A%20Solve%20Hard%20Problems%20with%20this%20Simply%20Trick.html">1. Focused vs Diffused Thinking: Solve Hard Problems with this Simply Trick</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/NOI%E5%A4%A7%E7%BA%B2.html">2. NOI大纲</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Thinking%20-%20Brainsotrm%20-%20Rank%20-%20Approach%20.html">3. Thinking - Brainsotrm - Rank - Approach</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Thinking%20-%20Problem%20Simplification.html">4. Thinking - Problem Simplification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">5. Windows环境下的操作</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/macOS%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">6. macOS环境下的操作</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%B8%AD%E5%AD%A6%E8%B6%85%E5%89%8D%E5%AD%A6%E4%B9%A0%E7%BB%8F%E5%8E%86%E5%AF%B9%E5%A4%A7%E5%AD%A6%E6%8B%94%E5%B0%96%E5%AD%A6%E7%94%9F%E5%AD%A6%E4%B9%A0%E7%8A%B6%E6%80%81%E7%9A%84%E5%BD%B1%E5%93%8D.html">7. 中学超前学习经历对大学拔尖学生学习状态的影响</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%BB%A3%E7%A0%81%E7%BB%8F%E9%AA%8C.html">8. 代码经验</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%BF%A1%E6%81%AF%E5%AD%A6%E6%AF%94%E8%B5%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html">9. 信息学比赛常见问题</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E5%85%B3%E4%BA%8E%E6%AF%8F%E5%A4%A9%E6%89%93%E5%8D%A1%E7%9A%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%BC%8F.html">10. 关于每天打卡的训练模式</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E5%8C%97%E5%A4%A7%E6%9D%8E%E6%99%93%E6%98%8E%E6%95%99%E6%8E%88%EF%BC%9A%E4%BB%8E%E8%B6%A3%E5%91%B3%E6%95%B0%E5%AD%A6%E5%88%B0%E8%B6%A3%E5%91%B3%E7%AE%97%E6%B3%95%E5%88%B0%E8%B6%A3%E5%91%B3%E7%BC%96%E7%A8%8B%E2%80%94%E2%80%94%E9%9D%9E%E4%B8%93%E4%B8%9A%E5%AD%A6%E4%B9%A0%E8%80%85%E4%BD%93%E4%BC%9A%E8%AE%A1%E7%AE%97%E6%80%9D%E7%BB%B4%E7%9A%84%E4%B8%80%E6%9D%A1%E9%80%94%E5%BE%84%EF%BC%9F.html">11. 北大李晓明教授：从趣味数学到趣味算法到趣味编程——非专业学习者体会计算思维的一条途径？</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E5%AF%B9%E8%AF%9DIOI2021%E5%9B%BD%E5%AE%B6%E9%98%9F%E6%88%90%E5%91%98%EF%BC%81%E7%9B%B4%E6%92%AD%E8%B6%85%E8%AF%A6%E7%BB%86%E6%96%87%E5%AD%97%E7%8F%8D%E8%97%8F%E7%89%88%E6%9D%A5%E5%95%A6.html">12. 对话IOI2021国家队成员！直播超详细文字珍藏版来啦</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/517.html">1. 517教学经验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Focused%20vs%20Diffused%20Thinking%3A%20Solve%20Hard%20Problems%20with%20this%20Simply%20Trick.html">2. Focused vs Diffused Thinking: Solve Hard Problems with this Simply Trick</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/NOI%E5%A4%A7%E7%BA%B2.html">3. NOI大纲</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Tackling%20a%20problem%20.html">4. Tackling a problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Thinking%20-%20Brainsotrm%20-%20Rank%20-%20Approach%20.html">5. Thinking - Brainsotrm - Rank - Approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Thinking%20-%20Concretely%2C%20Symbolically%2C%20Pictorially.html">6. Thinking - Concretely, Symbolically, Pictorially</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Thinking%20-%20Problem%20Simplification.html">7. Thinking - Problem Simplification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">8. Windows环境下的操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/macOS%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">9. macOS环境下的操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%B8%AD%E5%AD%A6%E8%B6%85%E5%89%8D%E5%AD%A6%E4%B9%A0%E7%BB%8F%E5%8E%86%E5%AF%B9%E5%A4%A7%E5%AD%A6%E6%8B%94%E5%B0%96%E5%AD%A6%E7%94%9F%E5%AD%A6%E4%B9%A0%E7%8A%B6%E6%80%81%E7%9A%84%E5%BD%B1%E5%93%8D.html">10. 中学超前学习经历对大学拔尖学生学习状态的影响</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%BB%A3%E7%A0%81%E7%BB%8F%E9%AA%8C.html">11. 代码经验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%BF%A1%E6%81%AF%E5%AD%A6%E6%AF%94%E8%B5%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html">12. 信息学比赛常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E5%85%B3%E4%BA%8E%E6%AF%8F%E5%A4%A9%E6%89%93%E5%8D%A1%E7%9A%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%BC%8F.html">13. 关于每天打卡的训练模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E5%8C%97%E5%A4%A7%E6%9D%8E%E6%99%93%E6%98%8E%E6%95%99%E6%8E%88%EF%BC%9A%E4%BB%8E%E8%B6%A3%E5%91%B3%E6%95%B0%E5%AD%A6%E5%88%B0%E8%B6%A3%E5%91%B3%E7%AE%97%E6%B3%95%E5%88%B0%E8%B6%A3%E5%91%B3%E7%BC%96%E7%A8%8B%E2%80%94%E2%80%94%E9%9D%9E%E4%B8%93%E4%B8%9A%E5%AD%A6%E4%B9%A0%E8%80%85%E4%BD%93%E4%BC%9A%E8%AE%A1%E7%AE%97%E6%80%9D%E7%BB%B4%E7%9A%84%E4%B8%80%E6%9D%A1%E9%80%94%E5%BE%84%EF%BC%9F.html">14. 北大李晓明教授：从趣味数学到趣味算法到趣味编程——非专业学习者体会计算思维的一条途径？</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E5%AF%B9%E8%AF%9DIOI2021%E5%9B%BD%E5%AE%B6%E9%98%9F%E6%88%90%E5%91%98%EF%BC%81%E7%9B%B4%E6%92%AD%E8%B6%85%E8%AF%A6%E7%BB%86%E6%96%87%E5%AD%97%E7%8F%8D%E8%97%8F%E7%89%88%E6%9D%A5%E5%95%A6.html">15. 对话IOI2021国家队成员！直播超详细文字珍藏版来啦</a></li>
 </ul>
 <p class="caption"><span class="caption-text">三、C++语言部分</span></p>
 <ul>
@@ -262,13 +267,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li><span class="section-number">12. </span>dp动态规划</li>
+      <li><span class="section-number">13. </span>DP动态规划(一)</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/算法/动态规划.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/算法/动态规划一.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -282,10 +287,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="dp">
-<h1><span class="section-number">12. </span>dp动态规划<a class="headerlink" href="#dp" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">13. </span>DP动态规划(一)<a class="headerlink" href="#dp" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2><span class="section-number">12.1. </span>概念<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p><strong>Dynamic programming</strong> is a technique that combines the correctness of complete search and the efficiency of greedy algorithms. Dynamic programming can be applied if the problem can be divided into overlapping subproblems that can be solved independently.There are two uses for dynamic programming:</p>
+<h2><span class="section-number">13.1. </span>概念<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><strong>Dynamic Programming</strong> is a technique that combines the correctness of complete search and the efficiency of greedy algorithms. Dynamic Programming can be applied if the problem can be divided into overlapping subproblems that can be solved independently.There are two uses for Dynamic Programming:</p>
 <ul class="simple">
 <li><p><strong>Finding an optimal solution</strong>: We want to find a solution that is as large as possible or as small as possible.</p></li>
 <li><p><strong>Counting the number of solutions</strong>: We want to calculate the total number of possible solutions.</p></li>
@@ -294,7 +299,7 @@
 <p>The dynamic programming algorithm is based on a recursive function that goes through all possibilities how to form the sum, like a brute force algorithm. However, the dynamic programming algorithm is efficient because it uses <em>memoization</em> and calculates the answer to each subproblem only once.</p>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">12.2. </span>再看硬币问题<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">13.2. </span>再看硬币问题<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>贪心算法的策略是每次取最大值，但并不是每一次都有效。我们下面看看，</p>
 <p>The idea in dynamic programming is to formulate the problem recursively so that the solution to the problem can be calculated from solutions to smaller subproblems. In the coin problem, a natural recursive problem is as follows: what is the smallest number of coins required to form a sum <em>x</em>?</p>
 <p>Let solve(<em>x</em>) denote the minimum number of coins required for a sum <em>x</em>. The values of the function depend on the values of the coins. For example, if coins = {1, 3, 4}, the first values of the function are as follows:</p>
@@ -327,7 +332,7 @@
 </div>
 </div>
 <div class="section" id="memoization">
-<h2><span class="section-number">12.3. </span>memoization记忆化<a class="headerlink" href="#memoization" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">13.3. </span>memoization记忆化<a class="headerlink" href="#memoization" title="Permalink to this headline">¶</a></h2>
 <p>写代码就是这样，需要不断的升级自己的technique</p>
 <p>The idea of dynamic programming is to use <strong>memoization</strong> to efficiently calculate values of a recursive function. This means that the values of the function are stored in an array after calculating them. For each parameter, the value of the function is calculated recursively only once, and after this, the value can be directly retrieved from the array.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">ready</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
@@ -389,7 +394,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="constructing-a-solution">
-<h2><span class="section-number">12.4. </span>Constructing a solution记录方案(循环,递归)<a class="headerlink" href="#constructing-a-solution" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">13.4. </span>Constructing a solution记录方案(循环,递归)<a class="headerlink" href="#constructing-a-solution" title="Permalink to this headline">¶</a></h2>
 <p>dp问题当中，有很多情况，不仅让你求最值，还让你输出最值情况下的方案是什么（如果有多种方案，输出一种即可，oj会做special judge）</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//we can declare another array that indicates for each sum of money the first coin in an optimal solution:</span>
 <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -467,7 +472,7 @@
 </div>
 </div>
 <div class="section" id="counting-the-number-of-solutions">
-<h2><span class="section-number">12.5. </span>Counting the number of solutions统计方案个数<a class="headerlink" href="#counting-the-number-of-solutions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">13.5. </span>Counting the number of solutions统计方案个数<a class="headerlink" href="#counting-the-number-of-solutions" title="Permalink to this headline">¶</a></h2>
 <p>if coins = {1, 3, 4} and <em>x</em> = 5。总共有6种方案</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>• 1+1+1+1+1 
 • 1+1+3
@@ -500,7 +505,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">12.6. </span>另一个角度，介绍动态规划<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">13.6. </span>另一个角度，介绍动态规划<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>下面的介绍，又是一种角度，会更加的学术。从“状态空间”入手对“问题与状态空间”之间的类比，有了更深入的认识。</p>
 <ul class="simple">
 <li><p>递推和递归是两种遍历状态空间的基本方法</p></li>
@@ -513,21 +518,21 @@
 <p><strong>子问题重叠性、无后效性、最优子结构</strong>是问题能用动态规划求解的三个基本条件。</p>
 <p>动态规划算法把相同的计算过程作用于各阶段的同类子问题，就好像把一个固定的公式的格式相同的若干输入数据上运行。定义出了动态规划的计算过程，就可以编程实现了，这个计算过程被称为“<strong>状态转移方程</strong>”。</p>
 <p>如何把问题形式化为状态空间，进一步抽象出动态规划的“状态表示”和“阶段划分”，是一件考查智力而非套路的事情。对状态设计，子结构的挖掘，是核心要点。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>对于一个dp问题的描述框架：
-1.问题描述
-2.状态表示
-3.阶段划分
-4.转移方程
-5.边界
-6.目标
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 对于一个DP问题的描述框架：</span>
+<span class="c1">// 1.问题描述</span>
+<span class="c1">// 2.状态表示</span>
+<span class="c1">// 3.阶段划分</span>
+<span class="c1">// 4.转移方程</span>
+<span class="c1">// 5.边界</span>
+<span class="c1">// 6.目标</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">12.7. </span>专题：线性dp<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>具有线性 “阶段” 划分的动态规划算法被称为<strong>线性dp</strong>，经典例题：最长上升子序列（LIS）、最长公共子序列（LCS）、数字三角形（IOI1994），这三个问题，需要计算的对象表现出明显的维度以及有序性。每个状态的求解直接构成一个阶段，这使得dp的状态表示就是阶段的表示。因此，我们只需要在每个维度上各取一个坐标值作为dp的状态，自然就可以描绘出“已求解部分”在状态空间中的轮廓特征，该轮廓的进展就是阶段的推移。每个状态的求解，显然只与之前阶段的最有解有关，这体现了“最优子结构”。接下来，按顺序依次循环每个维度，根据问题要求，递推求解，具体实现。</p>
+<h2><span class="section-number">13.7. </span>专题：线性DP<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>具有线性 “阶段” 划分的动态规划算法被称为<strong>线性DP</strong>，经典例题：最长上升子序列（LIS）、最长公共子序列（LCS）、数字三角形（IOI1994），这三个问题，需要计算的对象表现出明显的维度以及有序性。每个状态的求解直接构成一个阶段，这使得dp的状态表示就是阶段的表示。因此，我们只需要在每个维度上各取一个坐标值作为dp的状态，自然就可以描绘出“已求解部分”在状态空间中的轮廓特征，该轮廓的进展就是阶段的推移。每个状态的求解，显然只与之前阶段的最有解有关，这体现了“最优子结构”。接下来，按顺序依次循环每个维度，根据问题要求，递推求解，具体实现。</p>
 <div class="section" id="longest-increasing-subsequence">
-<h3><span class="section-number">12.7.1. </span>Longest increasing subsequence最长上升子序列<a class="headerlink" href="#longest-increasing-subsequence" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.7.1. </span>Longest increasing subsequence最长上升子序列<a class="headerlink" href="#longest-increasing-subsequence" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">index</span>   <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span>
 <span class="n">number</span>  <span class="mi">6</span> <span class="mi">2</span> <span class="mi">5</span> <span class="mi">1</span> <span class="mi">7</span> <span class="mi">4</span> <span class="mi">8</span> <span class="mi">3</span>
 <span class="ow">in</span> <span class="n">eyes</span>   <span class="mi">2</span> <span class="mi">5</span>   <span class="mi">7</span>   <span class="mi">8</span>
@@ -551,7 +556,7 @@
 <p><strong>练习题目，<a class="reference external" href="https://www.acwing.com/problem/content/897/">895. 最长上升子序列</a></strong></p>
 </div>
 <div class="section" id="paths-in-a-grid">
-<h3><span class="section-number">12.7.2. </span>paths in a grid方格取数问题，数字三角形模型<a class="headerlink" href="#paths-in-a-grid" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.7.2. </span>paths in a grid方格取数问题，数字三角形模型<a class="headerlink" href="#paths-in-a-grid" title="Permalink to this headline">¶</a></h3>
 <p>这类问题，是从方格的左上角，走到方格的右下角。方格中，有一些分数，每一步只能向右走，或者向下走。求怎么走，能获取的分数最大。</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>Assume that the rows and columns of the grid are numbered from 1 to n, and value[y][x] equals the value of square (y,x). Let sum(y,x) denote the maximum sum on a path from the upper-left corner to square (y,x). Now sum(n,n) tells us the maximum sum from the upper-left corner to the lower-right corner. 
 
@@ -571,7 +576,7 @@ for (int y = 1; y &lt;= n; y++) {
 <p>/acwing上的数据更丰富一些，需要对dp进行初始化成负无穷，每一行0 ~ i+1都要初始化</p>
 </div>
 <div class="section" id="id5">
-<h3><span class="section-number">12.7.3. </span>背包问题<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.7.3. </span>背包问题<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>The term <strong>knapsack</strong> refers to problems where a set of objects is given, and subsets with some properties have to be found. Knapsack problems can often be solved using dynamic programming.</p>
 <p>In this section, we focus on the following problem: Given a list of weights [<em>w</em>1,<em>w</em>2,…,<em>w</em>n], determine all sums that can be constructed using the weights.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>For example, if the weights are [1,3,3,5], the following sums are possible:
@@ -611,7 +616,7 @@ possible(x,n) tells us whether we can construct a sum x using all weights.
 <p><strong>练习题目，<a class="reference external" href="https://www.acwing.com/problem/content/2/">2. 01背包问题</a></strong>，<strong><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1267">【例9.11】01背包问题</a></strong></p>
 </div>
 <div class="section" id="edit-distance">
-<h3><span class="section-number">12.7.4. </span>edit distance编辑距离<a class="headerlink" href="#edit-distance" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.7.4. </span>edit distance编辑距离<a class="headerlink" href="#edit-distance" title="Permalink to this headline">¶</a></h3>
 <p>The <strong>edit distance</strong> or <strong>Levenshtein distance</strong> is the minimum number of editing operations needed to transform a string into another string.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>• insert a character (e.g. ABC → ABCA) 
 • remove a character (e.g. ABC → AC)
@@ -643,35 +648,35 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 </div>
 </div>
 <div class="section" id="id6">
-<h2><span class="section-number">12.8. </span>专题：背包问题<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<p>背包是线性dp中一类重要而特殊的模型。上面，我们已经初步的领略了 0/1背包问题，接下来，我们扩展一下。（参考《背包九讲》）</p>
+<h2><span class="section-number">13.8. </span>专题：背包问题<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>背包是线性DP中一类重要而特殊的模型。上面，我们已经初步的领略了 0/1背包问题，接下来，我们扩展一下。（参考《背包九讲》）</p>
 <div class="section" id="id7">
-<h3><span class="section-number">12.8.1. </span>0/1背包<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.8.1. </span>0/1背包<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>/</p>
 </div>
 <div class="section" id="id8">
-<h3><span class="section-number">12.8.2. </span>完全背包<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.8.2. </span>完全背包<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>/</p>
 </div>
 <div class="section" id="id9">
-<h3><span class="section-number">12.8.3. </span>多重背包<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.8.3. </span>多重背包<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>/</p>
 </div>
 <div class="section" id="id10">
-<h3><span class="section-number">12.8.4. </span>混合三种背包问题<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.8.4. </span>混合三种背包问题<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>/</p>
 </div>
 <div class="section" id="id11">
-<h3><span class="section-number">12.8.5. </span>分组背包<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.8.5. </span>分组背包<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>/</p>
 </div>
 <div class="section" id="id12">
-<h3><span class="section-number">12.8.6. </span>有依赖的背包问题<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.8.6. </span>有依赖的背包问题<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p>/</p>
 </div>
 </div>
 <div class="section" id="id13">
-<h2><span class="section-number">12.9. </span>专题：区间dp<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">13.9. </span>专题：区间dp<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <p>区间类动态规划是线性动态规划的扩展，它在分阶段地划分问题时，与阶段中元素出现的顺序和由前一阶段的哪些元素合并而来有很大的关系。</p>
 <p>令状态<code class="docutils literal notranslate"><span class="pre">f[i,</span> <span class="pre">j]</span></code> 表示将下标位置<code class="docutils literal notranslate"><span class="pre">i</span></code> 到<code class="docutils literal notranslate"> <span class="pre">j</span></code> 的所有元素合并能获得的价值的最大值，那么</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">{</span><span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="n">cost</span><span class="p">}</span>
@@ -679,143 +684,143 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 </div>
 </div>
 <div class="section" id="id14">
-<h2><span class="section-number">12.10. </span>《一本通》题目<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">13.10. </span>《一本通》题目<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id15">
-<h3><span class="section-number">12.10.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1258">【例9.2】数字金字塔</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.1. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1258">【例9.2】数字金字塔</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//数字三角形模型</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id16">
-<h3><span class="section-number">12.10.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1259">【例9.3】求最长不下降序列</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.2. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1259">【例9.3】求最长不下降序列</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//LIS</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="noip1999">
-<h3><span class="section-number">12.10.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1260">【例9.4】拦截导弹(Noip1999)</a><a class="headerlink" href="#noip1999" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.3. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1260">【例9.4】拦截导弹(Noip1999)</a><a class="headerlink" href="#noip1999" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//LIS</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id17">
-<h3><span class="section-number">12.10.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1261">【例9.5】城市交通路网</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.4. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1261">【例9.5】城市交通路网</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//LIS</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id18">
-<h3><span class="section-number">12.10.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1262">【例9.6】挖地雷</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.5. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1262">【例9.6】挖地雷</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//LIS</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id19">
-<h3><span class="section-number">12.10.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1263">【例9.7】友好城市</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.6. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1263">【例9.7】友好城市</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//LIS</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id20">
-<h3><span class="section-number">12.10.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1264">【例9.8】合唱队形</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.7. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1264">【例9.8】合唱队形</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//LIS</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id21">
-<h3><span class="section-number">12.10.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1265">【例9.9】最长公共子序列</a><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.8. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1265">【例9.9】最长公共子序列</a><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//LCS</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id22">
-<h3><span class="section-number">12.10.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1266">【例9.10】机器分配</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.9. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1266">【例9.10】机器分配</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//dp[i][j]前i个公司，分配j台设备的最大价值</span>
 <span class="c1">//递归打印方案，这个输出方案的方案，需要多学习</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id23">
-<h3><span class="section-number">12.10.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1281">最长上升子序列</a><a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.10. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1281">最长上升子序列</a><a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//LIS</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id24">
-<h3><span class="section-number">12.10.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1282">最大子矩阵</a><a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.11. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1282">最大子矩阵</a><a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//最大子段和 + 前缀和，O(n^3)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id25">
-<h3><span class="section-number">12.10.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1283">登山</a><a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.12. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1283">登山</a><a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//LIS</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id26">
-<h3><span class="section-number">12.10.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1284">摘花生</a><a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.13. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1284">摘花生</a><a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//数字三角形模型</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id27">
-<h3><span class="section-number">12.10.14. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1285">最大上升子序列和</a><a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.14. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1285">最大上升子序列和</a><a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//LIS</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id28">
-<h3><span class="section-number">12.10.15. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1286">怪盗基德的滑翔翼</a><a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.15. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1286">怪盗基德的滑翔翼</a><a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//LIS</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id29">
-<h3><span class="section-number">12.10.16. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1287">最低通行费</a><a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.16. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1287">最低通行费</a><a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//LIS</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id30">
-<h3><span class="section-number">12.10.17. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1288">三角形最佳路径问题</a><a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.17. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1288">三角形最佳路径问题</a><a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//数字三角形模型</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id31">
-<h3><span class="section-number">12.10.18. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1289">拦截导弹</a><a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.18. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1289">拦截导弹</a><a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//LIS</span>
 <span class="c1">//如果要拦截所有导弹最少要配备多少套这种导弹拦截系统</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id32">
-<h3><span class="section-number">12.10.19. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1267">【例9.11】01背包问题</a><a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.19. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1267">【例9.11】01背包问题</a><a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//01背包</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id33">
-<h3><span class="section-number">12.10.20. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1268">【例9.12】完全背包问题</a><a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.20. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1268">【例9.12】完全背包问题</a><a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//完全背包</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id34">
-<h3><span class="section-number">12.10.21. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1269">【例9.13】庆功会</a><a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.21. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1269">【例9.13】庆功会</a><a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//多重背包</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id35">
-<h3><span class="section-number">12.10.22. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1270">【例9.14】混合背包</a><a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.22. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1270">【例9.14】混合背包</a><a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//混合背包</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id36">
-<h3><span class="section-number">12.10.23. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1271">【例9.15】潜水员</a><a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.23. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1271">【例9.15】潜水员</a><a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//这个题目注意一个瓶子里的氧气和氮气，不是完整的用，可以只用一部分从而满足工作需要。</span>
 </pre></div>
 </div>
@@ -823,31 +828,31 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 <p><a class="reference external" href="https://www.acwing.com/blog/content/458/">背包问题中 体积至多是 j ，恰好是 j ，至少是 j 的初始化问题的研究</a></p>
 </div>
 <div class="section" id="id37">
-<h3><span class="section-number">12.10.24. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1272">【例9.16】分组背包</a><a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.24. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1272">【例9.16】分组背包</a><a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//分组背包，每组里只能选一个物品</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id38">
-<h3><span class="section-number">12.10.25. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1273">【例9.17】货币系统</a><a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.25. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1273">【例9.17】货币系统</a><a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//完全背包，求方案数</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id39">
-<h3><span class="section-number">12.10.26. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1290"> 采药</a><a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.26. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1290"> 采药</a><a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//01背包，noip原题</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id40">
-<h3><span class="section-number">12.10.27. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1291">数字组合</a><a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.27. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1291">数字组合</a><a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//01背包，求方案数</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id41">
-<h3><span class="section-number">12.10.28. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1292">宠物小精灵之收服</a><a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.28. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1292">宠物小精灵之收服</a><a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//小智的精灵球数量和皮卡丘的初始体力</span>
 <span class="c1">//二维费用背包</span>
 <span class="c1">//输出，收服C个小精灵时皮卡丘的剩余体力值最多为R。这个最后输出剩余体力值的方法也很聪明</span>
@@ -855,39 +860,39 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 </div>
 </div>
 <div class="section" id="id42">
-<h3><span class="section-number">12.10.29. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1293">买书</a><a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.29. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1293">买书</a><a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//完全背包，求方案数</span>
 <span class="c1">//和 数字组合 ，比较像</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="charm-bracelet">
-<h3><span class="section-number">12.10.30. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1294">Charm Bracelet</a><a class="headerlink" href="#charm-bracelet" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.30. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1294">Charm Bracelet</a><a class="headerlink" href="#charm-bracelet" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//01背包</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id43">
-<h3><span class="section-number">12.10.31. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1295">装箱问题</a><a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.31. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1295">装箱问题</a><a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//任取若干个装入箱内，使箱子的剩余空间为最小</span>
 <span class="c1">//01背包，输出V-dp[V]</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id44">
-<h3><span class="section-number">12.10.32. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1296">开餐馆</a><a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.32. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1296">开餐馆</a><a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//LIS模型，i接在1..i-1谁后面的时候，注意判断距离问题</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id45">
-<h3><span class="section-number">12.10.33. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1274">【例9.18】合并石子</a><a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.33. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1274">【例9.18】合并石子</a><a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//区间dp</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id46">
-<h3><span class="section-number">12.10.34. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1275"> 【例9.19】乘积最大</a><a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.34. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1275"> 【例9.19】乘积最大</a><a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//int dp[N][M]; //前i个数，插入了j个乘号</span>
 <span class="c1">//先预处理出来数字的问题，更好一些</span>
 </pre></div>
@@ -895,20 +900,20 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 <p><a class="reference external" href="https://www.acwing.com/solution/content/18940/">https://www.acwing.com/solution/content/18940/</a></p>
 </div>
 <div class="section" id="id47">
-<h3><span class="section-number">12.10.35. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1276">【例9.20】编辑距离</a><a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.35. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1276">【例9.20】编辑距离</a><a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//编辑距离，经典问题</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id48">
-<h3><span class="section-number">12.10.36. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1277">【例9.21】方格取数</a><a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.36. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1277">【例9.21】方格取数</a><a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//从左上走到右下，走了两次，问能取到的最大值</span>
 <span class="c1">//定义一个四维的状态，dp[N][N][N][N]，经过发现，可以优化到三维</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="book">
-<h3><span class="section-number">12.10.37. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1278">【例9.22】复制书稿(book)</a><a class="headerlink" href="#book" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.37. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1278">【例9.22】复制书稿(book)</a><a class="headerlink" href="#book" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//输出具体方案，用了一个贪心的策略去设计输出答案的过程</span>
 <span class="c1">//以下两种设计都可行，请体验体验</span>
 <span class="c1">//设计状态dp[i][j] i个人，抄前j本书的复制时间</span>
@@ -917,37 +922,37 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 </div>
 </div>
 <div class="section" id="flower">
-<h3><span class="section-number">12.10.38. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1279">【例9.23】橱窗布置(flower)</a><a class="headerlink" href="#flower" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.38. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1279">【例9.23】橱窗布置(flower)</a><a class="headerlink" href="#flower" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//dp[i][j] 前i朵花插在前j个花瓶里</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id49">
-<h3><span class="section-number">12.10.39. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1280">【例9.24】滑雪</a><a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.39. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1280">【例9.24】滑雪</a><a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//记忆化</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id50">
-<h3><span class="section-number">12.10.40. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1297">公共子序列</a><a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.40. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1297">公共子序列</a><a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//LCS</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id51">
-<h3><span class="section-number">12.10.41. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1298">计算字符串距离</a><a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.41. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1298">计算字符串距离</a><a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//编辑距离</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id52">
-<h3><span class="section-number">12.10.42. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1299">糖果</a><a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.42. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1299">糖果</a><a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//《1195：判断整除》这道递推类似，请回忆。</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id53">
-<h3><span class="section-number">12.10.43. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1300"> 鸡蛋的硬度</a><a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.43. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1300"> 鸡蛋的硬度</a><a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//特别经典的一道题目，很难的，基本自己想不出来的，可以思考二十分钟试一试</span>
 <span class="c1">//有两种设计状态的方法</span>
 <span class="c1">//dp[i][j] 测量长度i层楼，用j个鸡蛋，最坏情况下需要扔的次数，O(n^2*m)</span>
@@ -956,14 +961,14 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 </div>
 </div>
 <div class="section" id="id54">
-<h3><span class="section-number">12.10.44. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1301"> 大盗阿福</a><a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.44. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1301"> 大盗阿福</a><a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//从一个商店，可以被盗，也可以不被盗的两种情况入手，思考状态的设计dp[N][2]</span>
 <span class="c1">//还有一种思路，线性dp的思路，状态只有一维，类似最大字段和的O(n)操作</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id55">
-<h3><span class="section-number">12.10.45. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1302">股票买卖</a><a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.45. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1302">股票买卖</a><a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//dp，状态机模型</span>
 <span class="c1">//ybt的第8个测试点，跑起来不稳定，有可能会TLE这个点</span>
 <span class="c1">//dp[N][3][2]; //dp(i,j,0)第i天，买卖j次，当前没有股票；dp(i,j,1)当前有股票</span>
@@ -971,7 +976,7 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 </div>
 </div>
 <div class="section" id="id56">
-<h3><span class="section-number">12.10.46. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1303">鸣人的影分身</a><a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.46. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1303">鸣人的影分身</a><a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//分苹果-&gt;鸣人的影分身-&gt;数的划分</span>
 <span class="c1">//本题可以从分苹果入手，实现记忆化搜索的版本</span>
 <span class="c1">//然后，再改成循环版本</span>
@@ -980,14 +985,14 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 </div>
 </div>
 <div class="section" id="id57">
-<h3><span class="section-number">12.10.47. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1304">数的划分</a><a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.47. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1304">数的划分</a><a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-CPP notranslate"><div class="highlight"><pre><span></span><span class="c1">//先从鸣人的影分身，变形一下，实现第一个版本，trick一下就可以</span>
 <span class="c1">//重新的，从集合角度出发，分析(.... | .....)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="maximum-sum">
-<h3><span class="section-number">12.10.48. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1305"> Maximum sum</a><a class="headerlink" href="#maximum-sum" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.48. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1305"> Maximum sum</a><a class="headerlink" href="#maximum-sum" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//这段题目求的是，两个不重合的最大子段和</span>
 <span class="c1">//最大子段和，这个会写的</span>
 <span class="c1">//如何表示两个不重合的最大子段和呢？ 多画图看一看就会找到线索</span>
@@ -995,7 +1000,7 @@ distance(a, b) = min(distance(a, b − 1) + 1,
 </div>
 </div>
 <div class="section" id="id58">
-<h3><span class="section-number">12.10.49. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1306">最长公共子上升序列</a><a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.10.49. </span><a class="reference external" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1306">最长公共子上升序列</a><a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//LIS+LCS，非常好的题目，这个题面还要求输出方案。</span>
 <span class="c1">//有O(n^4), O(n^3), O(n^2)的写法，都需要深入思考，琢磨实现</span>
 </pre></div>
@@ -1010,8 +1015,8 @@ distance(a, b) = min(distance(a, b − 1) + 1,
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="%E6%A0%88.html" class="btn btn-neutral float-right" title="13. stack栈" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html" class="btn btn-neutral float-left" title="11. bfs宽度优先搜索" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BA%8C.html" class="btn btn-neutral float-right" title="14. DP动态规划(二)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html" class="btn btn-neutral float-left" title="12. bfs宽度优先搜索" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

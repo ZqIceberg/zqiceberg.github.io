@@ -1,0 +1,39 @@
+# Thinking - Concretely, Symbolically, Pictorially
+
+Think/solving concretely means solving the problem using examples (e.g. Evlauting the series).
+
+```
+- E.g. You are given some forumla F(n) for a Sequence: 3 * (n+5) * (n+6) / 2 + 4
+- You start to enmerate its values: 4 67 88, then work on its values
+- Typically easy and natural
+- Helps much in tough pattern proplems.
+- Bound your mind for given example. Need carefully considering other examples.
+```
+
+
+
+Think/solving Symbolically means instead of working using actual objects is to represent every thing Symbolically.
+
+```cpp
+	- E.g. You are given some forumla F(n) for a Sequence: 3 * (n+5) * (n+6) / 2 + 4
+	- Let F1(n) = (F(n) - 4)/3
+		        = (n+5)*(n+6)/2
+	- Let F2(n) = F1(n-5)
+	-	  F2(n) = (n * (n+1))/2		... a popular sequence
+	
+	- In this one, we work over symbols not the concerete values. E.g. X[i-1] + X[i+1] >= 2 X[i] for every 1 <= i <= n-1
+	- The more you train over it, the better you recognize the solutions. Your abstractions ability improves too.
+	- Sometimes, you can't recognize the solution without it!
+```
+
+
+
+Think/solving pictorially means drawing the problem elements, their relations and figuring properties from the visualization.
+
+```cpp
+	- In this one, we try to do visualization
+	- You could visualize input elements, their relations
+	- You could visualize the nature of the output
+	- Many times, it appears with the concrete or Symbolic
+```
+

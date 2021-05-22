@@ -18,9 +18,9 @@
 
 在使用枚举算法蛮力搜索问题的整个“状态空间”时，经常需要递归。（枚举算法，就是遍历一遍，逐个举例。初级的枚举很简单，就是for循环的应用，高级的就很难了，复杂在题目题目和遍历的操作方式）
 
-
-
 **Thinking recursively is natural, but need good amount of training.**
+
+
 
 <center>
 

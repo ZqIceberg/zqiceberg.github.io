@@ -11,3 +11,4 @@ Painter Salvador Dali and inventor Thomas Edison both actively worked with it. A
 Even at tests the technique can be useful. Start with the most difficult problem first, once you get stuck switch to a more simple one. While doing the easier one, your brain will keep the difficult problem in its working memory and without you even realizing its looking for connections to make sense of it. Once you are done with the easy problem, go back to the difficult one. You might find it not as hard anymore. 
 
 The technique is based on material from the MOOC Learning How to Learn by Barbara Oakley, PhD, PE, is a professor of engineering at Oakland University in Rochester, Michigan.
+

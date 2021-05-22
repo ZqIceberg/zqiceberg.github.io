@@ -1,0 +1,496 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>14. DP动态规划(二) &mdash; 信息学奥赛普及组算法21天突破 0.7.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="15. stack栈" href="%E6%A0%88.html" />
+    <link rel="prev" title="13. DP动态规划(一)" href="%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%80.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 信息学奥赛普及组算法21天突破
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">一、普及组算法部分</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="%E5%BA%8F%E8%A8%80.html">1. preface序言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.html">2. time complexity时间复杂度</a></li>
+<li class="toctree-l1"><a class="reference internal" href="STL.html">3. data structure(STL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%AB%98%E7%B2%BE%E5%BA%A6.html">4. high accuracy高精度</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%8E%92%E5%BA%8F.html">5. sortings排序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E6%8E%A8.html">6. recursion 递推</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%80%92%E5%BD%92.html">7. recursive 递归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF.html">8. complete search and backtracking 搜索与回溯</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E8%B4%AA%E5%BF%83%E4%B8%80.html">9. greedy algorithm 贪心(一)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E8%B4%AA%E5%BF%83%E4%BA%8C.html">10. greedy algorithm 贪心(二)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%88%86%E6%B2%BB.html">11. divide and conquer分治</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">12. bfs宽度优先搜索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%80.html">13. DP动态规划(一)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">14. DP动态规划(二)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">14.1. 如何把递归改成记忆化</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A0%88.html">15. stack栈</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E9%98%9F%E5%88%97.html">16. queue队列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%B8%80.html">17. graph图论(一)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%BA%8C.html">18. graph图论(二)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%9B%BE%E8%AE%BA%E4%B8%89.html">19. graph图论(三)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A0%91%E4%B8%80.html">20. trees树(一)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A0%91%E4%BA%8C.html">21. trees树(二)</a></li>
+</ul>
+<p class="caption"><span class="caption-text">二、计算机使用教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/517.html">1. 517教学经验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Focused%20vs%20Diffused%20Thinking%3A%20Solve%20Hard%20Problems%20with%20this%20Simply%20Trick.html">2. Focused vs Diffused Thinking: Solve Hard Problems with this Simply Trick</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/NOI%E5%A4%A7%E7%BA%B2.html">3. NOI大纲</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Tackling%20a%20problem%20.html">4. Tackling a problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Thinking%20-%20Brainsotrm%20-%20Rank%20-%20Approach%20.html">5. Thinking - Brainsotrm - Rank - Approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Thinking%20-%20Concretely%2C%20Symbolically%2C%20Pictorially.html">6. Thinking - Concretely, Symbolically, Pictorially</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Thinking%20-%20Problem%20Simplification.html">7. Thinking - Problem Simplification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">8. Windows环境下的操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/macOS%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%93%8D%E4%BD%9C.html">9. macOS环境下的操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%B8%AD%E5%AD%A6%E8%B6%85%E5%89%8D%E5%AD%A6%E4%B9%A0%E7%BB%8F%E5%8E%86%E5%AF%B9%E5%A4%A7%E5%AD%A6%E6%8B%94%E5%B0%96%E5%AD%A6%E7%94%9F%E5%AD%A6%E4%B9%A0%E7%8A%B6%E6%80%81%E7%9A%84%E5%BD%B1%E5%93%8D.html">10. 中学超前学习经历对大学拔尖学生学习状态的影响</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%BB%A3%E7%A0%81%E7%BB%8F%E9%AA%8C.html">11. 代码经验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E4%BF%A1%E6%81%AF%E5%AD%A6%E6%AF%94%E8%B5%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.html">12. 信息学比赛常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E5%85%B3%E4%BA%8E%E6%AF%8F%E5%A4%A9%E6%89%93%E5%8D%A1%E7%9A%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%BC%8F.html">13. 关于每天打卡的训练模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E5%8C%97%E5%A4%A7%E6%9D%8E%E6%99%93%E6%98%8E%E6%95%99%E6%8E%88%EF%BC%9A%E4%BB%8E%E8%B6%A3%E5%91%B3%E6%95%B0%E5%AD%A6%E5%88%B0%E8%B6%A3%E5%91%B3%E7%AE%97%E6%B3%95%E5%88%B0%E8%B6%A3%E5%91%B3%E7%BC%96%E7%A8%8B%E2%80%94%E2%80%94%E9%9D%9E%E4%B8%93%E4%B8%9A%E5%AD%A6%E4%B9%A0%E8%80%85%E4%BD%93%E4%BC%9A%E8%AE%A1%E7%AE%97%E6%80%9D%E7%BB%B4%E7%9A%84%E4%B8%80%E6%9D%A1%E9%80%94%E5%BE%84%EF%BC%9F.html">14. 北大李晓明教授：从趣味数学到趣味算法到趣味编程——非专业学习者体会计算思维的一条途径？</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E7%BB%8F%E9%AA%8C/%E5%AF%B9%E8%AF%9DIOI2021%E5%9B%BD%E5%AE%B6%E9%98%9F%E6%88%90%E5%91%98%EF%BC%81%E7%9B%B4%E6%92%AD%E8%B6%85%E8%AF%A6%E7%BB%86%E6%96%87%E5%AD%97%E7%8F%8D%E8%97%8F%E7%89%88%E6%9D%A5%E5%95%A6.html">15. 对话IOI2021国家队成员！直播超详细文字珍藏版来啦</a></li>
+</ul>
+<p class="caption"><span class="caption-text">三、C++语言部分</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%E8%AF%AD%E6%B3%95/endl.html">1. end and flushing the buffer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E8%AF%AD%E6%B3%95/int%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E6%98%AF-2%5E31~2%5E31-1.html">2. int型数据类型为什么取值范围是-2^31~2^31-1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E8%AF%AD%E6%B3%95/%E4%B8%80%E3%80%81C%2B%2B%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8.html">3. C++语言入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E8%AF%AD%E6%B3%95/%E4%B8%89%E3%80%81%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1.html">4. 控制结构程序设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E8%AF%AD%E6%B3%95/%E4%BA%8C%E3%80%81%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1.html">5. 顺序结构程序设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E8%AF%AD%E6%B3%95/%E4%BA%94%E3%80%81%E6%95%B0%E7%BB%84.html">6. 数组</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E8%AF%AD%E6%B3%95/%E5%85%AD%E3%80%81%E5%87%BD%E6%95%B0.html">7. 函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E8%AF%AD%E6%B3%95/%E5%9B%9B%E3%80%81%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1.html">8. 循环结构程序设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E8%AF%AD%E6%B3%95/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA.html">9. 输入输出</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">信息学奥赛普及组算法21天突破</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><span class="section-number">14. </span>DP动态规划(二)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/算法/动态规划二.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dp">
+<h1><span class="section-number">14. </span>DP动态规划(二)<a class="headerlink" href="#dp" title="Permalink to this headline">¶</a></h1>
+<p>Dynamic Programming (DP):
+When we solve a recursive problem that its sub-problems overlaps, hence calling sub-problems. More than once and repeating its calculation in nature that typically makes the order exponentials!</p>
+<p><strong>When the original space is small enough to be <em>memorized</em>, then saving these sub-problems makes order small too, as sub-problems calculated once.</strong></p>
+<p>// Fibonacci Series: Fib(n) = fib(n-1) + fib(n-2).	Fib(0) = fib(1) = 1</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span>
+		<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Let’s SAVE the answer, and let space of N is called 2N times!</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">savedAnswers</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>		<span class="c1">// Initialized to -1, means no answer</span>
+<span class="kt">int</span> <span class="nf">fibSave</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span>
+		<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+
+	<span class="k">if</span><span class="p">(</span><span class="n">savedAnswers</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">savedAnswers</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+
+	<span class="k">return</span> <span class="n">savedAnswers</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="c1">// O(N) Search space, hence O(N) memory -&gt; O(N) Order!</span>
+</pre></div>
+</div>
+<p><strong>General Rules:</strong></p>
+<p>1- Recursive Function
+2- Sub-calls Overlap
+3- Small Search Space, so putting in memory is doable</p>
+<p>Do we need to apply DP for merge sort? NEVER, a call will never be repeated! like most of D &amp; C problems.(Divide-and-Conquer Algorithm)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 分治 vs dp</span>
+<span class="c1">// 两者都是将问题划分为子问题，然后求解子问题。当子问题不会被求解多次的时候，应该用分治。被求解多次的，就dp。例如，二叉查找，用分治；求fibo，用dp。</span>
+</pre></div>
+</div>
+<p><strong>Dynamic Programming most typical cases: Minimization, Maximization and Counting. But could have adhock usages.</strong> In fact, above code is not called DP, it is call Memoization (NOT Memorization).It is a technique when we have a recusive function and save calls).</p>
+<p>DP is to build bottom up according to recurrence while Memoization is top-down.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">dp_fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">fib</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
+	<span class="n">fib</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">fib</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>	<span class="c1">// base case</span>
+
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+		<span class="n">fib</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fib</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">fib</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">];</span>	<span class="c1">// bottom up according to recurrence</span>
+
+	<span class="k">return</span> <span class="n">fib</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Writing Memoization is much more natural, although there are cases when DP is a must. Most of our tutorial is for Memoization</strong></p>
+<div class="section" id="id1">
+<h2><span class="section-number">14.1. </span>如何把递归改成记忆化<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Let&#39;s move to some other examples! Remember:</span>
+
+<span class="c1">// Given grid of positive numbers, Start from 0, 0 and end at n, n. Move only to right and down - find path with sum of numbers is maximum.</span>
+
+<span class="cm">/*</span>
+<span class="cm">15</span>
+<span class="cm">24</span>
+
+<span class="cm">512</span>
+<span class="cm">678</span>
+<span class="cm">149</span>
+
+<span class="cm">What paths there&quot; 51289, 51789, 51749, 56789, 56749, 56149 ..</span>
+<span class="cm">				  It is like: 5 { 1 {289, 789, 749}, 6{789, 749, 149} }</span>
+
+<span class="cm">				  In other words, 5 needs answer of 1 and of 6 to maximize over them.</span>
+<span class="cm">*/</span>
+<span class="kt">int</span> <span class="n">grid</span><span class="p">[</span><span class="n">MAX</span><span class="p">][</span><span class="n">MAX</span><span class="p">];</span>
+
+<span class="c1">// Think in function F(i, j) that find solution from (i, j) to (n, n)</span>
+
+<span class="kt">int</span> <span class="nf">maxPathSum</span><span class="p">(</span><span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="n">valid</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">==</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">c</span> <span class="o">==</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">grid</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">];</span>	<span class="c1">// base</span>
+
+	<span class="kt">int</span> <span class="n">path1</span> <span class="o">=</span> <span class="n">maxPathSum</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>	<span class="c1">// right</span>
+	<span class="kt">int</span> <span class="n">path2</span> <span class="o">=</span> <span class="n">maxPathSum</span><span class="p">(</span><span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>	<span class="c1">// down</span>
+
+	<span class="k">return</span> <span class="n">grid</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="n">max</span><span class="p">(</span><span class="n">path1</span><span class="p">,</span> <span class="n">path2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// How to trun code to memization?</span>
+<span class="c1">// 1- Create array of input dimensions, and output of its return.</span>
+<span class="c1">// E.g. int mem[MAX][MAX];</span>
+<span class="c1">// Initialize it with a value that will never be a correct answer, e.g. -1</span>
+<span class="c1">// If value is -1, then it is not visited before. Else, use saved value</span>
+
+<span class="kt">int</span> <span class="n">mem</span><span class="p">[</span><span class="n">MAX</span><span class="p">][</span><span class="n">MAX</span><span class="p">];</span>	<span class="c1">// R &amp; C is in range N. Function return int</span>
+<span class="kt">int</span> <span class="nf">maxPathSum_save</span><span class="p">(</span><span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="c1">//1- Always hanle invalid calls first</span>
+	<span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="n">valid</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+	<span class="c1">//2- Handle Base cases</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">==</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">c</span> <span class="o">==</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">grid</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">];</span>	<span class="c1">// base</span>
+
+	<span class="c1">//3- check if visited before</span>
+
+	<span class="k">if</span><span class="p">(</span><span class="n">mem</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">mem</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">];</span>
+
+	<span class="kt">int</span> <span class="n">path1</span> <span class="o">=</span> <span class="n">maxPathSum_save</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>	<span class="c1">// right</span>
+	<span class="kt">int</span> <span class="n">path2</span> <span class="o">=</span> <span class="n">maxPathSum_save</span><span class="p">(</span><span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>	<span class="c1">// down</span>
+
+	<span class="k">return</span> <span class="n">mem</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="n">max</span><span class="p">(</span><span class="n">path1</span><span class="p">,</span> <span class="n">path2</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>DP need good recursive mentality, that views answer in term of recursion! So develop your skills! Many DPs follow a certain pattern (style), we will investigate some of them.</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> Consider an arbitrary sequence of integers. One can place + or - operators between integers in the sequence,</span>
+<span class="cm"> 	 thus deriving different arithmetical expressions that evaluate to different values. Let us, for example,</span>
+<span class="cm"> 	 take the sequence: 17, 5, -21, 15. There are eight possible expressions:</span>
+
+<span class="cm">17	+	5	+	-21	+	15	=	16</span>
+<span class="cm">17	+	5	+	-21	-	15	=	-14</span>
+<span class="cm">17	+	5	-	-21	+	15	=	58</span>
+<span class="cm">17	+	5	-	-21	-	15	=	28</span>
+<span class="cm">17	-	5	+	-21	+	15	=	6</span>
+<span class="cm">17	-	5	+	-21	-	15	=	-24</span>
+<span class="cm">17	-	5	-	-21	+	15	=	48</span>
+<span class="cm">17	-	5	-	-21	-	15	=	18</span>
+
+<span class="cm">We call the sequence of integers divisible by K if + or - operators can be placed between integers in the</span>
+<span class="cm">sequence in such way that resulting value is divisible by K. In the above example, the sequence is divisible by 7 (17+5+-21-15=-14) but is not divisible by 5.</span>
+
+<span class="cm">You are to write a program that will determine divisibility of sequence of integers.</span>
+<span class="cm">*/</span>
+
+<span class="c1">// called with tryAll1(1, v[0])		// e.g. tryAll1(1, 17)</span>
+<span class="kt">int</span> <span class="nf">tryAll1</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sum</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">sum</span> <span class="o">%</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">tryAll1</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">||</span> <span class="n">tryAll1</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sum</span> <span class="o">-</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>	<span class="p">)</span>
+		<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+
+<span class="c1">/////////////////////////////////////////////////</span>
+<span class="kt">int</span> <span class="nf">fix</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">%</span> <span class="n">k</span> <span class="o">+</span> <span class="n">k</span><span class="p">)</span> <span class="o">%</span> <span class="n">k</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">tryAll2</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">mod</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="o">&amp;</span><span class="n">ret</span> <span class="o">=</span> <span class="n">mem</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">mod</span><span class="p">];</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">mod</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">tryAll2</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fix</span><span class="p">(</span><span class="n">mod</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="o">||</span> <span class="n">tryAll2</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fix</span><span class="p">(</span><span class="n">mod</span> <span class="o">-</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
+		<span class="k">return</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+	<span class="k">return</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="nl">TC</span><span class="p">:</span> <span class="n">RGBStreet</span>
+<span class="nl">http</span><span class="p">:</span><span class="c1">//community.topcoder.com/stat?c=problem_statement&amp;pm=6680</span>
+
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MAX</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">r</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">g</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">OO</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="mf">1e6</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">mem</span><span class="p">[</span><span class="n">MAX</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
+
+<span class="kt">int</span> <span class="nf">minCost</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">lasColor</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
+		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+	<span class="kt">int</span> <span class="o">&amp;</span><span class="n">ret</span> <span class="o">=</span> <span class="n">mem</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">lasColor</span><span class="p">];</span>  <span class="c1">//注意这个写法</span>
+
+	<span class="k">if</span><span class="p">(</span><span class="n">ret</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+
+	<span class="n">ret</span> <span class="o">=</span> <span class="n">OO</span><span class="p">;</span>
+
+	<span class="k">if</span><span class="p">(</span><span class="n">lasColor</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="n">ret</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">minCost</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+
+	<span class="k">if</span><span class="p">(</span><span class="n">lasColor</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span>
+		<span class="n">ret</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="n">g</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">minCost</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+
+	<span class="k">if</span><span class="p">(</span><span class="n">lasColor</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
+		<span class="n">ret</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">minCost</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+
+	<span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="k">class</span> <span class="nc">RGBStreet</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+
+	<span class="kt">int</span> <span class="n">estimateCost</span><span class="p">(</span><span class="n">vector</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">houses</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">rep</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">houses</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">istringstream</span> <span class="n">iss</span><span class="p">(</span><span class="n">houses</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+			<span class="n">iss</span><span class="o">&gt;&gt;</span><span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;&gt;</span><span class="n">g</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;&gt;</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+		<span class="p">}</span>
+		<span class="n">n</span> <span class="o">=</span> <span class="n">sz</span><span class="p">(</span><span class="n">houses</span><span class="p">);</span>
+
+		<span class="n">clr</span><span class="p">(</span><span class="n">mem</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+
+		<span class="k">return</span> <span class="nf">minCost</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+	<span class="p">}</span>
+	
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="%E6%A0%88.html" class="btn btn-neutral float-right" title="15. stack栈" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%80.html" class="btn btn-neutral float-left" title="13. DP动态规划(一)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, zqiceberg.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

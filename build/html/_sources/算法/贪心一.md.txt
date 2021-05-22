@@ -1,4 +1,4 @@
-# greedy algorithm 贪心
+# greedy algorithm 贪心(一)
 
 ### 概念
 

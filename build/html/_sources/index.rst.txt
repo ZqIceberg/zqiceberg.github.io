@@ -6,49 +6,9 @@
 《信息学奥赛普及组算法21天突破》
 ====================================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: 一、普及组算法部分
-   :numbered:
+迁移新地址：https://www.yuque.com/books/share/ad510c40-77ca-4cff-9ae8-4cb6669a1d4f
 
-   算法/序言
-   算法/时间复杂度.md
-   算法/STL.md
-   算法/高精度.md
-   算法/排序.md
-   算法/递推.md
-   算法/递归.md
-   算法/搜索与回溯.md
-   算法/贪心.md
-   算法/分治.md
-   算法/宽度优先搜索.md
-   算法/动态规划.md
-
-   算法/栈
-   算法/队列
-   算法/图论一
-   算法/图论二
-   算法/图论三
-   算法/树一
-   算法/树二
-
-.. toctree::
-   :maxdepth: 2
-   :caption: 二、计算机使用教程
-   :glob:
-   :numbered:
-
-   经验/*
-
-.. toctree::
-   :maxdepth: 2
-   :caption: 三、C++语言部分
-   :glob:
-   :numbered:
-
-   语法/*
-
-.. math::
+新地址，是一个可以讨论留言的平台，使用更舒服一些
 
 ..
  Indices and tables

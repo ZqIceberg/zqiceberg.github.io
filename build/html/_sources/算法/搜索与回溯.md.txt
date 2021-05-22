@@ -774,6 +774,7 @@ int main() {
 
 ```cpp
 //棋盘上dfs
+//向上下左右四个方向移动，并且不能移向曾经经过的字母。问最多可以经过几个字母
 ```
 
 ##### [八皇后问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1213)
@@ -803,6 +804,7 @@ int main() {
 ##### [棋盘问题](http://ybt.ssoier.cn:8088/problem_show.php?pid=1217)
 
 ```cpp
+//方法一
 //棋盘形状是不规则的，只能在 # 位置上摆放。两个棋子不能同行同列，摆放k个棋子，有多少种方案。设计一个带参数的dfs函数
 void dfs(int u, int num) 枚举到第u行，已经摆放了num个棋子
     
@@ -814,12 +816,41 @@ for (int i = u; i < n; i++)
             col[j] = false;
         }
     }
+
+dfs(0, 0);
+
+//方法二
+// 这种就回归到类似八皇后的代码结构上，但道理是相通的
+// 这一行，枚举有没有能选的
+// 这一行，压根不选，直奔下一行
+void dfs(int u, int num)
+{
+	if (u == n){
+		if (num == k){
+			res++;
+		}
+		return ;
+	}
+
+	for (int j = 0; j < n; j++){
+		if (s[u][j] == '#' && !col[j]){
+			col[j] = true;
+			dfs(u + 1, num + 1);
+			col[j] = false;
+		}
+
+	}
+
+	dfs(u + 1, num);
+}
+
+dfs(0, 0);
 ```
 
 ##### [取石子游戏](http://ybt.ssoier.cn:8088/problem_show.php?pid=1218)
 
 ```cpp
-//从较多的那堆里取，去较少那堆的整数倍，最后把一堆棋子取空，就是赢家。多组数据，问先手是不是赢家。
+//从较多的那堆里取，取较少那堆的整数倍，最后把一堆棋子取空，就是赢家。多组数据，问先手是不是赢家。
 //a / b >= 2, 先手必胜。
 //a / b < 2, 先手只有一种取法。
 
@@ -830,7 +861,10 @@ for (int i = u; i < n; i++)
 
 ```cpp
 //给出起始位置，问有多少方案可以遍历到棋盘上的所有点。
-void dfs(int x, int y, int num) //num是已经遍历点的个数
+
+//num是已经遍历点的个数
+void dfs(int x, int y, int num) 
+
 //用数组控制8个方向的写法，判断点合法性的方法
 ```
 
